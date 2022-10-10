@@ -1,6 +1,6 @@
 services:
-  app:
-    container_name: app
+  oi-app:
+    container_name: oi-app
     image: node:lts
     working_dir: /var/www/html/app/
     entrypoint: /bin/bash
