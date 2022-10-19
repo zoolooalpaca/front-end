@@ -21,7 +21,7 @@ jobs:
       - name: Build 📦
         run: docker-compose exec -i oi-app npm run build
       - name: List files
-        run: ls -la
+        run: pwd && ls -la app
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
