@@ -17,9 +17,9 @@ jobs:
       - name: Compose
         run: docker-compose up -d
       - name: Install ⏬
-        run: docker-compose exec -i oi-app npm install
+        run: docker-compose exec -T oi-app npm install
       - name: Build 📦
-        run: docker-compose exec -i oi-app npm run build
+        run: docker-compose exec -T oi-app npm run build
       - name: List files
         run: pwd && ls -la app
       - name: Deploy 🚀
