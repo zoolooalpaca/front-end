@@ -17,9 +17,9 @@ jobs:
       - name: Compose
         run: docker-compose up -d
       - name: Install ⏬
-        run: docker-compose exec oi-app npm ci
+        run: docker-compose exec -i oi-app npm ci
       - name: Build 📦
-        run: docker-compose exec oi-app npm run build
+        run: docker-compose exec -i oi-app npm run build
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
