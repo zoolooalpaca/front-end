@@ -5,6 +5,7 @@ import vue from "@vitejs/plugin-vue";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
+  console.log(mode)
   return {
     server: {
       port: 3000,
@@ -15,6 +16,6 @@ export default defineConfig(({ mode }) => {
         "@": fileURLToPath(new URL("./src", import.meta.url)),
       },
     },
-    base: mode === 'production' ? "/or/" : './',
+    base: mode === 'production' ? "/order-in/" : './',
   };
 });
