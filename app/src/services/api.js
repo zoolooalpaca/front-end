@@ -8,7 +8,7 @@ export const employeeAPI = {
     async getAll() {
         const response = await axiosInstance.get('/employees')
         if (response.status === 200) {
-            return response.data.data
+            return response.data
         }
         return []
     }
