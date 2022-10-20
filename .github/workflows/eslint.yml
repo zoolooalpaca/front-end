@@ -1,0 +1,29 @@
+name: ESLint
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  eslint:
+    name: Run eslint scanning
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install ESLint
+        run: |
+          docker-compose up -d
+          docker-compose exec -T oi-app npm install
+
+      - name: Run ESLint
+        run: docker-compose exec -T oi-app npx eslint .
+          --config .eslintrc.js
+          --ext .js,.jsx,.vue 
