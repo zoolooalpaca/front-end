@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  props: ["id", "label", "active", "onClickItem"],
+  props: ['id', 'label', 'active', 'onClickItem'],
 };
 </script>
 
