@@ -1,11 +1,13 @@
 <template>
   <div class="nav-var-drawer-header">
-    <span>header</span>
+    <span>{{ label }}</span>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ['label']
+};
 </script>
 
 <style>

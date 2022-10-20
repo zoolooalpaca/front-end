@@ -1,6 +1,8 @@
 <template>
   <div :class="active ? 'item active' : 'item'" @click="onClickItem(id)">
-    <span class="section-icon hidden">Icon</span>
+    <span class="section-icon">
+      <slot/>
+    </span>
     <div>{{ label }}</div>
     <span class="section-tail-icon hidden">Tail</span>
   </div>

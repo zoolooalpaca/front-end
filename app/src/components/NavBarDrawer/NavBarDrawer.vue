@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <HeaderNav />
+    <HeaderNav label="ชื่อร้าน" />
     <Item
       v-for="(item, index) in navItems"
       :id="index"
@@ -8,7 +8,9 @@
       :active="index == activeId"
       :onClickItem="onClickItem"
       :key="index"
-    />
+    >
+    <span class="material-symbols-outlined">{{item.icon}}</span>
+  </Item>
   </nav>
 </template>
 
@@ -20,13 +22,10 @@ export default {
     return {
       activeId: 0,
       navItems: [
-        { label: "item1" },
-        { label: "item2" },
-        { label: "item3" },
-        { label: "item4" },
-        { label: "item5" },
-        { label: "item6" },
-        { label: "item7" },
+        { label: "รับลูกค้าใหม่", icon: 'sentiment_satisfied'},
+        { label: "จ่ายเงิน", icon: 'payment' },
+        { label: "อาหารที่ต้องเสิร์ฟ", icon: 'room_service' },
+        { label: "อาหารที่ต้องทำ", icon: 'soup_kitchen' },
       ],
     };
   },
