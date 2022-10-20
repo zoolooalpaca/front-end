@@ -1,8 +1,14 @@
-<script setup>
+<script>
+import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue'
+
+export default {
+    components: { NavBarDrawer }
+}
 </script>
 
 <template>
   <div>
+    <NavBarDrawer></NavBarDrawer>
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
     <div class="error-container">
