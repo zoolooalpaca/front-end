@@ -25,5 +25,4 @@ jobs:
 
       - name: Run ESLint
         run: docker-compose exec -T oi-app npx eslint .
-          --config .eslintrc.js
           --ext .js,.jsx,.vue 
