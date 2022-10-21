@@ -3,15 +3,19 @@ import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
 import TableItem from '@/components/Table/TableItem.vue';
 import TopAppBar from '@/components/TopAppBar/TopAppBar.vue';
 import FoodCard from '@/components/FoodCard/Foodcard.vue';
+import FoodCategoryChip from "@/components/FoodCategoryChip/FoodCategoryChip.vue";
+import PromotionBanner from "@/components/PromotionBanner/PromotionBanner.vue";
 
 
 export default {
-  components: {NavBarDrawer, TableItem, TopAppBar, FoodCard},
+  components: {NavBarDrawer, TableItem, TopAppBar, FoodCard, FoodCategoryChip, PromotionBanner},
 };
 </script>
 
 <template>
   <div>
+    <PromotionBanner></PromotionBanner>
+    <food-category-chip></food-category-chip>
     <food-card></food-card>
     <TopAppBar></TopAppBar>
     <NavBarDrawer></NavBarDrawer>

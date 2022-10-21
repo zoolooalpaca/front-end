@@ -35,10 +35,10 @@ export default {
 <style scoped>
 .food-card{
   margin-bottom: 4px;
-  border-radius: 10px;
+  border-radius: 30px;
   background: var(--md-sys-color-primary-container);
 }
 .rcorners2 {
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 30px 30px 0px 0px;
 }
 </style>
