@@ -1,9 +1,9 @@
 <template lang="">
     <div>
         <p class="text-xl secondary-text">{{ tableNumber }}</p>
-        <h1 class="text-6xl mt-4 .e-1">{{ foodName }} x{{ foodAmount }}</h1>
+        <h1 class="text-6xl mt-4">{{ foodName }} x{{ foodAmount }}</h1>
         <h3 class="mt-4 tertiary-text">{{ foodDescription }}</h3>
-        <button block pill variant="primary">ทำ</button>
+        <button class="mt-4 text-white button">ทำ</button>
     </div>
 </template>
 
@@ -18,7 +18,14 @@ export default {
         }
     }
 }
-</script>
+</script>   
 
 <style>
+.button {
+  display: flex;
+  padding: 5px 225px;
+  border-radius: 100px;
+  width: 500px;
+  background: var(--md-sys-color-primary); 
+}
 </style>
