@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@microsoft/eslint-formatter-sarif": "^2.1.7",
+    "a11y-dialog": "^7.5.2",
     "axios": "^0.27.2",
     "flowbite": "^1.5.2",
     "pinia": "^2.0.17",

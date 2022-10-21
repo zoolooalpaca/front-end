@@ -1,5 +1,8 @@
 <template>
-  <div :class="active ? 'item active' : 'item'" @click="onClickItem(id)">
+  <div
+    :class="active ? 'item active' : 'item'"
+    @click="onClickItem(id)"
+    data-a11y-dialog-show="my-dialog">
     <span class="section-icon">
       <slot/>
     </span>
