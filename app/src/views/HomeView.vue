@@ -1,14 +1,20 @@
 <script>
 import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
+import CookItem from '@/components/CookItem/CookItem.vue';
 
 export default {
-  components: {NavBarDrawer},
+  components: 
+  {
+    NavBarDrawer,
+    CookItem,
+  },
 };
 </script>
 
 <template>
   <div>
     <NavBarDrawer></NavBarDrawer>
+    <CookItem></CookItem>
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
     <div class="error-container">
