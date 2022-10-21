@@ -4,7 +4,7 @@ import BillOrderItem from '../components/BillOrderItem/BillOrderItem.vue';
 import TableItem from '@/components/Table/TableItem.vue';
 
 export default {
-  components: { NavBarDrawer, BillOrderItem , TableItem},
+  components: { NavBarDrawer, BillOrderItem, TableItem },
 };
 </script>
 
@@ -12,6 +12,7 @@ export default {
   <div>
     <NavBarDrawer></NavBarDrawer>
     <BillOrderItem></BillOrderItem>
+    <TableItem></TableItem>
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
     <div class="error-container">
