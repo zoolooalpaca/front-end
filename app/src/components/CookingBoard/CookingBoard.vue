@@ -1,15 +1,15 @@
 <!-- eslint-disable max-len -->
 <template>
- <div class='cookingBoard rounded border-radius-16'>
+ <div class='cookingBoard rounded border-radius-16px'>
     <span class='body-large'>{{ tableNumber }}</span>
-    <div class='flex'>
+    <div class='mt-6 flex'>
         <span class='label-small color-mustToDo'>ที่ต้องทำ</span>
         <span class='mt-6 text-left headline-large secondary-container'>{{ foodName }}</span>
     </div>
 
-    <div>
+    <div class='mt-6 flex-auto'>
         <span class='label-small color-mustToDo'>เพิ่มเติมจากลูกค้า</span>
-        <span class='body-large'>{{foodDescription}}</span>
+        <span class='mt-6 flex body-large'>{{foodDescription}}</span>
     </div>
  </div>
 </template>
