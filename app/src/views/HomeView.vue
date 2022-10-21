@@ -1,12 +1,12 @@
 <script>
-import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
+import NavBarDrawer from '../components/NavBarDrawer/NavBarDrawer.vue';
 import BillOrderItem from '../components/BillOrderItem/BillOrderItem.vue';
-import TableItem from '@/components/Table/TableItem.vue';
-import TopAppBar from '@/components/TopAppBar/TopAppBar.vue';
+import TableItem from '../components/Table/TableItem.vue';
+import TopAppBar from '../components/TopAppBar/TopAppBar.vue';
 
 
 export default {
-  components: {NavBarDrawer, BillOrderItem, TableItem},
+  components: {NavBarDrawer, BillOrderItem, TableItem, TopAppBar},
 };
 </script>
 
