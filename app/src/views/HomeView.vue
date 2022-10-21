@@ -1,9 +1,10 @@
 <script>
 import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
+import TableItem from '@/components/Table/TableItem.vue';
 import TopAppBar from '@/components/TopAppBar/TopAppBar.vue';
 
 export default {
-  components: { NavBarDrawer, TopAppBar },
+  components: { NavBarDrawer, TableItem, TopAppBar },
 };
 
 
@@ -14,6 +15,7 @@ export default {
   <div>
     <TopAppBar></TopAppBar>
     <NavBarDrawer></NavBarDrawer>
+    <TableItem></TableItem>
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
     <div class="error-container">
