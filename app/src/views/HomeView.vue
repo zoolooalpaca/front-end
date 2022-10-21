@@ -1,9 +1,9 @@
 <script>
-import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue'
+import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
 
 export default {
-    components: { NavBarDrawer }
-}
+  components: {NavBarDrawer},
+};
 </script>
 
 <template>

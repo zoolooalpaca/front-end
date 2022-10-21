@@ -1,11 +1,11 @@
-import { fileURLToPath, URL } from "node:url";
+import {fileURLToPath, URL} from 'node:url';
 
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
+import {defineConfig} from 'vite';
+import vue from '@vitejs/plugin-vue';
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => {
-  console.log(mode)
+export default defineConfig(({mode}) => {
+  console.log(mode);
   return {
     server: {
       port: 3000,
@@ -14,9 +14,9 @@ export default defineConfig(({ mode }) => {
     plugins: [vue()],
     resolve: {
       alias: {
-        "@": fileURLToPath(new URL("./src", import.meta.url)),
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
       },
     },
-    base: mode === 'production' ? "/order-in/" : './',
+    base: mode === 'production' ? '/order-in/' : './',
   };
 });
