@@ -13,18 +13,3 @@ services:
     tty: true
     networks:
       - sail
-
-  localtunnel:
-    image: efrecon/localtunnel
-    restart: on-failure
-    command:
-        --local-host web --port 80 --subdomain ${LOCALTUNNEL_SUBDOMAIN}
-    depends_on:
-        - web
-        - oi-app
-    networks:
-        - sail
-  
-networks:
-  sail:
-    driver: bridge
