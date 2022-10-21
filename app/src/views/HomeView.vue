@@ -1,10 +1,11 @@
 <script>
 import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
 import ToServerItem from '../components/ToServerItem.vue';
+import HistoryItem from '../components/HistoryItem.vue';
 
 
 export default {
-  components: {NavBarDrawer, ToServerItem},
+  components: {NavBarDrawer, ToServerItem, HistoryItem},
 };
 </script>
 
@@ -13,6 +14,8 @@ export default {
     <NavBarDrawer></NavBarDrawer>
     <p>TO Serve Item</p>
     <ToServerItem></ToServerItem>
+    <p>History Item</p>
+    <HistoryItem></HistoryItem>
 
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
