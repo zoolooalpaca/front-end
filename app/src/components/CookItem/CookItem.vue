@@ -14,7 +14,7 @@ export default {
       tableNumber: 'โต๊ะ 1',
       foodName: 'ส้มตำไข่เค็ม',
       foodDescription: 'ส้มตำไข่เค็มอร่อยยั่ว ๆ ถูกปากคนไทย',
-      foodAmount: '1',
+      foodAmount: '2',
     };
   },
 };

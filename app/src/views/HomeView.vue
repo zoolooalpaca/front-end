@@ -2,9 +2,11 @@
 import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
 import CookItem from '@/components/CookItem/CookItem.vue';
 import TableItem from '@/components/Table/TableItem.vue';
+import OrderItem from '@/components/OrderItem/OrderItem.vue';
 
 export default {
-  components: {NavBarDrawer, TableItem, CookItem},
+  // eslint-disable-next-line vue/no-unused-components
+  components: {NavBarDrawer, TableItem, CookItem, OrderItem},
 };
 </script>
 
@@ -13,6 +15,7 @@ export default {
     <NavBarDrawer></NavBarDrawer>
     <CookItem></CookItem>
     <TableItem></TableItem>
+    <OrderItem></OrderItem>
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
     <div class="error-container">
