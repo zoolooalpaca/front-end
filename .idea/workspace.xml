@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="200b1dd4-84db-4a8c-a313-e6eaa5570e95" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/components/FloatingOrder.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/views/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/views/HomeView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/components/FloatingOrder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/components/FloatingOrder.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +29,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/webTechProject/api",
+    "last_opened_file_path": "D:/WebTech/vue3-cs442-651-11-use",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -49,7 +49,7 @@
       <updated>1666264176608</updated>
       <workItem from="1666264179145" duration="6465000" />
       <workItem from="1666287961797" duration="3679000" />
-      <workItem from="1666353826975" duration="22139000" />
+      <workItem from="1666353826975" duration="23683000" />
     </task>
     <servers />
   </component>

@@ -3,20 +3,20 @@
     <div class="footer block p-2 mt-4 rounded-xl border-2 border-[#452101] bg-[#d7ee65] grid grid-cols-6" @click="onClickToGoToAllOrders">
       <img :src="image" height="50" width="50" class="left-0">
 
-      <h6 class="text-black font-bold right-50"> {{order_quantity}} </h6>
+      <h6 class="text-black font-bold mr-3"> {{order_quantity}} </h6>
 
-      <div class="block border-3 border-white rounded-xl right-15" style="width:40px;height:40px;"
+      <div class="block border-3 border-white rounded-xl" style="width:40px;height:40px;"
            v-bind:style="{'background-image': 'url(' + picture1 + ')'}">
       </div>
 
-      <div class="block border-3 border-white rounded-xl right-10" style="width:40px;height:40px;"
+      <div class="block border-3 border-white rounded-xl" style="width:40px;height:40px;"
            v-bind:style="{'background-image': 'url(' + picture2 + ')'}">
       </div>
 
-      <div class="block border-3 border-white bg-gray-300 rounded-xl right-5" style="width:40px;height:40px;">
+      <div class="block border-3 border-white bg-gray-400 rounded-xl" style="width:40px;height:40px;">
       </div>
 
-      <h6 class="text-black font-bold text-right"> ฿{{order_price}} </h6>
+      <h6 class="text-black font-bold text-right mr-3"> ฿{{order_price}} </h6>
     </div>
   </footer>
 </template>
