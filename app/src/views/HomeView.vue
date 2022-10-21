@@ -2,15 +2,17 @@
 import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
 import TableItem from '@/components/Table/TableItem.vue';
 import TopAppBar from '@/components/TopAppBar/TopAppBar.vue';
+import FoodCard from '@/components/FoodCard/Foodcard.vue';
 
 
 export default {
-  components: {NavBarDrawer, TableItem, TopAppBar},
+  components: {NavBarDrawer, TableItem, TopAppBar, FoodCard},
 };
 </script>
 
 <template>
   <div>
+    <food-card></food-card>
     <TopAppBar></TopAppBar>
     <NavBarDrawer></NavBarDrawer>
     <TableItem></TableItem>
