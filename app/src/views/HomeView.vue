@@ -3,7 +3,7 @@ import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
 import DialogModal from '@/components/Modal/DialogModal.vue';
 
 export default {
-  components: {NavBarDrawer, DialogModal},
+  components: {NavBarDrawer, DialogModal, TableItem},
 };
 </script>
 
@@ -11,6 +11,7 @@ export default {
   <div>
     <DialogModal />
     <NavBarDrawer></NavBarDrawer>
+    <TableItem></TableItem>
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
     <div class="error-container">
