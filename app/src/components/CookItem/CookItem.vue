@@ -9,16 +9,16 @@
 
 <script>
 export default {
-    data() {
-        return {
-            tableNumber : "โต๊ะ 1",
-            foodName : "ส้มตำไข่เค็ม",
-            foodDescription : "ส้มตำไข่เค็มอร่อยยั่ว ๆ ถูกปากคนไทย",
-            foodAmount : "1"
-        }
-    }
-}
-</script>   
+  data() {
+    return {
+      tableNumber: 'โต๊ะ 1',
+      foodName: 'ส้มตำไข่เค็ม',
+      foodDescription: 'ส้มตำไข่เค็มอร่อยยั่ว ๆ ถูกปากคนไทย',
+      foodAmount: '1',
+    };
+  },
+};
+</script>
 
 <style>
 .button {
@@ -26,6 +26,6 @@ export default {
   padding: 5px 225px;
   border-radius: 100px;
   width: 500px;
-  background: var(--md-sys-color-primary); 
+  background: var(--md-sys-color-primary);
 }
 </style>
