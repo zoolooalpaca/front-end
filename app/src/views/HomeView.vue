@@ -1,9 +1,10 @@
 <script>
 import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
 import BillOrderItem from '../components/BillOrderItem/BillOrderItem.vue';
+import TableItem from '@/components/Table/TableItem.vue';
 
 export default {
-  components: { NavBarDrawer, BillOrderItem },
+  components: { NavBarDrawer, BillOrderItem , TableItem},
 };
 </script>
 
