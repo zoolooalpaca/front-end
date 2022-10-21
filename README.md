@@ -23,3 +23,9 @@ docker-compose exec oi-app npm ...
 # For example:
 docker-compose exec oi-app npm install -g npm@8.18.0
 ```
+
+## Linting
+Run
+```bash
+docker compose exec oi-app npx eslint src --ext .js,.vue --fix
+```
