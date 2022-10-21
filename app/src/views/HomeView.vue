@@ -1,14 +1,19 @@
 <script>
 import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
+import BannerCard from '@/components/BannerCard.vue';
 
 export default {
-  components: {NavBarDrawer},
+  components: {
+    NavBarDrawer,
+    BannerCard,
+  },
 };
 </script>
 
 <template>
   <div>
     <NavBarDrawer></NavBarDrawer>
+    <BannerCard></BannerCard>
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
     <div class="error-container">
