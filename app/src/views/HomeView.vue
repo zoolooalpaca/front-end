@@ -1,16 +1,16 @@
 <script>
 import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
-import Table from '@/components/Table/Table.vue';
+import TableItem from '@/components/Table/TableItem.vue';
 
 export default {
-  components: {NavBarDrawer, Table},
+  components: {NavBarDrawer, TableItem},
 };
 </script>
 
 <template>
   <div>
     <NavBarDrawer></NavBarDrawer>
-    <Table></Table>
+    <TableItem></TableItem>
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
     <div class="error-container">
