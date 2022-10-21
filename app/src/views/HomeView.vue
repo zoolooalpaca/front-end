@@ -1,14 +1,19 @@
 <script>
 import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
+import FloatingOrder from "@/components/FloatingOrder.vue"
 
 export default {
-  components: {NavBarDrawer},
+  components: {
+    NavBarDrawer,
+    FloatingOrder
+  },
 };
 </script>
 
 <template>
   <div>
     <NavBarDrawer></NavBarDrawer>
+    <FloatingOrder></FloatingOrder>
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
     <div class="error-container">
