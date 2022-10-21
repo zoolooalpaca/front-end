@@ -13,17 +13,6 @@ services:
     tty: true
     networks:
       - sail
-  web:
-    image: nginx
-    ports:
-      - 8080:80
-    depends_on:
-      - oi-app
-    volumes:
-      - ./app/dist:/var/www/html
-      - ./docker/web/site.conf:/etc/nginx/conf.d/default.conf
-    networks:
-      - sail
   
 networks:
   sail:
