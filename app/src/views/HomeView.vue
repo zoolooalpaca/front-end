@@ -3,15 +3,17 @@ import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
 import CookItem from '@/components/CookItem/CookItem.vue';
 import TableItem from '@/components/Table/TableItem.vue';
 import OrderItem from '@/components/OrderItem/OrderItem.vue';
+import TopAppBar from '@/components/TopAppBar/TopAppBar.vue';
 
 export default {
   // eslint-disable-next-line vue/no-unused-components
-  components: {NavBarDrawer, TableItem, CookItem, OrderItem},
+  components: {NavBarDrawer, TableItem, CookItem, OrderItem, TopAppBar},
 };
 </script>
 
 <template>
   <div>
+    <TopAppBar></TopAppBar>
     <NavBarDrawer></NavBarDrawer>
     <CookItem></CookItem>
     <TableItem></TableItem>
