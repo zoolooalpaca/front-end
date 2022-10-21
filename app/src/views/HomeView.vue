@@ -4,7 +4,7 @@ import BillOrderItem from '../components/BillOrderItem/BillOrderItem.vue';
 import TableItem from '@/components/Table/TableItem.vue';
 
 export default {
-  components: { NavBarDrawer, BillOrderItem, TableItem },
+  components: {NavBarDrawer, BillOrderItem, TableItem},
 };
 </script>
 
