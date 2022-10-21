@@ -1,13 +1,10 @@
 <script>
 import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
 import CookItem from '@/components/CookItem/CookItem.vue';
+import TableItem from '@/components/Table/TableItem.vue';
 
 export default {
-  components: 
-  {
-    NavBarDrawer,
-    CookItem,
-  },
+  components: {NavBarDrawer, TableItem, CookItem},
 };
 </script>
 
@@ -15,6 +12,7 @@ export default {
   <div>
     <NavBarDrawer></NavBarDrawer>
     <CookItem></CookItem>
+    <TableItem></TableItem>
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
     <div class="error-container">
