@@ -1,13 +1,18 @@
 <script>
 import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
+import TopAppBar from '@/components/TopAppBar/TopAppBar.vue';
 
 export default {
-  components: {NavBarDrawer},
+  components: { NavBarDrawer, TopAppBar },
 };
+
+
+
 </script>
 
 <template>
   <div>
+    <TopAppBar></TopAppBar>
     <NavBarDrawer></NavBarDrawer>
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
