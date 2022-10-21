@@ -1,6 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '@/views/HomeView.vue'
-import AllEmployee from '@views/Employees/AllEmployee.vue'
+import {createRouter, createWebHistory} from 'vue-router';
+import HomeView from '@/views/HomeView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,14 +7,9 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
     },
-    {
-      path: '/employees',
-      name: 'allEmployee',
-      component: AllEmployee
-    }
-  ]
-})
+  ],
+});
 
-export default router
+export default router;
