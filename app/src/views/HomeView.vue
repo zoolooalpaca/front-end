@@ -1,14 +1,19 @@
 <script>
 import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
+import ToServerItem from '../components/ToServerItem.vue';
+
 
 export default {
-  components: {NavBarDrawer},
+  components: {NavBarDrawer, ToServerItem},
 };
 </script>
 
 <template>
   <div>
     <NavBarDrawer></NavBarDrawer>
+    <p>TO Serve Item</p>
+    <ToServerItem></ToServerItem>
+
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
     <div class="error-container">
