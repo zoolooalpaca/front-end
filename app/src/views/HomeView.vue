@@ -4,10 +4,11 @@ import CookItem from '@/components/CookItem/CookItem.vue';
 import TableItem from '@/components/Table/TableItem.vue';
 import OrderItem from '@/components/OrderItem/OrderItem.vue';
 import TopAppBar from '@/components/TopAppBar/TopAppBar.vue';
+import CookingBoard from '@/components/CookingBoard/CookingBoard.vue';
 
 export default {
-  // eslint-disable-next-line vue/no-unused-components
-  components: {NavBarDrawer, TableItem, CookItem, OrderItem, TopAppBar},
+  // eslint-disable-next-line vue/no-unused-components, max-len
+  components: {NavBarDrawer, TableItem, CookItem, OrderItem, TopAppBar, CookingBoard},
 };
 </script>
 
@@ -18,6 +19,7 @@ export default {
     <CookItem></CookItem>
     <TableItem></TableItem>
     <OrderItem></OrderItem>
+    <CookingBoard></CookingBoard>
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
     <div class="error-container">
