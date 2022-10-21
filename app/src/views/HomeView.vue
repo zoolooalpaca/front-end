@@ -3,7 +3,7 @@ import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
 import Table from '@/components/Table/Table.vue';
 
 export default {
-  components: { NavBarDrawer, Table },
+  components: {NavBarDrawer, Table},
 };
 </script>
 

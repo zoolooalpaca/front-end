@@ -22,31 +22,31 @@
 </template>
 
 <script>
-import axios from 'axios'
-import { useEmployeeStore } from '@/stores/employee.js'
+import axios from 'axios';
+import {useEmployeeStore} from '@/stores/employee.js';
 
 export default {
-    name: "AllEmployeeView",
-    setup() {
-        const employeeStore = useEmployeeStore()
-        return { employeeStore }
+  name: 'AllEmployeeView',
+  setup() {
+    const employeeStore = useEmployeeStore();
+    return {employeeStore};
+  },
+  data() {
+    return {
+      employees: Array,
+    };
+  },
+  created() {
+    this.getEmployees();
+  },
+  methods: {
+    async getEmployees() {
+      await this.employeeStore.fetch();
+      this.employees = this.employeeStore.employees;
     },
-    data() {
-        return {
-            employees: Array
-        };
-    },
-    created() {
-        this.getEmployees();
-    },
-    methods: {
-        async getEmployees() {
-            await this.employeeStore.fetch()
-            this.employees = this.employeeStore.employees
-        }
-    },
-    mounted() {
-        console.log('Employee List Component Mounted');
-    }
+  },
+  mounted() {
+    console.log('Employee List Component Mounted');
+  },
 };
 </script>
