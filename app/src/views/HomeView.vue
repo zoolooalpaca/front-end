@@ -6,7 +6,7 @@ import TopAppBar from '../components/TopAppBar/TopAppBar.vue';
 import CookItem from '../components/CookItem/CookItem.vue';
 import CookingBoard from '../components/CookingBoard/CookingBoard.vue';
 import OrderItem from '../components/OrderItem/OrderItem.vue';
-import FoodCard from '../components/FoodCard/Foodcard.vue';
+import FoodCard from '../components/FoodCard/FoodCard.vue';
 import FoodCategoryChip from
   '../components/FoodCategoryChip/FoodCategoryChip.vue';
 import PromotionBanner from
