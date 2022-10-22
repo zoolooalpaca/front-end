@@ -1,30 +1,41 @@
 <template>
-    <div class="grid grid-cols-6 gap-4">
-        <div class=" circle items-center text-center font-bold">
-        {{table}}
-        </div>
-        <div class="col-start-2 col-end-7 color-block
-        rounded botfrt-radius-8px flex justify-between">
-          <div class="flex flex-col mx-5">
-                <h3 class="text-black dark:text-white
-                font-bold select-none">รายการอาหาร</h3>
-                <span v-for="order in orders" :key="order.id"
-                    class="text-black dark:text-white
-                    font-medium select-none mx-5 flex flex-col">
-                {{order.order}}   x {{order.amount}}
-                </span>
-          </div>
-
-            <div class="items-center">
-              <button class="icon bg-green-400 secondary-container
-              justify-center mt-5">
-                <span class="material-symbols-outlined error-text">
-                    done
-                </span>
-              </button>
-            </div>
-         </div>
+  <div class="flex items-center gap-4">
+    <div class="table-circle primary on-primary-text">
+      <span>
+        {{ table }}
+      </span>
     </div>
+    <div class="flex flex-1
+      self-stretch items-center
+      p-4 rounded-xl
+      primary-container on-primary-container-text"
+    >
+    <div class="flex-1 self-stretch">
+      <h3 class="body-medium">รายการอาหาร</h3>
+      <div class="order-detail">
+        <p
+          v-for="order in orders"
+          :key="order.id"
+          class="body-large"
+        >
+          {{ order.order }} x{{ order.amount }}
+        </p>
+      </div>
+    </div>
+    <div class="items-center">
+      <button
+        class="
+          icon
+          secondary-container
+          on-secondary-container-text
+          justify-center
+        "
+      >
+        <span class="material-symbols-outlined"> done </span>
+      </button>
+    </div>
+  </div>
+  </div>
 </template>
 
 <script>
@@ -43,6 +54,26 @@ export default {
           order: 'กะเพราหมูไข่ดาว',
           amount: 1,
         },
+        {
+          id: 3,
+          order: 'กะเพราหมูดาว',
+          amount: 1,
+        },
+        {
+          id: 4,
+          order: 'ไข่ดาว',
+          amount: 1,
+        },
+        {
+          id: 5,
+          order: 'กะเพราดาว',
+          amount: 1,
+        },
+        {
+          id: 6,
+          order: 'กะเพราหมูไข่',
+          amount: 1,
+        },
       ],
     };
   },
@@ -51,28 +82,33 @@ export default {
 
 <style>
 .color-block {
-    padding: 30px;
-    background: gainsboro;
+  padding: 30px;
+  background: gainsboro;
 }
-.circle {
+.table-circle {
   width: 150px;
   height: 150px;
   line-height: 50px;
   border-radius: 50%;
   font-size: 20px;
-  color: rgb(0, 0, 0);
   text-align: center;
   vertical-align: baseline;
   line-height: 7.5;
-  background: rgb(127, 155, 200)
 }
 
 .icon {
-    float:right;
-    padding:30px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  float: right;
+  padding: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.order-detail {
+  display: block;
+  padding-left: 16px;
+}
+.order-detail >  p {
+  padding-top: 4px;
 }
 </style>

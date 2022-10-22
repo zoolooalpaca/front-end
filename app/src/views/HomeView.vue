@@ -1,17 +1,38 @@
 <script>
-import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
+import NavBarDrawer from '../components/NavBarDrawer/NavBarDrawer.vue';
+import BillOrderItem from '../components/BillOrderItem/BillOrderItem.vue';
+import TableItem from '../components/Table/TableItem.vue';
+import TopAppBar from '../components/TopAppBar/TopAppBar.vue';
+import CookItem from '../components/CookItem/CookItem.vue';
+import CookingBoard from '../components/CookingBoard/CookingBoard.vue';
+import OrderItem from '../components/OrderItem/OrderItem.vue';
 import ToServerItem from '../components/ToServerItem.vue';
 import HistoryItem from '../components/HistoryItem.vue';
 
 
 export default {
-  components: {NavBarDrawer, ToServerItem, HistoryItem},
+  components: {
+    TopAppBar,
+    NavBarDrawer,
+    BillOrderItem,
+    TableItem,
+    CookItem,
+    OrderItem,
+    CookingBoard,
+    ToServerItem,
+    HistoryItem},
 };
 </script>
 
 <template>
   <div>
-    <NavBarDrawer></NavBarDrawer>
+    <TopAppBar/>
+    <NavBarDrawer/>
+    <CookItem/>
+    <BillOrderItem/>
+    <TableItem/>
+    <OrderItem></OrderItem>
+    <CookingBoard></CookingBoard>
     <p>TO Serve Item</p>
     <ToServerItem></ToServerItem>
     <p>History Item</p>
