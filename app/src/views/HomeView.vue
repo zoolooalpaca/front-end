@@ -3,10 +3,17 @@ import NavBarDrawer from '../components/NavBarDrawer/NavBarDrawer.vue';
 import BillOrderItem from '../components/BillOrderItem/BillOrderItem.vue';
 import TableItem from '../components/Table/TableItem.vue';
 import TopAppBar from '../components/TopAppBar/TopAppBar.vue';
-
+import CookItem from '../components/CookItem/CookItem.vue';
 
 export default {
-  components: {NavBarDrawer, BillOrderItem, TableItem, TopAppBar},
+  components: {
+    TopAppBar,
+    NavBarDrawer,
+    BillOrderItem,
+    TableItem,
+    TopAppBar,
+    CookItem,
+  },
 };
 </script>
 
@@ -14,6 +21,7 @@ export default {
   <div>
     <TopAppBar></TopAppBar>
     <NavBarDrawer></NavBarDrawer>
+    <CookItem></CookItem>
     <BillOrderItem></BillOrderItem>
     <TableItem></TableItem>
     <p class="surface-tint-text">surface-tint-text</p>
