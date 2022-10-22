@@ -1,14 +1,30 @@
 <script>
-import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
-import TableItem from '@/components/Table/TableItem.vue';
-import TopAppBar from '@/components/TopAppBar/TopAppBar.vue';
-import FoodCard from '@/components/FoodCard/Foodcard.vue';
-import FoodCategoryChip from "@/components/FoodCategoryChip/FoodCategoryChip.vue";
-import PromotionBanner from "@/components/PromotionBanner/PromotionBanner.vue";
+import NavBarDrawer from '../components/NavBarDrawer/NavBarDrawer.vue';
+import BillOrderItem from '../components/BillOrderItem/BillOrderItem.vue';
+import TableItem from '../components/Table/TableItem.vue';
+import TopAppBar from '../components/TopAppBar/TopAppBar.vue';
+import CookItem from '../components/CookItem/CookItem.vue';
+import CookingBoard from '../components/CookingBoard/CookingBoard.vue';
+import OrderItem from '../components/OrderItem/OrderItem.vue';
+import FoodCard from '../components/FoodCard/Foodcard.vue';
+import FoodCategoryChip from
+  '../components/FoodCategoryChip/FoodCategoryChip.vue';
+import PromotionBanner from
+  '../components/PromotionBanner/PromotionBanner.vue';
 
 
 export default {
-  components: {NavBarDrawer, TableItem, TopAppBar, FoodCard, FoodCategoryChip, PromotionBanner},
+  components: {
+    TopAppBar,
+    NavBarDrawer,
+    BillOrderItem,
+    TableItem,
+    CookItem,
+    OrderItem,
+    CookingBoard,
+    FoodCard,
+    FoodCategoryChip,
+    PromotionBanner},
 };
 </script>
 
@@ -17,9 +33,13 @@ export default {
     <PromotionBanner></PromotionBanner>
     <food-category-chip></food-category-chip>
     <food-card></food-card>
-    <TopAppBar></TopAppBar>
-    <NavBarDrawer></NavBarDrawer>
-    <TableItem></TableItem>
+    <TopAppBar/>
+    <NavBarDrawer/>
+    <CookItem/>
+    <BillOrderItem/>
+    <TableItem/>
+    <OrderItem></OrderItem>
+    <CookingBoard></CookingBoard>
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
     <div class="error-container">
