@@ -1,17 +1,21 @@
 <script>
-import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
-import CookItem from '@/components/CookItem/CookItem.vue';
-import TableItem from '@/components/Table/TableItem.vue';
+import NavBarDrawer from '../components/NavBarDrawer/NavBarDrawer.vue';
+import BillOrderItem from '../components/BillOrderItem/BillOrderItem.vue';
+import TableItem from '../components/Table/TableItem.vue';
+import TopAppBar from '../components/TopAppBar/TopAppBar.vue';
+import CookItem from '../components/CookItem/CookItem.vue';
 
 export default {
-  components: {NavBarDrawer, TableItem, CookItem},
+  components: {TopAppBar, NavBarDrawer, BillOrderItem, TableItem, TopAppBar, CookItem},
 };
 </script>
 
 <template>
   <div>
+    <TopAppBar></TopAppBar>
     <NavBarDrawer></NavBarDrawer>
     <CookItem></CookItem>
+    <BillOrderItem></BillOrderItem>
     <TableItem></TableItem>
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
