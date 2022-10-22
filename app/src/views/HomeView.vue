@@ -1,10 +1,26 @@
 <script>
-import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
 import FloatingOrder from '@/components/FloatingOrder.vue';
+import NavBarDrawer from '../components/NavBarDrawer/NavBarDrawer.vue';
+import ToServeItem from '../components/ToServeItem.vue';
+import BillOrderItem from '../components/BillOrderItem/BillOrderItem.vue';
+import TableItem from '../components/Table/TableItem.vue';
+import TopAppBar from '../components/TopAppBar/TopAppBar.vue';
+import CookItem from '../components/CookItem/CookItem.vue';
+import CookingBoard from '../components/CookingBoard/CookingBoard.vue';
+import OrderItem from '../components/OrderItem/OrderItem.vue';
+import HistoryDrawer from '../components/HistoryItem/HistoryDrawer.vue';
 
 export default {
   components: {
+    TopAppBar,
     NavBarDrawer,
+    BillOrderItem,
+    TableItem,
+    CookItem,
+    OrderItem,
+    CookingBoard,
+    ToServeItem,
+    HistoryDrawer,
     FloatingOrder,
   },
 };
@@ -15,7 +31,18 @@ export default {
     <div class="fixed md:hidden left-0 bottom-0 w-full p-4">
       <FloatingOrder></FloatingOrder>
     </div>
-    <NavBarDrawer></NavBarDrawer>
+    <TopAppBar/>
+    <NavBarDrawer/>
+    <CookItem/>
+    <BillOrderItem/>
+    <TableItem/>
+    <OrderItem></OrderItem>
+    <CookingBoard></CookingBoard>
+    <p>TO Serve Item</p>
+    <ToServeItem></ToServeItem>
+    <p>History Item</p>
+    <HistoryDrawer></HistoryDrawer>
+
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
     <div class="error-container">
