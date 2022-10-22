@@ -1,5 +1,6 @@
 <script>
 import NavBarDrawer from '../components/NavBarDrawer/NavBarDrawer.vue';
+import ToServeItem from '../components/ToServeItem.vue';
 import BillOrderItem from '../components/BillOrderItem/BillOrderItem.vue';
 import TableItem from '../components/Table/TableItem.vue';
 import TopAppBar from '../components/TopAppBar/TopAppBar.vue';
@@ -16,12 +17,18 @@ export default {
     CookItem,
     OrderItem,
     CookingBoard,
+    ToServeItem,
   },
 };
 </script>
 
 <template>
   <div>
+    <NavBarDrawer></NavBarDrawer>
+    <div>
+      <p>To Serve Item</p>
+      <ToServeItem></ToServeItem>
+    </div>
     <TopAppBar/>
     <NavBarDrawer/>
     <CookItem/>
