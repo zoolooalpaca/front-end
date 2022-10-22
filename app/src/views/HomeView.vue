@@ -1,11 +1,11 @@
 <script>
 import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
-import FloatingOrder from "@/components/FloatingOrder.vue"
+import FloatingOrder from '@/components/FloatingOrder.vue';
 
 export default {
   components: {
     NavBarDrawer,
-    FloatingOrder
+    FloatingOrder,
   },
 };
 </script>
