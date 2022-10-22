@@ -7,9 +7,7 @@ import CookItem from '../components/CookItem/CookItem.vue';
 import CookingBoard from '../components/CookingBoard/CookingBoard.vue';
 import OrderItem from '../components/OrderItem/OrderItem.vue';
 
-
 export default {
-  // eslint-disable-next-line vue/no-unused-components, max-len
   components: {
     TopAppBar,
     NavBarDrawer,
