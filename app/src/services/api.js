@@ -12,4 +12,13 @@ export const employeeAPI = {
     }
     return [];
   },
+  async saveNew(employee) {
+    const response = await axiosInstance.post('/employees', employee);
+    if (response.status === 201) {
+      return response.data.data;
+    }
+    return {
+      success: false,
+    };
+  }
 };
