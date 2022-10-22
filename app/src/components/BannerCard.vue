@@ -1,7 +1,12 @@
 <template>
-  <div class="block p-2 mt-4 border-2 border-gray-600 rounded-2xl" style="width:600px;height:200px;"
-  v-bind:style="{'background-image': 'url(' + image + ')'}" @click="onClick">
-    <p class="text-3xl text-white bottom-0">{{ section }}</p>
+  <div
+    class="banner-container"
+    v-bind:style="containerStyle"
+    @click="onClick"
+  >
+    <div class="banner-backdrop"></div>
+    <p class="headline-small text-white
+    absolute bottom-4 left-4">{{ section }}</p>
   </div>
 </template>
 
@@ -15,21 +20,41 @@ export default {
   },
   methods: {
     onClick() {
-      if (this.url != '') {
-        this.$router.push(this.url);
-      }
     },
   },
-  // props: {
-  //   food: Object,
-  //   url: {
-  //     type: String,
-  //     default: ''
-  //   }
-  // }
+  computed: {
+    containerStyle() {
+      return {
+        'background-image': 'url(' + this.image + ')',
+        'background-repeat': 'none',
+        'background-size': 'cover',
+        'background-position': 'center',
+      };
+    },
+  },
 };
 </script>
 
 <style>
+.banner-container {
+  position: relative;
+  height: 128px;
+  border-radius: 16px;
+  overflow: hidden;
+}
 
+@media (min-width: 640px) {
+  .banner-container {
+    width: 50%;
+  }
+}
+
+.banner-backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg,
+  rgba(0, 0, 0, 0) 20%,
+  rgba(0, 0, 0, 0.8) 100%);
+}
 </style>
