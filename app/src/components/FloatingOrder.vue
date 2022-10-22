@@ -1,50 +1,63 @@
 <template>
-  <footer>
-    <div class="footer inline p-2 mt-4 rounded-xl border-2 border-[#452101] bg-[#d7ee65] grid grid-cols-6" @click="onClickToGoToAllOrders">
-      <img :src="image" height="50" width="50" class="left-0">
-
-      <h6 class="text-black font-bold mr-3"> {{order_quantity}} </h6>
-
-      <div class="block border-3 border-white rounded-xl" style="width:40px;height:40px;"
-           v-bind:style="{'background-image': 'url(' + picture1 + ')'}">
+  <div class="flex gap-2">
+    <button class="floating-order-bar order-detail-bar">
+      <span class="material-symbols-outlined">
+        shopping_cart
+      </span>
+      <div class="order-detail">
+        <span>{{totalItem}}</span>
+        <div class="flex ml-4">
+          <div
+            class="order-item-image"
+            v-for="item,id in currentOrder"
+            :key="id"
+            :style="{
+              'background-image': `url(${item.image})`,
+              'background-position': 'center',
+              'background-size': 'cover',
+              'margin-left': '-16px',
+              'z-index': totalItem-id
+            }"
+          />
+        </div>
+        <span>฿{{totalPrice}}</span>
       </div>
-
-      <div class="block border-3 border-white rounded-xl" style="width:40px;height:40px;"
-           v-bind:style="{'background-image': 'url(' + picture2 + ')'}">
-      </div>
-
-      <div class="block border-3 border-white bg-gray-400 rounded-xl" style="width:40px;height:40px;">
-      </div>
-
-      <h6 class="text-black font-bold text-right mr-3"> ฿{{order_price}} </h6>
-    </div>
-
-    <div v-if="history"
-    class="footer p-2 m-4 rounded-full border-2 border-[#452101] bg-[#d7ee65]">
-      <img :src="image_history" height="50" width="50" class="right-0">
-    </div>
-  </footer>
-</template>
+    </button>
+    <button class="floating-order-bar order-history-icon">
+      <span class="material-symbols-outlined">
+        history
+      </span>
+    </button>
+  </div>
+  </template>
 
 <script>
 export default {
   data() {
     return {
-      // image: ['@/assets/shoppingCart.svg', 'https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSB1IF6ikXAJtDweXz91ROx3aJfaHu.jpg', 'https://s.isanook.com/wo/0/ud/36/180929/f.jpg', '@/assets/history.svg']
-      image: '@/assets/shoppingCart.svg',
-      order_quantity: '5',
-      picture1: 'https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSB1IF6ikXAJtDweXz91ROx3aJfaHu.jpg',
-      picture2: 'https://s.isanook.com/wo/0/ud/36/180929/f.jpg',
-      order_price: '240',
-      image_history: '@/assets/history.svg',
-      history: null,
+      currentOrder: [
+        {
+          image: 'https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSB1IF6ikXAJtDweXz91ROx3aJfaHu.jpg',
+          price: 40,
+        },
+        {
+          image: 'https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSB1IF6ikXAJtDweXz91ROx3aJfaHu.jpg',
+          price: 10,
+        },
+        {
+          image: 'https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSB1IF6ikXAJtDweXz91ROx3aJfaHu.jpg',
+          price: 140,
+        },
+      ],
     };
   },
-  props: {
-    order: Object,
-    url: {
-      type: String,
-      default: '',
+  props: {},
+  computed: {
+    totalItem() {
+      return this.currentOrder.length;
+    },
+    totalPrice() {
+      return this.currentOrder.reduce((prev, {price}) => prev + price, 0);
     },
   },
   methods: {
@@ -61,11 +74,31 @@ export default {
 </script>
 
 <style>
-.footer {
-  display: inline;
-  width: 1200px;
-  height: 60px;
-  position: fixed;
-  bottom:10px;
+.floating-order-bar {
+  display: flex;
+  align-content: center;
+  padding: 8px;
+  border: 1px solid var(--md-sys-color-secondary);
+  color: var(--md-sys-color-on-tertiary-container);
+  background: var(--md-sys-color-tertiary-container);
+}
+.order-detail-bar {
+  flex: 1 1 0%;
+  justify-content: space-between;
+  border-radius: 16px;
+}
+.order-history-icon {
+  border-radius: 50%;
+}
+.order-detail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.order-item-image {
+  height: 20px;
+  width: 20px;
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
 }
 </style>

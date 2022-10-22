@@ -11,9 +11,11 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="relative">
+    <div class="fixed md:hidden left-0 bottom-0 w-full p-4">
+      <FloatingOrder></FloatingOrder>
+    </div>
     <NavBarDrawer></NavBarDrawer>
-    <FloatingOrder></FloatingOrder>
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
     <div class="error-container">
