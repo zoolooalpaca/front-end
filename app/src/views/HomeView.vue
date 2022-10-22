@@ -1,14 +1,21 @@
 <script>
-import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
-import CookItem from '@/components/CookItem/CookItem.vue';
-import TableItem from '@/components/Table/TableItem.vue';
-import OrderItem from '@/components/OrderItem/OrderItem.vue';
-import TopAppBar from '@/components/TopAppBar/TopAppBar.vue';
+import NavBarDrawer from '../components/NavBarDrawer/NavBarDrawer.vue';
 import BillOrderItem from '../components/BillOrderItem/BillOrderItem.vue';
+import TableItem from '../components/Table/TableItem.vue';
+import TopAppBar from '../components/TopAppBar/TopAppBar.vue';
+import CookItem from '../components/CookItem/CookItem.vue';
+import OrderItem from '../components/OrderItem/OrderItem.vue';
 
 export default {
-  // eslint-disable-next-line vue/no-unused-components
-  components: {NavBarDrawer, TableItem, CookItem, OrderItem, TopAppBar, BillOrderItem},
+  components: {
+    TopAppBar,
+    NavBarDrawer,
+    BillOrderItem,
+    TableItem,
+    TopAppBar,
+    CookItem,
+    OrderItem,
+  },
 };
 </script>
 
