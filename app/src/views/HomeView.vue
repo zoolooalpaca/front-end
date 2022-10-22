@@ -4,6 +4,7 @@ import BillOrderItem from '../components/BillOrderItem/BillOrderItem.vue';
 import TableItem from '../components/Table/TableItem.vue';
 import TopAppBar from '../components/TopAppBar/TopAppBar.vue';
 import CookItem from '../components/CookItem/CookItem.vue';
+import OrderItem from '../components/OrderItem/OrderItem.vue';
 
 export default {
   components: {
@@ -13,6 +14,7 @@ export default {
     TableItem,
     TopAppBar,
     CookItem,
+    OrderItem,
   },
 };
 </script>
@@ -24,6 +26,7 @@ export default {
     <CookItem></CookItem>
     <BillOrderItem></BillOrderItem>
     <TableItem></TableItem>
+    <OrderItem></OrderItem>
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
     <div class="error-container">
