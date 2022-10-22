@@ -6,7 +6,14 @@ import TopAppBar from '../components/TopAppBar/TopAppBar.vue';
 import CookItem from '../components/CookItem/CookItem.vue';
 
 export default {
-  components: {TopAppBar, NavBarDrawer, BillOrderItem, TableItem, TopAppBar, CookItem},
+  components: {
+    TopAppBar,
+    NavBarDrawer,
+    BillOrderItem,
+    TableItem,
+    TopAppBar,
+    CookItem,
+  },
 };
 </script>
 
