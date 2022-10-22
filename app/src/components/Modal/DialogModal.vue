@@ -14,11 +14,11 @@
       <div class="dialog-content surface" role="document">
 
       <div id="dialog-content">
-        <div>
-          <span class="material-symbols-outlined text-center">
-            emergency_home
-          </span>
-        </div>
+        <div class="flex justify-center">
+            <span class="material-symbols-outlined text-center">
+              emergency_home
+            </span>
+          </div>
         <p id="my-dialog-title" class="headline-small text-center">
           {{title}}
         </p>
@@ -27,16 +27,15 @@
         </p>
       </div>
       <div id="dialog-action">
-        <div>
           <button
             type="cancel"
             name="button"
+            data-a11y-dialog-hide
           >ไม่ยกเลิก</button>
           <button
             type="cancel"
             name="button"
           >ยกเลิกอาหาร</button>
-        </div>
       </div>
     </div>
     </div>
@@ -72,7 +71,7 @@ export default {
   left: 0;
   bottom: 0;
   right: 0;
-  z-index: 2;
+  z-index: 10;
 }
 
 .dialog-container[aria-hidden='true'] {
@@ -85,7 +84,8 @@ export default {
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(43, 46, 56, 0.9);
+  background: var(--md-sys-color-inverse-surface);
+  opacity: 80%;
   animation: fade-in 200ms both;
 }
 
@@ -102,19 +102,16 @@ export default {
 #dialog-content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   padding: 24px 24px 4px;
   gap: 16px;
 }
 
 #dialog-action {
+  display: flex;
+  gap: 8px;
   padding: 24px;
-}
-
-@media screen and (min-width: 700px) {
-  .dialog-content {
-    display: block;
-  }
+  justify-content: flex-end;
 }
 
 @keyframes fade-in {
@@ -127,11 +124,6 @@ export default {
   from {
     transform: translateY(10%);
   }
-}
-
-.dialog h1 {
-  margin: 0;
-  font-size: 1.25em;
 }
 
 .dialog-close {
