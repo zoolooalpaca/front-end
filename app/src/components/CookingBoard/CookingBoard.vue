@@ -1,15 +1,16 @@
 <!-- eslint-disable max-len -->
 <template>
- <div class='cookingBoard rounded border-radius-16px'>
-    <span class='body-large'>{{ tableNumber }}</span>
-    <div class='mt-6 flex'>
-        <span class='label-small color-mustToDo'>ที่ต้องทำ</span>
-        <span class='mt-6 text-left headline-large secondary-container'>{{ foodName }}</span>
+ <div class='cooking-board'>
+    <span class='body-large'>
+      {{ tableNumber }}
+    </span>
+    <div>
+        <p class="label-small">ที่ต้องทำ</p>
+        <p class='headline-large'>{{ foodName }}</p>
     </div>
-
-    <div class='mt-6 flex-auto'>
-        <span class='label-small color-mustToDo'>เพิ่มเติมจากลูกค้า</span>
-        <span class='mt-6 flex body-large'>{{foodDescription}}</span>
+    <div>
+        <p class="label-small">เพิ่มเติมจากลูกค้า</p>
+        <p>{{foodDescription}}</p>
     </div>
  </div>
 </template>
@@ -27,14 +28,18 @@ export default {
 </script>
 
 <style>
-.cookingBoard {
-    background:var(--md-sys-color-secondary-container);
-    width: 297px;
-    height: 311px;
-    padding: 20px;
+.cooking-board {
+  display: flex;
+  flex-direction: column;
+  background:var(--md-sys-color-secondary-container);
+  border-radius: 16px;
+  padding: 16px;
+  gap: 16px;
 }
 
-.color-mustToDo {
-    color: var(--md-ref-palette-neutral40);
+.cooking-board > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 </style>
