@@ -7,7 +7,7 @@ import TopAppBar from '../components/TopAppBar/TopAppBar.vue';
 import CookItem from '../components/CookItem/CookItem.vue';
 import CookingBoard from '../components/CookingBoard/CookingBoard.vue';
 import OrderItem from '../components/OrderItem/OrderItem.vue';
-import HistoryItem from '../components/HistoryItem.vue';
+import HistoryDrawer from '../components/HistoryItem/HistoryDrawer.vue';
 
 export default {
   components: {
@@ -19,7 +19,8 @@ export default {
     OrderItem,
     CookingBoard,
     ToServeItem,
-    HistoryItem},
+    HistoryDrawer,
+  },
 };
 </script>
 
@@ -35,7 +36,7 @@ export default {
     <p>TO Serve Item</p>
     <ToServeItem></ToServeItem>
     <p>History Item</p>
-    <HistoryItem></HistoryItem>
+    <HistoryDrawer></HistoryDrawer>
 
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
