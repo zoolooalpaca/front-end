@@ -4,6 +4,7 @@ import BillOrderItem from '../components/BillOrderItem/BillOrderItem.vue';
 import TableItem from '../components/Table/TableItem.vue';
 import TopAppBar from '../components/TopAppBar/TopAppBar.vue';
 import CookItem from '../components/CookItem/CookItem.vue';
+import CookingBoard from '../components/CookingBoard/CookingBoard.vue';
 import OrderItem from '../components/OrderItem/OrderItem.vue';
 
 export default {
@@ -12,21 +13,22 @@ export default {
     NavBarDrawer,
     BillOrderItem,
     TableItem,
-    TopAppBar,
     CookItem,
     OrderItem,
+    CookingBoard,
   },
 };
 </script>
 
 <template>
   <div>
-    <TopAppBar></TopAppBar>
-    <NavBarDrawer></NavBarDrawer>
-    <CookItem></CookItem>
-    <BillOrderItem></BillOrderItem>
-    <TableItem></TableItem>
+    <TopAppBar/>
+    <NavBarDrawer/>
+    <CookItem/>
+    <BillOrderItem/>
+    <TableItem/>
     <OrderItem></OrderItem>
+    <CookingBoard></CookingBoard>
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
     <div class="error-container">
