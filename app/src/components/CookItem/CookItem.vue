@@ -1,9 +1,16 @@
 <template lang="">
-    <div>
-        <p class="text-xl secondary-text">{{ tableNumber }}</p>
-        <h1 class="text-6xl mt-4">{{ foodName }} x{{ foodAmount }}</h1>
-        <h3 class="mt-4 tertiary-text">{{ foodDescription }}</h3>
-        <button class="mt-4 text-white button">ทำ</button>
+    <div class="cook-item-container">
+        <p class="body-large secondary-text">{{ tableNumber }}</p>
+        <div class="flex justify-between items-center">
+          <p class="headline-large">{{ foodName }}</p>
+          <p class="headline-medium">x{{ foodAmount }}</p>
+        </div>
+        <p class="body-medium outline-text">{{ foodDescription }}</p>
+        <button class="cook-button primary justify-center">
+          <span class="on-primary-text">
+            ทำ
+          </span>
+        </button>
     </div>
 </template>
 
@@ -14,18 +21,26 @@ export default {
       tableNumber: 'โต๊ะ 1',
       foodName: 'ส้มตำไข่เค็ม',
       foodDescription: 'ส้มตำไข่เค็มอร่อยยั่ว ๆ ถูกปากคนไทย',
-      foodAmount: '2',
+      foodAmount: 1,
     };
   },
 };
 </script>
 
 <style>
-.button {
+.cook-item-container {
   display: flex;
-  padding: 5px 225px;
+  flex-direction: column;
+  gap: 16px;
+  padding: 28px 29px;
+  background: var(--md-sys-color-background);
+  /*outline*/
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: 10px;
+}
+.cook-button {
+  display: flex;
+  padding: 10px 24px;
   border-radius: 100px;
-  width: 500px;
-  background: var(--md-sys-color-primary);
 }
 </style>

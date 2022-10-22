@@ -13,7 +13,8 @@
     v-else-if="table.available === false"
   >
     <p class="text-base font-medium tracking-wide leading-normal text-gray-900">
-      เลขโต๊ะ</p>
+      เลขโต๊ะ
+    </p>
   </button>
 
 </template>

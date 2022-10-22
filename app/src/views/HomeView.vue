@@ -1,23 +1,34 @@
 <script>
-import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
-import CookItem from '@/components/CookItem/CookItem.vue';
-import TableItem from '@/components/Table/TableItem.vue';
-import OrderItem from '@/components/OrderItem/OrderItem.vue';
-import TopAppBar from '@/components/TopAppBar/TopAppBar.vue';
-import CookingBoard from '@/components/CookingBoard/CookingBoard.vue';
+import NavBarDrawer from '../components/NavBarDrawer/NavBarDrawer.vue';
+import BillOrderItem from '../components/BillOrderItem/BillOrderItem.vue';
+import TableItem from '../components/Table/TableItem.vue';
+import TopAppBar from '../components/TopAppBar/TopAppBar.vue';
+import CookItem from '../components/CookItem/CookItem.vue';
+import CookingBoard from '../components/CookingBoard/CookingBoard.vue';
+import OrderItem from '../components/OrderItem/OrderItem.vue';
+
 
 export default {
   // eslint-disable-next-line vue/no-unused-components, max-len
-  components: {NavBarDrawer, TableItem, CookItem, OrderItem, TopAppBar, CookingBoard},
+  components: {
+    TopAppBar,
+    NavBarDrawer,
+    BillOrderItem,
+    TableItem,
+    CookItem,
+    OrderItem,
+    CookingBoard,
+  },
 };
 </script>
 
 <template>
   <div>
-    <TopAppBar></TopAppBar>
-    <NavBarDrawer></NavBarDrawer>
-    <CookItem></CookItem>
-    <TableItem></TableItem>
+    <TopAppBar/>
+    <NavBarDrawer/>
+    <CookItem/>
+    <BillOrderItem/>
+    <TableItem/>
     <OrderItem></OrderItem>
     <CookingBoard></CookingBoard>
     <p class="surface-tint-text">surface-tint-text</p>
