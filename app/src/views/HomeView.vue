@@ -1,18 +1,20 @@
 <script>
-import NavBarDrawer from '@/components/NavBarDrawer/NavBarDrawer.vue';
-import ToServerItem from '../components/ToServerItem.vue';
+import NavBarDrawer from '../components/NavBarDrawer/NavBarDrawer.vue';
+import ToServeItem from '../components/ToServeItem.vue';
 
 
 export default {
-  components: {NavBarDrawer, ToServerItem},
+  components: {NavBarDrawer, ToServeItem},
 };
 </script>
 
 <template>
   <div>
     <NavBarDrawer></NavBarDrawer>
-    <p>TO Serve Item</p>
-    <ToServerItem></ToServerItem>
+    <div>
+      <p>To Serve Item</p>
+      <ToServeItem></ToServeItem>
+    </div>
 
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
