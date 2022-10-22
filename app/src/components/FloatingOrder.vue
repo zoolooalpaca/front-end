@@ -1,0 +1,104 @@
+<template>
+  <div class="flex gap-2">
+    <button class="floating-order-bar order-detail-bar">
+      <span class="material-symbols-outlined">
+        shopping_cart
+      </span>
+      <div class="order-detail">
+        <span>{{totalItem}}</span>
+        <div class="flex ml-4">
+          <div
+            class="order-item-image"
+            v-for="item,id in currentOrder"
+            :key="id"
+            :style="{
+              'background-image': `url(${item.image})`,
+              'background-position': 'center',
+              'background-size': 'cover',
+              'margin-left': '-16px',
+              'z-index': totalItem-id
+            }"
+          />
+        </div>
+        <span>฿{{totalPrice}}</span>
+      </div>
+    </button>
+    <button class="floating-order-bar order-history-icon">
+      <span class="material-symbols-outlined">
+        history
+      </span>
+    </button>
+  </div>
+  </template>
+
+<script>
+export default {
+  data() {
+    return {
+      currentOrder: [
+        {
+          image: 'https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSB1IF6ikXAJtDweXz91ROx3aJfaHu.jpg',
+          price: 40,
+        },
+        {
+          image: 'https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSB1IF6ikXAJtDweXz91ROx3aJfaHu.jpg',
+          price: 10,
+        },
+        {
+          image: 'https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSB1IF6ikXAJtDweXz91ROx3aJfaHu.jpg',
+          price: 140,
+        },
+      ],
+    };
+  },
+  props: {},
+  computed: {
+    totalItem() {
+      return this.currentOrder.length;
+    },
+    totalPrice() {
+      return this.currentOrder.reduce((prev, {price}) => prev + price, 0);
+    },
+  },
+  methods: {
+    onClickToGoToAllOrders() {
+      if (this.url != '') {
+        this.$router.push(this.url);
+      }
+    },
+    async orderHistory(food) {
+
+    },
+  },
+};
+</script>
+
+<style>
+.floating-order-bar {
+  display: flex;
+  align-content: center;
+  padding: 8px;
+  border: 1px solid var(--md-sys-color-secondary);
+  color: var(--md-sys-color-on-tertiary-container);
+  background: var(--md-sys-color-tertiary-container);
+}
+.order-detail-bar {
+  flex: 1 1 0%;
+  justify-content: space-between;
+  border-radius: 16px;
+}
+.order-history-icon {
+  border-radius: 50%;
+}
+.order-detail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.order-item-image {
+  height: 20px;
+  width: 20px;
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+}
+</style>

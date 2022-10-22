@@ -1,4 +1,5 @@
 <script>
+import FloatingOrder from '@/components/FloatingOrder.vue';
 import NavBarDrawer from '../components/NavBarDrawer/NavBarDrawer.vue';
 import ToServeItem from '../components/ToServeItem.vue';
 import BillOrderItem from '../components/BillOrderItem/BillOrderItem.vue';
@@ -20,12 +21,16 @@ export default {
     CookingBoard,
     ToServeItem,
     HistoryDrawer,
+    FloatingOrder,
   },
 };
 </script>
 
 <template>
-  <div>
+  <div class="relative">
+    <div class="fixed md:hidden left-0 bottom-0 w-full p-4">
+      <FloatingOrder></FloatingOrder>
+    </div>
     <TopAppBar/>
     <NavBarDrawer/>
     <CookItem/>
