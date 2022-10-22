@@ -1,10 +1,24 @@
 <script>
 import NavBarDrawer from '../components/NavBarDrawer/NavBarDrawer.vue';
 import ToServeItem from '../components/ToServeItem.vue';
-
+import BillOrderItem from '../components/BillOrderItem/BillOrderItem.vue';
+import TableItem from '../components/Table/TableItem.vue';
+import TopAppBar from '../components/TopAppBar/TopAppBar.vue';
+import CookItem from '../components/CookItem/CookItem.vue';
+import CookingBoard from '../components/CookingBoard/CookingBoard.vue';
+import OrderItem from '../components/OrderItem/OrderItem.vue';
 
 export default {
-  components: {NavBarDrawer, ToServeItem},
+  components: {
+    TopAppBar,
+    NavBarDrawer,
+    BillOrderItem,
+    TableItem,
+    CookItem,
+    OrderItem,
+    CookingBoard,
+    ToServeItem,
+  },
 };
 </script>
 
@@ -15,7 +29,13 @@ export default {
       <p>To Serve Item</p>
       <ToServeItem></ToServeItem>
     </div>
-
+    <TopAppBar/>
+    <NavBarDrawer/>
+    <CookItem/>
+    <BillOrderItem/>
+    <TableItem/>
+    <OrderItem></OrderItem>
+    <CookingBoard></CookingBoard>
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
     <div class="error-container">
