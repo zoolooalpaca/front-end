@@ -6,7 +6,7 @@
       </span>
       <div class="order-detail">
         <span>{{totalItem}}</span>
-        <div class="flex ml-4">
+        <div class="flex ml-[14px]">
           <div
             class="order-item-image"
             v-for="item,id in currentOrder"
@@ -15,8 +15,8 @@
               'background-image': `url(${item.image})`,
               'background-position': 'center',
               'background-size': 'cover',
-              'margin-left': '-16px',
-              'z-index': totalItem-id
+              'margin-left': '-14px',
+              'z-index': totalItem-id,
             }"
           />
         </div>
@@ -43,6 +43,10 @@ export default {
         {
           image: 'https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSB1IF6ikXAJtDweXz91ROx3aJfaHu.jpg',
           price: 10,
+        },
+        {
+          image: 'https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSB1IF6ikXAJtDweXz91ROx3aJfaHu.jpg',
+          price: 140,
         },
         {
           image: 'https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSB1IF6ikXAJtDweXz91ROx3aJfaHu.jpg',
@@ -90,7 +94,7 @@ export default {
 .order-history-icon {
   border-radius: 50%;
 }
-.order-detail {
+.floating-order-bar > .order-detail {
   display: flex;
   align-items: center;
   gap: 8px;
