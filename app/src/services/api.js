@@ -42,16 +42,6 @@ export const promotionAPI = {
     };
   },
 
-  async delete(id) {
-    const response = await axiosInstance.delete(`/promotions/${id}`);
-    if (response.status === 200) {
-      return response.data;
-    }
-    return {
-      success: false,
-    };
-  },
-
   async update(promotion) {
     const response = await axiosInstance.put(
         `/promotions/${promotion.id}`, promotion,
