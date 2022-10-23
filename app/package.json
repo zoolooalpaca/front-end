@@ -9,6 +9,7 @@
   "dependencies": {
     "@microsoft/eslint-formatter-sarif": "^2.1.7",
     "axios": "^0.27.2",
+    "eslint-config-google": "^0.14.0",
     "flowbite": "^1.5.2",
     "pinia": "^2.0.17",
     "vue": "^3.2.37",
