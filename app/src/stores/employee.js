@@ -20,14 +20,14 @@ export const useEmployeeStore = defineStore({
       const response = await employeeAPI.saveNew(employee);
       if (response.success) {
         this.employees.push(response);
-        return response.employeeId;
+        return response.id;
       }
       return false;
     },
 
-    delete(employeeId) {
+    delete(id) {
       this.employees = this.employees.filter(
-          (employee) => employee.employeeId !== employeeId,
+          (employee) => employee.id !== id,
       );
     },
   },
