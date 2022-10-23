@@ -21,4 +21,27 @@ export const employeeAPI = {
       success: false,
     };
   },
+
+  async update(employee) {
+    const response = await axiosInstance.put(
+        `/employees/${employee.id}`,
+        employee,
+    );
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+
+  async get(id) {
+    const response = await axiosInstance.get(`/employees/${id}`);
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
 };
