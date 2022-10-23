@@ -20,14 +20,14 @@ export const usePaymentStore = defineStore({
       const response = await paymentAPI.saveNew(payment);
       if (response.success) {
         this.payments.push(response);
-        return response.paymentId;
+        return response.id;
       }
       return false;
     },
 
-    delete(paymentId) {
+    delete(id) {
       this.payments = this.payments.filter(
-          (payment) => payment.paymentId !== paymentId,
+          (payment) => payment.id !== id,
       );
     },
   },
