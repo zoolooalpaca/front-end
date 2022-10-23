@@ -40,4 +40,27 @@ export const paymentAPI = {
       success: false,
     };
   },
+
+  async update(payment) {
+    const response = await axiosInstance.put(
+        `/payments/${payment.id}`,
+        payment,
+    );
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+
+  async get(paymentId) {
+    const response = await axiosInstance.get(`/payments/${paymentId}`);
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
 };
