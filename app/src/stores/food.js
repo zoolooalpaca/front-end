@@ -30,5 +30,25 @@ export const useFoodStore = defineStore({
           (food) => food.id !== id,
       );
     },
+
+    async update(food) {
+      const response = await foodAPI.update(food);
+      if (response.success) {
+        const index = this.foods.findIndex(
+            (food) => food.id === response.id,
+        );
+        this.foods[index] = response;
+        return response.id;
+      }
+      return false;
+    },
+
+    async get(id) {
+      const response = await foodAPI.get(id);
+      if (response.success) {
+        return response;
+      }
+      return false;
+    },
   },
 });
