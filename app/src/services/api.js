@@ -61,14 +61,4 @@ export const ratingAPI = {
       success: false,
     };
   },
-
-  async delete(id) {
-    const response = await axiosInstance.delete(`/ratings/${id}`);
-    if (response.status === 200) {
-      return response.data;
-    }
-    return {
-      success: false,
-    };
-  },
 };
