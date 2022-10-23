@@ -20,14 +20,14 @@ export const useTableStore = defineStore({
       const response = await tableAPI.saveNew(table);
       if (response.success) {
         this.tables.push(response);
-        return response.tableId;
+        return response.table_number;
       }
       return false;
     },
 
-    delete(tableId) {
+    delete(table_number) {
       this.tables = this.tables.filter(
-          (table) => table.tableId !== tableId,
+          (table) => table.table_number !== table_number,
       );
     },
   },
