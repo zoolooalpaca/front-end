@@ -41,5 +41,28 @@ export const foodAllergyAPI = {
       success: false,
     };
   },
+
+  async update(foodAllergy) {
+    const response = await axiosInstance.put(
+        `/foodAllergies/${foodAllergy.id}`,
+        foodAllergy,
+    );
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+
+  async get(foodAllergyId) {
+    const response = await axiosInstance.get(`/foodAllergies/${foodAllergyId}`);
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
 };
 
