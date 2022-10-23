@@ -1,5 +1,5 @@
 <script>
-import FloatingOrder from '@/components/FloatingOrder.vue';
+import FloatingOrder from '../components/FloatingOrder.vue';
 import NavBarDrawer from '../components/NavBarDrawer/NavBarDrawer.vue';
 import ToServeItem from '../components/ToServeItem.vue';
 import BillOrderItem from '../components/BillOrderItem/BillOrderItem.vue';
@@ -9,12 +9,11 @@ import CookItem from '../components/CookItem/CookItem.vue';
 import CookingBoard from '../components/CookingBoard/CookingBoard.vue';
 import OrderItem from '../components/OrderItem/OrderItem.vue';
 import HistoryDrawer from '../components/HistoryItem/HistoryDrawer.vue';
-import BannerCard from '@/components/BannerCard.vue';
+import BannerCard from '../components/BannerCard.vue';
 
 export default {
   components: {
     TopAppBar,
-    
     NavBarDrawer,
     BillOrderItem,
     TableItem,
@@ -24,7 +23,6 @@ export default {
     ToServeItem,
     HistoryDrawer,
     FloatingOrder,
-  ,
     BannerCard,
   },
 };
