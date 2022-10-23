@@ -40,4 +40,24 @@ export const tableAPI = {
       success: false,
     };
   },
+
+  async update(table) {
+    const response = await axiosInstance.put('/tables', table);
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+
+  async get(tableId) {
+    const response = await axiosInstance.get(`/tables/${tableId}`);
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
 };
