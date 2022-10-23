@@ -25,10 +25,30 @@ export const useTableStore = defineStore({
       return false;
     },
 
-    delete(table_number) {
+    delete(tableId) {
       this.tables = this.tables.filter(
-          (table) => table.table_number !== table_number,
+          (table) => table.id !== tableId,
       );
+    },
+
+    async update(table) {
+      const response = await tableAPI.update(table);
+      if (response.success) {
+        const index = this.tables.findIndex(
+            (table) => table.id === response.id,
+        );
+        this.tables[index] = response;
+        return response.id;
+      }
+      return false;
+    },
+
+    async get(tableId) {
+      const response = await tableAPI.get(tableId);
+      if (response.success) {
+        return response;
+      }
+      return false;
     },
   },
 });
