@@ -40,5 +40,25 @@ export const foodAPI = {
       success: false,
     };
   },
+
+  async update(food) {
+    const response = await axiosInstance.put(`/foods/${food.id}`, food);
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+
+  async get(id) {
+    const response = await axiosInstance.get(`/foods/${id}`);
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
 };
 
