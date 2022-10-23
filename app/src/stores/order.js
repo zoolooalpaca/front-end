@@ -1,5 +1,5 @@
 import {defineStore} from 'pinia';
-import {orderAPI} from '@/services/api.js';
+import {orderApi} from '@/services/api';
 
 export const useOrderStore = defineStore({
   id: 'order',
@@ -15,40 +15,42 @@ export const useOrderStore = defineStore({
 
   actions: {
     async fetch() {
-      this.orders = await orderAPI.getAll();
+      this.orders = await orderApi.getAll();
     },
 
     async save(order) {
-      const response = await orderAPI.saveNew(order);
+      const response = await orderApi.saveNew(order);
       if (response.success) {
         this.orders.push(response);
-        return response.order_number;
+        return response.id;
       }
       return false;
     },
 
-    delete(orderNumber) {
-      this.orders = this.orders.filter(
-          (order) => order.order_number !== orderNumber,
-      );
-    },
-
     async update(order) {
-      const response = await orderAPI.update(order);
+      const response = await orderApi.update(order);
       if (response.success) {
         const index = this.orders.findIndex(
-            (o) => o.order_number === order.order_number,
+            (order) => order.id === response.id,
         );
-        this.orders[index] = order;
+        this.orders[index] = response;
+        return response.id;
       }
+      return false;
     },
 
-    async get(orderNumber) {
-      const response = await orderAPI.get(orderNumber);
+    async get(orderId) {
+      const response = await orderApi.get(orderId);
       if (response.success) {
         return response;
       }
       return false;
+    },
+
+    delete(orderId) {
+      this.orders = this.orders.filter(
+          (order) => order.id !== orderId,
+      );
     },
   },
 });
