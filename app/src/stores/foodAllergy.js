@@ -30,5 +30,25 @@ export const useFoodAllergyStore = defineStore({
           (foodAllergy) => foodAllergy.id !== id,
       );
     },
+
+    async update(foodAllergy) {
+      const response = await foodAllergyAPI.update(foodAllergy);
+      if (response.success) {
+        const index = this.food_allergies.findIndex(
+            (foodAllergy) => foodAllergy.id === response.id,
+        );
+        this.food_allergies[index] = response;
+        return response.id;
+      }
+      return false;
+    },
+
+    async get(id) {
+      const response = await foodAllergyAPI.get(id);
+      if (response.success) {
+        return response;
+      }
+      return false;
+    },
   },
 });
