@@ -20,5 +20,5 @@ export const employeeAPI = {
     return {
       success: false,
     };
-  }
+  },
 };

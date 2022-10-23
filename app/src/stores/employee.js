@@ -1,5 +1,5 @@
-import { defineStore } from 'pinia';
-import { employeeAPI } from '@/services/api.js';
+import {defineStore} from 'pinia';
+import {employeeAPI} from '@/services/api.js';
 
 export const useEmployeeStore = defineStore({
   id: 'employee',
@@ -26,7 +26,9 @@ export const useEmployeeStore = defineStore({
     },
 
     delete(employeeId) {
-      this.employees = this.employees.filter((employee) => employee.employeeId !== employeeId);
-    }
+      this.employees = this.employees.filter(
+          (employee) => employee.employeeId !== employeeId,
+      );
+    },
   },
 });
