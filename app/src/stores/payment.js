@@ -30,5 +30,25 @@ export const usePaymentStore = defineStore({
           (payment) => payment.id !== id,
       );
     },
+
+    async update(payment) {
+      const response = await paymentAPI.update(payment);
+      if (response.success) {
+        const index = this.payments.findIndex(
+            (payment) => payment.id === response.id,
+        );
+        this.payments[index] = response;
+        return response.id;
+      }
+      return false;
+    },
+
+    async get(id) {
+      const response = await paymentAPI.get(id);
+      if (response.success) {
+        return response;
+      }
+      return false;
+    },
   },
 });
