@@ -39,5 +39,5 @@ export const tableAPI = {
     return {
       success: false,
     };
-  }
+  },
 };
