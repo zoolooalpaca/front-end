@@ -31,10 +31,9 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="relative">
     <DialogModal />
     <NavBarDrawer></NavBarDrawer>
-  <div class="relative">
     <div class="fixed md:hidden left-0 bottom-0 w-full p-4">
       <FloatingOrder></FloatingOrder>
     </div>
