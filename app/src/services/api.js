@@ -22,3 +22,43 @@ export const employeeAPI = {
     };
   },
 };
+
+export const reviewAPI = {
+  async getAll() {
+    const response = await axiosInstance.get('/reviews');
+    if (response.status === 200) {
+      return response.data;
+    }
+    return [];
+  },
+
+  async saveNew(review) {
+    const response = await axiosInstance.post('/reviews', review);
+    if (response.status === 201) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+
+  async update(review) {
+    const response = await axiosInstance.put('/reviews', review);
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+
+  async get(id) {
+    const response = await axiosInstance.get(`/reviews/${id}`);
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+};
