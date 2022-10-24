@@ -23,15 +23,51 @@ export const employeeAPI = {
   },
 };
 
-export const ratingAPI = {
+export const reviewAPI = {
   async getAll() {
-    const response = await axiosInstance.get('/ratings');
+    const response = await axiosInstance.get('/reviews');
     if (response.status === 200) {
       return response.data;
     }
     return [];
   },
+  async saveNew(review) {
+    const response = await axiosInstance.post('/reviews', review);
+    if (response.status === 201) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+  async update(review) {
+    const response = await axiosInstance.put('/reviews', review);
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+  async get(id){
+    const response = await axiosInstance.get(`/reviews/${id}`);
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+};
 
+export const ratingAPI = {
+  async getAll() {
+    const response = await axiosInstance.get('/ratings');
+     if (response.status === 200) {
+      return response.data;
+    }
+    return [];
+  },
   async saveNew(rating) {
     const response = await axiosInstance.post('/ratings', rating);
     if (response.status === 201) {
@@ -41,7 +77,6 @@ export const ratingAPI = {
       success: false,
     };
   },
-
   async update(rating) {
     const response = await axiosInstance.put('/ratings', rating);
     if (response.status === 200) {
@@ -51,7 +86,6 @@ export const ratingAPI = {
       success: false,
     };
   },
-
   async get(id) {
     const response = await axiosInstance.get(`/ratings/${id}`);
     if (response.status === 200) {
