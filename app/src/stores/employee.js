@@ -15,5 +15,20 @@ export const useEmployeeStore = defineStore({
     async fetch() {
       this.employees = await employeeAPI.getAll();
     },
+
+    async save(employee) {
+      const response = await employeeAPI.saveNew(employee);
+      if (response.success) {
+        this.employees.push(response);
+        return response.employeeId;
+      }
+      return false;
+    },
+
+    delete(employeeId) {
+      this.employees = this.employees.filter(
+          (employee) => employee.employeeId !== employeeId,
+      );
+    },
   },
 });

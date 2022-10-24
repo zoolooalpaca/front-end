@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://zoolooalpaca-api.loca.lt/api',
+  baseURL: 'https://order-in.loca.lt/api',
 });
 
 export const employeeAPI = {
@@ -11,5 +11,14 @@ export const employeeAPI = {
       return response.data;
     }
     return [];
+  },
+  async saveNew(employee) {
+    const response = await axiosInstance.post('/employees', employee);
+    if (response.status === 201) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
   },
 };
