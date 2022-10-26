@@ -64,4 +64,12 @@ export default {
     justify-content: center;
     align-items: center;
 }
+.button1{
+    padding: 10px 24px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    background-color: rgb(33, 65, 139); 
+}
 </style>

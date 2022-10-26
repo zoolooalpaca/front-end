@@ -5,7 +5,7 @@
       <div class="order-detail">
         <span>{{totalItem}} รายการ</span>
         <div class="flex ml-[14px]">
-        <span>฿{{totalPrice}} บาท</span>
+        <span>฿{{totalPrice}}</span>
         </div>
       </div>
     </div>
