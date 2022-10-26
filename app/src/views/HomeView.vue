@@ -1,7 +1,6 @@
 <script>
 import FloatingOrder from '../components/FloatingOrder.vue';
 import NavBarDrawer from '../components/NavBarDrawer/NavBarDrawer.vue';
-import ToServeItem from '../components/ToServeItem.vue';
 import BillOrderItem from '../components/BillOrderItem/BillOrderItem.vue';
 import TableItem from '../components/Table/TableItem.vue';
 import TopAppBar from '../components/TopAppBar/TopAppBar.vue';
@@ -10,6 +9,7 @@ import CookingBoard from '../components/CookingBoard/CookingBoard.vue';
 import OrderItem from '../components/OrderItem/OrderItem.vue';
 import HistoryDrawer from '../components/HistoryItem/HistoryDrawer.vue';
 import BannerCard from '../components/BannerCard.vue';
+import ToServeDrawer from '../components/ToServeItem/ToServeDrawer.vue';
 
 export default {
   components: {
@@ -20,11 +20,11 @@ export default {
     CookItem,
     OrderItem,
     CookingBoard,
-    ToServeItem,
+    ToServeDrawer,
     HistoryDrawer,
     FloatingOrder,
     BannerCard,
-  },
+},
 };
 </script>
 
@@ -41,7 +41,7 @@ export default {
     <OrderItem></OrderItem>
     <CookingBoard></CookingBoard>
     <p>TO Serve Item</p>
-    <ToServeItem></ToServeItem>
+    <ToServeDrawer></ToServeDrawer>
     <p>History Item</p>
     <HistoryDrawer></HistoryDrawer>
 

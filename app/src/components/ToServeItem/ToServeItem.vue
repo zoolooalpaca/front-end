@@ -2,7 +2,7 @@
   <div class="flex items-center gap-4">
     <div class="table-circle primary on-primary-text">
       <span>
-        {{ table }}
+        โต๊ะ {{ table_id }}
       </span>
     </div>
     <div class="flex flex-1
@@ -15,7 +15,7 @@
       <div class="order-detail">
         <p
           v-for="order in orders"
-          :key="order.id"
+          :key="index"
           class="body-large"
         >
           {{ order.order }} x{{ order.amount }}
@@ -40,43 +40,9 @@
 
 <script>
 export default {
-  data() {
-    return {
-      table: 'โต๊ะ 1',
-      orders: [
-        {
-          id: 1,
-          order: 'ข้าวไข่เจียว',
-          amount: 2,
-        },
-        {
-          id: 2,
-          order: 'กะเพราหมูไข่ดาว',
-          amount: 1,
-        },
-        {
-          id: 3,
-          order: 'กะเพราหมูดาว',
-          amount: 1,
-        },
-        {
-          id: 4,
-          order: 'ไข่ดาว',
-          amount: 1,
-        },
-        {
-          id: 5,
-          order: 'กะเพราดาว',
-          amount: 1,
-        },
-        {
-          id: 6,
-          order: 'กะเพราหมูไข่',
-          amount: 1,
-        },
-      ],
-    };
-  },
+    props:[
+      'id','table_id','orders'
+    ],
 };
 </script>
 
