@@ -54,6 +54,7 @@ export const reviewAPI = {
     }
     return [];
   },
+  
   async saveNew(review) {
     const response = await axiosInstance.post('/reviews', review);
     if (response.status === 201) {
@@ -183,7 +184,7 @@ export const paymentAPI = {
       success: false,
     };
   },
-
+ 
   async update(payment) {
     const response = await axiosInstance.put(
         `/payments/${payment.id}`,
@@ -238,6 +239,48 @@ export const foodAPI = {
 
   async get(id) {
     const response = await axiosInstance.get(`/foods/${id}`);
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+};
+
+export const foodAllergyAPI = {
+  async getAll() {
+    const response = await axiosInstance.get('/foodAllergies');
+    if (response.status === 200) {
+      return response.data;
+    }
+    return [];
+  },
+  async saveNew(foodAllergy) {
+    const response = await axiosInstance.post('/foodAllergies', foodAllergy);
+    if (response.status === 201) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+  
+  async update(foodAllergy) {
+    const response = await axiosInstance.put(
+        `/foodAllergies/${foodAllergy.id}`,
+        foodAllergy,
+        );
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+  
+  async get(foodAllergyId) {
+    const response = await axiosInstance.get(`/foodAllergies/${foodAllergyId}`);
     if (response.status === 200) {
       return response.data;
     }
