@@ -6,7 +6,7 @@
       border-radius: 20px;">
     <div
       class="mask food-category-chip p-5"
-      style="background-color: rgba(128, 128, 128, 0.5);"
+      style="background-color: rgba(255, 220, 196, 0.5);"
     >
       <div class="d-flex justify-content-center align-items-center">
         <p class="title-large text-center text-black">{{ name }}</p>
