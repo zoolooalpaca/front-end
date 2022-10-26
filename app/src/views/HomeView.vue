@@ -24,7 +24,7 @@ export default {
     HistoryDrawer,
     FloatingOrder,
     BannerCard,
-},
+  },
 };
 </script>
 

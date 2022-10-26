@@ -40,9 +40,9 @@
 
 <script>
 export default {
-    props:[
-      'id','table_id','orders'
-    ],
+  props: [
+    'id', 'table_id', 'orders',
+  ],
 };
 </script>
 
