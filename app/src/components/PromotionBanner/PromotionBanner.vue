@@ -4,13 +4,9 @@
       v-bind:style="containerStyle"
       @click="onClick"
   >
-    <div
-        class="mask promotion-container p-5 promotion-backdrop"
-    >
-      <div class="d-flex justify-content-center align-items-center">
-        <p class="title-large text-center text-white">{{ name }}</p>
+    <div class="mask promotion-container p-5 transbox-promotion">
+        <p class="title-large text-form-promotion">{{ name }}</p>
       </div>
-    </div>
   </div>
 </template>
 
@@ -47,10 +43,18 @@ export default {
   overflow: hidden;
   border-radius: 20px;
 }
-.promotion-backdrop{
+.transbox-promotion {
+  position: absolute;
+  align-content: center;
+  align-items: center;
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0,0,0,0.2);
+}
+.text-form-promotion{
+  text-align: center;
+  font-weight: bold;
+  color: #FFFFFF;
 }
 </style>
