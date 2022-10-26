@@ -42,20 +42,12 @@ export default {
 </script>
 
 <style>
-.visually-hidden {
-  position: absolute;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  height: 1px; width: 1px;
-  margin: -1px; padding: 0; border: 0;
-}
-
 .star-rating_star {
    display: inline-block;
    padding: 3px;
    vertical-align: middle;
    line-height: 1;
-   font-size: 1.5em;
+   font-size: 3em;
    color: #ABABAB;
    transition: color .2s ease-out;
 }
