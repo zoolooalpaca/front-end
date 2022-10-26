@@ -119,3 +119,49 @@ export const ratingAPI = {
     };
   },
 };
+
+export const promotionAPI = {
+  async getAll() {
+    const response = await axiosInstance.get('/promotions');
+    if (response.status === 200) {
+      return response.data;
+    }
+    return [];
+  },
+  
+  async saveNew(promotion) {
+    const response = await axiosInstance.post(
+    '/promotions', promotion
+    );
+    if (response.status === 201) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+  
+  async update(promotion) {
+    const response = await axiosInstance.put(
+        `/promotions/${promotion.id}`, promotion,
+    );
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+  
+  async get(id) {
+    const response = await axiosInstance.get(
+    `/promotions/${id}`
+    );
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+};
