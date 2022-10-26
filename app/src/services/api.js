@@ -165,3 +165,45 @@ export const promotionAPI = {
     };
   },
 };
+
+export const paymentAPI = {
+  async getAll() {
+    const response = await axiosInstance.get('/payments');
+    if (response.status === 200) {
+      return response.data;
+    }
+    return [];
+  },
+  async saveNew(payment) {
+    const response = await axiosInstance.post('/payments', payment);
+    if (response.status === 201) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+
+  async update(payment) {
+    const response = await axiosInstance.put(
+        `/payments/${payment.id}`,
+        payment,
+    );
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+
+  async get(paymentId) {
+    const response = await axiosInstance.get(`/payments/${paymentId}`);
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+};
