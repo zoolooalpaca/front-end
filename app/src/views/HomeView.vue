@@ -53,7 +53,6 @@ export default {
     <FoodCard></FoodCard>
     <FoodCategoryChip></FoodCategoryChip>
     <PromotionBanner></PromotionBanner>
-
     <BannerCard></BannerCard>
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>

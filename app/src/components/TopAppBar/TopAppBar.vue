@@ -20,11 +20,7 @@
 
 <script>
 export default {
-  data() {
-    return {
-      label: 'หัวข้อ',
-    };
-  },
+  props:['label']
 };
 </script>
 

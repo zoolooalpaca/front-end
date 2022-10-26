@@ -1,5 +1,5 @@
 <template>
-    <History
+    <HistoryItem
     v-for="(order,index) in orders"
     :id="index"
     :status="order.status"
@@ -10,11 +10,11 @@
     :foodDescription="order.foodDescription"
     :key="index"
     >
-    </History>
+    </HistoryItem>
 </template>
 
 <script>
-import History from './HistoryItem.vue';
+import HistoryItem from './HistoryItem.vue';
 
 export default {
   data() {
@@ -47,7 +47,7 @@ export default {
       ],
     };
   },
-  components: {History},
+  components: {HistoryItem},
 };
 </script>
 
