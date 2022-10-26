@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center gap-4 mt-3 p-4">
+  <div class="flex items-center gap-4 mt-2 p-3">
     <div class="table-circle primary on-primary-text">
       <span>
         โต๊ะ {{ table_id }}
@@ -41,7 +41,7 @@
 <script>
 export default {
   props: [
-    'id', 'table_id', 'orders',
+    'id','status','table_id', 'orders',
   ],
 };
 </script>

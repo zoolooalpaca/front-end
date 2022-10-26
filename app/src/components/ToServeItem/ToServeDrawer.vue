@@ -2,6 +2,7 @@
     <ToServeItem
         v-for="(table,index) in tables"
         :id="index"
+        :status="table.status"
         :table_id="table.table_id"
         :orders="table.orders"
         :key="index"
@@ -18,6 +19,7 @@ export default {
       tables: [
         {
           table_id: 1,
+          status:'ยังไม่เสิร์ฟ',
           orders: [
             {
               order: 'ข้าวไข่เจียว',
@@ -35,6 +37,7 @@ export default {
         },
         {
           table_id: 2,
+          status:'ยังไม่เสิร์ฟ',
           orders: [
             {
               order: 'ไข่ดาว',
