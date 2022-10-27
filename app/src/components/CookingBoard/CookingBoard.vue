@@ -10,7 +10,7 @@
     </div>
     <div>
         <p class="label-small">เพิ่มเติมจากลูกค้า</p>
-        <p>{{foodDescription}}</p>
+        <p>{{ foodDescription }}</p>
     </div>
  </div>
 </template>

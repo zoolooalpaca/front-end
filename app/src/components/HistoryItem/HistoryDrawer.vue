@@ -1,6 +1,6 @@
 <template>
     <History
-    v-for="(order,index) in orders"
+    v-for="(order, index) in orders"
     :id="index"
     :status="order.status"
     :image="order.image"
