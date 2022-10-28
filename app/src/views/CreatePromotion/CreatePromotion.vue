@@ -17,15 +17,29 @@
       <h3 class="headline-large mb-10">เพิ่มโปรโมชัน</h3>
       <div class="flex flex-row">
         <div class="basis-2/5">
-          <p>insert image</p>
-          <input
-              style="display: none"
-              type="file"
-              @change="onFileSelected"
-              ref="fileInput">
-          <button @click="$refs.fileInput.click()" class="button-upload-file body-medium">Pick file</button>
-          <button class="button-upload-file body-medium" @click="onUpload">UPLOAD</button>
+          <div v-if="previewImage">
+            <div>
+              <img class="preview my-3" :src="previewImage" alt="" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8">
+              <label class="btn btn-default p-0">
+                <input
+                    type="file"
+                    accept="image/*"
+                    ref="file"
+                    @change="selectImage"
+                />
+              </label>
+            </div>
+          </div>
+          <div v-if="message" class="alert alert-secondary" role="alert">
+            {{ message }}
+          </div>
         </div>
+
+
         <div class="basis-3/5 ml-5">
           <h3 class="body-large">ชื่ออาหาร</h3>
           <input type="text" class="input-create-menu">
@@ -36,21 +50,36 @@
         </div>
       </div>
       <div class="grid justify-items-end">
-        <button class="button-create-menu body-large">เพิ่มโปรโมชัน</button>
+        <button
+            class="button-create-promotion body-large"
+            :disabled="!currentImage"
+            @click="upload"
+        >
+          เพิ่มโปรโมชัน
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
 import SectionHeader from "../../components/NavBarDrawer/SectionHeader.vue";
 import NavItem from "../../components/NavBarDrawer/NavItem.vue";
 import FoodCard from "../../components/FoodCard/FoodCard.vue";
+import UploadService from "../../services/UploadFilesService.js";
 
 export default {
+  name: "upload-image",
   data() {
     return {
+      currentImage: undefined,
+      previewImage: undefined,
+
+      progress: 0,
+      message: "",
+
+      imageInfos: [],
+
       selectedFile: null,
       activeId: 0,
       navItems: [
@@ -62,27 +91,41 @@ export default {
     }
   },
   methods: {
-    onFileSelected(event) {
-      this.selectedFile = event.target.files[0]
+    selectImage() {
+      this.currentImage = this.$refs.file.files.item(0);
+      this.previewImage = URL.createObjectURL(this.currentImage);
+      this.progress = 0;
+      this.message = "";
     },
-    onUpload() {
-      const fd = new FormData();
-      fd.append('image', this.selectedFile, this.selectedFile.name)
-      axios.post("https://f.ptcdn.info/548/074/000/qy4tizbb41RMykmSGg5-o.jpg", fd, {
-        onUploadProgress: uploadEvent => {
-          console.log("Upload Progress: " + Math.round(uploadEvent.loaded / uploadEvent.total * 100) + '%')
-        }
+    upload() {
+      this.progress = 0;
+
+      UploadService.upload(this.currentImage, (event) => {
+        this.progress = Math.round((100 * event.loaded) / event.total);
       })
-          .then(res => {
-            console.log(res)
+          .then((response) => {
+            this.message = response.data.message;
+            return UploadService.getFiles();
           })
+          .then((images) => {
+            this.imageInfos = images.data;
+          })
+          .catch((err) => {
+            this.progress = 0;
+            this.message = "Could not upload the image! " + err;
+            this.currentImage = undefined;
+          });
     }
+  },
+  mounted() {
+    UploadService.getFiles().then(response => {
+      this.imageInfos= response.data;
+    });
   },
   components: {
     SectionHeader,
     NavItem,
     FoodCard,
-
   }
 }
 </script>
@@ -109,7 +152,7 @@ export default {
   margin: 10px 0px 15px 10px;
   resize: none;
 }
-.button-create-menu{
+.button-create-promotion{
   background-color: var(--md-sys-color-tertiary-container);
   border: none;
   color: var(--md-sys-color-on-tertiary-container);
