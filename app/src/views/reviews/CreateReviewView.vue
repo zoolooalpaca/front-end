@@ -1,6 +1,6 @@
 <template>
   <div class="m-3 block">
-    <h1 class="text-3xl text-center">รีวิว</h1>
+    <h1 class="text-3xl text-center"> รีวิว </h1>
 
     <div>
       <label for="name">การให้บริการ</label>
@@ -81,21 +81,16 @@ export default {
         const review_id = await this.review_store.save(this.review)
         const rating_id = await this.rating_store.save(this.rating)
         if (review_id){
-          SocketioServices.sendToServer('reviews.create', {success: true})
-          this.$router.push(`/reviews/${review_id}`)
+          this.$router.push(`/allReview/${review_id}`)
         }
         if (rating_id){
-          SocketioServices.sendToServer('ratings.create', {success: true})
-          this.$router.push(`/ratings/${rating_id}`)
+          this.$router.push(`/allReview/${rating_id}`)
         }
       }catch (error){
         console.log(error)
         this.error = error.message
       }
     }
-  },
-  created() {
-    SocketioServices.setupSocketConnection()
   }
 }
 </script>

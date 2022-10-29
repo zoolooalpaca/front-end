@@ -44,7 +44,7 @@ export default {
 <style>
 .star-rating_star {
    display: inline-block;
-   padding: 9px;
+   padding: 4%;
    vertical-align: middle;
    line-height: 1;
    font-size: 3em;
