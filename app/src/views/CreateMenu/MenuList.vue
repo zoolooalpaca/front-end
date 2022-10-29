@@ -1,23 +1,46 @@
 <template>
-  <div class="flex flex-row">
-    <div class="basis-1/4">
-      <h3 class="headline-small ml-4 mb6-4">ชื่อร้าน</h3>
+  <div class="relative flex min-h-screen">
+    <div class="
+          w-64
+          absolute
+          inset-y-0
+          left-0
+          md:relative md:-translate-x-0
+          transform
+          -translate-x-full
+          transition
+          duration-200
+          ease-in-out
+        "
+         :class="{ 'relative -translate-x-0': showSidebar }"
+    >
+      <h3 class="headline-small ml-4">ชื่อร้าน</h3>
       <NavItem
           v-for="(item, index) in navItems"
           :id="index"
           :label="item.label"
           :active="index == activeId"
+          :url="item.router"
           :onClickItem="onClickItem"
           :key="index"
       >
         <span class="material-symbols-outlined">{{item.icon}}</span>
       </NavItem>
     </div>
-    <div class="basis-3/4 ml-5 ">
+
+    <div class="flex-1 ml-5">
+      <button @click="showSidebar = !showSidebar">
+        <span class="material-symbols-outlined">
+          menu
+        </span>
+      </button>
       <h3 class="headline-large">รายการอาหาร</h3>
-      <div class="grid grid-cols-4 gap-4" >
+      <div class="grid grid-cols-4 gap-4 " >
         <div class="grid justify-items-center create-menu">
-          <button class="rounded-full p-1 justify-center">
+          <button
+              class="rounded-full p-1 justify-center"
+              @click="goToCreateMenu()"
+          >
             <span class="material-symbols-outlined">add</span>
           </button>
         </div>
@@ -40,17 +63,24 @@
 import SectionHeader from "../../components/NavBarDrawer/SectionHeader.vue";
 import NavItem from "../../components/NavBarDrawer/NavItem.vue";
 import FoodCard from "../../components/FoodCard/FoodCard.vue";
+import { ref } from 'vue'
 
 export default {
+  setup() {
+    const showSidebar = ref(false);
+    return {
+      showSidebar,
+    }
+  },
   data() {
     return {
       activeId: 0,
       loopCount: 4,
       navItems: [
-        {label: 'ชื่อลูกค้า', icon: 'account_circle'},
-        {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt'},
-        {label: 'รายการอาหาร', icon: 'restaurant_menu'},
-        {label: 'โปรโมชัน', icon: 'grid_view'},
+        {label: 'ชื่อลูกค้า', icon: 'account_circle', router: ''},
+        {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt', router: '/Dashboard'},
+        {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/MenuList'},
+        {label: 'โปรโมชัน', icon: 'grid_view', router: '/PromotionList'},
       ],
       foodCardItems: [
         {image: 'https://cpfmshop.com//uploads/283/product/949381e47baff4b832cb40683878b6ce_full.jpg',
@@ -76,8 +106,18 @@ export default {
     SectionHeader,
     NavItem,
     FoodCard,
-
-  }
+  },
+  methods: {
+    goToCreateMenu(){
+      this.$router.push(`/CreateMenu`)
+    },
+    onClickItem(id,url) {
+      this.activeId = id;
+      if (url != '') {
+        this.$router.push(url)
+      }
+    },
+  },
 }
 </script>
 

@@ -7,6 +7,7 @@
           :id="index"
           :label="item.label"
           :active="index == activeId"
+          :url="item.router"
           :onClickItem="onClickItem"
           :key="index"
       >
@@ -14,7 +15,17 @@
       </NavItem>
     </div>
     <div class="basis-3/4 ml-10">
-      <h3 class="headline-large mb-10">เพิ่มโปรโมชัน</h3>
+      <div class="flex justify-between">
+        <h3 class="headline-large mb-10">เพิ่มโปรโมชัน</h3>
+        <button
+            class="w-8 h-8 secondary-container rounded-full p-1 justify-center"
+            @click="backToPromotionList()"
+        >
+              <span class="material-symbols-outlined">
+                arrow_back
+              </span>
+        </button>
+      </div>
       <div class="flex flex-row">
         <div class="basis-2/5">
           <div v-if="previewImage">
@@ -83,14 +94,23 @@ export default {
       selectedFile: null,
       activeId: 0,
       navItems: [
-        {label: 'ชื่อลูกค้า', icon: 'account_circle'},
-        {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt'},
-        {label: 'รายการอาหาร', icon: 'restaurant_menu'},
-        {label: 'โปรโมชัน', icon: 'grid_view'},
+        {label: 'ชื่อลูกค้า', icon: 'account_circle', router: ''},
+        {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt', router: '/Dashboard'},
+        {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/MenuList'},
+        {label: 'โปรโมชัน', icon: 'grid_view', router: '/PromotionList'},
       ],
     }
   },
   methods: {
+    backToPromotionList(){
+      this.$router.push(`/PromotionList`)
+    },
+    onClickItem(id,url) {
+      this.activeId = id;
+      if (url != '') {
+        this.$router.push(url)
+      }
+    },
     selectImage() {
       this.currentImage = this.$refs.file.files.item(0);
       this.previewImage = URL.createObjectURL(this.currentImage);

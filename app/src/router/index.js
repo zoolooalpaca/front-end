@@ -4,6 +4,7 @@ import MenuList from "@/views/CreateMenu/MenuList.vue";
 import CreateMenu from "@/views/CreateMenu/CreateMenu.vue";
 import PromotionList from "@/views/CreatePromotion/PromotionList.vue";
 import CreatePromotion from "@/views/CreatePromotion/CreatePromotion.vue";
+import Dashboard from "@/views/Dashboard/Dashboard.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ const router = createRouter({
       path: '/CreatePromotion',
       name: 'CreatePromotion',
       component: CreatePromotion,
+    },
+    {
+      path: '/Dashboard',
+      name: 'Dashboard',
+      component: Dashboard,
     },
   ],
 });
