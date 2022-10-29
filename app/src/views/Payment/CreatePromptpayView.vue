@@ -15,23 +15,23 @@
         </button>
       </label>
 
-      <div class="borderColor mt-5 flex flex-row">
-        <div class="mt-5 flex flex-col">
-          <h3 class="mb-3 text-xl">ใบเสร็จ</h3>
-          <BillOrderItem/>
+      <div class="mt-5 flex flex-row">
+        <div class="borderColor mt-5 flex flex-col">
+          <h3 class="mb-3 text-xl ml-3 mt-3">ใบเสร็จ</h3>
+          <BillOrderItem class="ml-3 mr-3 mb-2"/>
         </div>
 
         <div class="borderColor ml-8 mt-5">
-          <h3 class="mb-3 text-xl">พร้อมเพย์</h3>
+          <h3 class="text-xl ml-3 mt-3">พร้อมเพย์</h3>
           <img :src="image">
           <div>
-            <button class="button-payment float-left border rounded-full p-2 mt-4"> พิมพ์ </button>
+            <button @click="printQRCode" class="button-payment float-left border rounded-full p-2 mt-4 mb-4 ml-3"> พิมพ์ </button>
           </div>
         </div>
       </div>
 
       <div>
-        <button class="button-payment float-left border rounded-full p-2 mt-4">จ่ายแล้ว</button>
+        <button @click="paid" class="button-payment float-left border rounded-full p-2 mt-4">จ่ายแล้ว</button>
       </div>
 
 
@@ -57,6 +57,14 @@ export default {
     NavBarDrawer,
     Item,
     BillOrderItem
+  },
+  methods: {
+    printQRCode() {
+      
+    },
+    paid() {
+
+    }
   }
 }
 </script>
@@ -69,6 +77,7 @@ export default {
 }
 
 .borderColor {
-  border-color: var(--md-sys-color-outline-light);
+  border: 1px solid var(--md-sys-color-outline-light);
+  border-radius: 15px;
 }
 </style>
