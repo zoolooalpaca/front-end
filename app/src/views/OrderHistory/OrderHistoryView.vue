@@ -3,19 +3,12 @@
         <div>
             <TopAppBar label="ประวัติ"></TopAppBar>
         </div>
-        <HistoryItem></HistoryItem>
-        <HistoryDrawer></HistoryDrawer>
+        <div class="py-8">
+            <HistoryItem></HistoryItem>
+            <HistoryDrawer></HistoryDrawer>
+        </div>
         <div class="fixed left-0 bottom-0 w-full p-4">
             <FloatingHistoryOrder class="mx-10"></FloatingHistoryOrder>
-        </div>
-        <div class="text-center">
-            <button class="
-            button1
-            
-            m-10
-            ">
-                + สั่ง
-            </button>
         </div>
     </div>
 </template>
