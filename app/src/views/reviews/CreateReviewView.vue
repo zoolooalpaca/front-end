@@ -28,18 +28,25 @@
                 class="mt-3 border border-gray-700 rounded-lg bg-center"></textarea>
     </div>
 
-    <ConfirmReview></ConfirmReview>
-    <div>
-      <router-link to="ConfirmReview"
-                   class="block p-3 mt-5 text-white text-center bg-[#1B5EAF] border rounded-3xl max-h-16 w-16 float-right"> ส่ง
-      </router-link>
-    </div>
+    <button @click="() => TogglePopup('buttonTrigger')"
+            class="p-3 mt-5 text-white bg-[#1B5EAF] border rounded-lg float-right">ส่ง</button>
+    <ConfirmReview
+        v-if="popupTrigger.buttonTrigger" :TogglePopup="() => TogglePopup('buttonTrigger')">
+      <h1 class="text-center text-3xl">ยืนยันที่จะกดส่ง</h1>
+      <div>
+        <button @click="saveNewReview"
+                class="p-3 mt-5 text-white bg-[#1B5EAF] border rounded-lg float-left">
+          ใช่
+        </button>
+      </div>
+    </ConfirmReview>
   </div>
 </template>
 
 <script>
 import StarRating from "@/components/Review/StarRating.vue"
 import ConfirmReview from "@/components/Review/ConfirmReview.vue"
+import { ref } from 'vue';
 import { useRatingStore } from '@/stores/rating.js'
 import { useReviewStore } from '@/stores/review.js'
 export default {
@@ -47,14 +54,18 @@ export default {
     const review_store = useReviewStore()
     const rating_store = useRatingStore()
     const popupTrigger = ref({
-      buttonTrigger: false,
-      timedTrigger: false
+      buttonTrigger: false
     })
-    return { review_store, rating_store, popupTrigger }
+
+    const TogglePopup = (trigger) => {
+      popupTrigger.value[trigger] = !popupTrigger.value[trigger]
+    }
+
+    return { review_store, rating_store, popupTrigger, TogglePopup }
   },
   data(){
     return{
-      review: '',
+      review: {feedback: ''},
       rating: '',
       error: null
     }
@@ -70,19 +81,21 @@ export default {
         const review_id = await this.review_store.save(this.review)
         const rating_id = await this.rating_store.save(this.rating)
         if (review_id){
-          this.$router.push(`/review/${review_id}`)
+          SocketioServices.sendToServer('reviews.create', {success: true})
+          this.$router.push(`/reviews/${review_id}`)
         }
         if (rating_id){
-          this.$router.push(`/rating/${rating_id}`)
+          SocketioServices.sendToServer('ratings.create', {success: true})
+          this.$router.push(`/ratings/${rating_id}`)
         }
       }catch (error){
         console.log(error)
         this.error = error.message
       }
-    },
-    callConfirmReview(){
-      return this.$router.go(ConfirmReview)
     }
+  },
+  created() {
+    SocketioServices.setupSocketConnection()
   }
 }
 </script>

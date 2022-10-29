@@ -6,7 +6,7 @@
       </span>
     </button>
     <div>
-      <h1 class="text-center text-4xl mb-5 mt-5 bg-fireworks">
+      <h1 class="text-center text-4xl mb-5 mt-5">
         ทางร้านได้รับคำแนะนำของท่านแล้ว
       </h1>
     </div>

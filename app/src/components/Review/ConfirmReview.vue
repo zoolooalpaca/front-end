@@ -1,23 +1,12 @@
 <template>
-<div class="h-52 w-60">
-  <h1 class="text-center text-3xl">
-    ยืนยันที่จะกดส่ง
-  </h1>
-
-  <div>
-    <button @click="saveNewReview"
-        class="p-3 mt-5 text-white bg-[#1B5EAF] border rounded-lg float-left">
-      ใช่
-    </button>
-  </div>
-
-  <div>
-    <button @click="$router.back()"
-        class="p-3 mt-5 text-white bg-[#BA1A1A] border rounded-lg float-right">
+<div class="popup">
+  <div class="popup-inner border rounded-lg">
+    <slot/>
+    <button @click="TogglePopup()"
+            class="p-3 mt-5 text-white bg-[#BA1A1A] border rounded-lg float-right">
       ไม่
     </button>
   </div>
-
 </div>
 </template>
 
@@ -50,6 +39,27 @@ export default {
         this.error = error.message
       }
     }
-  }
+  },
+  props: ['TogglePopup']
 }
 </script>
+
+<style>
+.popup {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 99;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-inner {
+  background: #FFFFFF;
+  padding: 32px;
+}
+</style>
