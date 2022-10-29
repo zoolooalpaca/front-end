@@ -11,3 +11,13 @@
         </div>
     </div>
 </template>
+
+<style>
+.button1{
+    padding: 10px 24px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+</style>
