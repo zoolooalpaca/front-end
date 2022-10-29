@@ -15,7 +15,6 @@
 
 <script>
 import FloatingHistoryOrder from '../../components/FloatingHistoryOrder.vue';
-import FloatingOrder from '../../components/FloatingOrder.vue';
 import HistoryDrawer from '../../components/HistoryItem/HistoryDrawer.vue';
 import HistoryItem from '../../components/HistoryItem/HistoryItem.vue';
 import TopAppBar from '../../components/TopAppBar/TopAppBar.vue';
@@ -26,7 +25,6 @@ export default{
     TopAppBar,
     HistoryItem,
     HistoryDrawer,
-    FloatingOrder,
     FloatingHistoryOrder
 }
 };
