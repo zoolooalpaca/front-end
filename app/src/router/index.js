@@ -15,6 +15,16 @@ const router = createRouter({
       name: 'serve-order',
       component: ServeView,
     },
+    {
+      path: '/history',
+      name: 'order-history-list',
+      component: HistoryView,
+    },
+    {
+      path: '/order',
+      name: 'order-detail',
+      component: OrderView
+    }
   ],
 });
 
