@@ -1,13 +1,16 @@
 <template lang=''>
     <div class='flex flex-row'>
-        <div class="flex inset-y-100 left-0 w-50">
-            <NavBarDrawer label='อร่อยโภชนา'></NavBarDrawer>
+        <div class="flex w-1/5">
+            <NavBarDrawer>
+            </NavBarDrawer>
         </div>
 
-        <div class='ml-10'>
+        <div class='ml-10 w-full'>
             <span class='headline-medium'> อาหารที่รอดำเนินการ </span>
-            <div class="flex flex-col">
-                    <CookDrawer/>
+            <span class='body-large outline-text float-right'>3 รายการ </span>
+            <div class='flex flex-col max-w-[100%] space-y-4'>
+                <CookDrawer>
+                </CookDrawer>
             </div>
         </div>
     </div>
@@ -28,12 +31,15 @@ export default {
     CookDrawer,
   },
 
-  methods: {
-    onClickItem(id) {
-      this.activeId = id;
-        if (id == 1) 
-    },
-  },
+  // methods: {
+  //   onClickItem(id) {
+  //     this.activeId = id;
+  //       if (id == 1)
+  //   },
+  // },
 };
 
 </script>
+
+<style>
+</style>

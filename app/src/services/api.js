@@ -72,7 +72,7 @@ export const reviewAPI = {
       success: false,
     };
   },
-  async get(id){
+  async get(id) {
     const response = await axiosInstance.get(`/reviews/${id}`);
     if (response.status === 200) {
       return response.data;
@@ -86,7 +86,7 @@ export const reviewAPI = {
 export const ratingAPI = {
   async getAll() {
     const response = await axiosInstance.get('/ratings');
-     if (response.status === 200) {
+    if (response.status === 200) {
       return response.data;
     }
     return [];

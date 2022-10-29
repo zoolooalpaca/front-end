@@ -2,7 +2,7 @@
 <template>
  <div class='cooking-board'>
     <span class='body-large'>
-      {{ tableNumber }}
+      โต๊ะ {{ tableNumber }}
     </span>
     <div>
         <p class="label-small">ที่ต้องทำ</p>
@@ -17,13 +17,7 @@
 
 <script>
 export default {
-  data() {
-    return {
-      tableNumber: 'โต๊ะ 1',
-      foodName: 'ส้มตำไข่เค็ม',
-      foodDescription: 'ส้มตำไข่เค็มอร่อยยั่ว ๆ ถูกปากคนไทย',
-    };
-  },
+  props: ['id', 'tableNumber', 'foodName', 'foodDescription'],
 };
 </script>
 

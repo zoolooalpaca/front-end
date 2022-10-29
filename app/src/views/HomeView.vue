@@ -1,3 +1,4 @@
+<!-- eslint-disable max-len -->
 <script>
 import FloatingOrder from '../components/FloatingOrder.vue';
 import NavBarDrawer from '../components/NavBarDrawer/NavBarDrawer.vue';
@@ -10,6 +11,7 @@ import CookingBoard from '../components/CookingBoard/CookingBoard.vue';
 import OrderItem from '../components/OrderItem/OrderItem.vue';
 import HistoryDrawer from '../components/HistoryItem/HistoryDrawer.vue';
 import BannerCard from '../components/BannerCard.vue';
+import CancelCookingFood from '../components/CancelCookingFood/CancelCookingFood.vue';
 
 export default {
   components: {
@@ -24,6 +26,7 @@ export default {
     HistoryDrawer,
     FloatingOrder,
     BannerCard,
+    CancelCookingFood,
   },
 };
 </script>
@@ -44,6 +47,8 @@ export default {
     <ToServeItem></ToServeItem>
     <p>History Item</p>
     <HistoryDrawer></HistoryDrawer>
+    <p>Cancel Cooking Food </p>
+    <CancelCookingFood></CancelCookingFood>
 
     <BannerCard></BannerCard>
     <p class="surface-tint-text">surface-tint-text</p>
