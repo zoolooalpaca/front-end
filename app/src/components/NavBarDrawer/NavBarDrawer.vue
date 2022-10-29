@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <HeaderNav label="ชื่อร้าน" />
+    <HeaderNav label="อร่อยโภชนา" />
     <Item
       v-for="(item, index) in navItems"
       :id="index"
