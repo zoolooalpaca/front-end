@@ -9,6 +9,11 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
     },
+    {
+      path: '/promptPay/create',
+      name: 'promptPay.create',
+      component: () => import('@/views/Payment/CreatePromptpayView.vue')
+    }
   ],
 });
 
