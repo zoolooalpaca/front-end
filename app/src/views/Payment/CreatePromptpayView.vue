@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row">
+  <div class="set-display-grid">
     <div class="flex flex-col float-left">
       <top-app-bar class="set-to-left"/>
       <nav-bar-drawer class="set-to-left"/>
@@ -99,5 +99,11 @@ export default {
 .set-to-left {
   align-items: flex-start;
   width: auto;
+}
+
+.set-display-grid {
+  display: grid;
+  grid-template-columns: 1fr 80%;
+  gap: 16px;
 }
 </style>
