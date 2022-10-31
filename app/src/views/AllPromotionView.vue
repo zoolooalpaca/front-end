@@ -32,18 +32,5 @@ export default {
 </script>
 
 <style>
-.side-nav{
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  left:auto;
-  background-color: #111;
-  opacity: 0.9;
-  overflow-x: hidden;
-  padding-top: 60px;
-  transition: 0.3s;
-}
+
 </style>
