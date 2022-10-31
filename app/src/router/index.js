@@ -23,6 +23,11 @@ const router = createRouter({
       path: '/AllPromotion',
       name: 'AllPromotion',
       component: () => import('@/views/AllPromotionView.vue')
+    },
+    {
+      path: '/promptPay/create',
+      name: 'promptPay.create',
+      component: () => import('@/views/Payment/CreatePromptpayView.vue')
     }
   ],
 });
