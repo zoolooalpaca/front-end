@@ -18,6 +18,11 @@ const router = createRouter({
       path: '/ThankYou',
       name: 'ThankYou',
       component: () => import('@/views/reviews/ThankYou.vue')
+    },
+    {
+      path: '/AllPromotion',
+      name: 'AllPromotion',
+      component: () => import('@/views/AllPromotionView.vue')
     }
   ],
 });

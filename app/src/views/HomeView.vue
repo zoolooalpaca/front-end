@@ -1,7 +1,6 @@
 <script>
 import FloatingOrder from '../components/FloatingOrder.vue';
 import NavBarDrawer from '../components/NavBarDrawer/NavBarDrawer.vue';
-import ToServeItem from '../components/ToServeItem.vue';
 import BillOrderItem from '../components/BillOrderItem/BillOrderItem.vue';
 import TableItem from '../components/Table/TableItem.vue';
 import TopAppBar from '../components/TopAppBar/TopAppBar.vue';
@@ -10,6 +9,10 @@ import CookingBoard from '../components/CookingBoard/CookingBoard.vue';
 import OrderItem from '../components/OrderItem/OrderItem.vue';
 import HistoryDrawer from '../components/HistoryItem/HistoryDrawer.vue';
 import BannerCard from '../components/BannerCard.vue';
+import FoodCard from '../components/FoodCard/FoodCard.vue';
+import FoodCategoryChip from '../components/FoodCategoryChip/FoodCategoryChip.vue';
+import PromotionBanner from '../components/PromotionBanner/PromotionBanner.vue';
+import ToServeDrawer from '../components/ToServeItem/ToServeDrawer.vue';
 
 export default {
   components: {
@@ -20,10 +23,13 @@ export default {
     CookItem,
     OrderItem,
     CookingBoard,
-    ToServeItem,
     HistoryDrawer,
     FloatingOrder,
     BannerCard,
+    FoodCard,
+    FoodCategoryChip,
+    PromotionBanner,
+    ToServeDrawer,
   },
 };
 </script>
@@ -41,9 +47,12 @@ export default {
     <OrderItem></OrderItem>
     <CookingBoard></CookingBoard>
     <p>TO Serve Item</p>
-    <ToServeItem></ToServeItem>
+    <ToServeDrawer></ToServeDrawer>
     <p>History Item</p>
     <HistoryDrawer></HistoryDrawer>
+    <FoodCard></FoodCard>
+    <FoodCategoryChip></FoodCategoryChip>
+    <PromotionBanner></PromotionBanner>
 
     <BannerCard></BannerCard>
     <p class="surface-tint-text">surface-tint-text</p>
