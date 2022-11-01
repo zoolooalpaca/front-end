@@ -1,5 +1,6 @@
 <template>
-  <div class="flex items-center gap-4 mt-2 p-3">
+  <div v-show="status == 'ยังไม่เสิร์ฟ'"
+      class="flex items-center gap-4 mt-2 p-3">
     <div class="table-circle primary on-primary-text">
       <span>
         โต๊ะ {{ table_id }}
@@ -18,12 +19,13 @@
           :key="index"
           class="body-large"
         >
-          {{ order.order }} x{{ order.amount }}
+          {{ order.order }} x{{ order.quantity }}
         </p>
       </div>
     </div>
     <div class="items-center">
       <button
+        @click="serveDone"
         class="
           icon
           secondary-container
@@ -43,6 +45,11 @@ export default {
   props: [
     'id','status','table_id','orders',
   ],
+  methods:{
+    serveDone(){
+
+    },
+  },
 };
 </script>
 

@@ -8,6 +8,7 @@
         <div class="flex flex-col">
             <div class="text-black ">
                 <span v-show="status == 'รอทำ'"
+                    @click="() => Popup('buttonTrigger')"
                     class="material-symbols-outlined">alarm</span>
                 <span v-show="status == 'กำลังทำ'"
                     class="material-symbols-outlined">soup_kitchen</span>
@@ -18,14 +19,14 @@
             <div class="mx-8">
                 <div class="rounded border-radius-10px
                 overflow-hidden flex flex-col" >
-                    <img :src="image" alt="ข้าวมันไก่.jpg"
+                    <img :src="image" 
                     height="60" width="60">
                 </div>
                 <div class='text-black mx-5 flex flex-col'>
-                    <span class='body-large'>{{foodName}}</span>
-                    <span class='body-large'>{{foodPrice}} บาท</span>
-                    <span class='label-medium'>x{{foodAmount}}</span>
-                    <span class='body-large'>{{foodDescription}}</span>
+                    <span class='headline-small'>{{food_name}}</span>
+                    <span class='body-large'>{{food_price}} บาท</span>
+                    <span class='body-small'>x{{order_quantity}}</span>
+                    <span class='body-medium'>{{order_request}}</span>
                 </div>
             </div>
        </div>
@@ -46,9 +47,12 @@
 <script>
 export default {
   props: [
-    'id', 'status', 'image', 'foodName',
-    'foodPrice', 'foodAmount', 'foodDescription',
+    'id', 'status', 'image', 'food_name',
+    'food_price', 'order_quantity', 'order_request',
   ],
+  methods:{
+    
+  }
 };
 </script>
 

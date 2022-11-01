@@ -7,10 +7,10 @@
     </div>
 
     <div class='mx-5 flex flex-col'>
-        <span class='headline-small'>{{foodName}}</span>
-        <span class='body-large'>{{foodPrice}} บาท</span>
-        <span class='body-small'>x{{foodAmount}}</span>
-        <span class='body-medium'>{{foodDescription}}</span>
+        <span class='headline-small'>{{food_name}}</span>
+        <span class='body-large'>{{food_price}} บาท</span>
+        <span class='body-small'>x{{order_quantity}}</span>
+        <span class='body-medium'>{{order_request}}</span>
     </div>
   </div>
   <div class="flex items-center">
@@ -27,8 +27,8 @@
 <script>
 export default {
   props: [
-    'id', 'image', 'foodName',
-    'foodPrice', 'foodAmount', 'foodDescription',
+    'id', 'image', 'food_name',
+    'food_price', 'order_quantity', 'order_request',
   ],
 };
 </script>

@@ -3,7 +3,7 @@
       class="inline-flex items-center
       justify-start gap-2"
     >
-        <button class="secondary-container w-8 h-8 rounded-full items-center">
+        <button  @click="goBack" class="secondary-container w-8 h-8 rounded-full items-center">
           <div class="flex items-center justify-center">
             <span class="material-symbols-outlined">
               arrow_back
@@ -20,7 +20,13 @@
 
 <script>
 export default {
-  props:['label']
+  props:['label'],
+
+  methods: {
+    goBack () {
+      return this.$router.go(-1)
+    },
+  },
 };
 </script>
 

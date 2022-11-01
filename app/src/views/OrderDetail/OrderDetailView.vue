@@ -3,28 +3,30 @@
         <div>
             <TopAppBar label="อาหารในถาด"></TopAppBar>
         </div>
-        <div class="py-8">
+        <div class="py-4">
             <OrderItem></OrderItem>
             <OrderDrawer></OrderDrawer>  
         </div>
-        <div class="flex gap-2">
-            <div class="order-bar order-detail-bar">
-                <label>รวม</label>
-                <div class="order-detail">
-                    <div class="flex ml-[14px]">
-                        <span>{{totalPrice}} บาท</span>
+        <div>
+            <div class="flex gap-2">
+                <div class="order-bar order-detail-bar">
+                    <label>รวม</label>
+                    <div class="order-detail">
+                        <div class="flex ml-[14px]">
+                            <span>{{totalPrice}} บาท</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="mt-4 float-right">
-            <button class="
-                text-center
-                button1
-                primary-container
-                ">
-                + สั่ง
-            </button>
+            <div class="py-4 float-right">
+                <button class="
+                    text-center
+                    button1
+                    primary-container
+                    ">
+                    + สั่ง
+                </button>
+            </div>
         </div>
     </div>
 </template>

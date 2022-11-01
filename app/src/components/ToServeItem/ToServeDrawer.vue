@@ -23,15 +23,15 @@ export default {
           orders: [
             {
               order: 'ข้าวไข่เจียว',
-              amount: 2,
+              quantity: 2,
             },
             {
               order: 'กะเพราหมูไข่ดาว',
-              amount: 1,
+              quantity: 1,
             },
             {
               order: 'กะเพราหมูดาว',
-              amount: 1,
+              quantity: 1,
             },
           ],
         },
@@ -41,15 +41,15 @@ export default {
           orders: [
             {
               order: 'ไข่ดาว',
-              amount: 1,
+              quantity: 1,
             },
             {
               order: 'กะเพราดาว',
-              amount: 1,
+              quantity: 1,
             },
             {
               order: 'กะเพราหมูไข่',
-              amount: 1,
+              quantity: 1,
             },
           ],
         },

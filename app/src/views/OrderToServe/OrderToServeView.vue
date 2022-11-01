@@ -5,32 +5,82 @@
             <div class="p-4 flex-grow">
                 <SectionHeader label="รายการอาหารที่ต้องเสิร์ฟ"></SectionHeader>
                 <div class="py-4 text-right flex-col">
-                    <label for="order_amount">{{orders}} รายการ</label>
+                    <label for="order_amount">{{totalOrders}} รายการ</label>
                 </div>
                     <div>
-                        <ToServeItem></ToServeItem>
-                        <ToServeDrawer></ToServeDrawer>
+                        <ToServeItem
+                            v-for="(table,index) in tables"
+                            :id="index"
+                            :status="table.status"
+                            :table_id="table.table_id"
+                            :orders="table.orders"
+                            :key="index"
+                        >
+                        </ToServeItem>
                     </div>
                 </div>
             </div>
     </div>
-    
 </template>
     
 <script>
     import SectionHeader from '../../components/NavBarDrawer/SectionHeader.vue';
     import ToServeItem from '../../components/ToServeItem/ToServeItem.vue';
-    import ToServeDrawer from '../../components/ToServeItem/ToServeDrawer.vue';
     import NavBarEmployee from '../../components/NavBarDrawer/NavBarEmployee.vue';
-    export default{
-    components:{
+    
+export default{
+components:{
     SectionHeader,
     ToServeItem,
-    ToServeDrawer,
     NavBarEmployee
+},  
+
+computed: {
+    totalOrders() {
+      return this.tables.length;
+    },
 },
-    methods: {
-        
+    data() {
+        return {
+          tables: [
+            {
+              table_id: 1,
+              status:'ยังไม่เสิร์ฟ',
+              orders: [
+                {
+                  order: 'ข้าวไข่เจียว',
+                  quantity: 2,
+                },
+                {
+                  order: 'กะเพราหมูไข่ดาว',
+                  quantity: 1,
+                },
+                {
+                  order: 'กะเพราหมูดาว',
+                  quantity: 1,
+                },
+              ],
+            },
+            {
+              table_id: 2,
+              status:'ยังไม่เสิร์ฟ',
+              orders: [
+                {
+                  order: 'ไข่ดาว',
+                  quantity: 1,
+                },
+                {
+                  order: 'กะเพราดาว',
+                  quantity: 1,
+                },
+                {
+                  order: 'กะเพราหมูไข่',
+                  quantity: 1,
+                },
+              ],
+            },
+          ],
+        };
     },
 }
 </script>

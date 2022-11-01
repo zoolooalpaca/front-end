@@ -3,6 +3,8 @@ import HomeView from '@/views/HomeView.vue';
 import ServeView from '@/views/OrderToServe/OrderToServeView.vue';
 import HistoryView from '@/views/OrderHistory/OrderHistoryView.vue';
 import OrderView from '@/views/OrderDetail/OrderDetailView.vue';
+import NewCustomerView from '@/views/OrderQrCode/NewCustomerView.vue';
+import OrderQrCodeView from '@/views/OrderQrCode/OrderQrCodeView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +28,16 @@ const router = createRouter({
       path: '/order',
       name: 'order-detail',
       component: OrderView
+    },
+    {
+      path: '/new-customer',
+      name: 'new-customer',
+      component: NewCustomerView,
+    },
+    {
+      path: '/new-customer/order-qrcode',
+      name: 'order-qrcode',
+      component: OrderQrCodeView,
     }
   ],
 });

@@ -26,7 +26,7 @@ export default{
         HistoryItem,
         HistoryDrawer,
         FloatingHistoryOrder
-}
+},
 };
 
 </script>
