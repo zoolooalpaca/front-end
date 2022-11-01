@@ -1,3 +1,4 @@
+<!-- eslint-disable max-len -->
 <template lang=''>
     <div class='flex flex-row'>
         <div class="flex w-1/5">
@@ -7,7 +8,7 @@
 
         <div class='ml-10 w-full'>
             <span class='headline-medium'> อาหารที่รอดำเนินการ </span>
-            <span class='body-large outline-text float-right'>3 รายการ </span>
+            <span class='body-large outline-text float-right'> {$CookDrawer.index} รายการ </span>
             <div class='flex flex-col max-w-[100%] space-y-4'>
                 <CookDrawer>
                 </CookDrawer>

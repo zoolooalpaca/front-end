@@ -12,6 +12,8 @@ import OrderItem from '../components/OrderItem/OrderItem.vue';
 import HistoryDrawer from '../components/HistoryItem/HistoryDrawer.vue';
 import BannerCard from '../components/BannerCard.vue';
 import CancelCookingFood from '../components/CancelCookingFood/CancelCookingFood.vue';
+import CancelFoodButton from '../components/CancelFoodButton/CancelFoodButton.vue';
+import ServeFoodButton from '../components/ServeFoodButton/ServeFoodButton.vue';
 
 export default {
   components: {
@@ -27,6 +29,9 @@ export default {
     FloatingOrder,
     BannerCard,
     CancelCookingFood,
+    CancelFoodButton,
+    ServeFoodButton,
+
   },
 };
 </script>
@@ -49,6 +54,8 @@ export default {
     <HistoryDrawer></HistoryDrawer>
     <p>Cancel Cooking Food </p>
     <CancelCookingFood></CancelCookingFood>
+    <CancelFoodButton/>
+    <ServeFoodButton/>
 
     <BannerCard></BannerCard>
     <p class="surface-tint-text">surface-tint-text</p>

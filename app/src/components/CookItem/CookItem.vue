@@ -1,3 +1,4 @@
+<!-- eslint-disable max-len -->
 <template lang="">
     <div class="cook-item-container">
         <p class="body-large secondary-text">โต๊ะ {{ tableNumber }}</p>
@@ -6,7 +7,7 @@
           <p class="headline-medium">x{{ foodAmount }}</p>
         </div>
         <p class="body-medium outline-text">{{ foodDescription }}</p>
-        <button class="cook-button primary justify-center">
+        <button @click="()=>$router.push('order-cooking')" class="cook-button primary justify-center">
           <span class="on-primary-text">
             ทำ
           </span>
