@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex min-h-screen">
+  <div class="nav-menu">
     <div class="
           w-64
           absolute
@@ -12,7 +12,7 @@
           duration-200
           ease-in-out
         "
-         :class="{ 'relative -translate-x-0': showSidebar }"
+         :class="this.showMobileMenu ? 'relative -translate-x-0' : 'closed-menu'"
     >
       <h3 class="headline-small ml-4">ชื่อร้าน</h3>
       <NavItem
@@ -28,13 +28,19 @@
       </NavItem>
     </div>
 
-    <div class="flex-1 ml-5">
-      <button @click="showSidebar = !showSidebar">
+    <div class="basis-3/4 ml-10">
+      <div class="flex justify-between">
+      <i>
+        <button @click="showMenu()">
         <span class="material-symbols-outlined">
           menu
         </span>
-      </button>
+        </button>
+      </i>
+
       <h3 class="headline-large">รายการอาหาร</h3>
+      </div>
+
       <div class="grid grid-cols-4 gap-4 " >
         <div class="grid justify-items-center create-menu">
           <button
@@ -74,6 +80,7 @@ export default {
   },
   data() {
     return {
+      showMobileMenu: false,
       activeId: 0,
       loopCount: 4,
       navItems: [
@@ -108,6 +115,9 @@ export default {
     FoodCard,
   },
   methods: {
+    showMenu() {
+      this.showMobileMenu = !this.showMobileMenu;
+    },
     goToCreateMenu(){
       this.$router.push(`/CreateMenu`)
     },
@@ -126,5 +136,53 @@ div.create-menu {
   border-radius: 30px;
   background: var(--md-sys-color-primary-container);
   padding: 25px 20px 20px 25px;
+}
+
+.nav-menu {
+  display: flex;
+}
+.nav-content {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+i {
+  display: none;
+}
+.main-content {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-menu {
+    padding-top: 10px;
+    position: absolute;
+    width: 60%;
+  }
+
+  .closed-menu {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+  }
+
+  .nav-content {
+    flex-direction: column;
+    z-index: 100;
+    position: relative;
+    transition: all 0.2s ease-out;
+  }
+
+  i {
+    display: block;
+    text-align: right;
+    padding: 0 10px 10px 0;
+  }
+
+  .main-content {
+    display: flex;
+    flex-direction: column;
+  }
 }
 </style>
