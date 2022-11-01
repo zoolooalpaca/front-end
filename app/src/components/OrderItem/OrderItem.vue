@@ -1,6 +1,6 @@
 <!-- eslint-disable max-len -->
 <template>
- <div class="order-item-container rounded-lg flex justify-between">
+ <div class="order-item-container rounded-lg mt-3 p-4 flex justify-between">
   <div class="flex">
     <div>
       <img class="order-image" :src="image" alt="">
@@ -26,15 +26,10 @@
 
 <script>
 export default {
-  data() {
-    return {
-      image: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
-      foodName: 'ข้าวมันไก่',
-      foodPrice: '45',
-      foodAmount: 1,
-      foodDescription: 'ขอหนังล้วน ๆ ไม่เอาเนื้อไก่',
-    };
-  },
+  props: [
+    'id', 'image', 'foodName',
+    'foodPrice', 'foodAmount', 'foodDescription',
+  ],
 };
 </script>
 

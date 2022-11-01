@@ -6,7 +6,7 @@ import TableItem from '../components/Table/TableItem.vue';
 import TopAppBar from '../components/TopAppBar/TopAppBar.vue';
 import CookItem from '../components/CookItem/CookItem.vue';
 import CookingBoard from '../components/CookingBoard/CookingBoard.vue';
-import OrderItem from '../components/OrderItem/OrderItem.vue';
+import OrderDrawer from '../components/OrderItem/OrderDrawer.vue';
 import HistoryDrawer from '../components/HistoryItem/HistoryDrawer.vue';
 import BannerCard from '../components/BannerCard.vue';
 import FoodCard from '../components/FoodCard/FoodCard.vue';
@@ -21,7 +21,7 @@ export default {
     BillOrderItem,
     TableItem,
     CookItem,
-    OrderItem,
+    OrderDrawer,
     CookingBoard,
     HistoryDrawer,
     FloatingOrder,
@@ -44,7 +44,7 @@ export default {
     <CookItem/>
     <BillOrderItem/>
     <TableItem/>
-    <OrderItem></OrderItem>
+    <OrderDrawer></OrderDrawer>
     <CookingBoard></CookingBoard>
     <p>TO Serve Item</p>
     <ToServeDrawer></ToServeDrawer>

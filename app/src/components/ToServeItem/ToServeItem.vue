@@ -41,7 +41,7 @@
 <script>
 export default {
   props: [
-    'id','status','table_id', 'orders',
+    'id','status','table_id','orders',
   ],
 };
 </script>

@@ -5,7 +5,7 @@
         <div class="order-detail">
           <span>{{totalItem}} รายการ</span>
           <div class="flex ml-[14px]">
-          <span>฿{{totalPrice}} บาท</span>
+          <span>฿{{totalPrice}}</span>
           </div>
         </div>
       </div>
@@ -37,7 +37,6 @@
             price: 140,
           },
         ]
-        
       };
     },
     props: {},
@@ -50,13 +49,7 @@
       },
     },
     methods: {
-      onClickToGoToAllOrders() {
-        if (this.url != '') {
-          this.$router.push(this.url);
-        }
-      },
-      async orderHistory(food) {
-      },
+
     },
   };
   </script>

@@ -22,11 +22,23 @@ import TopAppBar from '../../components/TopAppBar/TopAppBar.vue';
 export default{
     components:
     {
-    TopAppBar,
-    HistoryItem,
-    HistoryDrawer,
-    FloatingHistoryOrder
+        TopAppBar,
+        HistoryItem,
+        HistoryDrawer,
+        FloatingHistoryOrder
 }
 };
 
 </script>
+
+<style>
+.cancel-button {
+    width: 90px;
+    height: 40px;
+    background: var( --md-sys-color-error);
+    color: var( --md-sys-color-on-primary);
+
+    /* outline */
+    border-radius: 100px;
+}
+</style>
