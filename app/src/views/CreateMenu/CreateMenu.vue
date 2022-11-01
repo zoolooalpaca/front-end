@@ -1,6 +1,19 @@
 <template>
-  <div class="flex flex-row">
-    <div class="basis-1/4">
+  <div class="nav-menu">
+    <div class="
+          w-64
+          absolute
+          inset-y-0
+          left-0
+          md:relative md:-translate-x-0
+          transform
+          -translate-x-full
+          transition
+          duration-200
+          ease-in-out
+          "
+          :class="this.showMobileMenu ? 'relative -translate-x-0' : 'closed-menu'"
+          >
       <SectionHeader label="อร่อยโภชนา" />
       <NavItem
           v-for="(item, index) in navItems"
@@ -14,8 +27,17 @@
         <span class="material-symbols-outlined">{{item.icon}}</span>
       </NavItem>
     </div>
+
     <div class="basis-3/4 ml-10">
       <div class="flex justify-between">
+        <i>
+          <button @click="showMenu()">
+        <span class="material-symbols-outlined">
+          menu
+        </span>
+          </button>
+        </i>
+
         <h3 class="headline-large mb-10">เพิ่มรายการอาหาร</h3>
             <button
                 class="w-8 h-8 secondary-container rounded-full p-1 justify-center"
@@ -86,6 +108,7 @@ import UploadService from "../../services/UploadFilesService.js";
 export default {
   data() {
     return {
+      showMobileMenu: false,
       currentImage: undefined,
       previewImage: undefined,
 
@@ -105,6 +128,9 @@ export default {
     }
   },
   methods: {
+    showMenu() {
+      this.showMobileMenu = !this.showMobileMenu;
+    },
     backToMenuList(){
       this.$router.push(`/MenuList`)
     },
@@ -153,7 +179,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .input-create-menu[type=text]{
   width: 90%;
   border: 2px solid;
@@ -194,5 +220,41 @@ export default {
   margin: 4px 2px;
   border-radius: 10px;
   cursor: pointer;
+}
+
+.nav-menu {
+  display: flex;
+}
+.nav-content {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+i {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-menu {
+    padding-top: 10px;
+    position: absolute;
+    width: 60%;
+  }
+  .closed-menu {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+  }
+  .nav-content {
+    flex-direction: column;
+    z-index: 100;
+    position: relative;
+    transition: all 0.2s ease-out;
+  }
+  i {
+    display: block;
+    text-align: right;
+    padding: 0 10px 10px 0;
+  }
 }
 </style>
