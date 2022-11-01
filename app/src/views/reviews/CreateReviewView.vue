@@ -29,13 +29,13 @@
     </div>
 
     <button @click="() => TogglePopup('buttonTrigger')"
-            class="p-3 mt-5 text-white bg-[#1B5EAF] border rounded-lg float-right">ส่ง</button>
+            class="button-blue p-3 mt-5 border rounded-lg float-right">ส่ง</button>
     <ConfirmReview
         v-if="popupTrigger.buttonTrigger" :TogglePopup="() => TogglePopup('buttonTrigger')">
       <h1 class="text-center text-3xl">ยืนยันที่จะกดส่ง</h1>
       <div>
         <button @click="saveNewReview"
-                class="p-3 mt-5 text-white bg-[#1B5EAF] border rounded-lg float-left">
+                class="button-blue p-3 mt-5 border rounded-lg float-left">
           ใช่
         </button>
       </div>
@@ -67,7 +67,10 @@ export default {
     return{
       review: {feedback: ''},
       rating: '',
-      error: null
+      error: null,
+      titles: [
+          'การให้บริการ', 'รสชาติอาหาร', 'ความสะอาด', 'ความรวดเร็ว/ความสะดวก'
+      ]
     }
   },
   components: {
@@ -96,5 +99,9 @@ export default {
 </script>
 
 <style>
-
+.button-blue {
+  color: var(--md-sys-color-on-primary);
+  background: var(--md-sys-color-primary);
+  border-color: var(--md-sys-color-primary);
+}
 </style>

@@ -1,9 +1,37 @@
 <template>
-  <div class="set-display-grid">
-    <div class="flex flex-col float-left">
-      <top-app-bar class="set-to-left"/>
-      <nav-bar-drawer class="set-to-left"/>
+  <div class="nav-menu">
+    <div class="
+         w-64
+         absolute
+         inset-y-0
+         left-0
+         md:relative md:-translate-x-0
+         transform
+         -translate-x-full
+         transition
+         duration-200
+         ease-in-out"
+    :class="this.showMobileMenu ? 'relative -translate-x-0' : 'closed-menu'">
+      <SectionHeader label="อร่อยโภชนา" />
+      <NavItem
+          v-for="(item, index) in navItems"
+          :id="index"
+          :label="item.label"
+          :active="index == activeId"
+          :onClickItem="onClickItem"
+          :key="index"
+      class="ite">
+        <span class="material-symbols-outlined">{{item.icon}}</span>
+      </NavItem>
     </div>
+
+    <i>
+      <button @click="showMenu()">
+        <span class="material-symbols-outlined">
+          menu
+        </span>
+      </button>
+    </i>
 
     <div class="ml-8">
       <h1 class="text-3xl mb-3">{{ title }}</h1>
@@ -11,7 +39,7 @@
 
       <label class="inline-flex">
         <input type="text" id="table_number" class="border rounded-lg">
-        <button class="flex items-center">
+        <button @click="deleteInput" class="flex items-center">
           <span class="material-symbols-outlined">cancel</span>
         </button>
       </label>
@@ -38,9 +66,8 @@
   </div>
 </template>
 <script>
-import TopAppBar from "@/components/TopAppBar/TopAppBar.vue";
-import NavBarDrawer from "@/components/NavBarDrawer/NavBarDrawer.vue";
-import Item from "@/components/NavBarDrawer/NavItem.vue";
+import NavItem from "@/components/NavBarDrawer/NavItem.vue";
+import SectionHeader from "@/components/NavBarDrawer/SectionHeader.vue";
 import BillOrderItem from "@/components/BillOrderItem/BillOrderItem.vue";
 import { usePaymentStore } from "@/stores/payment.js";
 export default {
@@ -55,18 +82,36 @@ export default {
       table_number: '',
       image: 'https://www.freepnglogos.com/uploads/qr-code-png/qr-code-file-bangla-mobile-code-0.png',
       error: null,
-      payment: ''
+      payment: '',
+      navItems: [
+        {label: 'รับลูกค้าใหม่', icon: 'sentiment_satisfied'},
+        {label: 'จ่ายเงิน', icon: 'payment'},
+        {label: 'อาหารที่ต้องเสิร์ฟ', icon: 'room_service'},
+        {label: 'อาหารที่ต้องทำ', icon: 'soup_kitchen'},
+      ],
+      showMobileMenu: false
     }
   },
   components: {
-    TopAppBar,
-    NavBarDrawer,
-    Item,
+    NavItem,
+    SectionHeader,
     BillOrderItem
   },
   methods: {
+    showMenu() {
+      this.showMobileMenu = !this.showMobileMenu;
+    },
+    deleteInput() {
+
+    },
     printQRCode() {
 
+    },
+    onClickItem(id, url) {
+      this.activeId = id;
+      if (url != ''){
+        this.$router.push(url)
+      }
     },
     async paid() {
       try {
@@ -84,7 +129,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .button-payment {
   color: var(--md-sys-color-on-primary);
   background: var(--md-sys-color-primary);
@@ -94,11 +139,6 @@ export default {
 .borderColor {
   border: 1px solid var(--md-sys-color-outline-light);
   border-radius: 15px;
-}
-
-.set-to-left {
-  align-items: flex-start;
-  width: auto;
 }
 
 .set-display-grid {
@@ -120,5 +160,42 @@ export default {
   overflow-x: hidden;
   padding-top: 60px;
   transition: 0.3s;
+}
+
+.nav-menu {
+  display: flex;
+}
+
+.nav-content {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+i {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-menu {
+    padding-top: 10px;
+    position: absolute;
+    width: 60%;
+  }
+  .closed-menu {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+  }
+  .nav-content {
+    flex-direction: column;
+    z-index: 100;
+    position: relative;
+    transition: all 0.2s ease-out;
+  }
+  i {
+    display: block;
+    text-align: right;
+    padding: 0 10px 10px 0;
+  }
 }
 </style>
