@@ -27,8 +27,8 @@
       </NavItem>
     </div>
 
-    <div class="basis-3/4 ml-10 ">
-      <div class="flex justify-between">
+    <div class="ml-10">
+      <div class="flex">
         <i>
           <button @click="showMenu()">
         <span class="material-symbols-outlined">
@@ -36,10 +36,12 @@
         </span>
           </button>
         </i>
-      <h3 class="headline-large">รายการโปรโมชัน</h3>
+        <div>
+          <h3 class="headline-large">รายการโปรโมชัน</h3>
+        </div>
       </div>
 
-      <div class="grid grid-cols-4 gap-4" >
+      <div class="main-content-promotion-list mr-20" >
         <div class="grid justify-items-center create-promotion">
           <button
               class="rounded-full p-1 justify-center"
@@ -122,7 +124,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 div.create-promotion {
   border-radius: 30px;
   background: var(--md-sys-color-primary-container);
@@ -141,16 +143,18 @@ div.create-promotion {
 i {
   display: none;
 }
-.main-content {
-  display: flex;
-  flex-direction: row;
+div.main-content-promotion-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-gap: 4px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px){
   .nav-menu {
     padding-top: 10px;
     position: absolute;
-    width: 60%;
+    width: 100%;
+    display: flex;
   }
   .closed-menu {
     opacity: 0;
@@ -168,9 +172,24 @@ i {
     text-align: right;
     padding: 0 10px 10px 0;
   }
-  .main-content {
-    display: flex;
-    flex-direction: column;
+  div.main-content-promotion-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-gap: 4px;
+  }
+}
+@media screen and (max-width: 650px) {
+  div.main-content-promotion-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 4px;
+  }
+}
+@media screen and (max-width: 420px){
+  div.main-content-promotionlist {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-gap: 4px;
   }
 }
 </style>

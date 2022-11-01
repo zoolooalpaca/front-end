@@ -265,7 +265,8 @@ i {
   .nav-menu {
     padding-top: 10px;
     position: absolute;
-    width: 60%;
+    width: 100%;
+    display: flex;
   }
   .closed-menu {
     opacity: 0;

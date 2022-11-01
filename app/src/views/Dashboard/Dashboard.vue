@@ -118,7 +118,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 div.topic {
   background-color: var(--md-sys-color-primary-container);
   border-radius: 20px;
@@ -149,7 +149,8 @@ i {
   .nav-menu {
     padding-top: 10px;
     position: absolute;
-    width: 60%;
+    width: 100%;
+    display: flex;
   }
   .closed-menu {
     opacity: 0;

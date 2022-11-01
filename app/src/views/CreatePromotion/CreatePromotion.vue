@@ -199,7 +199,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .input-create-menu[type=text]{
   width: 90%;
   border: 2px solid;
@@ -262,7 +262,8 @@ i {
   .nav-menu {
     padding-top: 10px;
     position: absolute;
-    width: 60%;
+    width: 100%;
+    display: flex;
   }
   .closed-menu {
     opacity: 0;

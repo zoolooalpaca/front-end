@@ -28,8 +28,8 @@
       </NavItem>
     </div>
 
-    <div class="basis-3/4 ml-10">
-      <div class="flex justify-between">
+    <div class="ml-10">
+      <div class="flex">
       <i>
         <button @click="showMenu()">
         <span class="material-symbols-outlined">
@@ -37,11 +37,12 @@
         </span>
         </button>
       </i>
-
-      <h3 class="headline-large">รายการอาหาร</h3>
+        <div>
+          <h3 class="headline-large">รายการอาหาร</h3>
+        </div>
       </div>
 
-      <div class="grid grid-cols-4 gap-4 " >
+      <div class="main-content-menu-list mr-20" >
         <div class="grid justify-items-center create-menu">
           <button
               class="rounded-full p-1 justify-center"
@@ -131,17 +132,18 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+
 div.create-menu {
   border-radius: 30px;
   background: var(--md-sys-color-primary-container);
   padding: 25px 20px 20px 25px;
 }
 
-.nav-menu {
+.nav-menu{
   display: flex;
 }
-.nav-content {
+.nav-content{
   display: flex;
   flex-direction: column;
   width: 300px;
@@ -149,16 +151,18 @@ div.create-menu {
 i {
   display: none;
 }
-.main-content {
-  display: flex;
-  flex-direction: row;
+div.main-content-menu-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-gap: 4px;
 }
 
 @media screen and (max-width: 768px) {
-  .nav-menu {
+  .nav-menu{
     padding-top: 10px;
     position: absolute;
-    width: 60%;
+    width: 100%;
+    display: flex;
   }
 
   .closed-menu {
@@ -180,9 +184,24 @@ i {
     padding: 0 10px 10px 0;
   }
 
-  .main-content {
-    display: flex;
-    flex-direction: column;
+  div.main-content-menu-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-gap: 4px;
+  }
+}
+@media screen and (max-width: 650px) {
+  div.main-content-menu-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 4px;
+  }
+}
+@media screen and (max-width: 420px) {
+  div.main-content-menu-list {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-gap: 4px;
   }
 }
 </style>
