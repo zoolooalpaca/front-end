@@ -18,6 +18,7 @@
           :id="index"
           :label="item.label"
           :active="index == activeId"
+          :url="item.router"
           :onClickItem="onClickItem"
           :key="index"
       class="ite">
@@ -38,7 +39,7 @@
       <h3 class="text-xl mb-5">{{ section }}</h3>
 
       <label class="inline-flex">
-        <input type="text" id="table_number" class="border rounded-lg">
+        <input type="text" id="table_number" ref="tableNumber" class="text-color border rounded-lg">
         <button @click="deleteInput" class="flex items-center">
           <span class="material-symbols-outlined">cancel</span>
         </button>
@@ -47,7 +48,7 @@
       <div class="mt-5 grid grid-cols-2 ">
         <div class="borderColor mt-5 block flex flex-col">
           <h3 class="mb-3 text-xl ml-3 mt-3">ใบเสร็จ</h3>
-          <BillOrderItem class="ml-3 mr-3 mb-2 w-auto"/>
+          <BillOrderItem class="flex justify-center"/>
         </div>
 
         <div class="borderColor ml-8 mt-5">
@@ -102,7 +103,7 @@ export default {
       this.showMobileMenu = !this.showMobileMenu;
     },
     deleteInput() {
-
+      this.$refs["tableNumber"].value = "";
     },
     printQRCode() {
 
@@ -139,6 +140,10 @@ export default {
 .borderColor {
   border: 1px solid var(--md-sys-color-outline-light);
   border-radius: 15px;
+}
+
+.text-color {
+  color: var(--md-sys-color-on-primary-dark);
 }
 
 .set-display-grid {

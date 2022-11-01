@@ -1,46 +1,53 @@
 <template>
-  <div class="m-3 block">
-    <h1 class="text-3xl text-center"> รีวิว </h1>
+  <div class="m-3 flex-col">
+    <button
+        class="w-8 h-8 secondary-container rounded-full p-1 justify-center"
+        @click="backToMenu">
+              <span class="material-symbols-outlined">
+                arrow_back
+              </span>
+    </button>
+    <h1 class="mt-2 mb-5 text-3xl text-center"> รีวิว </h1>
 
     <div>
       <label for="name">การให้บริการ</label>
-      <StarRating v-model="rating.count"></StarRating>
+      <StarRating v-model="rating.count" class="flex justify-center"></StarRating>
     </div>
 
     <div>
       <label for="name">รสชาติอาหาร</label>
-      <StarRating v-model="rating.count"></StarRating>
+      <StarRating v-model="rating.count" class="flex justify-center"></StarRating>
     </div>
 
     <div>
       <label for="name">ความสะอาด</label>
-      <StarRating v-model="rating.count"></StarRating>
+      <StarRating v-model="rating.count" class="flex justify-center"></StarRating>
     </div>
 
     <div>
       <label for="name">ความรวดเร็ว/ความสะดวก</label>
-      <StarRating v-model="rating.count"></StarRating>
+      <StarRating v-model="rating.count" class="flex justify-center"></StarRating>
     </div>
 
     <div class="flex flex-col">
       <label>ข้อเสนอแนะ</label>
       <textarea name="" id="" cols="80" rows="10" v-model="review.feedback" type="text"
-                class="mt-3 border border-gray-700 rounded-lg bg-center"></textarea>
+                class="text-color mt-3 border border-gray-700 rounded-lg bg-center"></textarea>
     </div>
-
-    <button @click="() => TogglePopup('buttonTrigger')"
-            class="button-blue p-3 mt-5 border rounded-lg float-right">ส่ง</button>
-    <ConfirmReview
-        v-if="popupTrigger.buttonTrigger" :TogglePopup="() => TogglePopup('buttonTrigger')">
-      <h1 class="text-center text-3xl">ยืนยันที่จะกดส่ง</h1>
-      <div>
-        <button @click="saveNewReview"
-                class="button-blue p-3 mt-5 border rounded-lg float-left">
-          ใช่
-        </button>
-      </div>
-    </ConfirmReview>
   </div>
+
+  <button @click="() => TogglePopup('buttonTrigger')"
+          class="button-blue p-3 mt-5 border rounded-lg float-right">ส่ง</button>
+  <ConfirmReview
+      v-if="popupTrigger.buttonTrigger" :TogglePopup="() => TogglePopup('buttonTrigger')">
+    <h1 class="text-center text-3xl">ยืนยันที่จะกดส่ง</h1>
+    <div>
+      <button @click="saveNewReview"
+              class="button-blue p-3 mt-5 border rounded-lg float-left">
+        ใช่
+      </button>
+    </div>
+  </ConfirmReview>
 </template>
 
 <script>
@@ -93,15 +100,22 @@ export default {
         console.log(error)
         this.error = error.message
       }
+    },
+    backToMenu() {
+      this.$router.push(`/`)
     }
   }
 }
 </script>
 
-<style>
+<style >
 .button-blue {
   color: var(--md-sys-color-on-primary);
   background: var(--md-sys-color-primary);
   border-color: var(--md-sys-color-primary);
+}
+
+.text-color {
+  color: var(--md-sys-color-on-primary-dark);
 }
 </style>
