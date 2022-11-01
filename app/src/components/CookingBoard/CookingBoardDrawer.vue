@@ -22,16 +22,16 @@ export default {
           foodName: 'ข้าวผัดหมู',
           foodDescription: 'ข้าวผัดหมูไม่ใส่น้ำมัน แล้วนายคนนั้นคือใครกัน',
         },
-        {
-          tableNumber: '2',
-          foodName: 'ข้าวมันไก่',
-          foodDescription: 'ข้าวมันไก่ ดีอะ ดีอะ ดีอะ',
-        },
-        {
-          tableNumber: '3',
-          foodName: 'ข้าวไปในใจเธอ',
-          foodDescription: 'ยากจัง เข้าไม่ได้',
-        },
+        // {
+        //   tableNumber: '2',
+        //   foodName: 'ข้าวมันไก่',
+        //   foodDescription: 'ข้าวมันไก่ ดีอะ ดีอะ ดีอะ',
+        // },
+        // {
+        //   tableNumber: '3',
+        //   foodName: 'ข้าวไปในใจเธอ',
+        //   foodDescription: 'ยากจัง เข้าไม่ได้',
+        // },
       ],
     };
   },
