@@ -1,3 +1,4 @@
+
 <template>
   <div class="nav-var-drawer-header">
     <span>{{ label }}</span>
