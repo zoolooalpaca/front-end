@@ -16,7 +16,9 @@
                     text-center
                     button1
                     primary-container
-                    ">
+                    "
+                    @click="onclickdone"
+                    >
                     <span class="material-symbols-outlined"> done </span>
                     เสร็จ
                     </button>
@@ -34,6 +36,12 @@ import NavBarEmployee from '../../components/NavBarDrawer/NavBarEmployee.vue';
 export default{
     components:{
     NavBarEmployee,
+    },
+
+    methods:{
+    onclickdone () {
+      this.$router.push('/new-customer')
+    },
     }
 }
 

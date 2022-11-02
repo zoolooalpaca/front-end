@@ -5,14 +5,15 @@
         <div class="p-4 flex-grow">
             <h1 class="headline-medium">รับลูกค้าใหม่</h1>
             <h1 class="headline-small">เลือกโต๊ะ</h1>
-            <div class="flex">
-                <div class="mt-8">
-                <TableItem 
-                v-for="(table,index) in tables"
-                :table_number="table.table_number"
-                :available="table.available"
-                :key="index"
-                ></TableItem>
+            <div class="flex main-content-table-list mr-20 ">
+                <div class="grid justify-items-center mt-8"
+                    v-for="(table,index) in tables">
+                    <TableItem 
+                    :table_number="table.table_number"
+                    :available="table.available"
+                    :key="index"
+                    >
+                    </TableItem>
                 </div>
             </div>
         </div>
@@ -30,7 +31,7 @@ export default{
     NavBarEmployee,
     TableItem
     },
-
+    
 
 data() {
     return {
@@ -58,12 +59,53 @@ data() {
             {
                 table_number:6,
                 available:false,
-            }
+            },
+            {
+                table_number:7,
+                available:false,
+            },
+            {
+                table_number:8,
+                available:true,
+            },
+            {
+                table_number:9,
+                available:false,
+            },
+            {
+                table_number:10,
+                available:true,
+            },
+            {
+                table_number:11,
+                available:true,
+            },
+            {
+                table_number:12,
+                available:true,
+            },
+            {
+                table_number:13,
+                available:true,
+            },
+            {
+                table_number:14,
+                available:true,
+            },
+            {
+                table_number:15,
+                available:true,
+            },
         ]
     }
 },
 }
 </script>
 
-<style>
+<style lang="scss">
+div.main-content-table-list {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-gap: 6px;
+  }
 </style>
