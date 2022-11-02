@@ -15,23 +15,66 @@
   </div>
   <div class="flex items-center">
       <button 
-        @click=""
+        @click="() => DeletePopup('buttonTrigger')"
         class="error-container error-text w-10 h-10 rounded-full">
         <div class="flex items-center justify-center">
           <span class="material-symbols-outlined">close</span>
         </div>
       </button>
   </div>
- </div>
+  <OrderConfirmDeletePopup
+    v-if="popupTrigger.buttonTrigger" :DeletePopup="() => DeletePopup('buttonTrigger')"
+    >
+    <h1 class="text-center headline-medium">เอาออกจากถาด</h1>
+    <article>
+      <p>
+        อาหารจะถูกเอาออกจากถาด เมื่อกดปุ่ม "เอาออก" ข้างล่างนี้ <br/>เมื่อกดแล้วอาหารจะหายจากถาดอาหาร
+      </p>
+    </article>
+    <div>
+      <button @click="deleteOrder"
+              class="button-color p-3 mt-5 border rounded-lg float-right">
+        เอาออก
+      </button>
+    </div>
+  </OrderConfirmDeletePopup>
+  
+</div>
 </template>
 
 <script>
+import OrderConfirmDeletePopup from '../OrderConfirmDeletePopup.vue';
+import {ref} from 'vue';
+import { trigger } from '@vue/reactivity';
+
 export default {
-  props: [
-    'id', 'image', 'food_name',
-    'order_price', 'order_quantity', 'order_request',
-    'showDeleteDialog'
-  ],
+    props: [
+        "id",
+        "image",
+        "food_name",
+        "order_price",
+        "order_quantity",
+        "order_request",
+        "showDeleteDialog"
+    ],
+
+    setup(){
+      const popupTrigger = ref({
+        buttonTrigger: false
+      })
+
+      const DeletePopup = (trigger) =>{
+        popupTrigger.value[trigger] =!popupTrigger.value[trigger]
+      }
+
+      return{popupTrigger,DeletePopup}
+    },
+    
+    methods:{
+
+    },
+    components: { OrderConfirmDeletePopup, }
+
 };
 </script>
 

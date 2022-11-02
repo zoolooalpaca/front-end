@@ -33,6 +33,7 @@
        <div class="items-center">
            <button v-show="status == 'รอทำ'"
            class="icon bg-orange-800 mt-10"
+           @click="() => DeletePopup('buttonTrigger')"
            >
                <span class="material-symbols-outlined">close</span>
            </button>
@@ -41,10 +42,32 @@
                <span class="material-symbols-outlined">close</span>
            </button>
        </div>
+       <OrderConfirmDeletePopup
+          v-if="popupTrigger.buttonTrigger" :DeletePopup="() => DeletePopup('buttonTrigger')"
+          >
+          <h1 class="text-center headline-medium">ยกเลิกอาหาร</h1>
+          <article>
+            <p>
+              ยกเลิกอาหารที่สั่งไปแล้ว คุณจะไม่สามารถแก้ไขการยกเลิกนี้ได้ <br/>กดปุ่มยกเลิกอาหารเพื่อยกเลิกการสั่งทำอาหาร
+            </p>
+          </article>
+          <div>
+            <button @click="deleteOrder"
+                    class="button-color p-3 mt-5 border rounded-lg float-right">
+              ยกเลิกอาหาร
+            </button>
+          </div>
+        </OrderConfirmDeletePopup>
     </div>
 </template>
 
 <script>
+
+import OrderConfirmDeletePopup from '../OrderConfirmDeletePopup.vue';
+import {ref} from 'vue';
+import { trigger } from '@vue/reactivity';
+
+
 export default {
   props: [
     'id', 'status', 'image', 'food_name',
@@ -52,12 +75,21 @@ export default {
     'onClickPop'
   ],
 
-  components:{
-    
-},
-  methods : {
-
+setup(){
+  const popupTrigger = ref({
+    buttonTrigger: false
+  })
+  const DeletePopup = (trigger) =>{
+    popupTrigger.value[trigger] =!popupTrigger.value[trigger]
   }
+  return{popupTrigger,DeletePopup}
+},
+
+methods:{
+
+},
+components: { OrderConfirmDeletePopup, }
+
 };
 </script>
 
