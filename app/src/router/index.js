@@ -35,7 +35,7 @@ const router = createRouter({
       component: NewCustomerView,
     },
     {
-      path: '/new-customer/order-qrcode',
+      path: '/order-qrcode',
       name: 'order-qrcode',
       component: OrderQrCodeView,
     },
