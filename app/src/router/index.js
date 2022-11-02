@@ -2,6 +2,7 @@ import {createRouter, createWebHistory} from 'vue-router';
 import HomeView from '@/views/HomeView.vue';
 import OrderToDoListView from '@/views/OrderToDoListView.vue';
 import OrderCookingView from '@/views/OrderCookingView.vue';
+import AllFoodItemView from '@/views/AllFoodItemView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,11 @@ const router = createRouter({
       path: '/order-cooking',
       name: 'order-cooking',
       component: OrderCookingView,
+    },
+    {
+      path: '/menu',
+      name: 'menu',
+      components: AllFoodItemView,
     },
   ],
 });

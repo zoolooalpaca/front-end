@@ -22,9 +22,9 @@
 
 // eslint-disable-next-line no-unused-vars
 import NavBarDrawer from '../components/NavBarDrawer/NavBarDrawer.vue';
-import NavItem from '../components/NavBarDrawer/NavItem.vue';
+// import NavItem from '../components/NavBarDrawer/NavItem.vue';
 // eslint-disable-next-line no-unused-vars
-// import CookDrawer from '../components/CookItem/CookDrawer.vue';
+import CookDrawer from '../components/CookItem/CookDrawer.vue';
 
 
 export default {
