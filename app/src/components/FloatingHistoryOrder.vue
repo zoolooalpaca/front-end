@@ -1,59 +1,30 @@
 <template>
-    <div class="flex gap-2">
+    <div id="history-bar" class="flex gap-2">
       <div class="floating-order-bar order-detail-bar">
         <label>รวม</label>
         <div class="order-detail">
-          <span>{{totalItem}} รายการ</span>
+          <span>{{total}} รายการ</span>
           <div class="flex ml-[14px]">
-          <span>฿{{totalPrice}}</span>
+          <span>฿{{tprice}}</span>
           </div>
         </div>
       </div>
     </div>
   </template>
-  
-  <script>
-  export default {
-    // props:[
-    //   'order_id','price'
-    // ]
-    data() {
-      return {
-        allorders:[
-        {
-            order_id: 1,
-            price: 40,
-          },
-          {
-            order_id: 2,
-            price: 10,
-          },
-          {
-            order_id: 3,
-            price: 140,
-          },
-          {
-            order_id: 4,
-            price: 140,
-          },
-        ]
-      };
-    },
-    props: {},
-    computed: {
-      totalItem() {
-        return this.allorders.length;
-      },
-      totalPrice() {
-        return this.allorders.reduce((prev, {price}) => prev + price, 0);
-      },
-    },
-    methods: {
 
-    },
-  };
-  </script>
-  
+<script>
+export default {
+  props: [
+    'total', 'tprice',
+  ],
+  computed: {
+  },
+  methods: {
+
+  },
+};
+</script>
+
   <style>
   .floating-order-bar {
     display: flex;

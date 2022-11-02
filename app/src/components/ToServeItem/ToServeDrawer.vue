@@ -19,7 +19,7 @@ export default {
       tables: [
         {
           table_id: 1,
-          status:'ยังไม่เสิร์ฟ',
+          status: 'ยังไม่เสิร์ฟ',
           orders: [
             {
               order: 'ข้าวไข่เจียว',
@@ -37,7 +37,7 @@ export default {
         },
         {
           table_id: 2,
-          status:'ยังไม่เสิร์ฟ',
+          status: 'ยังไม่เสิร์ฟ',
           orders: [
             {
               order: 'ไข่ดาว',

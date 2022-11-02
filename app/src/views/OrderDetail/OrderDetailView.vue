@@ -4,8 +4,17 @@
             <TopAppBar label="อาหารในถาด"></TopAppBar>
         </div>
         <div class="py-4">
-            <OrderItem></OrderItem>
-            <OrderDrawer></OrderDrawer>  
+          <OrderItem
+            v-for="(order,index) in orders"
+            :id="index"
+            :image="order.image"
+            :food_name="order.food_name"
+            :order_price="order.order_price"
+            :order_quantity="order.order_quantity"
+            :order_request="order.order_request"
+            :key="index"
+            >
+          </OrderItem>
         </div>
         <div>
             <div class="flex gap-2">
@@ -33,44 +42,49 @@
 
 <script>
 import TopAppBar from '../../components/TopAppBar/TopAppBar.vue';
-import OrderItem from '../../components/OrderItem/OrderItem.vue'
-import OrderDrawer from '../../components/OrderItem/OrderDrawer.vue';
+import OrderItem from '../../components/OrderItem/OrderItem.vue';
 
 
-export default{
-components:{
+export default {
+  components: {
     TopAppBar,
     OrderItem,
-    OrderDrawer,
-},
-data() {
-  return {
-    allorders:[
-    {
-        order_id: 1,
-        price: 40,
-      },
-      {
-        order_id: 2,
-        price: 10,
-      },
-      {
-        order_id: 3,
-        price: 140,
-      },
-      {
-        order_id: 4,
-        price: 140,
-      },
-    ]
-  };
-},
-computed: {
-  totalPrice() {
-    return this.allorders.reduce((prev, {price}) => prev + price, 0);
   },
-},
-}
+
+  data() {
+    return {
+      orders: [
+        {
+          image: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
+          food_name: 'ข้าวมันไก่',
+          order_price: 135,
+          order_quantity: '3',
+          order_request: 'ขอหนังล้วน ๆ ไม่เอาเนื้อไก่',
+        },
+        {
+          image: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
+          food_name: 'ข้าวมันไก่',
+          order_price: 90,
+          order_quantity: '2',
+          order_request: 'ขอหนังล้วน ๆ ไม่เอาเนื้อไก่',
+        },
+        {
+          image: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
+          food_name: 'ข้าวมันไก่',
+          order_price: 45,
+          order_quantity: '1',
+          order_request: 'ขอหนังล้วน ๆ ไม่เอาเนื้อไก่',
+        },
+      ],
+    };
+  },
+
+  computed: {
+    totalPrice() {
+      return this.orders.reduce((prev, {order_price}) => prev + order_price, 0);
+    },
+  },
+};
 </script>
 
 <style>
@@ -79,7 +93,7 @@ computed: {
     border-radius: 100px;
     display: flex;
     justify-content: center;
-    align-items: center;   
+    align-items: center;
 }
 
 .order-bar{

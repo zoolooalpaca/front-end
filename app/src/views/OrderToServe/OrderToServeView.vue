@@ -22,65 +22,65 @@
             </div>
     </div>
 </template>
-    
+
 <script>
-    import SectionHeader from '../../components/NavBarDrawer/SectionHeader.vue';
-    import ToServeItem from '../../components/ToServeItem/ToServeItem.vue';
-    import NavBarEmployee from '../../components/NavBarDrawer/NavBarEmployee.vue';
-    
-export default{
-components:{
+import SectionHeader from '../../components/NavBarDrawer/SectionHeader.vue';
+import ToServeItem from '../../components/ToServeItem/ToServeItem.vue';
+import NavBarEmployee from '../../components/NavBarDrawer/NavBarEmployee.vue';
+
+export default {
+  components: {
     SectionHeader,
     ToServeItem,
-    NavBarEmployee
-},  
+    NavBarEmployee,
+  },
 
-computed: {
+  computed: {
     totalOrders() {
       return this.tables.length;
     },
-},
-    data() {
-        return {
-          tables: [
+  },
+  data() {
+    return {
+      tables: [
+        {
+          table_id: 1,
+          status: 'ยังไม่เสิร์ฟ',
+          orders: [
             {
-              table_id: 1,
-              status:'ยังไม่เสิร์ฟ',
-              orders: [
-                {
-                  order: 'ข้าวไข่เจียว',
-                  quantity: 2,
-                },
-                {
-                  order: 'กะเพราหมูไข่ดาว',
-                  quantity: 1,
-                },
-                {
-                  order: 'กะเพราหมูดาว',
-                  quantity: 1,
-                },
-              ],
+              order: 'ข้าวไข่เจียว',
+              quantity: 2,
             },
             {
-              table_id: 2,
-              status:'ยังไม่เสิร์ฟ',
-              orders: [
-                {
-                  order: 'ไข่ดาว',
-                  quantity: 1,
-                },
-                {
-                  order: 'กะเพราดาว',
-                  quantity: 1,
-                },
-                {
-                  order: 'กะเพราหมูไข่',
-                  quantity: 1,
-                },
-              ],
+              order: 'กะเพราหมูไข่ดาว',
+              quantity: 1,
+            },
+            {
+              order: 'กะเพราหมูดาว',
+              quantity: 1,
             },
           ],
-        };
-    },
-}
+        },
+        {
+          table_id: 2,
+          status: 'ยังไม่เสิร์ฟ',
+          orders: [
+            {
+              order: 'ไข่ดาว',
+              quantity: 1,
+            },
+            {
+              order: 'กะเพราดาว',
+              quantity: 1,
+            },
+            {
+              order: 'กะเพราหมูไข่',
+              quantity: 1,
+            },
+          ],
+        },
+      ],
+    };
+  },
+};
 </script>
