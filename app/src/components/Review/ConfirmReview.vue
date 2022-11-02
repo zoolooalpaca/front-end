@@ -3,7 +3,7 @@
   <div class="popup-inner border rounded-lg">
     <slot/>
     <button @click="TogglePopup()"
-            class="button-color p-3 mt-5 border rounded-lg float-right">
+            class="button-color button-style float-right">
       ไม่
     </button>
   </div>
@@ -67,5 +67,15 @@ export default {
   color: var(--md-sys-color-on-primary);
   background: var(--md-sys-color-error);
   border-color: var(--md-sys-color-primary);
+}
+
+.button-style {
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.button-style:hover{
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1)
 }
 </style>

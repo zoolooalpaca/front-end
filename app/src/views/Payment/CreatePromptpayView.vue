@@ -1,16 +1,16 @@
 <template>
   <div class="nav-menu">
     <div class="
-         w-64
-         absolute
-         inset-y-0
-         left-0
-         md:relative md:-translate-x-0
-         transform
-         -translate-x-full
-         transition
-         duration-200
-         ease-in-out"
+          w-64
+          absolute
+          inset-y-0
+          left-0
+          md:relative md:-translate-x-0
+          transform
+          -translate-x-full
+          transition
+          duration-200
+          ease-in-out"
     :class="this.showMobileMenu ? 'relative -translate-x-0' : 'closed-menu'">
       <SectionHeader label="อร่อยโภชนา" />
       <NavItem
@@ -20,8 +20,7 @@
           :active="index == activeId"
           :url="item.router"
           :onClickItem="onClickItem"
-          :key="index"
-      class="ite">
+          :key="index">
         <span class="material-symbols-outlined">{{item.icon}}</span>
       </NavItem>
     </div>
@@ -35,33 +34,43 @@
     </i>
 
     <div class="ml-8">
-      <h1 class="text-3xl mb-3">{{ title }}</h1>
-      <h3 class="text-xl mb-5">{{ section }}</h3>
+      <div class="flex flex-col">
+        <h1 class="text-3xl mb-3">{{ title }}</h1>
+        <span class="text-xl mb-5">{{ section }}</span>
 
-      <label class="inline-flex">
-        <input type="text" id="table_number" ref="tableNumber" class="text-color border rounded-lg">
-        <button @click="deleteInput" class="flex items-center">
-          <span class="material-symbols-outlined">cancel</span>
-        </button>
-      </label>
+        <label class="inline-flex">
+          <input type="text" id="table_number" ref="tableNumber" class="text-color border rounded-lg">
+          <button @click="deleteInput" class="flex items-center">
+            <span class="material-symbols-outlined">cancel</span>
+          </button>
+        </label>
+      </div>
 
-      <div class="mt-5 grid grid-cols-2 ">
-        <div class="borderColor mt-5 block flex flex-col">
-          <h3 class="mb-3 text-xl ml-3 mt-3">ใบเสร็จ</h3>
-          <BillOrderItem class="flex justify-center"/>
-        </div>
+      <div class="base-block border-box mt-2">
+        <div class="flex-display width-100 fix-grid-display">
+          <div class="scroll borderColor mt-5">
+            <span class="margin-text text-xl">ใบเสร็จ</span>
+            <div div v-for="(item, index) in billOrderItem" :key="index">
+              <BillOrderItem class="flex justify-center mb-2"
+                             :id="index"
+                             :image="item.image"
+                             :name="item.name"
+                             :active="index == activeId"/>
+            </div>
+          </div>
 
-        <div class="borderColor ml-8 mt-5">
-          <h3 class="text-xl ml-3 mt-3">พร้อมเพย์</h3>
-          <img :src="image" style="width: auto; object-fit: contain">
-          <div>
-            <button @click="printQRCode" class="button-payment float-left border rounded-full p-2 mt-4 mb-4 ml-3"> พิมพ์ </button>
+          <div class="borderColor mt-5">
+            <h3 class="margin-text text-xl">พร้อมเพย์</h3>
+            <img :src="qrCode" style="width: 100%; object-fit: contain">
+            <div>
+              <button @click="printBill" class="button-payment button-style mb-4 ml-3"> พิมพ์ </button>
+            </div>
           </div>
         </div>
       </div>
 
       <div>
-        <button @click="paid" class="button-payment float-left border rounded-full p-2 mt-4">จ่ายแล้ว</button>
+        <button @click="paid" class="button-payment button-style">จ่ายแล้ว</button>
       </div>
     </div>
   </div>
@@ -81,16 +90,25 @@ export default {
       title: "จ่ายเงิน",
       section: "เลือกลูกค้า",
       table_number: '',
-      image: 'https://www.freepnglogos.com/uploads/qr-code-png/qr-code-file-bangla-mobile-code-0.png',
+      qrCode: '',
       error: null,
       payment: '',
       navItems: [
-        {label: 'รับลูกค้าใหม่', icon: 'sentiment_satisfied'},
-        {label: 'จ่ายเงิน', icon: 'payment'},
-        {label: 'อาหารที่ต้องเสิร์ฟ', icon: 'room_service'},
-        {label: 'อาหารที่ต้องทำ', icon: 'soup_kitchen'},
+        {label: 'รับลูกค้าใหม่', icon: 'sentiment_satisfied' , router: '/'},
+        {label: 'จ่ายเงิน', icon: 'payment', router: '/promptPay/create'},
+        {label: 'อาหารที่ต้องเสิร์ฟ', icon: 'room_service', router: '/'},
+        {label: 'อาหารที่ต้องทำ', icon: 'soup_kitchen', router: '/'},
       ],
-      showMobileMenu: false
+      showMobileMenu: false,
+      activeId: 0,
+      loopCount: 5,
+      billOrderItem: [
+        {amount: 2, name: 'ข้าวมันไก่', price:60},
+        {amount: 1, name: 'ข้าวอบ', price:50},
+        {amount: 1, name: 'ข้าวผัดกระเพรา', price:55},
+        {amount: 1, name: 'ข้าวผัดกุ้ง', price:60},
+        {amount: 1, name: 'สเต๊กเนื้อ', price:100},
+      ]
     }
   },
   components: {
@@ -105,12 +123,12 @@ export default {
     deleteInput() {
       this.$refs["tableNumber"].value = "";
     },
-    printQRCode() {
-
+    printBill() {
+      
     },
     onClickItem(id, url) {
       this.activeId = id;
-      if (url != ''){
+      if (url != '') {
         this.$router.push(url)
       }
     },
@@ -125,12 +143,32 @@ export default {
         console.log(error)
         this.error = error.message
       }
+    },
+    scroll() {
+      var container = document.querySelector(".scroll");
+      var scrollHeight = container.scrollHeight;
+      container.scrollTop = scrollHeight;
     }
+  },
+  mounted() {
+    this.scroll();
   }
 }
 </script>
 
 <style lang="scss">
+.margin-text {
+  margin-left: 8px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.button-style {
+  margin-top: 8px;
+  padding: 10px;
+  float: left;
+  border-radius: 9999px;
+}
 .button-payment {
   color: var(--md-sys-color-on-primary);
   background: var(--md-sys-color-primary);
@@ -146,10 +184,16 @@ export default {
   color: var(--md-sys-color-on-primary-dark);
 }
 
-.set-display-grid {
-  display: grid;
-  grid-template-columns: 1fr 80%;
-  gap: 16px;
+.scroll {
+  width: 100%;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.resize-component{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .side-nav{
@@ -180,6 +224,32 @@ i {
   display: none;
 }
 
+.border-box {
+  box-sizing: border-box;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.flex-display {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: stretch;
+  align-items: stretch;
+}
+
+.base-block {
+  border-radius: 8px;
+}
+
+.fix-grid-display{
+  width: 100%;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
 @media screen and (max-width: 768px) {
   .nav-menu {
     padding-top: 10px;
@@ -201,6 +271,13 @@ i {
     display: block;
     text-align: right;
     padding: 0 10px 10px 0;
+  }
+  .fix-grid-display {
+    grid-template-columns: repeat(1, minmax(0px, 1fr));
+  }
+  .base-block {
+    width: inherit;
+    min-width: 100%;
   }
 }
 </style>

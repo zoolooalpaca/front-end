@@ -19,13 +19,13 @@
                        :active="index == activeId">
       </PromotionBanner>
     </div>
-
   </div>
 </template>
 
 <script>
 import TopAppBar from "@/components/TopAppBar/TopAppBar.vue";
 import PromotionBanner from "@/components/PromotionBanner/PromotionBanner.vue";
+import BannerCard from "@/components/BannerCard.vue";
 export default {
   data() {
     return{
@@ -45,6 +45,7 @@ export default {
   components: {
     TopAppBar,
     PromotionBanner,
+    BannerCard
   },
   methods: {
     backToMenu() {

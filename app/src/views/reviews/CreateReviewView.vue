@@ -37,13 +37,13 @@
   </div>
 
   <button @click="() => TogglePopup('buttonTrigger')"
-          class="button-blue p-3 mt-5 border rounded-lg float-right">ส่ง</button>
+          class="button-blue button-style float-right">ส่ง</button>
   <ConfirmReview
       v-if="popupTrigger.buttonTrigger" :TogglePopup="() => TogglePopup('buttonTrigger')">
-    <h1 class="text-center text-3xl">ยืนยันที่จะกดส่ง</h1>
+    <h1 class="text-center text-color text-3xl">ยืนยันที่จะกดส่ง</h1>
     <div>
       <button @click="saveNewReview"
-              class="button-blue p-3 mt-5 border rounded-lg float-left">
+              class="button-blue button-style float-left">
         ใช่
       </button>
     </div>
@@ -117,5 +117,15 @@ export default {
 
 .text-color {
   color: var(--md-sys-color-on-primary-dark);
+}
+
+.button-style {
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.button-style:hover {
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1)
 }
 </style>
