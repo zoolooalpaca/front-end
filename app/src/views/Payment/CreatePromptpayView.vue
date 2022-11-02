@@ -39,7 +39,8 @@
         <span class="text-xl mb-5">{{ section }}</span>
 
         <label class="inline-flex">
-          <input type="text" id="table_number" ref="tableNumber" class="text-color border rounded-lg">
+          <input type="text" id="table_number" ref="tableNumber" placeholder="กรอกเลขโต๊ะ"
+                 class="text-color border rounded-lg">
           <button @click="deleteInput" class="flex items-center">
             <span class="material-symbols-outlined">cancel</span>
           </button>
@@ -50,7 +51,7 @@
         <div class="flex-display width-100 fix-grid-display">
           <div class="scroll borderColor mt-5">
             <span class="margin-text text-xl">ใบเสร็จ</span>
-            <div div v-for="(item, index) in billOrderItem" :key="index">
+            <div v-for="(item, index) in billOrderItem" :key="index">
               <BillOrderItem class="flex justify-center mb-2"
                              :id="index"
                              :image="item.image"
@@ -124,7 +125,7 @@ export default {
       this.$refs["tableNumber"].value = "";
     },
     printBill() {
-      
+      this.$router.push(`/bill`)
     },
     onClickItem(id, url) {
       this.activeId = id;
@@ -145,13 +146,17 @@ export default {
       }
     },
     scroll() {
-      var container = document.querySelector(".scroll");
-      var scrollHeight = container.scrollHeight;
-      container.scrollTop = scrollHeight;
+      let element = document.getElementById("yourID");
+      element.scrollIntoView({behavior: "smooth", block: "end"});
     }
   },
   mounted() {
     this.scroll();
+  },
+  computed: {
+    imagePath() {
+      return `uploads\products\${this.produit.image}`
+    }
   }
 }
 </script>

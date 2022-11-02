@@ -103,7 +103,14 @@ export default {
     },
     backToMenu() {
       this.$router.push(`/`)
+    },
+    scroll() {
+      let element = document.getElementById("yourID");
+      element.scrollIntoView({behavior: "smooth", block: "end"});
     }
+  },
+  mounted() {
+    this.scroll();
   }
 }
 </script>
