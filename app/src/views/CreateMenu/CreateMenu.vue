@@ -1,6 +1,7 @@
 <template>
   <div class="nav-menu">
     <div class="
+          basis-1/4
           w-64
           absolute
           inset-y-0
@@ -29,7 +30,7 @@
     </div>
 
     <div class="basis-3/4 ml-10">
-      <div class="flex justify-between">
+      <div>
         <i>
           <button @click="showMenu()">
         <span class="material-symbols-outlined">
@@ -37,7 +38,9 @@
         </span>
           </button>
         </i>
+      </div>
 
+        <div class="flex justify-between ">
         <h3 class="headline-large mb-10">เพิ่มรายการอาหาร</h3>
             <button
                 class="w-8 h-8 secondary-container rounded-full p-1 justify-center"
@@ -49,15 +52,16 @@
             </button>
         </div>
 
+
       <div class="main-content">
-        <div class="basis-2/5 mb-8">
+        <div class="basis-1/4 mb-8">
           <div v-if="previewImage">
             <div>
               <img class="preview my-3" :src="previewImage" alt="" />
             </div>
           </div>
           <div class="row">
-            <div class="col-8">
+            <div >
               <label class="btn btn-default p-0">
                 <input
                     type="file"
@@ -73,7 +77,7 @@
           </div>
         </div>
 
-        <div class="basis-3/5 ml-5">
+        <div class="basis-3/4 ml-5">
           <h3 class="body-large">ชื่ออาหาร</h3>
           <input type="text" class="input-create-menu" v-model="food.food_name">
           <h3 class="body-large">ประเภทอาหาร</h3>
@@ -87,6 +91,7 @@
           <h3 class="body-large">เวลาในการจัดทำอาหาร</h3>
           <input type="text" class="input-create-menu" v-model="food.cooking_time">
         </div>
+
       </div>
       <div class="grid justify-items-end mb-10">
         <button
@@ -281,8 +286,9 @@ i {
   }
   i {
     display: block;
-    text-align: right;
+    text-align: left;
     padding: 0 10px 10px 0;
+
   }
   .main-content {
     display: flex;

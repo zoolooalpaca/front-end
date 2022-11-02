@@ -1,6 +1,8 @@
 <template>
   <div class="nav-menu">
-    <div class="w-64
+    <div class="
+          basis-1/4
+          w-64
           absolute
           inset-y-0
           left-0
@@ -27,8 +29,8 @@
       </NavItem>
     </div>
 
-    <div class="ml-10">
-      <div class="flex">
+    <div class="basis-3/4 ml-10">
+      <div>
         <i>
           <button @click="showMenu()">
         <span class="material-symbols-outlined">
@@ -36,12 +38,15 @@
         </span>
           </button>
         </i>
+      </div>
+
         <div>
           <h3 class="headline-large">รายการโปรโมชัน</h3>
         </div>
-      </div>
 
-      <div class="main-content-promotion-list mr-20" >
+
+
+      <div class="main-content-promotion-list" >
         <div class="grid justify-items-center create-promotion">
           <button
               class="rounded-full p-1 justify-center"
@@ -169,7 +174,7 @@ div.main-content-promotion-list {
   }
   i {
     display: block;
-    text-align: right;
+    text-align: left;
     padding: 0 10px 10px 0;
   }
   div.main-content-promotion-list {

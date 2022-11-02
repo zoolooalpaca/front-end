@@ -1,6 +1,7 @@
 <template>
   <div class="nav-menu">
     <div class="
+          basis-1/4
           w-64
           absolute
           inset-y-0
@@ -28,8 +29,8 @@
       </NavItem>
     </div>
 
-    <div class="ml-10">
-      <div class="flex">
+    <div class="basis-3/4 ml-10">
+      <div>
       <i>
         <button @click="showMenu()">
         <span class="material-symbols-outlined">
@@ -37,12 +38,13 @@
         </span>
         </button>
       </i>
+      </div>
         <div>
           <h3 class="headline-large">รายการอาหาร</h3>
         </div>
-      </div>
 
-      <div class="main-content-menu-list mr-20" >
+
+      <div class="main-content-menu-list" >
         <div class="grid justify-items-center create-menu">
           <button
               class="rounded-full p-1 justify-center"
@@ -180,7 +182,7 @@ div.main-content-menu-list {
 
   i {
     display: block;
-    text-align: right;
+    text-align: left;
     padding: 0 10px 10px 0;
   }
 

@@ -1,6 +1,7 @@
 <template>
-  <div class="nav-menu">
+  <div class="nav-menu-dashboard">
     <div class="
+          basis-1/4
           w-64
           absolute
           inset-y-0
@@ -14,7 +15,6 @@
           "
          :class="this.showMobileMenu ? 'relative -translate-x-0' : 'closed-menu'"
     >
-
       <h3 class="headline-small ml-4 mb6-4">ชื่อร้าน</h3>
       <NavItem
           v-for="(item, index) in navItems"
@@ -30,7 +30,7 @@
     </div>
 
     <div class="basis-3/4 ml-10">
-      <div class="flex">
+      <div>
         <i>
           <button @click="showMenu()">
         <span class="material-symbols-outlined">
@@ -38,33 +38,48 @@
         </span>
           </button>
         </i>
+      </div>
         <div>
-          <h3 class="headline-large mb-10">Dashboard</h3>
+          <h3 class="headline-large">Dashboard</h3>
         </div>
 
-      </div>
 
-      <div class="topic p-3">
-        <h3 class="body-large">ความพึงพอใจต่ออาหารจากการประเมินของลูกค้า</h3>
-      </div>
-      <div class="block-body">
+      <div class="main-content-dashboard mr-20">
+        <div class="topic">
+          <h3 class="body-large ml-3">ความพึงพอใจต่ออาหารจากการประเมินของลูกค้า</h3>
+        </div>
+        <div class="block-body">
         <GChart
             type="PieChart"
             :options="options"
             :data="data"
         />
-      </div>
+        </div>
 
-      <div class="topic p-3">
-        <h3 class="body-large">รายรับ - รายจ่ายภายในร้าน</h3>
-      </div>
+        <div class="topic">
+          <h3 class="body-large ml-3">รีวิวจากลูกค้า</h3>
+        </div>
 
-      <div class="block-body">
+        <div class="scroller">
+          <div class="review-container"
+              v-for="(review, index) in reviews" :key="index"
+          >
+              <p class="body-medium"> {{ review.feedback }} </p>
+          </div>
+        </div>
+
+        <div class="topic">
+          <h3 class="body-large ml-3">รายรับภายในร้าน</h3>
+        </div>
+
+        <div class="block-body">
         <GChart
             type="Histogram"
             :options="options"
             :data="data"
         />
+
+        </div>
       </div>
     </div>
   </div>
@@ -72,6 +87,7 @@
 
 <script>
 import NavItem from "../../components/NavBarDrawer/NavItem.vue";
+import BannerCard from "../../components/BannerCard.vue";
 import { GChart } from "vue-google-charts";
 export default {
   name: "App",
@@ -86,23 +102,34 @@ export default {
         {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/MenuList'},
         {label: 'โปรโมชัน', icon: 'grid_view', router: '/PromotionList'},
       ],
+      reviews: [
+        {feedback: 'ดีมาก ๆ เลยค่ะ'},
+        {feedback: 'ร้านสะอาดมากค่ะ อาหารก็อร่อย'},
+        {feedback: 'ราคาเป็นมิตรวัตถุดิบคุณภาพดี'},
+        {feedback: 'ร้านใหญ่เกินต้านมากค่ะ'},
+        {feedback: 'สุดยอดไปเลยต่ะ'},
+        {feedback: 'อาหารอร่อย ราคาสมเหตุสมผล'},
+      ],
+
       data: [
-        ['Daily Routine', 'Hours per Day'],
-        ['Work',     14],
-        ['Eat',      1],
-        ['Reading',  2],
-        ['Exercise', 2],
-        ['Sleep',    5]
+        ['Rating', 'Score'],
+        ['5 Stars', 23],
+        ['4 Stars', 15],
+        ['3 Stars',  12],
+        ['2 Stars', 2],
+        ['1 Stars', 1]
       ],
       options: {
-        width: 1100,
-        height: 400
+        width: 700,
+        height: 500,
+        background: "var(--md-sys-color-surface)",
       }
     }
   },
   components: {
     NavItem,
-    GChart
+    GChart,
+    BannerCard
   },
   methods: {
     showMenu() {
@@ -123,14 +150,45 @@ div.topic {
   background-color: var(--md-sys-color-primary-container);
   border-radius: 20px;
   margin-bottom: 10px;
+  padding: 10px;
+  width: 100%;
 }
 div.block-body {
   background-color: var(--md-sys-color-surface);
   padding: 10px;
+  width: 100%;
+}
+div.review-container {
+  background-color: var(--md-sys-color-surface);
+  border-radius: 10px;
+  border: 2px solid;
+  border-color: #8e9099;
+  padding: 10px;
+  margin: 5px 5px 5px 5px;
+}
+.scroller {
+  width: 100%;
+  height: 200px;
+  overflow-y: scroll;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
+  margin-bottom: 10px;
+}
+::-webkit-scrollbar {
+  // Width of vertical scroll bar
+  width: 8px;
+  // Height of horizontal scroll bar
+  height: 10px;
+
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #c2c9d2;
 }
 
-.nav-menu {
+.nav-menu-dashboard {
   display: flex;
+  flex-direction: row;
 }
 .nav-content {
   display: flex;
@@ -140,9 +198,9 @@ div.block-body {
 i {
   display: none;
 }
-.main-content {
+.main-content-dashboard {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 @media screen and (max-width: 768px) {
@@ -165,32 +223,12 @@ i {
   }
   i {
     display: block;
-    text-align: right;
+    text-align: left;
     padding: 0 10px 10px 0;
   }
-  .main-content {
+  .main-content-dashboard {
     display: flex;
     flex-direction: column;
-  }
-  .button-create-menu{
-    background-color: var(--md-sys-color-tertiary-container);
-    border: none;
-    color: var(--md-sys-color-on-tertiary-container);
-    text-decoration: none;
-    padding: 10px 20px;
-    margin: 4px 2px;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-  .button-upload-file{
-    background-color: var(--md-sys-color-primary-container);
-    border: none;
-    color: var(--md-sys-color-on-primary-container);
-    text-decoration: none;
-    padding: 6px 12px;
-    margin: 4px 2px;
-    border-radius: 10px;
-    cursor: pointer;
   }
 }
 </style>
