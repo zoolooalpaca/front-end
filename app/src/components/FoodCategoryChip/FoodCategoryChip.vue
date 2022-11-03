@@ -40,6 +40,7 @@ export default {
 
 <style>
 .food-category-chip-container{
+  flex-shrink: 1;
   position: relative;
   height: 80px;
   overflow: hidden;

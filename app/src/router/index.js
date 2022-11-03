@@ -2,7 +2,8 @@ import {createRouter, createWebHistory} from 'vue-router';
 import HomeView from '@/views/HomeView.vue';
 import OrderToDoListView from '@/views/OrderToDoListView.vue';
 import OrderCookingView from '@/views/OrderCookingView.vue';
-import AllFoodItemView from '@/views/AllFoodItemView.vue';
+import AllMenuView from '@/views/AllMenuView.vue';
+import DetailMenuView from '@/views/DetailMenuView.vue';
 import MenuList from '@/views/CreateMenu/MenuList.vue';
 import CreateMenu from '@/views/CreateMenu/CreateMenu.vue';
 import PromotionList from '@/views/CreatePromotion/PromotionList.vue';
@@ -27,37 +28,36 @@ const router = createRouter({
       name: 'order-cooking',
       component: OrderCookingView,
     },
-
     {
       path: '/menu',
       name: 'menu',
-      components: AllFoodItemView,
+      component: AllMenuView,
     },
-
+    {
+      path: '/menu/detail',
+      name: 'menu-detail',
+      component: DetailMenuView,
+    },
     {
       path: '/MenuList',
       name: 'MenuList',
       component: MenuList,
     },
-
     {
       path: '/CreateMenu',
       name: 'CreateMenu',
       component: CreateMenu,
     },
-
     {
       path: '/PromotionList',
       name: 'PromotionList',
       component: PromotionList,
     },
-
     {
       path: '/CreatePromotion',
       name: 'CreatePromotion',
       component: CreatePromotion,
     },
-
     {
       path: '/Dashboard',
       name: 'Dashboard',

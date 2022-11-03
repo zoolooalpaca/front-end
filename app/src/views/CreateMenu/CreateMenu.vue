@@ -1,3 +1,4 @@
+<!-- eslint-disable max-len -->
 <template>
   <div class="nav-menu">
     <div class="
@@ -100,10 +101,10 @@
 </template>
 
 <script>
-import SectionHeader from "../../components/NavBarDrawer/SectionHeader.vue";
-import NavItem from "../../components/NavBarDrawer/NavItem.vue";
-import FoodCard from "../../components/FoodCard/FoodCard.vue";
-import UploadService from "../../services/UploadFilesService.js";
+import SectionHeader from '../../components/NavBarDrawer/SectionHeader.vue';
+import NavItem from '../../components/NavBarDrawer/NavItem.vue';
+import FoodCard from '../../components/FoodCard/FoodCard.vue';
+import UploadService from '../../services/UploadFilesService.js';
 
 export default {
   data() {
@@ -113,7 +114,7 @@ export default {
       previewImage: undefined,
 
       progress: 0,
-      message: "",
+      message: '',
 
       imageInfos: [],
 
@@ -121,30 +122,31 @@ export default {
       activeId: 0,
       navItems: [
         {label: 'ชื่อลูกค้า', icon: 'account_circle', router: ''},
+        // eslint-disable-next-line max-len
         {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt', router: '/Dashboard'},
         {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/MenuList'},
         {label: 'โปรโมชัน', icon: 'grid_view', router: '/PromotionList'},
       ],
-    }
+    };
   },
   methods: {
     showMenu() {
       this.showMobileMenu = !this.showMobileMenu;
     },
-    backToMenuList(){
-      this.$router.push(`/MenuList`)
+    backToMenuList() {
+      this.$router.push(`/MenuList`);
     },
-    onClickItem(id,url) {
+    onClickItem(id, url) {
       this.activeId = id;
       if (url != '') {
-        this.$router.push(url)
+        this.$router.push(url);
       }
     },
     selectImage() {
       this.currentImage = this.$refs.file.files.item(0);
       this.previewImage = URL.createObjectURL(this.currentImage);
       this.progress = 0;
-      this.message = "";
+      this.message = '';
     },
     upload() {
       this.progress = 0;
@@ -161,22 +163,23 @@ export default {
           })
           .catch((err) => {
             this.progress = 0;
-            this.message = "Could not upload the image! " + err;
+            this.message = 'Could not upload the image! ' + err;
             this.currentImage = undefined;
           });
-    }
+    },
   },
   mounted() {
-    UploadService.getFiles().then(response => {
+    UploadService.getFiles().then((response) => {
       this.imageInfos= response.data;
     });
   },
   components: {
     SectionHeader,
     NavItem,
+    // eslint-disable-next-line vue/no-unused-components
     FoodCard,
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss">

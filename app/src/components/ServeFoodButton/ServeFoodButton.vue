@@ -1,9 +1,20 @@
 <template>
-    <button class="serve-button">พร้อมเสิร์ฟ</button>
+    <div class='block-serve-button'>
+        <p class='block-serve'>
+        <button class="serve-button">พร้อมเสิร์ฟ</button>
+        </p>
+    </div>
 </template>
 
 
 <style>
+.block-serve-button {
+    width: 400px;
+    height: 70px;
+    gap: 15px;
+    border-radius: 16px;;
+    background: var( --md-sys-color-secondary-container);
+}
 .serve-button {
     width: 90px;
     height: 40px;
@@ -12,5 +23,11 @@
 
     /* outline */
     border-radius: 100px;
+}
+
+.block-serve {
+    gap: 16px;
+    padding: 16px 26px;
+
 }
 </style>

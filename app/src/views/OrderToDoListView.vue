@@ -8,7 +8,7 @@
 
         <div class='ml-10 w-full'>
             <span class='headline-medium'> อาหารที่รอดำเนินการ </span>
-            <span class='body-large outline-text float-right'> {$CookDrawer.index} รายการ </span>
+            <span class='body-large outline-text float-right mt-3'> 3 รายการ </span>
             <div class='flex flex-col max-w-[100%] space-y-4'>
                 <CookDrawer>
                 </CookDrawer>

@@ -37,6 +37,7 @@ export default {
 
 <style>
 .banner-container {
+  flex-shrink: 0;
   position: relative;
   height: 128px;
   border-radius: 16px;

@@ -25,6 +25,8 @@ export default {
 .cooking-board {
   display: flex;
   flex-direction: column;
+  width: 600px;
+  height: 750px;
   background:var(--md-sys-color-secondary-container);
   border-radius: 16px;
   padding: 16px;

@@ -5,7 +5,7 @@
  <div class="cancel-block label-large">
     <span class="cancel-text label-large">ยกเลิกการทำอาหาร</span>
     <p class="reason-cancel-block">
-        <textarea v-model="message" placeholder="บอกลูกค้าถึงสาเหตุการยกเลิก"/>
+        <textarea class='textarea-cancel' placeholder="บอกลูกค้าถึงสาเหตุการยกเลิก"/>
     </p>
     <p class="cancel-button-style">
         <button class="cancel-button">ยกเลิก</button>
@@ -20,8 +20,8 @@
     flex-direction: column;
     gap: 16px;
     background: var( --md-sys-color-error-container);
-    height: 200px;
-    weight: 250px;
+    height: 300px;
+    width: 400px;
 
     /* outline */
     border-radius: 16px;
@@ -29,7 +29,7 @@
 
 .cancel-text {
     padding-top: 25px;
-    padding-left: 50px;
+    padding-left: 30px;
 }
 
 
@@ -40,7 +40,7 @@
 }
 
 .reason-cancel-block {
-    padding-left: 50px;
+    padding-left: 30px;
     /* outline */
     border-radius: 16px;
 }
@@ -56,6 +56,15 @@
 }
 
 .cancel-button-style {
-    padding-left: 50px;
+    padding-left: 30px;
+}
+
+.textarea-cancel {
+  width: 90%;
+  height: 150px;
+  padding: 12px 20px;
+  border: 1px solid;
+  border-color: var( --md-ref-palette-neutral-variant0);
+  border-radius: 8px;
 }
 </style>

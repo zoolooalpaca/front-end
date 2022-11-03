@@ -1,3 +1,4 @@
+<!-- eslint-disable max-len -->
 <template>
   <div class="flex flex-row">
     <div class="basis-1/4">
@@ -41,9 +42,9 @@
 </template>
 
 <script>
-import SectionHeader from "../../components/NavBarDrawer/SectionHeader.vue";
-import NavItem from "../../components/NavBarDrawer/NavItem.vue";
-import FoodCard from "../../components/FoodCard/FoodCard.vue";
+import SectionHeader from '../../components/NavBarDrawer/SectionHeader.vue';
+import NavItem from '../../components/NavBarDrawer/NavItem.vue';
+import FoodCard from '../../components/FoodCard/FoodCard.vue';
 
 export default {
   data() {
@@ -52,6 +53,7 @@ export default {
       loopCount: 4,
       navItems: [
         {label: 'ชื่อลูกค้า', icon: 'account_circle', router: ''},
+        // eslint-disable-next-line max-len
         {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt', router: '/Dashboard'},
         {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/MenuList'},
         {label: 'โปรโมชัน', icon: 'grid_view', router: '/PromotionList'},
