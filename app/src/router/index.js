@@ -94,6 +94,11 @@ const router = createRouter({
       name: 'Dashboard',
       component: Dashboard,
     },
+    {
+      path: '/create/manager-account',
+      name: 'create-manager-account',
+      component: () => import('@/views/Register/RegisterForManagerView.vue')
+    }
   ],
 });
 
