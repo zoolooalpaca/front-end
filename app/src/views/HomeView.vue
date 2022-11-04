@@ -13,6 +13,7 @@ import FoodCard from '../components/FoodCard/FoodCard.vue';
 import FoodCategoryChip from '../components/FoodCategoryChip/FoodCategoryChip.vue';
 import PromotionBanner from '../components/PromotionBanner/PromotionBanner.vue';
 import ToServeDrawer from '../components/ToServeItem/ToServeDrawer.vue';
+import FoodTrayVue from '../components/FoodTray.vue';
 
 export default {
   components: {
@@ -30,8 +31,10 @@ export default {
     FoodCategoryChip,
     PromotionBanner,
     ToServeDrawer,
+    FoodTrayVue,
   },
-};
+}
+
 </script>
 
 <template>
@@ -55,6 +58,7 @@ export default {
     <PromotionBanner></PromotionBanner>
 
     <BannerCard></BannerCard>
+    <FoodTrayVue/>
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
     <div class="error-container">

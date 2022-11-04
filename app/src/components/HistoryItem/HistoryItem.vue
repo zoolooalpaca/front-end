@@ -1,31 +1,34 @@
 <template>
-    <div class= "mt-3 p-4
-                color-block
-                rounded
-                botfrt-radius-8px
-                flex
+    <div class= "color-block
+                rounded flex gap-4
                 justify-between">
-        <div class="flex flex-col">
-            <div class="text-black ">
+        <div class="space-y-4">
+            <div class="flex items-center">
                 <span v-show="order_status == 'รอทำ'"
-                    class="material-symbols-outlined">alarm</span>
+                    class="material-symbols-outlined"
+                  >alarm</span>
                 <span v-show="order_status == 'กำลังทำ'"
                     class="material-symbols-outlined">soup_kitchen</span>
                 <span v-show="order_status == 'ส่งถึงโต๊ะแล้ว'"
                     class="material-symbols-outlined">done</span>
                 {{order_status}}
             </div>
-            <div class="mx-8">
-                <div class="rounded border-radius-10px
-                overflow-hidden flex flex-col" >
-                    <img :src="food_image"
-                    height="60" width="60">
+            <div class="flex gap-4">
+              <div 
+                  class="rounded border-radius-10px
+                    overflow-hidden flex flex-col" 
+              >
+                  <img :src="food_image"
+                      :alt="foodName"
+                      height="60"
+                      width="60"
+                  >
                 </div>
-                <div class='text-black mx-5 flex flex-col'>
-                    <span class='headline-small'>{{food_name}}</span>
-                    <span class='body-large'>{{order_price}} บาท</span>
-                    <span class='body-small'>x{{order_quantity}}</span>
-                    <span class='body-medium'>{{order_request}}</span>
+                <div>
+                    <p class='body-large'>{{food_name}}</p>
+                    <p class='body-large'>{{order_price}} บาท</p>
+                    <p class='label-medium'>x{{order_quantity}}</p>
+                    <p class='body-large'>{{order_request}}</p>
                 </div>
             </div>
        </div>
@@ -104,8 +107,9 @@ components: { OrderConfirmDeletePopup, }
 
 <style>
 .color-block {
-    padding: 30px;
-    background: rgb(207, 212, 223);
+    padding: 16px;
+    color: var(--md-sys-color-on-surface);
+    background: var(--md-sys-color-surface-variant);
 }
 
 </style>

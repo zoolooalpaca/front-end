@@ -4,9 +4,7 @@ import {foodAPI} from '@/services/api';
 export const useFoodStore = defineStore({
   id: 'food',
   state: () => {
-    return {
-      foods: [],
-    };
+    return {foods: []};
   },
   getter: {
     getFoods: (state) => state.foods,

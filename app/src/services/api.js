@@ -1,8 +1,21 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://order-in.loca.lt/api',
+  baseURL: 'http://zlapc-oi-api.loca.lt/api',
 });
+
+const requestHeaders = {
+  Authorization: '',
+};
+
+const login = async () => {
+  axiosInstance.post('/auth/login', {
+    username: 'considine.antonette',
+    password: 'password',
+  }).then(({data}) => {
+    requestHeaders.Authorization = `Bearer ${data.access_token}`;
+  }).catch((e) => console.log(e));
+};
 
 export const employeeAPI = {
   async getAll() {
@@ -293,7 +306,11 @@ export const foodAllergyAPI = {
 
 export const orderApi = {
   async getAll() {
-    const response = await axiosInstance.get('/orders');
+    login();
+    const response = await axiosInstance.get(
+        '/orders?ofuser=1',
+        {headers: requestHeaders},
+    );
     if (response.status === 200) {
       return response.data;
     }

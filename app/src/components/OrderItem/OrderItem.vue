@@ -1,9 +1,9 @@
-<!-- eslint-disable max-len -->
 <template>
  <div class="order-item-container rounded-lg mt-3 p-4 flex justify-between">
   <div class="flex">
     <div>
       <img class="order-image" :src="food_image" alt="">
+                                <!-- order.food_image.thumb -->
     </div>
 
     <div class='mx-5 flex flex-col'>
@@ -48,7 +48,8 @@ import {ref} from 'vue';
 import { trigger } from '@vue/reactivity';
 
 export default {
-    props: [
+  //props: ['order'],  
+  props: [
         "id",
         "order_status",
         "food_image",
