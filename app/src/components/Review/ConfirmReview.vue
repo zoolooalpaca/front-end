@@ -11,13 +11,13 @@
 </template>
 
 <script>
-import { useRatingStore } from '@/stores/rating.js'
-import { useReviewStore } from '@/stores/review.js'
+import {useRatingStore} from '@/stores/rating.js';
+import {useReviewStore} from '@/stores/review.js';
 export default {
   setup() {
-    const review_store = useReviewStore()
-    const rating_store = useRatingStore()
-    return { review_store, rating_store }
+    const review_store = useReviewStore();
+    const rating_store = useRatingStore();
+    return {review_store, rating_store};
   },
   data() {
 
@@ -25,23 +25,23 @@ export default {
   methods: {
     async saveNewReview() {
       try {
-        this.error = null
-        const review_id = await this.review_store.save(this.review)
-        const rating_id = await this.rating_store.save(this.rating)
-        if (review_id){
-          this.$router.push(`/review/${review_id}`)
+        this.error = null;
+        const review_id = await this.review_store.save(this.review);
+        const rating_id = await this.rating_store.save(this.rating);
+        if (review_id) {
+          this.$router.push(`/review/${review_id}`);
         }
-        if (rating_id){
-          this.$router.push(`/rating/${rating_id}`)
+        if (rating_id) {
+          this.$router.push(`/rating/${rating_id}`);
         }
-      }catch (error){
-        console.log(error)
-        this.error = error.message
+      } catch (error) {
+        console.log(error);
+        this.error = error.message;
       }
-    }
+    },
   },
-  props: ['TogglePopup']
-}
+  props: ['TogglePopup'],
+};
 </script>
 
 <style>

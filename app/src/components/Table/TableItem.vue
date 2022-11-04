@@ -3,17 +3,18 @@
     class="flex items-center justify-center w-28
     h-28 bg-blue-100 rounded-2xl
     focus:outline-none focus:ring focus:ring-blue-500"
-    v-if="table.available === true"
+    v-show="available==true"
+    @click="goToOrderQrCode"
   >
     <p class="text-base font-medium tracking-wide leading-normal text-gray-900">
-      เลขโต๊ะ</p>
+      {{table_id}}</p>
   </button>
-  <button class="flex items-center
+  <button disabled class="flex items-center
     justify-center w-28 h-28 bg-gray-300 rounded-2xl"
-    v-else-if="table.available === false"
+    v-show="available==false"
   >
     <p class="text-base font-medium tracking-wide leading-normal text-gray-900">
-      เลขโต๊ะ
+      {{table_id}}
     </p>
   </button>
 
@@ -24,12 +25,16 @@
 
 <script>
 export default {
-  data() {
-    return {
-      table: {
-        available: true,
-      },
-    };
+  props: [
+    'table_id', 'available',
+  ],
+
+  methods: {
+    // กดเลือกโต๊ะที่ต้องการแล้วจะส่งไปยังหน้าOrderQrCodeView.vue
+    goToOrderQrCode() {
+      this.$router.push(`/new-customer/order-qrcode`);
+      // this.$router.push(`/new-customer/order-qrcode/${this.table.id}`)
+    },
   },
 };
 </script>

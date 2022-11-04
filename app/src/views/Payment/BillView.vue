@@ -17,18 +17,18 @@
 export default {
   data() {
     return {
-      nameShop : '',
+      nameShop: '',
       tableNumber: '',
       billOrderItem: [
-        {amount: 2, name: 'ข้าวมันไก่', price:60},
-        {amount: 1, name: 'ข้าวอบ', price:50},
-        {amount: 1, name: 'ข้าวผัดกระเพรา', price:55},
-        {amount: 1, name: 'ข้าวผัดกุ้ง', price:60},
-        {amount: 1, name: 'สเต๊กเนื้อ', price:100},
-      ]
-    }
-  }
-}
+        {amount: 2, name: 'ข้าวมันไก่', price: 60},
+        {amount: 1, name: 'ข้าวอบ', price: 50},
+        {amount: 1, name: 'ข้าวผัดกระเพรา', price: 55},
+        {amount: 1, name: 'ข้าวผัดกุ้ง', price: 60},
+        {amount: 1, name: 'สเต๊กเนื้อ', price: 100},
+      ],
+    };
+  },
+};
 </script>
 
 <style>

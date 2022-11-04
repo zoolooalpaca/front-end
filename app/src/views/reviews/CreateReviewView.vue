@@ -51,68 +51,68 @@
 </template>
 
 <script>
-import StarRating from "@/components/Review/StarRating.vue"
-import ConfirmReview from "@/components/Review/ConfirmReview.vue"
-import { ref } from 'vue';
-import { useRatingStore } from '@/stores/rating.js'
-import { useReviewStore } from '@/stores/review.js'
+import StarRating from '@/components/Review/StarRating.vue';
+import ConfirmReview from '@/components/Review/ConfirmReview.vue';
+import {ref} from 'vue';
+import {useRatingStore} from '@/stores/rating.js';
+import {useReviewStore} from '@/stores/review.js';
 export default {
   setup() {
-    const review_store = useReviewStore()
-    const rating_store = useRatingStore()
+    const review_store = useReviewStore();
+    const rating_store = useRatingStore();
     const popupTrigger = ref({
-      buttonTrigger: false
-    })
+      buttonTrigger: false,
+    });
 
     const TogglePopup = (trigger) => {
-      popupTrigger.value[trigger] = !popupTrigger.value[trigger]
-    }
+      popupTrigger.value[trigger] = !popupTrigger.value[trigger];
+    };
 
-    return { review_store, rating_store, popupTrigger, TogglePopup }
+    return {review_store, rating_store, popupTrigger, TogglePopup};
   },
-  data(){
-    return{
+  data() {
+    return {
       review: {feedback: ''},
       rating: '',
       error: null,
       titles: [
-          'การให้บริการ', 'รสชาติอาหาร', 'ความสะอาด', 'ความรวดเร็ว/ความสะดวก'
-      ]
-    }
+        'การให้บริการ', 'รสชาติอาหาร', 'ความสะอาด', 'ความรวดเร็ว/ความสะดวก',
+      ],
+    };
   },
   components: {
     StarRating,
-    ConfirmReview
+    ConfirmReview,
   },
   methods: {
     async saveNewReview() {
       try {
-        this.error = null
-        const review_id = await this.review_store.save(this.review)
-        const rating_id = await this.rating_store.save(this.rating)
-        if (review_id){
-          this.$router.push(`/allReview/${review_id}`)
+        this.error = null;
+        const review_id = await this.review_store.save(this.review);
+        const rating_id = await this.rating_store.save(this.rating);
+        if (review_id) {
+          this.$router.push(`/allReview/${review_id}`);
         }
-        if (rating_id){
-          this.$router.push(`/allReview/${rating_id}`)
+        if (rating_id) {
+          this.$router.push(`/allReview/${rating_id}`);
         }
-      }catch (error){
-        console.log(error)
-        this.error = error.message
+      } catch (error) {
+        console.log(error);
+        this.error = error.message;
       }
     },
     backToMenu() {
-      this.$router.push(`/`)
+      this.$router.push(`/`);
     },
     scroll() {
-      let element = document.getElementById("yourID");
-      element.scrollIntoView({behavior: "smooth", block: "end"});
-    }
+      const element = document.getElementById('yourID');
+      element.scrollIntoView({behavior: 'smooth', block: 'end'});
+    },
   },
   mounted() {
     this.scroll();
-  }
-}
+  },
+};
 </script>
 
 <style >

@@ -19,37 +19,37 @@ export default {
       tables: [
         {
           table_id: 1,
-          status:'ยังไม่เสิร์ฟ',
+          status: 'ยังไม่เสิร์ฟ',
           orders: [
             {
               order: 'ข้าวไข่เจียว',
-              amount: 2,
+              quantity: 2,
             },
             {
               order: 'กะเพราหมูไข่ดาว',
-              amount: 1,
+              quantity: 1,
             },
             {
               order: 'กะเพราหมูดาว',
-              amount: 1,
+              quantity: 1,
             },
           ],
         },
         {
           table_id: 2,
-          status:'ยังไม่เสิร์ฟ',
+          status: 'ยังไม่เสิร์ฟ',
           orders: [
             {
               order: 'ไข่ดาว',
-              amount: 1,
+              quantity: 1,
             },
             {
               order: 'กะเพราดาว',
-              amount: 1,
+              quantity: 1,
             },
             {
               order: 'กะเพราหมูไข่',
-              amount: 1,
+              quantity: 1,
             },
           ],
         },

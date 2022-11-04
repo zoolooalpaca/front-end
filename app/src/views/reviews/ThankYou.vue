@@ -22,17 +22,17 @@
 </template>
 <script>
 export default {
-  data(){
-    return{
+  data() {
+    return {
       image: 'https://i.pinimg.com/236x/f2/e6/c7/f2e6c7b0e07d8644ca7e68c8a17ae1c4.jpg',
-    }
+    };
   },
   methods: {
-    goBack () {
-      return this.$router.go(-1)
-    }
-  }
-}
+    goBack() {
+      return this.$router.go(-1);
+    },
+  },
+};
 </script>
 
 <style>
