@@ -1,6 +1,5 @@
 <template>
     <nav>
-      <h3 class="headline-large ml-4 mb6-4">อร่อยโภชนา</h3>
       <HeaderNav label="สำหรับพนักงาน" />
       <Item
         v-for="(item, index) in navItems"
@@ -33,6 +32,7 @@ export default {
   },
   components: {Item, HeaderNav},
   methods: {
+    //onClickItem() = ส่งไปแต่ละหน้าตามurl
     onClickItem(id,url) {
       this.activeId = id;
       if (url != '') {

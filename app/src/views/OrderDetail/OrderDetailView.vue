@@ -1,3 +1,26 @@
+<!-- /TODO:
+  ใช้ข้อมูล
+  order description: 
+  -order id
+  -order_status = ''
+  -food id > food name food image
+  -price(ราคารวมอาหารที่สั่งในorderนั้นทั้งหมด foodprice*quantity ??)
+  -quantity
+  -request
+
+  computed:
+  totalprice = ราคารวมทุกorderที่สั่ง ไม่รวมที่ยกเลิกไปแล้ว
+  //ขึ้นที่แถบด้านล่าง
+
+  methods:
+  อยู่ในcomponents
+  - TopAppBar.vue > goBack() = ย้อนกลับไปหน้าที่แล้ว
+  - OrderItem.vue 
+    (DeletePopup ใน component OrderConfirmDeletePopup = กดปุ่มแล้วแสดง popup ให้ confirm deleteOrder)
+      > deleteOrder() = กดปุ่ม'เอาออก'เพื่อยืนยัน แล้วลบorderที่ได้เอามาใส่ในถาด
+  
+  -saveNewOrder() = กดปุ่ม 'สั่ง' แล้วรายการอาหารที่อยู่ในถาดจะsaveไปที่new order & status กลายเป็นรอทำ
+  / -->
 <template>
     <div class="relative">
         <div>
@@ -7,7 +30,8 @@
           <OrderItem
             v-for="(order,index) in orders"
             :id="index"
-            :image="order.image"
+            :order_status="order.order_status"
+            :food_image="order.food_image"
             :food_name="order.food_name"
             :order_price="order.order_price"
             :order_quantity="order.order_quantity"
@@ -56,21 +80,24 @@ export default {
     return {
       orders: [
         {
-          image: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
+          order_status:'',
+          food_image: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
           food_name: 'ข้าวมันไก่',
           order_price: 135,
           order_quantity: '3',
           order_request: 'ขอหนังล้วน ๆ ไม่เอาเนื้อไก่',
         },
         {
-          image: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
+          order_status:'',
+          food_image: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
           food_name: 'ข้าวมันไก่',
           order_price: 90,
           order_quantity: '2',
           order_request: 'ขอหนังล้วน ๆ ไม่เอาเนื้อไก่',
         },
         {
-          image: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
+          order_status:'',
+          food_image: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
           food_name: 'ข้าวมันไก่',
           order_price: 45,
           order_quantity: '1',

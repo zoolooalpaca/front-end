@@ -7,53 +7,58 @@
                 justify-between">
         <div class="flex flex-col">
             <div class="text-black ">
-                <span v-show="status == 'รอทำ'"
+                <span v-show="order_status == 'รอทำ'"
                     class="material-symbols-outlined">alarm</span>
-                <span v-show="status == 'กำลังทำ'"
+                <span v-show="order_status == 'กำลังทำ'"
                     class="material-symbols-outlined">soup_kitchen</span>
-                <span v-show="status == 'ส่งถึงโต๊ะแล้ว'"
+                <span v-show="order_status == 'ส่งถึงโต๊ะแล้ว'"
                     class="material-symbols-outlined">done</span>
-                {{status}}
+                {{order_status}}
             </div>
             <div class="mx-8">
                 <div class="rounded border-radius-10px
                 overflow-hidden flex flex-col" >
-                    <img :src="image"
+                    <img :src="food_image"
                     height="60" width="60">
                 </div>
                 <div class='text-black mx-5 flex flex-col'>
                     <span class='headline-small'>{{food_name}}</span>
-                    <span class='body-large'>{{food_price}} บาท</span>
+                    <span class='body-large'>{{order_price}} บาท</span>
                     <span class='body-small'>x{{order_quantity}}</span>
                     <span class='body-medium'>{{order_request}}</span>
                 </div>
             </div>
        </div>
 
-       <div class="items-center">
-           <button v-show="status == 'รอทำ'"
-           class="icon bg-orange-800 mt-10"
+       <div class="flex items-center">
+           <button v-show="order_status == 'รอทำ'"
            @click="() => DeletePopup('buttonTrigger')"
+           class="error-container error-text w-10 h-10 rounded-full"
            >
-               <span class="material-symbols-outlined">close</span>
+            <div class="flex items-center justify-center">
+              <span class="material-symbols-outlined">close</span>
+            </div>
            </button>
-           <button disabled v-show="status == 'กำลังทำ'"
-           class="icon bg-slate-400 mt-10">
-               <span class="material-symbols-outlined">close</span>
+           <button disabled v-show="order_status == 'กำลังทำ'"
+           class="on-surface-variant w-10 h-10 rounded-full">
+            <div class="flex items-center justify-center">
+             <span class="material-symbols-outlined">close</span>
+            </div>
            </button>
        </div>
+
        <OrderConfirmDeletePopup
-          v-if="popupTrigger.buttonTrigger" :DeletePopup="() => DeletePopup('buttonTrigger')"
-          >
-          <h1 class="text-center headline-medium">ยกเลิกอาหาร</h1>
-          <article>
-            <p>
-              ยกเลิกอาหารที่สั่งไปแล้ว คุณจะไม่สามารถแก้ไขการยกเลิกนี้ได้ <br/>กดปุ่มยกเลิกอาหารเพื่อยกเลิกการสั่งทำอาหาร
-            </p>
-          </article>
-          <div>
-            <button @click="deleteOrder"
-                    class="button-color p-3 mt-5 border rounded-lg float-right">
+       v-if="popupTrigger.buttonTrigger" :DeletePopup="() => DeletePopup('buttonTrigger')"
+       >
+       <h1 class="text-center headline-medium">ยกเลิกอาหาร</h1>
+       <article>
+         <p>
+           ยกเลิกอาหารที่สั่งไปแล้ว คุณจะไม่สามารถแก้ไขการยกเลิกนี้ได้ <br/>กดปุ่มยกเลิกอาหารเพื่อยกเลิกการสั่งทำอาหาร
+          </p>
+        </article>
+        <div>
+          <button @click="deleteHistoryOrder"
+          class="button-color p-3 mt-5 border rounded-lg float-right">
               ยกเลิกอาหาร
             </button>
           </div>
@@ -70,11 +75,11 @@ import { trigger } from '@vue/reactivity';
 
 export default {
   props: [
-    'id', 'status', 'image', 'food_name',
-    'food_price', 'order_quantity', 'order_request',
-    'onClickPop'
+    'id', 'order_status', 'food_image', 'food_name',
+    'order_price', 'order_quantity', 'order_request',
   ],
 
+//(DeletePopup ใน component OrderConfirmDeletePopup = กดปุ่มแล้วแสดง popup ให้ confirm deleteOrder)
 setup(){
   const popupTrigger = ref({
     buttonTrigger: false
@@ -86,6 +91,10 @@ setup(){
 },
 
 methods:{
+  //กดปุ่ม'ยกเลิกอาหาร'เพื่อยืนยัน แล้วลบorderที่ได้สั่งไปแล้วแต่ยังอยู่ใน order_status 'รอทำ'
+  deleteHistoryOrder(){
+
+  }
 
 },
 components: { OrderConfirmDeletePopup, }
@@ -98,11 +107,5 @@ components: { OrderConfirmDeletePopup, }
     padding: 30px;
     background: rgb(207, 212, 223);
 }
-.icon {
-    padding:15px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 </style>

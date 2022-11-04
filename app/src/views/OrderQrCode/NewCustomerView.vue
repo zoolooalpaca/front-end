@@ -1,10 +1,28 @@
+<!-- /TODO:
+  ใช้ข้อมูล
+  table:
+    - table_id 
+    - table_available = สถานะว่าโต๊ะนั้นว่างมั้ย
+    - table_qrcode = qrcode ไปยังหน้าสั่งอาหารของtableนั้นๆ
+
+  methods: 
+  อยู่ในcomponent
+  -TableItem.vue > goToOrderQrCode() = กดเลือกโต๊ะที่ต้องการแล้วจะส่งไปยังหน้า OrderQrCodeView.vue (/new-customer/order-qrcode) 
+
+  navbar>
+  -showMenu() = กดเพื่อให้โชว์navbarที่ซ่อนไว้ 
+  อยู่ในcomponents
+  -NavBarEmployee.vue > onClickItem() = ส่งไปแต่ละหน้าตามurl
+/ -->
 <template>
 <div class="relative">
     <div class="main-content-employee-view">
-        <div class="
-              w-64
-              absolute
-              inset-y-0
+        <div>
+            <h3 class="headline-large ml-4 mb6-4">อร่อยโภชนา</h3>
+            <div class="
+            w-64
+            absolute
+            inset-y-0
               left-0
               md:relative md:-translate-x-0
               transform
@@ -13,15 +31,16 @@
               duration-200
               ease-in-out"
             :class="this.showMobileMenu ? 'relative -translate-x-0' : 'closed-menu'">
-        <NavBarEmployee></NavBarEmployee>
+            <NavBarEmployee></NavBarEmployee>
+            </div>
+            <i>
+                <button @click="showMenu()">
+                    <span class="material-symbols-outlined">
+                        menu
+                    </span>
+                </button>
+            </i>
         </div>
-        <i>
-            <button @click="showMenu()">
-              <span class="material-symbols-outlined">
-                menu
-              </span>
-            </button>
-        </i>
 
         <div class="p-4 flex-grow">
             <h1 class="headline-medium">รับลูกค้าใหม่</h1>
@@ -30,7 +49,7 @@
                 <div class="grid justify-items-center mt-8"
                     v-for="(table,index) in tables">
                     <TableItem 
-                    :table_number="table.table_number"
+                    :table_id="table.table_id"
                     :available="table.available"
                     :key="index"
                     >
@@ -64,63 +83,63 @@ data() {
         showMobileMenu: false,
         tables:[
             {
-                table_number:1,
+                table_id:1,
                 available:true,
             },
             {
-                table_number:2,
+                table_id:2,
                 available:true,
             },
             {
-                table_number:3,
+                table_id:3,
                 available:false,
             },
             {
-                table_number:4,
+                table_id:4,
                 available:false,
             },
             {
-                table_number:5,
+                table_id:5,
                 available:true,
             },
             {
-                table_number:6,
+                table_id:6,
                 available:false,
             },
             {
-                table_number:7,
+                table_id:7,
                 available:false,
             },
             {
-                table_number:8,
+                table_id:8,
                 available:true,
             },
             {
-                table_number:9,
+                table_id:9,
                 available:false,
             },
             {
-                table_number:10,
+                table_id:10,
                 available:true,
             },
             {
-                table_number:11,
+                table_id:11,
                 available:true,
             },
             {
-                table_number:12,
+                table_id:12,
                 available:true,
             },
             {
-                table_number:13,
+                table_id:13,
                 available:true,
             },
             {
-                table_number:14,
+                table_id:14,
                 available:true,
             },
             {
-                table_number:15,
+                table_id:15,
                 available:true,
             },
         ]

@@ -1,5 +1,5 @@
 <template>
-  <div v-show="status == 'ยังไม่เสิร์ฟ'"
+  <div v-show="order_status == 'ยังไม่เสิร์ฟ'"
       class="main-content-toserve-list">
     <div class="table-circle primary on-primary-text">
       <span>
@@ -19,7 +19,7 @@
           :key="index"
           class="body-large"
         >
-          {{ order.order }} x{{ order.quantity }}
+          {{ order.food_name }} x{{ order.quantity }}
         </p>
       </div>
     </div>
@@ -43,9 +43,10 @@
 <script>
 export default {
   props: [
-    'id', 'status', 'table_id', 'orders',
+    'id', 'table_id','order_id','order_status', 'orders',
   ],
   methods: {
+    //serveDone() = กดยืนยันว่าorderนั้นได้เสิร์ฟแล้ว แล้ว order_status เป็น 'ส่งถึงโต๊ะแล้ว' (orderนั้นจะหายไปจากlist toserve)
     serveDone() {
 
     },

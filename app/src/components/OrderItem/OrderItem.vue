@@ -3,7 +3,7 @@
  <div class="order-item-container rounded-lg mt-3 p-4 flex justify-between">
   <div class="flex">
     <div>
-      <img class="order-image" :src="image" alt="">
+      <img class="order-image" :src="food_image" alt="">
     </div>
 
     <div class='mx-5 flex flex-col'>
@@ -50,14 +50,15 @@ import { trigger } from '@vue/reactivity';
 export default {
     props: [
         "id",
-        "image",
+        "order_status",
+        "food_image",
         "food_name",
         "order_price",
         "order_quantity",
         "order_request",
         "showDeleteDialog"
     ],
-
+//(DeletePopup ใน component OrderConfirmDeletePopup = กดปุ่มแล้วแสดง popup ให้ confirm deleteOrder)
     setup(){
       const popupTrigger = ref({
         buttonTrigger: false
@@ -71,6 +72,10 @@ export default {
     },
     
     methods:{
+      //กดปุ่ม'เอาออก'เพื่อยืนยัน แล้วลบorderที่ได้เอามาใส่ในถาด
+      deleteOrder(){
+
+      }
 
     },
     components: { OrderConfirmDeletePopup, }

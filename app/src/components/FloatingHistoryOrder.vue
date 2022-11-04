@@ -3,7 +3,7 @@
       <div class="floating-order-bar order-detail-bar">
         <label>รวม</label>
         <div class="order-detail">
-          <span>{{total}} รายการ</span>
+          <span>{{totalOrder}} รายการ</span>
           <div class="flex ml-[14px]">
           <span>฿{{tprice}}</span>
           </div>
@@ -15,7 +15,7 @@
 <script>
 export default {
   props: [
-    'total', 'tprice',
+    'totalOrder', 'tprice',
   ],
   computed: {
   },

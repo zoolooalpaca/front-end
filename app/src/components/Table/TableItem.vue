@@ -7,14 +7,14 @@
     @click="goToOrderQrCode"
   >
     <p class="text-base font-medium tracking-wide leading-normal text-gray-900">
-      {{table_number}}</p>
+      {{table_id}}</p>
   </button>
   <button disabled class="flex items-center
     justify-center w-28 h-28 bg-gray-300 rounded-2xl"
     v-show="available==false"
   >
     <p class="text-base font-medium tracking-wide leading-normal text-gray-900">
-      {{table_number}}
+      {{table_id}}
     </p>
   </button>
 
@@ -26,9 +26,11 @@
 <script>
 export default {
   props:[
-    'table_number','available'
+    'table_id','available'
   ],
+
   methods:{
+    //กดเลือกโต๊ะที่ต้องการแล้วจะส่งไปยังหน้า OrderQrCodeView.vue เพื่อแสกนไปหน้าสั่งorderของโต๊ะนั้นๆ
     goToOrderQrCode(){
       this.$router.push(`/new-customer/order-qrcode`)
       //       this.$router.push(`/new-customer/order-qrcode/${this.table.id}`)

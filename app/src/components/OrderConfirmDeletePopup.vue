@@ -25,7 +25,7 @@ export default{
     methods: {
         
     },
-    props:['DeletePopup','cancelbutton'],
+    props:['DeletePopup',],
 }
 
 
