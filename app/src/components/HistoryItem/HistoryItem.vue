@@ -1,38 +1,41 @@
 <template>
-    <div class= "mt-3 p-4
-                color-block
-                rounded
-                botfrt-radius-8px
-                flex
+    <div class= "color-block
+                rounded flex gap-4
                 justify-between">
-        <div class="flex flex-col">
-            <div class="text-black ">
+        <div class="space-y-4">
+            <div class="flex items-center">
                 <span v-show="status == 'รอทำ'"
-                    class="material-symbols-outlined">alarm</span>
+                    class="material-symbols-outlined"
+                >alarm</span>
                 <span v-show="status == 'กำลังทำ'"
                     class="material-symbols-outlined">soup_kitchen</span>
                 <span v-show="status == 'ส่งถึงโต๊ะแล้ว'"
                     class="material-symbols-outlined">done</span>
                 {{status}}
             </div>
-            <div class="mx-8">
-                <div class="rounded border-radius-10px
-                overflow-hidden flex flex-col" >
-                    <img :src="image" alt="ข้าวมันไก่.jpg"
-                    height="60" width="60">
+            <div class="flex gap-4">
+                <div
+                    class="rounded border-radius-10px
+                    overflow-hidden flex flex-col"
+                >
+                    <img :src="image"
+                        :alt="foodName"
+                        height="60"
+                        width="60"
+                    >
                 </div>
-                <div class='text-black mx-5 flex flex-col'>
-                    <span class='body-large'>{{foodName}}</span>
-                    <span class='body-large'>{{foodPrice}} บาท</span>
-                    <span class='label-medium'>x{{foodAmount}}</span>
-                    <span class='body-large'>{{foodDescription}}</span>
+                <div>
+                    <p class='body-large'>{{foodName}}</p>
+                    <p class='body-large'>{{foodPrice}} บาท</p>
+                    <p class='label-medium'>x{{foodAmount}}</p>
+                    <p class='body-large'>{{foodDescription}}</p>
                 </div>
             </div>
        </div>
 
        <div class="items-center">
            <button v-show="status == 'รอทำ'"
-           class="icon bg-orange-800 mt-10">
+           class="icon error on-error-text mt-10">
                <span class="material-symbols-outlined">close</span>
            </button>
            <button disabled v-show="status == 'กำลังทำ'"
@@ -54,8 +57,9 @@ export default {
 
 <style>
 .color-block {
-    padding: 30px;
-    background: rgb(207, 212, 223);
+    padding: 16px;
+    color: var(--md-sys-color-on-surface);
+    background: var(--md-sys-color-surface-variant);
 }
 .icon {
     padding:15px;
