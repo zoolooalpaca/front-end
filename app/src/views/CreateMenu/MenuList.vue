@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex min-h-screen">
+  <div class="nav-menu">
     <div class="
           w-64
           absolute
@@ -12,7 +12,7 @@
           duration-200
           ease-in-out
         "
-         :class="{ 'relative -translate-x-0': showSidebar }"
+         :class="this.showMobileMenu ? 'relative -translate-x-0' : 'closed-menu'"
     >
       <h3 class="headline-small ml-4">ชื่อร้าน</h3>
       <NavItem
@@ -28,14 +28,21 @@
       </NavItem>
     </div>
 
-    <div class="flex-1 ml-5">
-      <button @click="showSidebar = !showSidebar">
+    <div class="ml-10">
+      <div class="flex">
+      <i>
+        <button @click="showMenu()">
         <span class="material-symbols-outlined">
           menu
         </span>
-      </button>
-      <h3 class="headline-large">รายการอาหาร</h3>
-      <div class="grid grid-cols-4 gap-4 " >
+        </button>
+      </i>
+        <div>
+          <h3 class="headline-large">รายการอาหาร</h3>
+        </div>
+      </div>
+
+      <div class="main-content-menu-list mr-20" >
         <div class="grid justify-items-center create-menu">
           <button
               class="rounded-full p-1 justify-center"
@@ -74,6 +81,7 @@ export default {
   },
   data() {
     return {
+      showMobileMenu: false,
       activeId: 0,
       loopCount: 4,
       navItems: [
@@ -108,6 +116,9 @@ export default {
     FoodCard,
   },
   methods: {
+    showMenu() {
+      this.showMobileMenu = !this.showMobileMenu;
+    },
     goToCreateMenu(){
       this.$router.push(`/CreateMenu`)
     },
@@ -121,10 +132,76 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+
 div.create-menu {
   border-radius: 30px;
   background: var(--md-sys-color-primary-container);
   padding: 25px 20px 20px 25px;
+}
+
+.nav-menu{
+  display: flex;
+}
+.nav-content{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+i {
+  display: none;
+}
+div.main-content-menu-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-gap: 4px;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-menu{
+    padding-top: 10px;
+    position: absolute;
+    width: 100%;
+    display: flex;
+  }
+
+  .closed-menu {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+  }
+
+  .nav-content {
+    flex-direction: column;
+    z-index: 100;
+    position: relative;
+    transition: all 0.2s ease-out;
+  }
+
+  i {
+    display: block;
+    text-align: right;
+    padding: 0 10px 10px 0;
+  }
+
+  div.main-content-menu-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-gap: 4px;
+  }
+}
+@media screen and (max-width: 650px) {
+  div.main-content-menu-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 4px;
+  }
+}
+@media screen and (max-width: 420px) {
+  div.main-content-menu-list {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-gap: 4px;
+  }
 }
 </style>
