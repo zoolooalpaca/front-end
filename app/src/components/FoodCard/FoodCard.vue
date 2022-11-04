@@ -1,7 +1,7 @@
 <template>
   <div class="food-card">
-    <img :src="image" alt="image_khaomankai.jpg"
-      class="rounded rcorners2" height="150">
+    <img :src="image" alt="image.jpg"
+      class="rounded food-card-image" height="150">
     <div class="flex p-5 justify-between">
       <div>
         <h3 class="label-large --md-sys-color-on-primary-container">
@@ -29,6 +29,7 @@ export default {
       price: 65,
     };
   },
+  props: ['image', 'name', 'price'],
   methods: {
     onClickAdd() {},
   },
@@ -41,7 +42,11 @@ export default {
   border-radius: 30px;
   background: var(--md-sys-color-primary-container);
 }
-.rcorners2 {
+.food-card-image{
+  position: relative;
+  height: 150px;
+  width: 250px;
   border-radius: 30px 30px 0px 0px;
 }
+
 </style>

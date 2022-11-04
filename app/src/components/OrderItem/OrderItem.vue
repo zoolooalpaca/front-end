@@ -1,16 +1,15 @@
-<!-- eslint-disable max-len -->
 <template>
  <div class="order-item-container rounded-lg flex justify-between">
   <div class="flex">
     <div>
-      <img class="order-image" :src="image" alt="">
+      <img class="order-image" :src="order.food_image.thumb" alt="">
     </div>
 
     <div class='mx-5 flex flex-col'>
-        <span class='headline-small'>{{foodName}}</span>
-        <span class='body-large'>{{foodPrice}} บาท</span>
-        <span class='body-small'>x{{foodAmount}}</span>
-        <span class='body-medium'>{{foodDescription}}</span>
+        <span class='headline-small'>{{order.food_name}}</span>
+        <span class='body-large'>{{order.order_price}} บาท</span>
+        <span class='body-small'>x{{order.order_quantity}}</span>
+        <span class='body-medium'>{{order.order_}}</span>
     </div>
   </div>
   <div class="flex items-center">
@@ -26,15 +25,7 @@
 
 <script>
 export default {
-  data() {
-    return {
-      image: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
-      foodName: 'ข้าวมันไก่',
-      foodPrice: '45',
-      foodAmount: 1,
-      foodDescription: 'ขอหนังล้วน ๆ ไม่เอาเนื้อไก่',
-    };
-  },
+  props: ['order'],
 };
 </script>
 
