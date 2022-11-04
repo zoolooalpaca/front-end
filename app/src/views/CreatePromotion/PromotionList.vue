@@ -72,6 +72,19 @@ import FoodCard from "../../components/FoodCard/FoodCard.vue";
 
 export default {
   data() {
+    /*To Do List
+    *
+    * - Data -
+    * ต้องมีการดึงค่าข้อมูล Promotion มาแสดงในรายการอาหารที่แสดง
+    *
+    * - Method -
+    * goToPromotionDetail()
+    * ต้องมีเมธอดที่พอกดที่ Promotion card แล้วไปยังหน้ารายละเอียดโปรโมชัน
+    *
+    * goToCreatePromotion()
+    * เมธอดนี้เขียนให้แล้วใช้งานได้แล้ว เป็นเมธอดที่กดแล้วไปยังหน้าเพิ่มข้อมูลโปรโมชัน
+    *
+    * */
     return {
       showMobileMenu: false,
       activeId: 0,
