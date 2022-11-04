@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-dupe-keys -->
 <template>
   <div class="food-card">
     <img :src="image" alt="image.jpg"
@@ -29,6 +30,7 @@ export default {
       price: 65,
     };
   },
+  // eslint-disable-next-line vue/no-dupe-keys
   props: ['image', 'name', 'price'],
   methods: {
     onClickAdd() {},

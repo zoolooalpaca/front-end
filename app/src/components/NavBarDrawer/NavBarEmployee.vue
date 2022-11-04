@@ -23,6 +23,7 @@ export default {
     return {
       activeId: 0,
       navItems: [
+        // eslint-disable-next-line max-len
         {label: 'รับลูกค้าใหม่', icon: 'sentiment_satisfied', router: '/new-customer'},
         {label: 'จ่ายเงิน', icon: 'payment', router: ''},
         {label: 'อาหารที่ต้องเสิร์ฟ', icon: 'room_service', router: '/serve'},

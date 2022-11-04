@@ -10,6 +10,11 @@ import CreateMenu from '@/views/CreateMenu/CreateMenu.vue';
 import PromotionList from '@/views/CreatePromotion/PromotionList.vue';
 import CreatePromotion from '@/views/CreatePromotion/CreatePromotion.vue';
 import Dashboard from '@/views/Dashboard/Dashboard.vue';
+import OrderCooking from '@/views/OrderCooking/OrderCookingView.vue';
+import OrderToDoList from '@/views/OrderToDoList/OrderToDoListView.vue';
+import AllMenu from '@/views/Menu/AllMenuView/vue';
+import DetailMenu from '@/views/Menu/DetailMenuView.vue';
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -93,6 +98,26 @@ const router = createRouter({
       path: '/Dashboard',
       name: 'Dashboard',
       component: Dashboard,
+    },
+    {
+      path: '/order-cooking',
+      name: 'order-cooking',
+      component: OrderCooking,
+    },
+    {
+      path: '/order-to-do',
+      name: 'order-to-do',
+      component: OrderToDoList,
+    },
+    {
+      path: '/menu',
+      name: 'menu',
+      component: AllMenu,
+    },
+    {
+      path: '/menu/detail',
+      name: 'detail-menu',
+      component: DetailMenu,
     },
   ],
 });
