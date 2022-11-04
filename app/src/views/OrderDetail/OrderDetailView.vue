@@ -28,7 +28,8 @@
                 </div>
             </div>
             <div class="py-4 float-right">
-                <button class="
+                <button @click="saveNewOrder()"
+                  class="
                     text-center
                     button1
                     primary-container
@@ -79,6 +80,11 @@ export default {
     };
   },
 
+  methods:{
+    saveNewOrder(){
+
+    },
+  },
   computed: {
     totalPrice() {
       return this.orders.reduce((prev, {order_price}) => prev + order_price, 0);

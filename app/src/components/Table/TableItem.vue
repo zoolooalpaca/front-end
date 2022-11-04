@@ -30,7 +30,8 @@ export default {
   ],
   methods:{
     goToOrderQrCode(){
-      this.$router.push(`/order-qrcode`)
+      this.$router.push(`/new-customer/order-qrcode`)
+      //       this.$router.push(`/new-customer/order-qrcode/${this.table.id}`)
     }
   }
 };

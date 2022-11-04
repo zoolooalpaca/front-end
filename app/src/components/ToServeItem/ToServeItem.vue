@@ -1,6 +1,6 @@
 <template>
   <div v-show="status == 'ยังไม่เสิร์ฟ'"
-      class="flex items-center gap-4 mt-2 p-3">
+      class="main-content-toserve-list">
     <div class="table-circle primary on-primary-text">
       <span>
         โต๊ะ {{ table_id }}
@@ -8,7 +8,7 @@
     </div>
     <div class="flex flex-1
       self-stretch items-center
-      p-4 rounded-xl
+      m-4 p-4 rounded-xl
       primary-container on-primary-container-text"
     >
     <div class="flex-1 self-stretch">
@@ -53,7 +53,43 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+div.main-content-toserve-list {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin: 4px;
+  padding: 4px;
+}
+@media screen and (max-width: 768px) {
+
+  div.main-content-toserve-list {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    margin: 4px;
+    padding: 4px;
+  }
+}
+@media screen and (max-width: 650px) {
+  div.main-content-toserve-list {
+    display: inline;
+    gap: 4px;
+    align-items: center;
+    margin: 4px;
+    padding: 4px;
+  }
+}
+@media screen and (max-width: 420px) {
+  div.main-content-toserve-list {
+    display: inline;
+    gap: 4px;
+    align-items: center;
+    margin: 4px;
+    padding: 4px;
+  }
+}
+
 .color-block {
   padding: 30px;
   background: gainsboro;
@@ -71,7 +107,7 @@ export default {
 
 .icon {
   float: right;
-  padding: 30px;
+  padding: 15px;
   border-radius: 50%;
   display: flex;
   justify-content: center;

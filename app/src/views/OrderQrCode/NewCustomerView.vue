@@ -1,7 +1,28 @@
 <template>
 <div class="relative">
-    <div class="flex flex-row">
+    <div class="main-content-employee-view">
+        <div class="
+              w-64
+              absolute
+              inset-y-0
+              left-0
+              md:relative md:-translate-x-0
+              transform
+              -translate-x-full
+              transition
+              duration-200
+              ease-in-out"
+            :class="this.showMobileMenu ? 'relative -translate-x-0' : 'closed-menu'">
         <NavBarEmployee></NavBarEmployee>
+        </div>
+        <i>
+            <button @click="showMenu()">
+              <span class="material-symbols-outlined">
+                menu
+              </span>
+            </button>
+        </i>
+
         <div class="p-4 flex-grow">
             <h1 class="headline-medium">รับลูกค้าใหม่</h1>
             <h1 class="headline-small">เลือกโต๊ะ</h1>
@@ -31,10 +52,16 @@ export default{
     NavBarEmployee,
     TableItem
     },
+    methods:{
+    showMenu() {
+      this.showMobileMenu = !this.showMobileMenu;
+    },
+    },
     
 
 data() {
     return {
+        showMobileMenu: false,
         tables:[
             {
                 table_number:1,
@@ -102,10 +129,35 @@ data() {
 }
 </script>
 
+
 <style lang="scss">
 div.main-content-table-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-gap: 4px;
+}
+
+@media screen and (max-width: 768px) {
+  div.main-content-table-list {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    grid-gap: 6px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-gap: 4px;
   }
+}
+@media screen and (max-width: 650px) {
+  div.main-content-table-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 4px;
+  }
+}
+@media screen and (max-width: 420px) {
+  div.main-content-table-list {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-gap: 4px;
+  }
+}
+
+
 </style>
