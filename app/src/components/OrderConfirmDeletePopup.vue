@@ -1,6 +1,6 @@
 <template>
-<div class="popup">
-  <div class="popup-inner border rounded-lg">
+<div class="dpopup">
+  <div class="dpopup-inner border rounded-lg">
     <div class="text-center">
         <span class="material-symbols-outlined">
             mobile_friendly
@@ -17,22 +17,22 @@
 
 <script>
 
-export default{
-    setup() {
-        
-    },
+export default {
+  setup() {
 
-    methods: {
-        
-    },
-    props:['DeletePopup',],
-}
+  },
+
+  methods: {
+
+  },
+  props: ['DeletePopup'],
+};
 
 
 </script>
 
 <style>
-.popup {
+.dpopup {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -45,11 +45,11 @@ export default{
   color: var(--md-sys-color-background);
 
 }
-.popup-inner {
+.dpopup-inner {
   background-color: var(--md-sys-color-on-surface);
-  padding: 32px;
+  padding: 15px;
 }
-.button-color {
+.dbutton-color {
   color: var(--md-sys-color-background);
   background: var(--md-sys-color-error);
   border-color: var(--md-sys-color-primary);

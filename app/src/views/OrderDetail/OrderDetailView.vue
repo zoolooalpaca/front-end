@@ -1,6 +1,6 @@
 <!-- /TODO:
   ใช้ข้อมูล
-  order description: 
+  order description:
   -order id
   -order_status = ''
   -food id > food name food image
@@ -13,13 +13,13 @@
   //ขึ้นที่แถบด้านล่าง
 
   methods:
+  -saveNewOrder() = กดปุ่ม 'สั่ง' แล้วรายการอาหารที่อยู่ในถาดจะsaveไปที่new order & status กลายเป็นรอทำ
+
   อยู่ในcomponents
   - TopAppBar.vue > goBack() = ย้อนกลับไปหน้าที่แล้ว
-  - OrderItem.vue 
-    (DeletePopup ใน component OrderConfirmDeletePopup = กดปุ่มแล้วแสดง popup ให้ confirm deleteOrder)
+  - OrderItem.vue
+    (DeletePopupในOrderConfirmDeletePopup = popupให้confirm deleteOrder)
       > deleteOrder() = กดปุ่ม'เอาออก'เพื่อยืนยัน แล้วลบorderที่ได้เอามาใส่ในถาด
-  
-  -saveNewOrder() = กดปุ่ม 'สั่ง' แล้วรายการอาหารที่อยู่ในถาดจะsaveไปที่new order & status กลายเป็นรอทำ
   / -->
 <template>
     <div class="relative">
@@ -80,7 +80,7 @@ export default {
     return {
       orders: [
         {
-          order_status:'',
+          order_status: '',
           food_image: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
           food_name: 'ข้าวมันไก่',
           order_price: 135,
@@ -88,7 +88,7 @@ export default {
           order_request: 'ขอหนังล้วน ๆ ไม่เอาเนื้อไก่',
         },
         {
-          order_status:'',
+          order_status: '',
           food_image: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
           food_name: 'ข้าวมันไก่',
           order_price: 90,
@@ -96,7 +96,7 @@ export default {
           order_request: 'ขอหนังล้วน ๆ ไม่เอาเนื้อไก่',
         },
         {
-          order_status:'',
+          order_status: '',
           food_image: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
           food_name: 'ข้าวมันไก่',
           order_price: 45,
@@ -107,8 +107,8 @@ export default {
     };
   },
 
-  methods:{
-    saveNewOrder(){
+  methods: {
+    saveNewOrder() {
 
     },
   },

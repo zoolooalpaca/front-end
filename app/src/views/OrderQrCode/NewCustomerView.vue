@@ -1,16 +1,17 @@
 <!-- /TODO:
   ใช้ข้อมูล
   table:
-    - table_id 
+    - table_id
     - table_available = สถานะว่าโต๊ะนั้นว่างมั้ย
     - table_qrcode = qrcode ไปยังหน้าสั่งอาหารของtableนั้นๆ
 
-  methods: 
+  methods:
   อยู่ในcomponent
-  -TableItem.vue > goToOrderQrCode() = กดเลือกโต๊ะที่ต้องการแล้วจะส่งไปยังหน้า OrderQrCodeView.vue (/new-customer/order-qrcode) 
+  -TableItem.vue > goToOrderQrCode() = กดเลือกโต๊ะที่ต้องการแล้วจะส่งไปยังหน้า
+  OrderQrCodeView.vue (/new-customer/order-qrcode)
 
   navbar>
-  -showMenu() = กดเพื่อให้โชว์navbarที่ซ่อนไว้ 
+  -showMenu() = กดเพื่อให้โชว์navbarที่ซ่อนไว้
   อยู่ในcomponents
   -NavBarEmployee.vue > onClickItem() = ส่งไปแต่ละหน้าตามurl
 / -->
@@ -30,7 +31,8 @@
               transition
               duration-200
               ease-in-out"
-            :class="this.showMobileMenu ? 'relative -translate-x-0' : 'closed-menu'">
+            :class="this.showMobileMenu
+            ? 'relative -translate-x-0' : 'closed-menu'">
             <NavBarEmployee></NavBarEmployee>
             </div>
             <i>
@@ -48,7 +50,7 @@
             <div class="flex main-content-table-list mr-20 ">
                 <div class="grid justify-items-center mt-8"
                     v-for="(table,index) in tables">
-                    <TableItem 
+                    <TableItem
                     :table_id="table.table_id"
                     :available="table.available"
                     :key="index"
@@ -66,86 +68,86 @@
 import NavBarEmployee from '../../components/NavBarDrawer/NavBarEmployee.vue';
 import TableItem from '../../components/Table/TableItem.vue';
 
-export default{
-    components:{
+export default {
+  components: {
     NavBarEmployee,
-    TableItem
-    },
-    methods:{
+    TableItem,
+  },
+  methods: {
     showMenu() {
       this.showMobileMenu = !this.showMobileMenu;
     },
-    },
-    
+  },
 
-data() {
+
+  data() {
     return {
-        showMobileMenu: false,
-        tables:[
-            {
-                table_id:1,
-                available:true,
-            },
-            {
-                table_id:2,
-                available:true,
-            },
-            {
-                table_id:3,
-                available:false,
-            },
-            {
-                table_id:4,
-                available:false,
-            },
-            {
-                table_id:5,
-                available:true,
-            },
-            {
-                table_id:6,
-                available:false,
-            },
-            {
-                table_id:7,
-                available:false,
-            },
-            {
-                table_id:8,
-                available:true,
-            },
-            {
-                table_id:9,
-                available:false,
-            },
-            {
-                table_id:10,
-                available:true,
-            },
-            {
-                table_id:11,
-                available:true,
-            },
-            {
-                table_id:12,
-                available:true,
-            },
-            {
-                table_id:13,
-                available:true,
-            },
-            {
-                table_id:14,
-                available:true,
-            },
-            {
-                table_id:15,
-                available:true,
-            },
-        ]
-    }
-},
-}
+      showMobileMenu: false,
+      tables: [
+        {
+          table_id: 1,
+          available: true,
+        },
+        {
+          table_id: 2,
+          available: true,
+        },
+        {
+          table_id: 3,
+          available: false,
+        },
+        {
+          table_id: 4,
+          available: false,
+        },
+        {
+          table_id: 5,
+          available: true,
+        },
+        {
+          table_id: 6,
+          available: false,
+        },
+        {
+          table_id: 7,
+          available: false,
+        },
+        {
+          table_id: 8,
+          available: true,
+        },
+        {
+          table_id: 9,
+          available: false,
+        },
+        {
+          table_id: 10,
+          available: true,
+        },
+        {
+          table_id: 11,
+          available: true,
+        },
+        {
+          table_id: 12,
+          available: true,
+        },
+        {
+          table_id: 13,
+          available: true,
+        },
+        {
+          table_id: 14,
+          available: true,
+        },
+        {
+          table_id: 15,
+          available: true,
+        },
+      ],
+    };
+  },
+};
 </script>
 
 

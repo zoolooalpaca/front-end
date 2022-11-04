@@ -1,6 +1,6 @@
 <!-- /TODO:
   ใช้ข้อมูล
-  order description(ที่สั่งแล้ว): 
+  order description(ที่สั่งแล้ว):
   -order id
   -order_status = 'รอทำ', 'กำลังทำ', 'ส่งถึงโต๊ะแล้ว'
   -food id > food name food image
@@ -16,9 +16,10 @@
   methods:
   อยู่ในcomponents
   - TopAppBar.vue > goBack() = ย้อนกลับไปหน้าที่แล้ว
-  - HistoryItem.vue 
-    (DeletePopup ใน OrderConfirmDeletePopup = กดปุ่มแล้วแสดง popup ให้ confirm delete)
-      > deleteHistoryOrder() = กดปุ่ม'ยกเลิกอาหาร'เพื่อยืนยันแล้วลบorderที่ได้สั่งไปแล้วแต่ยังอยู่ใน order_status 'รอทำ'
+  - HistoryItem.vue
+    (DeletePopupในOrderConfirmDeletePopup = popupให้confirm delete)
+      > deleteHistoryOrder() = กดปุ่ม'ยกเลิกอาหาร'
+      เพื่อยืนยันแล้วลบorderที่ได้สั่งไปแล้วแต่ยังอยู่ใน order_status 'รอทำ'
   / -->
 <template>
     <div class="relative">

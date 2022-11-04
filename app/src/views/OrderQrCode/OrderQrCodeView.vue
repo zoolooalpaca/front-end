@@ -1,15 +1,16 @@
 <!-- /TODO:
   ใช้ข้อมูล
   table:
-    - table_id 
+    - table_id
     - table_available
     - table_qrcode = qrcode ไปยังหน้า /menu ของtableนั้นๆ
 
-  methods: 
-  -onclickdone() = เปลี่ยน table_available ของโต๊ะที่เลือกเป็น false แล้วกลับไปหน้า /new-customer
+  methods:
+  -onclickdone() = เปลี่ยน table_available ของโต๊ะที่เลือกเป็น false
+  แล้วกลับไปหน้า /new-customer
 
   navbar>
-  -showMenu() = กดเพื่อให้โชว์navbarที่ซ่อนไว้ 
+  -showMenu() = กดเพื่อให้โชว์navbarที่ซ่อนไว้
   อยู่ในcomponents
   -NavBarEmployee.vue > onClickItem() = ส่งไปแต่ละหน้าตามurl
 / -->
@@ -27,7 +28,8 @@
               transition
               duration-200
               ease-in-out"
-            :class="this.showMobileMenu ? 'relative -translate-x-0' : 'closed-menu'">
+            :class="this.showMobileMenu
+            ? 'relative -translate-x-0' : 'closed-menu'">
         <NavBarEmployee></NavBarEmployee>
         </div>
         <i>
@@ -41,10 +43,11 @@
         <div class="p-4 flex-grow">
             <h1 class="headline-medium">รับลูกค้าใหม่</h1>
             <h1 class="headline-small m-4">Qr-code ให้กับลูกค้า</h1>
-            
+
             <div >
                 <div style="margin-left: 15%; ">
-                    <img :src="qrCode" class="border" style="display: ; width: 80%; object-fit: contain;">
+                    <img :src="qrCode" class="border"
+                          style="width: 80%; object-fit: contain;">
                 </div>
                 <p class="text-center headline-small mt-8">โต๊ะ {{table_id}}</p>
                 <div class="p-4 float-right">
@@ -69,30 +72,30 @@
 <script>
 import NavBarEmployee from '../../components/NavBarDrawer/NavBarEmployee.vue';
 
-export default{
-    components:{
+export default {
+  components: {
     NavBarEmployee,
-    },
+  },
 
-    methods:{
-      //เปลี่ยน table_available ของโต๊ะที่เลือกเป็น false แล้วกลับไปหน้า /new-customer
+  methods: {
+    // เปลี่ยน table_available ของโต๊ะที่เลือกเป็น false
+    // แล้วกลับไปหน้า /new-customer
     onclickdone() {
-
-      this.$router.push('/new-customer')
+      this.$router.push('/new-customer');
     },
     showMenu() {
       this.showMobileMenu = !this.showMobileMenu;
     },
-    },
+  },
 
-    data(){
-        return{
-            table_number:'',
-            qrCode: 'https://chart.googleapis.com/chart?cht=qr&chl=http%3A%2F%2Flocalhost%3A3000%2Fmenu&chs=180x180&choe=UTF-8&chld=L|2',
-            showMobileMenu: false,
-        }
-    }
-}
+  data() {
+    return {
+      table_number: '',
+      qrCode: 'https://chart.googleapis.com/chart?cht=qr&chl=http%3A%2F%2Flocalhost%3A3000%2Fmenu&chs=180x180&choe=UTF-8&chld=L|2',
+      showMobileMenu: false,
+    };
+  },
+};
 </script>
 
 <style lang="scss">

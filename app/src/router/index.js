@@ -5,11 +5,11 @@ import HistoryView from '@/views/OrderHistory/OrderHistoryView.vue';
 import OrderView from '@/views/OrderDetail/OrderDetailView.vue';
 import NewCustomerView from '@/views/OrderQrCode/NewCustomerView.vue';
 import OrderQrCodeView from '@/views/OrderQrCode/OrderQrCodeView.vue';
-import MenuList from "@/views/CreateMenu/MenuList.vue";
-import CreateMenu from "@/views/CreateMenu/CreateMenu.vue";
-import PromotionList from "@/views/CreatePromotion/PromotionList.vue";
-import CreatePromotion from "@/views/CreatePromotion/CreatePromotion.vue";
-import Dashboard from "@/views/Dashboard/Dashboard.vue";
+import MenuList from '@/views/CreateMenu/MenuList.vue';
+import CreateMenu from '@/views/CreateMenu/CreateMenu.vue';
+import PromotionList from '@/views/CreatePromotion/PromotionList.vue';
+import CreatePromotion from '@/views/CreatePromotion/CreatePromotion.vue';
+import Dashboard from '@/views/Dashboard/Dashboard.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -43,29 +43,31 @@ const router = createRouter({
       path: '/new-customer/order-qrcode',
       name: 'order-qrcode',
       component: OrderQrCodeView,
+    },
+    {
       path: '/reviews',
       name: 'reviews',
-      component: () => import('@/views/reviews/CreateReviewView.vue')
+      component: () => import('@/views/reviews/CreateReviewView.vue'),
     },
     {
       path: '/ThankYou',
       name: 'ThankYou',
-      component: () => import('@/views/reviews/ThankYou.vue')
+      component: () => import('@/views/reviews/ThankYou.vue'),
     },
     {
       path: '/AllPromotion',
       name: 'AllPromotion',
-      component: () => import('@/views/AllPromotionView.vue')
+      component: () => import('@/views/AllPromotionView.vue'),
     },
     {
       path: '/promptPay/create',
       name: 'promptPay.create',
-      component: () => import('@/views/Payment/CreatePromptpayView.vue')
+      component: () => import('@/views/Payment/CreatePromptpayView.vue'),
     },
     {
       path: '/bill',
       name: 'bill',
-      component: () => import('@/views/Payment/BillView.vue')
+      component: () => import('@/views/Payment/BillView.vue'),
     },
     {
       path: '/MenuList',

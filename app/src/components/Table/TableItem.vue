@@ -25,16 +25,16 @@
 
 <script>
 export default {
-  props:[
-    'table_id','available'
+  props: [
+    'table_id', 'available',
   ],
 
-  methods:{
-    //กดเลือกโต๊ะที่ต้องการแล้วจะส่งไปยังหน้า OrderQrCodeView.vue เพื่อแสกนไปหน้าสั่งorderของโต๊ะนั้นๆ
-    goToOrderQrCode(){
-      this.$router.push(`/new-customer/order-qrcode`)
-      //       this.$router.push(`/new-customer/order-qrcode/${this.table.id}`)
-    }
-  }
+  methods: {
+    // กดเลือกโต๊ะที่ต้องการแล้วจะส่งไปยังหน้าOrderQrCodeView.vue
+    goToOrderQrCode() {
+      this.$router.push(`/new-customer/order-qrcode`);
+      // this.$router.push(`/new-customer/order-qrcode/${this.table.id}`)
+    },
+  },
 };
 </script>

@@ -14,31 +14,31 @@ export default {
     return {
       tem_value: null,
       value: null,
-      ratings: [1,2,3,4,5],
-      disabled: false
-    }
+      ratings: [1, 2, 3, 4, 5],
+      disabled: false,
+    };
   },
   methods: {
     star_over(index) {
-      var self = this;
+      const self = this;
       if (!this.disabled) {
         this.tem_value = this.value;
         return this.value = index;
       }
     },
-    star_out(){
-      if(!this.disabled){
-        this.value = this.tem_value
+    star_out() {
+      if (!this.disabled) {
+        this.value = this.tem_value;
       }
     },
-    set(value){
+    set(value) {
       if (!this.disabled) {
         this.tem_value = value;
         return this.value = value;
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style>

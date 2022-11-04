@@ -3,7 +3,7 @@
   class="inline-flex items-center
   justify-start gap-2"
   >
-  <button  @click="goBack" 
+  <button  @click="goBack"
   class="secondary-container w-8 h-8 rounded-full items-center">
   <div class="flex items-center justify-center">
     <span class="material-symbols-outlined">
@@ -22,9 +22,9 @@ on-surface-text">
 <script>
 export default {
   props: ['label'],
-  
+
   methods: {
-    // ย้อนกลับไปหน้าที่แล้ว 
+    // ย้อนกลับไปหน้าที่แล้ว
     goBack() {
       return this.$router.go(-1);
     },

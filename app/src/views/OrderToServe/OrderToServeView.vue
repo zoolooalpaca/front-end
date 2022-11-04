@@ -3,7 +3,7 @@
   table:
   -table_id (โต๊ะที่สั่งorderนั้นๆ)
 
-  order description(ที่สั่งแล้ว): 
+  order description(ที่สั่งแล้ว):
   -order id
   -order_status = ดึงdataมาเฉพาะ status 'ยังไม่เสิร์ฟ'
   -food id > food name
@@ -12,9 +12,10 @@
   computed:
   totalOrder = จำนวนรายการorder เฉพาะที่ order_status ='ยังไม่เสิร์ฟ'
 
-  methods: 
+  methods:
   อยู่ในcomponent
-  -ToServeItem.vue > serveDone() = กดยืนยันว่าorderนั้นได้เสิร์ฟแล้ว แล้ว order_status เป็น 'ส่งถึงโต๊ะแล้ว' (orderนั้นจะหายไปจากlist toserve)
+  -ToServeItem.vue > serveDone() = กดยืนยันว่าorderนั้นได้เสิร์ฟแล้ว
+  แล้ว order_status เป็น 'ส่งถึงโต๊ะแล้ว' (orderนั้นจะหายไปจากlist toserve)
 
   navbar>
     -showMenu() = กดเพื่อให้โชว์navbarที่ซ่อนไว้
@@ -37,7 +38,8 @@
             transition
             duration-200
             ease-in-out"
-            :class="this.showMobileMenu ? 'relative -translate-x-0' : 'closed-menu'">
+            :class="this.showMobileMenu
+            ? 'relative -translate-x-0' : 'closed-menu'">
             <NavBarEmployee></NavBarEmployee>
           </div>
           <i>
@@ -89,8 +91,8 @@ export default {
     },
   },
 
-  methods:{
-    //โชว์navbar
+  methods: {
+    // โชว์navbar
     showMenu() {
       this.showMobileMenu = !this.showMobileMenu;
     },
@@ -102,7 +104,7 @@ export default {
       tables: [
         {
           table_id: 1,
-          order_id:1,
+          order_id: 1,
           order_status: 'ยังไม่เสิร์ฟ',
           orders: [
             {

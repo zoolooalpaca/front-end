@@ -71,10 +71,10 @@
 </template>
 
 <script>
-import NavItem from "../../components/NavBarDrawer/NavItem.vue";
-import { GChart } from "vue-google-charts";
+import NavItem from '../../components/NavBarDrawer/NavItem.vue';
+import {GChart} from 'vue-google-charts';
 export default {
-  name: "App",
+  name: 'App',
   data() {
     return {
       showMobileMenu: false,
@@ -88,34 +88,34 @@ export default {
       ],
       data: [
         ['Daily Routine', 'Hours per Day'],
-        ['Work',     14],
-        ['Eat',      1],
-        ['Reading',  2],
+        ['Work', 14],
+        ['Eat', 1],
+        ['Reading', 2],
         ['Exercise', 2],
-        ['Sleep',    5]
+        ['Sleep', 5],
       ],
       options: {
         width: 1100,
-        height: 400
-      }
-    }
+        height: 400,
+      },
+    };
   },
   components: {
     NavItem,
-    GChart
+    GChart,
   },
   methods: {
     showMenu() {
       this.showMobileMenu = !this.showMobileMenu;
     },
-    onClickItem(id,url) {
+    onClickItem(id, url) {
       this.activeId = id;
       if (url != '') {
-        this.$router.push(url)
+        this.$router.push(url);
       }
     },
   },
-}
+};
 </script>
 
 <style lang="scss">

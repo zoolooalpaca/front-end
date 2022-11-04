@@ -77,25 +77,25 @@
   </div>
 </template>
 <script>
-import NavItem from "@/components/NavBarDrawer/NavItem.vue";
-import SectionHeader from "@/components/NavBarDrawer/SectionHeader.vue";
-import BillOrderItem from "@/components/BillOrderItem/BillOrderItem.vue";
-import { usePaymentStore } from "@/stores/payment.js";
+import NavItem from '@/components/NavBarDrawer/NavItem.vue';
+import SectionHeader from '@/components/NavBarDrawer/SectionHeader.vue';
+import BillOrderItem from '@/components/BillOrderItem/BillOrderItem.vue';
+import {usePaymentStore} from '@/stores/payment.js';
 export default {
   setup() {
-    const payment_store = usePaymentStore()
-    return { payment_store }
+    const payment_store = usePaymentStore();
+    return {payment_store};
   },
   data() {
     return {
-      title: "จ่ายเงิน",
-      section: "เลือกลูกค้า",
+      title: 'จ่ายเงิน',
+      section: 'เลือกลูกค้า',
       table_number: '',
       qrCode: '',
       error: null,
       payment: '',
       navItems: [
-        {label: 'รับลูกค้าใหม่', icon: 'sentiment_satisfied' , router: '/'},
+        {label: 'รับลูกค้าใหม่', icon: 'sentiment_satisfied', router: '/'},
         {label: 'จ่ายเงิน', icon: 'payment', router: '/promptPay/create'},
         {label: 'อาหารที่ต้องเสิร์ฟ', icon: 'room_service', router: '/'},
         {label: 'อาหารที่ต้องทำ', icon: 'soup_kitchen', router: '/'},
@@ -104,61 +104,61 @@ export default {
       activeId: 0,
       loopCount: 5,
       billOrderItem: [
-        {amount: 2, name: 'ข้าวมันไก่', price:60},
-        {amount: 1, name: 'ข้าวอบ', price:50},
-        {amount: 1, name: 'ข้าวผัดกระเพรา', price:55},
-        {amount: 1, name: 'ข้าวผัดกุ้ง', price:60},
-        {amount: 1, name: 'สเต๊กเนื้อ', price:100},
-      ]
-    }
+        {amount: 2, name: 'ข้าวมันไก่', price: 60},
+        {amount: 1, name: 'ข้าวอบ', price: 50},
+        {amount: 1, name: 'ข้าวผัดกระเพรา', price: 55},
+        {amount: 1, name: 'ข้าวผัดกุ้ง', price: 60},
+        {amount: 1, name: 'สเต๊กเนื้อ', price: 100},
+      ],
+    };
   },
   components: {
     NavItem,
     SectionHeader,
-    BillOrderItem
+    BillOrderItem,
   },
   methods: {
     showMenu() {
       this.showMobileMenu = !this.showMobileMenu;
     },
     deleteInput() {
-      this.$refs["tableNumber"].value = "";
+      this.$refs['tableNumber'].value = '';
     },
     printBill() {
-      this.$router.push(`/bill`)
+      this.$router.push(`/bill`);
     },
     onClickItem(id, url) {
       this.activeId = id;
       if (url != '') {
-        this.$router.push(url)
+        this.$router.push(url);
       }
     },
     async paid() {
       try {
-        this.error = null
-        const payment_id = await this.payment_store.save(this.payment)
+        this.error = null;
+        const payment_id = await this.payment_store.save(this.payment);
         if (payment_id) {
-          this.$router.push(`/payments/${payment_id}`)
+          this.$router.push(`/payments/${payment_id}`);
         }
-      } catch (error){
-        console.log(error)
-        this.error = error.message
+      } catch (error) {
+        console.log(error);
+        this.error = error.message;
       }
     },
     scroll() {
-      let element = document.getElementById("yourID");
-      element.scrollIntoView({behavior: "smooth", block: "end"});
-    }
+      const element = document.getElementById('yourID');
+      element.scrollIntoView({behavior: 'smooth', block: 'end'});
+    },
   },
   mounted() {
     this.scroll();
   },
   computed: {
     imagePath() {
-      return `uploads\products\${this.produit.image}`
-    }
-  }
-}
+      return `uploads\products\${this.produit.image}`;
+    },
+  },
+};
 </script>
 
 <style lang="scss">

@@ -98,13 +98,13 @@
 </template>
 
 <script>
-import SectionHeader from "../../components/NavBarDrawer/SectionHeader.vue";
-import NavItem from "../../components/NavBarDrawer/NavItem.vue";
-import FoodCard from "../../components/FoodCard/FoodCard.vue";
-import UploadService from "../../services/UploadFilesService.js";
+import SectionHeader from '../../components/NavBarDrawer/SectionHeader.vue';
+import NavItem from '../../components/NavBarDrawer/NavItem.vue';
+import FoodCard from '../../components/FoodCard/FoodCard.vue';
+import UploadService from '../../services/UploadFilesService.js';
 
 export default {
-  name: "upload-image",
+  name: 'upload-image',
   data() {
     return {
       showMobileMenu: false,
@@ -112,7 +112,7 @@ export default {
       previewImage: undefined,
 
       progress: 0,
-      message: "",
+      message: '',
 
       imageInfos: [],
 
@@ -127,17 +127,17 @@ export default {
       food: {
         food_name: '',
       },
-      promotion:{
-        promotion_price:'',
-        start_date:'',
-        end_date:'',
-      }
-    }
+      promotion: {
+        promotion_price: '',
+        start_date: '',
+        end_date: '',
+      },
+    };
   },
   methods: {
     async saveNewPromotion() {
       try {
-        //upload image file
+        // upload image file
         this.progress = 0;
 
         UploadService.upload(this.currentImage, (event) => {
@@ -152,42 +152,42 @@ export default {
             })
             .catch((err) => {
               this.progress = 0;
-              this.message = "Could not upload the image! " + err;
+              this.message = 'Could not upload the image! ' + err;
               this.currentImage = undefined;
             });
-        //save new promotion
-        this.error = null
-        const promotion_id = await this.promotion_store.add(this.promotion)
+        // save new promotion
+        this.error = null;
+        const promotion_id = await this.promotion_store.add(this.promotion);
         if (promotion_id) {
-          SocketioService.sendToServer('CreatePromotion', {success: true}   )
-          this.$router.push(`/${promotion_id}`)
+          SocketioService.sendToServer('CreatePromotion', {success: true} );
+          this.$router.push(`/${promotion_id}`);
         }
-      } catch(error) {
-        console.log(error)
-        this.error = error.message
+      } catch (error) {
+        console.log(error);
+        this.error = error.message;
       }
     },
     showMenu() {
       this.showMobileMenu = !this.showMobileMenu;
     },
-    backToPromotionList(){
-      this.$router.push(`/PromotionList`)
+    backToPromotionList() {
+      this.$router.push(`/PromotionList`);
     },
-    onClickItem(id,url) {
+    onClickItem(id, url) {
       this.activeId = id;
       if (url != '') {
-        this.$router.push(url)
+        this.$router.push(url);
       }
     },
     selectImage() {
       this.currentImage = this.$refs.file.files.item(0);
       this.previewImage = URL.createObjectURL(this.currentImage);
       this.progress = 0;
-      this.message = "";
+      this.message = '';
     },
   },
   mounted() {
-    UploadService.getFiles().then(response => {
+    UploadService.getFiles().then((response) => {
       this.imageInfos= response.data;
     });
   },
@@ -195,8 +195,8 @@ export default {
     SectionHeader,
     NavItem,
     FoodCard,
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss">
