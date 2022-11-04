@@ -1,14 +1,34 @@
 <template>
-<div>
+<div class="size-page">
   <h1 class="text-center text-xl">{{ nameShop }}</h1>
-  <span>{{ tableNumber }}</span>
+  <div>
+    <span>โต๊ะ : </span>
+    <span>{{ tableNumber }}</span>
+  </div>
 
-  <div v-for="(item, index) in billOrderItem" :key="index">
-    <BillOrderItem class="flex justify-center mb-2"
-                   :id="index"
-                   :image="item.image"
-                   :name="item.name"
-                   :active="index == activeId"/>
+  <div>
+    <span>วันที่ : </span>
+    <span>{{ date }}</span>
+  </div>
+
+  <div>
+    <span>รายการอาหาร</span>
+  </div>
+
+  <div v-for="order in orders" :key="order.id">
+    <span>{{ order.amount }}</span>
+    <span> {{ order.name }}</span>
+    <span>{{ order.price }}</span>
+  </div>
+
+  <div>
+    <span>(จำนวนรายการอาหารทั้งหมด : </span>
+    <span>{{ totalOfOrder }})</span>
+  </div>
+
+  <div class="flex justify-end">
+    <span>ยอดชำระสุทธิ : </span>
+    <span>{{ totalBalance }}</span>
   </div>
 </div>
 </template>
@@ -17,20 +37,22 @@
 export default {
   data() {
     return {
-      nameShop : '',
-      tableNumber: '',
-      billOrderItem: [
-        {amount: 2, name: 'ข้าวมันไก่', price:60},
-        {amount: 1, name: 'ข้าวอบ', price:50},
-        {amount: 1, name: 'ข้าวผัดกระเพรา', price:55},
-        {amount: 1, name: 'ข้าวผัดกุ้ง', price:60},
-        {amount: 1, name: 'สเต๊กเนื้อ', price:100},
-      ]
+      nameShop : 'อร่อยโภชนา',
+      tableNumber: '3',
+      date: '2022/09/10 19:23:12',
+      orders: null,
+      totalOfOrder: '6',
+      totalBalance: '385.00'
     }
   }
 }
 </script>
 
 <style>
-
+.size-page {
+  width: 400px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+}
 </style>

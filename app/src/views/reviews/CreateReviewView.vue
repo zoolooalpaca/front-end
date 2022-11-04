@@ -1,5 +1,5 @@
 <template>
-  <div class="m-3 flex-col">
+  <div class="scroll m-3 flex-col">
     <button
         class="w-8 h-8 secondary-container rounded-full p-1 justify-center"
         @click="backToMenu">

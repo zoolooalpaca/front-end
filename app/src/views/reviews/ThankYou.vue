@@ -1,21 +1,23 @@
 <template>
   <div>
-    <button @click="goBack">
-      <span class="material-symbols-outlined border rounded-full bg-[#FFDCC4]">
-              arrow_back
-      </span>
+    <button
+        class="w-8 h-8 secondary-container rounded-full p-1 justify-center"
+        @click="backToMenu">
+              <span class="material-symbols-outlined">
+                arrow_back
+              </span>
     </button>
-    <div>
-      <h1 class="text-center text-4xl mb-5 mt-5">
+    <div class="text-center mt-5">
+      <span class="text-4xl set-margin">
         ทางร้านได้รับคำแนะนำของท่านแล้ว
-      </h1>
+      </span>
     </div>
 
-    <h3 class="text-center text-xl mb-5 mt-5">
+    <span class="set-span-to-center text-xl set-margin">
       ขอบคุณที่ใช้บริการค่ะ/ครับ
-    </h3>
+    </span>
 
-    <div class="flex justify-center mt-5 mb-5">
+    <div class="flex justify-center set-margin">
       <img :src="image">
     </div>
   </div>
@@ -28,17 +30,20 @@ export default {
     }
   },
   methods: {
-    goBack () {
-      return this.$router.go(-1)
+    backToMenu() {
+      this.$router.push(`/`)
     }
   }
 }
 </script>
 
 <style>
-.bg-fireworks{
-  background-image: url("https://png.pngtree.com/element_our/20200630/ourlarge/pngtree-yellow-firework-firework-png-free-illustration-image_2274855.jpg");
-  height: 100px;
-  width: 350px;
+.set-margin {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.set-span-to-center {
+  display: flex;
+  justify-content: center;
 }
 </style>
