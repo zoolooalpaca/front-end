@@ -1,5 +1,5 @@
 <template>
-  <div :class="active ? 'item active' : 'item'" @click="onClickItem(id)">
+  <div :class="active ? 'item active' : 'item'" @click="onClickItem(id,url)">
     <span class="section-icon">
       <slot/>
     </span>
