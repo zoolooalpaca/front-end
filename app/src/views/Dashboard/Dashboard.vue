@@ -74,6 +74,14 @@
 import NavItem from "../../components/NavBarDrawer/NavItem.vue";
 import { GChart } from "vue-google-charts";
 export default {
+  /*To Do List
+  *
+  * - Data -
+  * ต้องมีการดึงค่าข้อมูล Review มาแสดงในรายการอาหารที่แสดง
+  *
+  * - Method -
+  *
+  * */
   name: "App",
   data() {
     return {
