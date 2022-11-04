@@ -15,6 +15,31 @@ const router = createRouter({
       component: HomeView,
     },
     {
+      path: '/reviews',
+      name: 'reviews',
+      component: () => import('@/views/reviews/CreateReviewView.vue')
+    },
+    {
+      path: '/ThankYou',
+      name: 'ThankYou',
+      component: () => import('@/views/reviews/ThankYou.vue')
+    },
+    {
+      path: '/AllPromotion',
+      name: 'AllPromotion',
+      component: () => import('@/views/AllPromotionView.vue')
+    },
+    {
+      path: '/promptPay/create',
+      name: 'promptPay.create',
+      component: () => import('@/views/Payment/CreatePromptpayView.vue')
+    },
+    {
+      path: '/bill',
+      name: 'bill',
+      component: () => import('@/views/Payment/BillView.vue')
+    },
+    {
       path: '/MenuList',
       name: 'MenuList',
       component: MenuList,
