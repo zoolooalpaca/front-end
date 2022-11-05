@@ -12,7 +12,7 @@ import CreatePromotion from '@/views/CreatePromotion/CreatePromotion.vue';
 import Dashboard from '@/views/Dashboard/Dashboard.vue';
 import OrderCooking from '@/views/OrderCooking/OrderCookingView.vue';
 import OrderToDoList from '@/views/OrderToDoList/OrderToDoListView.vue';
-import AllMenu from '@/views/Menu/AllMenuView/vue';
+import AllMenu from '@/views/Menu/AllMenuView.vue';
 import DetailMenu from '@/views/Menu/DetailMenuView.vue';
 
 

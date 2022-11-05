@@ -51,7 +51,7 @@
             <span class='title-large order-and-history ml-2' onclick="showHistoryItem()">ประวัติ</span>
           </div>
             <div class='scroller-order-food space-y-5'>
-              <OrderDrawer/>
+              <OrderItem/>
             </div>
             <div class='flex justify-end'>
               <button class='send-button'>ส่ง</button>
@@ -61,11 +61,11 @@
 </template>
 
 <script>
-import OrderDrawer from '../components/OrderItem/OrderDrawer.vue';
+import OrderItem from '@/components/OrderItem/OrderItem.vue';
 
 export default {
   components: {
-    OrderDrawer,
+    OrderItem,
   },
   showOrderItem() {
     ;

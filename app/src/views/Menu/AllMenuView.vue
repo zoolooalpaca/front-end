@@ -1,5 +1,3 @@
-<!-- eslint-disable vue/no-parsing-error -->
-<!-- eslint-disable max-len -->
 <template lang=''>
     <div class=''>
       <div>
@@ -71,11 +69,10 @@
 </template>
 
 <script>
-import FoodCard from '../components/FoodCard/FoodCard.vue';
-import BannerCard from '../components/BannerCard.vue';
-// eslint-disable-next-line max-len
-import FoodCategoryChip from '../components/FoodCategoryChip/FoodCategoryChip.vue';
-import OrderDrawer from '../components/OrderItem/OrderDrawer.vue';
+import FoodCard from "../../components/FoodCard/FoodCard.vue";
+import BannerCard from "../../components/BannerCard.vue";
+import FoodCategoryChip from "../../components/FoodCategoryChip/FoodCategoryChip.vue";
+import OrderDrawer from "../../components/OrderItem/OrderDrawer.vue";
 
 export default {
   components: {

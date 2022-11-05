@@ -17,7 +17,9 @@
 
 <script>
 export default {
-  props: ['id', 'tableNumber', 'foodName', 'foodAmount', 'foodDescription'],
+  props: [
+      'id', 'tableNumber', 'foodName', 'foodAmount', 'foodDescription'
+  ],
 };
 </script>
 

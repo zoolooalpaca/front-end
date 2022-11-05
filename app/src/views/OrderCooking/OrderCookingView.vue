@@ -10,7 +10,7 @@
                   <CookingBoardDrawer></CookingBoardDrawer>
                   <div class='space-y-4'>
                     <ServeFoodButton/>
-                    <Cancelcookingfood/>
+                    <CancelCookingFood/>
                   </div>
             </div>
         </div>
@@ -18,22 +18,17 @@
 </template>
 
 <script>
-// eslint-disable-next-line no-unused-vars
-import NavBarDrawer from '../components/NavBarDrawer/NavBarDrawer.vue';
-// eslint-disable-next-line no-unused-vars
-import CookingBoard from '../components/CookingBoard/CookingBoard.vue';
-// eslint-disable-next-line max-len
-import CookingBoardDrawer from '../components/CookingBoard/CookingBoardDrawer.vue';
-// eslint-disable-next-line max-len
-import Cancelcookingfood from '../components/CancelCookingFood/CancelCookingFood.vue';
-import ServeFoodButton from '../components/ServeFoodButton/ServeFoodButton.vue';
+import NavBarDrawer from '../../components/NavBarDrawer/NavBarEmployee.vue';
+import CookingBoardDrawer from '../../components/CookingBoard/CookingBoardDrawer.vue';
+import CancelCookingFood from '../../components/CancelCookingFood/CancenCookingFood.vue';
+import ServeFoodButton from '../../components/ServeFoodButton/ServeFoodButton.vue';
 
 
 export default {
   components: {
     NavBarDrawer,
     CookingBoardDrawer,
-    Cancelcookingfood,
+    CancelCookingFood,
     ServeFoodButton,
   },
 };
