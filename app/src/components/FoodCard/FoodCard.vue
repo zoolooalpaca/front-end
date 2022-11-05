@@ -1,7 +1,7 @@
 <template>
   <div class="food-card">
     <img :src="image" alt="image.jpg"
-      class="rounded food-card-image">
+      class="food-card-image">
     <div class="flex p-5 justify-between">
       <div>
         <h3 class="label-large --md-sys-color-on-primary-container">
@@ -38,10 +38,10 @@ export default {
   background: var(--md-sys-color-primary-container);
 }
 .food-card-image{
-  position: relative;
-  height: 150px;
-  width: 250px;
   border-radius: 30px 30px 0px 0px;
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
 }
 
 </style>

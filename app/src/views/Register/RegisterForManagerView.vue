@@ -50,18 +50,18 @@ export default {
         username: '',
         email: '',
         password: '',
-      }
-    }
+      },
+    };
   },
   methods: {
     backToLogin() {
-      this.$router.push(`/login`)
+      this.$router.push(`/login`);
     },
     createAnAccount() {
 
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style>

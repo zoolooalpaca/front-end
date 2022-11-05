@@ -1,7 +1,7 @@
 <template>
     <div class= "mt-3 p-4
                 color-block
-                rounded 
+                rounded
                 flex gab-4
                 justify-between">
         <div class="space-y-4">
