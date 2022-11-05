@@ -18,6 +18,7 @@ export const useAuthStore = defineStore({
       const userData = {username, password};
       const user = await authAPI.login(userData);
       this.access_token = user.access_token;
+      console.log('hello');
       localStorage.setItem('access_token', user.access_token);
 
       router.push(this.returnUrl || '/');

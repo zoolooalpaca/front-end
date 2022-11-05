@@ -5,7 +5,7 @@
         <div class="title">
           <span>Login</span>
         </div>
-        <form>
+        <div id="loginform">
           <label for="username" class="block"> Username </label>
           <div class="row">
             <i class="p-2">
@@ -32,10 +32,12 @@
               required
             />
           </div>
-          <div class="row login-button">
-            <button @click.prevent="onLogin">LOG IN</button>
+          <div>
+            <button @click.prevent="onLogin"
+              class="login-button"
+            >LOG IN</button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
@@ -89,15 +91,15 @@ export default {
   align-items: center;
   justify-content: center;
 }
-.login-wrapper form {
+.login-wrapper #loginform {
   padding: 30px 25px 25px 25px;
 }
-.login-wrapper form .row {
+.login-wrapper #loginform .row {
   height: 45px;
   margin-bottom: 15px;
   position: relative;
 }
-.login-wrapper form .row input {
+.login-wrapper #loginform .row input {
   height: 100%;
   width: 100%;
   outline: none;
@@ -107,20 +109,20 @@ export default {
   font-size: 16px;
   transition: all 0.3s ease;
 }
-form .row input:focus {
+#loginform .row input:focus {
   border-color: var(--md-sys-color-outline);
   /* box-shadow: inset 0px 0px 2px 2px rgba(26, 188, 156, 0.25); */
 }
 
-form input {
+#loginform input {
   color: var(--md-sys-color-on-background);
   background: var(--md-sys-color-background);
 }
 
-form .row input::placeholder {
+#loginform .row input::placeholder {
   color: #999;
 }
-.login-wrapper form .row i {
+.login-wrapper #loginform .row i {
   position: absolute;
   width: 47px;
   height: 100%;
@@ -132,27 +134,26 @@ form .row input::placeholder {
   align-items: center;
   justify-content: center;
 }
-.login-wrapper form .pass {
+.login-wrapper #loginform .pass {
   margin: -8px 0 20px 0;
 }
-.login-wrapper form .pass a {
+.login-wrapper #loginform .pass a {
   color: var(--md-sys-color-on-primary);
   font-size: 17px;
   text-decoration: none;
 }
-.login-wrapper form .pass a:hover {
+.login-wrapper #loginform .pass a:hover {
   text-decoration: underline;
 }
 
-form .login-button {
+#loginform .login-button {
+  width: 100%;
+  padding: 4px 0;
   color: var(--md-sys-color-on-primary);
   font-size: 20px;
   font-weight: 500;
-  padding-left: 0px;
   background-color: var(--md-sys-color-primary);
-  display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 }
 </style>
