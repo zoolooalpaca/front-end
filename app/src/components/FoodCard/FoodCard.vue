@@ -22,15 +22,6 @@
 
 <script>
 export default {
-  data() {
-    return {
-      // image : "image/image_khaomankai.jpg",
-      image: 'https://img.wongnai.com/p/1920x0/2017/06/22/bbf899f7ab4341dea4aec6330c2afafd.jpg',
-      name: 'ข้าวมันไก่',
-      price: 65,
-    };
-  },
-  // eslint-disable-next-line vue/no-dupe-keys
   props: ['image', 'name', 'price'],
   methods: {
     onClickAdd() {},
@@ -45,9 +36,6 @@ export default {
   background: var(--md-sys-color-primary-container);
 }
 .food-card-image{
-  position: relative;
-  height: 150px;
-  width: 250px;
   border-radius: 30px 30px 0px 0px;
 }
 
