@@ -32,7 +32,7 @@ export default {
   methods: {
     // กดเลือกโต๊ะที่ต้องการแล้วจะส่งไปยังหน้าOrderQrCodeView.vue
     goToOrderQrCode() {
-      this.$router.push(`/new-customer/order-qrcode`);
+      this.$router.push(`/employee/new-customer/order-qrcode`);
       // this.$router.push(`/new-customer/order-qrcode/${this.table.id}`)
     },
   },
