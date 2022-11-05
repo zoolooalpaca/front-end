@@ -1,8 +1,21 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://order-in.loca.lt/api',
+  baseURL: 'http://zlapc-oi-api.loca.lt/api',
 });
+
+const requestHeaders = {
+  Authorization: '',
+};
+
+const login = async () => {
+  axiosInstance.post('/auth/login', {
+    username: 'considine.antonette',
+    password: 'password',
+  }).then(({data}) => {
+    requestHeaders.Authorization = `Bearer ${data.access_token}`;
+  }).catch((e) => console.log(e));
+};
 
 export const employeeAPI = {
   async getAll() {
@@ -73,7 +86,7 @@ export const reviewAPI = {
       success: false,
     };
   },
-  async get(id){
+  async get(id) {
     const response = await axiosInstance.get(`/reviews/${id}`);
     if (response.status === 200) {
       return response.data;
@@ -87,7 +100,7 @@ export const reviewAPI = {
 export const ratingAPI = {
   async getAll() {
     const response = await axiosInstance.get('/ratings');
-     if (response.status === 200) {
+    if (response.status === 200) {
       return response.data;
     }
     return [];
@@ -130,10 +143,10 @@ export const promotionAPI = {
     }
     return [];
   },
-  
+
   async saveNew(promotion) {
     const response = await axiosInstance.post(
-    '/promotions', promotion
+        '/promotions', promotion,
     );
     if (response.status === 201) {
       return response.data;
@@ -142,7 +155,7 @@ export const promotionAPI = {
       success: false,
     };
   },
-  
+
   async update(promotion) {
     const response = await axiosInstance.put(
         `/promotions/${promotion.id}`, promotion,
@@ -154,10 +167,10 @@ export const promotionAPI = {
       success: false,
     };
   },
-  
+
   async get(id) {
     const response = await axiosInstance.get(
-    `/promotions/${id}`
+        `/promotions/${id}`,
     );
     if (response.status === 200) {
       return response.data;
@@ -185,7 +198,7 @@ export const paymentAPI = {
       success: false,
     };
   },
- 
+
   async update(payment) {
     const response = await axiosInstance.put(
         `/payments/${payment.id}`,
@@ -266,12 +279,12 @@ export const foodAllergyAPI = {
       success: false,
     };
   },
-  
+
   async update(foodAllergy) {
     const response = await axiosInstance.put(
         `/foodAllergies/${foodAllergy.id}`,
         foodAllergy,
-        );
+    );
     if (response.status === 200) {
       return response.data;
     }
@@ -279,7 +292,7 @@ export const foodAllergyAPI = {
       success: false,
     };
   },
-  
+
   async get(foodAllergyId) {
     const response = await axiosInstance.get(`/foodAllergies/${foodAllergyId}`);
     if (response.status === 200) {
@@ -293,14 +306,18 @@ export const foodAllergyAPI = {
 
 export const orderApi = {
   async getAll() {
-    const response = await axiosInstance.get('/orders');
+    login();
+    const response = await axiosInstance.get(
+        '/orders?ofuser=1',
+        {headers: requestHeaders},
+    );
     if (response.status === 200) {
       return response.data;
     }
     return [];
   },
-  
-   async saveNew(order) {
+
+  async saveNew(order) {
     const response = await axiosInstance.post('/orders', order);
     if (response.status === 201) {
       return response.data;
@@ -309,11 +326,11 @@ export const orderApi = {
       success: false,
     };
   },
-  
+
   async update(order) {
     const response = await axiosInstance.put(
         `/orders/${order.order_number}`, order,
-        );
+    );
     if (response.status === 200) {
       return response.data;
     }
@@ -321,11 +338,11 @@ export const orderApi = {
       success: false,
     };
   },
-  
+
   async get(orderNumber) {
     const response = await axiosInstance.get(
         `/orders/${orderNumber}`,
-        );
+    );
     if (response.status === 200) {
       return response.data;
     }

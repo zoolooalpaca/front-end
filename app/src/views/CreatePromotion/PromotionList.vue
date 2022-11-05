@@ -71,9 +71,9 @@
 </template>
 
 <script>
-import SectionHeader from "../../components/NavBarDrawer/SectionHeader.vue";
-import NavItem from "../../components/NavBarDrawer/NavItem.vue";
-import FoodCard from "../../components/FoodCard/FoodCard.vue";
+import SectionHeader from '../../components/NavBarDrawer/SectionHeader.vue';
+import NavItem from '../../components/NavBarDrawer/NavItem.vue';
+import FoodCard from '../../components/FoodCard/FoodCard.vue';
 
 export default {
   /*To Do List
@@ -117,8 +117,8 @@ export default {
           name: 'ขนมจีน', price: 40},
         {image: 'https://images.deliveryhero.io/image/fd-th/LH/kvfy-hero.jpg',
           name: 'ตำถาด', price: 120},
-      ]
-    }
+      ],
+    };
   },
   components: {
     SectionHeader,
@@ -129,17 +129,17 @@ export default {
     showMenu() {
       this.showMobileMenu = !this.showMobileMenu;
     },
-    goToCreatePromotion(){
-      this.$router.push(`/CreatePromotion`)
+    goToCreatePromotion() {
+      this.$router.push(`/CreatePromotion`);
     },
-    onClickItem(id,url) {
+    onClickItem(id, url) {
       this.activeId = id;
       if (url != '') {
-        this.$router.push(url)
+        this.$router.push(url);
       }
     },
   },
-}
+};
 </script>
 
 <style lang="scss">

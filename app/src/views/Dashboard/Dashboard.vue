@@ -134,26 +134,25 @@ export default {
         width: 700,
         height: 500,
         background: "var(--md-sys-color-surface)",
-      }
+      },
     }
   },
   components: {
     NavItem,
     GChart,
-    BannerCard
   },
   methods: {
     showMenu() {
       this.showMobileMenu = !this.showMobileMenu;
     },
-    onClickItem(id,url) {
+    onClickItem(id, url) {
       this.activeId = id;
       if (url != '') {
-        this.$router.push(url)
+        this.$router.push(url);
       }
     },
   },
-}
+};
 </script>
 
 <style lang="scss">

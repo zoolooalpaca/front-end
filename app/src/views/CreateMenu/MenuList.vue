@@ -69,10 +69,10 @@
 </template>
 
 <script>
-import SectionHeader from "../../components/NavBarDrawer/SectionHeader.vue";
-import NavItem from "../../components/NavBarDrawer/NavItem.vue";
-import FoodCard from "../../components/FoodCard/FoodCard.vue";
-import { ref } from 'vue'
+import SectionHeader from '../../components/NavBarDrawer/SectionHeader.vue';
+import NavItem from '../../components/NavBarDrawer/NavItem.vue';
+import FoodCard from '../../components/FoodCard/FoodCard.vue';
+import {ref} from 'vue';
 
 export default {
   /*To Do List
@@ -93,7 +93,7 @@ export default {
     const showSidebar = ref(false);
     return {
       showSidebar,
-    }
+    };
   },
   data() {
     return {
@@ -123,8 +123,8 @@ export default {
           name: 'ขนมจีน', price: 40},
         {image: 'https://images.deliveryhero.io/image/fd-th/LH/kvfy-hero.jpg',
           name: 'ตำถาด', price: 120},
-      ]
-    }
+      ],
+    };
   },
   components: {
     SectionHeader,
@@ -135,17 +135,17 @@ export default {
     showMenu() {
       this.showMobileMenu = !this.showMobileMenu;
     },
-    goToCreateMenu(){
-      this.$router.push(`/CreateMenu`)
+    goToCreateMenu() {
+      this.$router.push(`/CreateMenu`);
     },
-    onClickItem(id,url) {
+    onClickItem(id, url) {
       this.activeId = id;
       if (url != '') {
-        this.$router.push(url)
+        this.$router.push(url);
       }
     },
   },
-}
+};
 </script>
 
 <style lang="scss">

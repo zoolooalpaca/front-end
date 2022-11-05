@@ -1,18 +1,19 @@
 <script>
 import FloatingOrder from '../components/FloatingOrder.vue';
 import NavBarDrawer from '../components/NavBarDrawer/NavBarDrawer.vue';
-import ToServeItem from '../components/ToServeItem.vue';
 import BillOrderItem from '../components/BillOrderItem/BillOrderItem.vue';
 import TableItem from '../components/Table/TableItem.vue';
 import TopAppBar from '../components/TopAppBar/TopAppBar.vue';
 import CookItem from '../components/CookItem/CookItem.vue';
 import CookingBoard from '../components/CookingBoard/CookingBoard.vue';
-import OrderItem from '../components/OrderItem/OrderItem.vue';
+import OrderDrawer from '../components/OrderItem/OrderDrawer.vue';
 import HistoryDrawer from '../components/HistoryItem/HistoryDrawer.vue';
 import BannerCard from '../components/BannerCard.vue';
-import FoodCard from "../components/FoodCard/FoodCard.vue";
-import FoodCategoryChip from "../components/FoodCategoryChip/FoodCategoryChip.vue";
-import PromotionBanner from "../components/PromotionBanner/PromotionBanner.vue";
+import FoodCard from '../components/FoodCard/FoodCard.vue';
+import FoodCategoryChip from '../components/FoodCategoryChip/FoodCategoryChip.vue';
+import PromotionBanner from '../components/PromotionBanner/PromotionBanner.vue';
+import ToServeDrawer from '../components/ToServeItem/ToServeDrawer.vue';
+import FoodTrayVue from '../components/FoodTray.vue';
 
 export default {
   components: {
@@ -21,17 +22,19 @@ export default {
     BillOrderItem,
     TableItem,
     CookItem,
-    OrderItem,
+    OrderDrawer,
     CookingBoard,
-    ToServeItem,
     HistoryDrawer,
     FloatingOrder,
     BannerCard,
     FoodCard,
     FoodCategoryChip,
     PromotionBanner,
+    ToServeDrawer,
+    FoodTrayVue,
   },
 };
+
 </script>
 
 <template>
@@ -44,10 +47,10 @@ export default {
     <CookItem/>
     <BillOrderItem/>
     <TableItem/>
-    <OrderItem></OrderItem>
+    <OrderDrawer></OrderDrawer>
     <CookingBoard></CookingBoard>
     <p>TO Serve Item</p>
-    <ToServeItem></ToServeItem>
+    <ToServeDrawer></ToServeDrawer>
     <p>History Item</p>
     <HistoryDrawer></HistoryDrawer>
     <FoodCard></FoodCard>
@@ -55,6 +58,7 @@ export default {
     <PromotionBanner></PromotionBanner>
 
     <BannerCard></BannerCard>
+    <FoodTrayVue/>
     <p class="surface-tint-text">surface-tint-text</p>
     <p class="surface-tint-color-text">surface-tint-color-text</p>
     <div class="error-container">

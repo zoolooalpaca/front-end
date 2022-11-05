@@ -11,7 +11,6 @@
       justify-start
       overflow-hidden
     "
-    style="width: 636px; height: 72px"
   >
     <div
       class="

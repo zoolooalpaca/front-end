@@ -1,40 +1,88 @@
-<!-- eslint-disable max-len -->
 <template>
- <div class="order-item-container rounded-lg flex justify-between">
+ <div class="order-item-container rounded-lg mt-3 p-4 flex justify-between">
   <div class="flex">
     <div>
-      <img class="order-image" :src="image" alt="">
+      <img class="order-image" :src="food_image" alt="">
+                                <!-- order.food_image.thumb -->
     </div>
 
     <div class='mx-5 flex flex-col'>
-        <span class='headline-small'>{{foodName}}</span>
-        <span class='body-large'>{{foodPrice}} บาท</span>
-        <span class='body-small'>x{{foodAmount}}</span>
-        <span class='body-medium'>{{foodDescription}}</span>
+        <span class='headline-small'>{{food_name}}</span>
+        <span class='body-large'>{{order_price}} บาท</span>
+        <span class='body-small'>x{{order_quantity}}</span>
+        <span class='body-medium'>{{order_request}}</span>
     </div>
   </div>
   <div class="flex items-center">
-      <button class="error-container error-text w-10 h-10 rounded-full">
+      <button
+        @click="() => DeletePopup('buttonTrigger')"
+        class="error-container error-text w-10 h-10 rounded-full">
         <div class="flex items-center justify-center">
           <span class="material-symbols-outlined">close</span>
         </div>
       </button>
   </div>
+  <OrderConfirmDeletePopup
+    v-if="popupTrigger.buttonTrigger"
+      :DeletePopup="() => DeletePopup('buttonTrigger')"
+    >
+    <h1 class="text-center headline-medium">เอาออกจากถาด</h1>
+    <article>
+      <p>
+        อาหารจะถูกเอาออกจากถาด เมื่อกดปุ่ม "เอาออก" ข้างล่างนี้
+        <br/>เมื่อกดแล้วอาหารจะหายจากถาดอาหาร
+      </p>
+    </article>
+    <div>
+      <button @click="deleteOrder"
+              class="dbutton-color p-3 mt-5 border rounded-lg float-right">
+        เอาออก
+      </button>
+    </div>
+  </OrderConfirmDeletePopup>
 
- </div>
+</div>
 </template>
 
 <script>
+import OrderConfirmDeletePopup from '../OrderConfirmDeletePopup.vue';
+import {ref} from 'vue';
+
 export default {
-  data() {
-    return {
-      image: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
-      foodName: 'ข้าวมันไก่',
-      foodPrice: '45',
-      foodAmount: 1,
-      foodDescription: 'ขอหนังล้วน ๆ ไม่เอาเนื้อไก่',
+  // props: ['order'],
+  props: [
+    'id',
+    'order_status',
+    'food_image',
+    'food_name',
+    'order_price',
+    'order_quantity',
+    'order_request',
+    'showDeleteDialog',
+  ],
+  // (DeletePopup ใน component OrderConfirmDeletePopup
+  // = กดปุ่มแล้วแสดง popup ให้ confirm deleteOrder)
+  setup() {
+    const popupTrigger = ref({
+      buttonTrigger: false,
+    });
+
+    const DeletePopup = (trigger) =>{
+      popupTrigger.value[trigger] =!popupTrigger.value[trigger];
     };
+
+    return {popupTrigger, DeletePopup};
   },
+
+  methods: {
+    // กดปุ่ม'เอาออก'เพื่อยืนยัน แล้วลบorderที่ได้เอามาใส่ในถาด
+    deleteOrder() {
+
+    },
+
+  },
+  components: {OrderConfirmDeletePopup},
+
 };
 </script>
 

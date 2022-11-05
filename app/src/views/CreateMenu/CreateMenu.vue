@@ -107,10 +107,10 @@
 </template>
 
 <script>
-import SectionHeader from "../../components/NavBarDrawer/SectionHeader.vue";
-import NavItem from "../../components/NavBarDrawer/NavItem.vue";
-import FoodCard from "../../components/FoodCard/FoodCard.vue";
-import UploadService from "../../services/UploadFilesService.js";
+import SectionHeader from '../../components/NavBarDrawer/SectionHeader.vue';
+import NavItem from '../../components/NavBarDrawer/NavItem.vue';
+import FoodCard from '../../components/FoodCard/FoodCard.vue';
+import UploadService from '../../services/UploadFilesService.js';
 
 export default {
   /*To Do List
@@ -134,7 +134,7 @@ export default {
       previewImage: undefined,
 
       progress: 0,
-      message: "",
+      message: '',
 
       imageInfos: [],
 
@@ -154,12 +154,12 @@ export default {
         food_allergy: '',
         cooking_time: '',
       },
-    }
+    };
   },
   methods: {
     async saveNewFood() {
       try {
-        //upload image file
+        // upload image file
         this.progress = 0;
 
         UploadService.upload(this.currentImage, (event) => {
@@ -174,42 +174,42 @@ export default {
             })
             .catch((err) => {
               this.progress = 0;
-              this.message = "Could not upload the image! " + err;
+              this.message = 'Could not upload the image! ' + err;
               this.currentImage = undefined;
             });
-        //save new food
-        this.error = null
-        const food_id = await this.food_store.add(this.food)
+        // save new food
+        this.error = null;
+        const food_id = await this.food_store.add(this.food);
         if (food_id) {
-          SocketioService.sendToServer('CreateMenu', {success: true}   )
-          this.$router.push(`/${food_id}`)
+          SocketioService.sendToServer('CreateMenu', {success: true} );
+          this.$router.push(`/${food_id}`);
         }
-      } catch(error) {
-        console.log(error)
-        this.error = error.message
+      } catch (error) {
+        console.log(error);
+        this.error = error.message;
       }
     },
     showMenu() {
       this.showMobileMenu = !this.showMobileMenu;
     },
-    backToMenuList(){
-      this.$router.push(`/MenuList`)
+    backToMenuList() {
+      this.$router.push(`/MenuList`);
     },
-    onClickItem(id,url) {
+    onClickItem(id, url) {
       this.activeId = id;
       if (url != '') {
-        this.$router.push(url)
+        this.$router.push(url);
       }
     },
     selectImage() {
       this.currentImage = this.$refs.file.files.item(0);
       this.previewImage = URL.createObjectURL(this.currentImage);
       this.progress = 0;
-      this.message = "";
+      this.message = '';
     },
   },
   mounted() {
-    UploadService.getFiles().then(response => {
+    UploadService.getFiles().then((response) => {
       this.imageInfos= response.data;
     });
   },
@@ -217,8 +217,8 @@ export default {
     SectionHeader,
     NavItem,
     FoodCard,
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss">
