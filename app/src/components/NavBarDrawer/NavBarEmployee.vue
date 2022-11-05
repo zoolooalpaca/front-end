@@ -25,7 +25,7 @@ export default {
       navItems: [
         // eslint-disable-next-line max-len
         {label: 'รับลูกค้าใหม่', icon: 'sentiment_satisfied', router: '/employee/new-customer'},
-        {label: 'จ่ายเงิน', icon: 'payment', router: ''},
+        {label: 'จ่ายเงิน', icon: 'payment', router: '/employee/payment/create-promptpay'},
         {label: 'อาหารที่ต้องเสิร์ฟ', icon: 'room_service', router: '/employee/order/serve'},
         {label: 'อาหารที่ต้องทำ', icon: 'soup_kitchen', router: '/employee/order/order-to-do'},
       ],
