@@ -16,6 +16,8 @@ import OrderCooking from '@/views/OrderCooking/OrderCookingView.vue';
 import OrderToDoList from '@/views/OrderToDoList/OrderToDoListView.vue';
 import AllMenu from '@/views/Menu/AllMenuView.vue';
 import DetailMenu from '@/views/Menu/DetailMenuView.vue';
+import CreateEmployeeAccount from "@/views/CreateEmployeeAccount/CreateEmployeeAccount.vue";
+import EmployeeAccountList from "@/views/CreateEmployeeAccount/EmployeeAccountList.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -111,9 +113,14 @@ const router = createRouter({
       component: () => import('@/views/Register/RegisterForManagerView.vue'),
     },
     {
-      path: '/login',
-      name: 'Login',
-      component: LoginView,
+      path: '/management/account/create-employee-account',
+      name: 'create-employee-account',
+      component: CreateEmployeeAccount,
+    },
+    {
+      path: '/management/account/employee-account-list',
+      name: 'employee-account-list',
+      component: EmployeeAccountList,
     },
     {
       path: '/logout',
