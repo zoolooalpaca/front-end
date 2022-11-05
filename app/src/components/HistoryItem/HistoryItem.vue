@@ -6,21 +6,21 @@
                 justify-between">
         <div class="space-y-4">
             <div class="flex items-center text-black">
-                <span v-show="order_status == 'รอทำ'"
+                <span v-show="status == 'รอทำ'"
                     class="material-symbols-outlined"
                   >alarm</span>
-                <span v-show="order_status == 'กำลังทำ'"
+                <span v-show="status == 'กำลังทำ'"
                     class="material-symbols-outlined">soup_kitchen</span>
-                <span v-show="order_status == 'ส่งถึงโต๊ะแล้ว'"
+                <span v-show="status == 'ส่งถึงโต๊ะแล้ว'"
                     class="material-symbols-outlined">done</span>
-                {{order_status}}
+                {{status}}
             </div>
             <div class="flex gap-4">
               <div
                   class="rounded border-radius-10px
                     overflow-hidden flex flex-col"
               >
-                  <img :src="food_image"
+                  <img :src="foodImage"
                       :alt="foodName"
                       height="60"
                       width="60"
@@ -28,16 +28,16 @@
                   >
                 </div>
                 <div class='text-black mx-5 flex flex-col'>
-                    <p class='body-large'>{{food_name}}</p>
-                    <p class='body-large'>{{order_price}} บาท</p>
-                    <p class='label-medium'>x{{order_quantity}}</p>
-                    <p class='body-large'>{{order_request}}</p>
+                    <p class='body-large'>{{foodName}}</p>
+                    <p class='body-large'>{{foodPrice}} บาท</p>
+                    <p class='label-medium'>x{{foodAmount}}</p>
+                    <p class='body-large'>{{foodDescription}}</p>
                 </div>
             </div>
        </div>
 
        <div class="flex items-center ">
-           <button v-show="order_status == 'รอทำ'"
+           <button v-show="status == 'รอทำ'"
            @click="() => DeletePopup('buttonTrigger')"
            class="error-container error-text w-10 h-10 rounded-full"
            >
@@ -45,7 +45,7 @@
               <span class="material-symbols-outlined">close</span>
             </div>
            </button>
-           <button disabled v-show="order_status == 'กำลังทำ'"
+           <button disabled v-show="status == 'กำลังทำ'"
            class="on-surface-variant w-10 h-10 rounded-full">
             <div class="flex items-center justify-center">
              <span class="material-symbols-outlined">close</span>
@@ -82,8 +82,8 @@ import {ref} from 'vue';
 
 export default {
   props: [
-    'id', 'order_status', 'food_image', 'food_name',
-    'order_price', 'order_quantity', 'order_request',
+    'id', 'status', 'foodImage', 'foodName',
+    'foodPrice', 'foodAmount', 'foodDescription',
   ],
 
   // (DeletePopup ใน component OrderConfirmDeletePopup

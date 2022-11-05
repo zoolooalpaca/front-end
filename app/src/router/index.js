@@ -1,10 +1,10 @@
 import {createRouter, createWebHistory} from 'vue-router';
 import HomeView from '@/views/HomeView.vue';
 import LoginView from '@/views/LoginView.vue';
-import ServeView from '@/views/OrderToServe/OrderToServeView.vue';
+import ServeView from '../views/OrderToServe/OrderToServeView.vue';
 import HistoryView from '@/views/OrderHistory/OrderHistoryView.vue';
 import OrderView from '@/views/OrderDetail/OrderDetailView.vue';
-import NewCustomerView from '@/views/OrderQrCode/NewCustomerView.vue';
+import NewCustomerView from '../views/OrderQrCode/NewCustomerView.vue';
 import OrderQrCodeView from '@/views/OrderQrCode/OrderQrCodeView.vue';
 import MenuList from '@/views/CreateMenu/MenuList.vue';
 import CreateMenu from '@/views/CreateMenu/CreateMenu.vue';

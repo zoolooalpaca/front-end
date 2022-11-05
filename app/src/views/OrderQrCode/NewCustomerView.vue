@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import NavBarEmployee from '../../components/NavBarDrawer/NavBarEmployee.vue';
+import NavBarEmployee from '../../components/NavBarDrawer/NavBarDrawer.vue';
 import TableItem from '../../components/Table/TableItem.vue';
 import {useTableStore} from '../../stores/table';
 export default {

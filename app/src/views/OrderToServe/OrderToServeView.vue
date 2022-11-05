@@ -75,8 +75,9 @@
 <script>
 import SectionHeader from '../../components/NavBarDrawer/SectionHeader.vue';
 import ToServeItem from '../../components/ToServeItem/ToServeItem.vue';
-import NavBarEmployee from '../../components/NavBarDrawer/NavBarEmployee.vue';
+import NavBarEmployee from '../../components/NavBarDrawer/NavBarDrawer.vue';
 import {useOrderStore} from '../../stores/order';
+
 export default {
   components: {
     SectionHeader,

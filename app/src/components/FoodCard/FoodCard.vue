@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-dupe-keys -->
 <template>
   <div class="food-card">
-    <img :src="image" alt="image.jpg"
+    <img :src="image" :alt="`an image of ${name}`"
       class="food-card-image">
     <div class="flex p-5 justify-between">
       <div>
