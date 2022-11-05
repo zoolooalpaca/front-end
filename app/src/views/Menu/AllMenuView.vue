@@ -28,6 +28,7 @@
               >
               </FoodCategoryChip>
             </div>
+      </div>
 
       <div class='main-menu'>
         <div class='left-menu-list'>
@@ -71,7 +72,7 @@
             <div
               class="w-1/2 lg:w-1/3 hidden md:block
               h-screen overflow-hidden sticky top-0"
-            >
+              >
               <FoodTray/>
             </div>
           </div>
