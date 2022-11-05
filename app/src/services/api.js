@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 const axiosInstance = axios.create({
-  baseURL: 'http://zlapc-oi-api.loca.lt/api',
+  baseURL: 'http://localhost/api',
 });
 
 

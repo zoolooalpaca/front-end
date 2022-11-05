@@ -1,9 +1,9 @@
 <template>
-  <div v-show="order_status == 'ยังไม่เสิร์ฟ'"
+  <div v-show="'ยังไม่เสิร์ฟ'"
       class="main-content-toserve-list">
     <div class="table-circle primary on-primary-text">
       <span>
-        โต๊ะ {{ table_id }}
+        โต๊ะ 1
       </span>
     </div>
     <div class="flex flex-1
@@ -15,11 +15,11 @@
       <h3 class="body-medium">รายการอาหาร</h3>
       <div class="order-detail">
         <p
-          v-for="order in orders"
+          v-for="order,index in orders"
           :key="index"
           class="body-large"
         >
-          {{ order.food_name }} x{{ order.quantity }}
+          {{ order.food_name }} x{{ order.order_quantity }}
         </p>
       </div>
     </div>
@@ -43,7 +43,8 @@
 <script>
 export default {
   props: [
-    'id', 'table_id', 'order_id', 'order_status', 'orders',
+    // 'id', 'table_id', 'order_id', 'order_status',
+    'orders',
   ],
   methods: {
     // serveDone() = กดยืนยันว่าorderนั้นได้เสิร์ฟแล้ว
