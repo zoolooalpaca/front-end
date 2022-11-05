@@ -179,6 +179,4 @@ div.main-content-table-list {
     grid-gap: 4px;
   }
 }
-
-
 </style>
