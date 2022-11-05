@@ -40,9 +40,9 @@ export default {
 
 <template>
   <div class="relative">
-    <div class="fixed md:hidden left-0 bottom-0 w-full p-4">
+
       <FloatingOrder></FloatingOrder>
-    </div>
+
     <TopAppBar/>
     <NavBarDrawer/>
     <CookItem/>

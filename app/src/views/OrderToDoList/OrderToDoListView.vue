@@ -1,0 +1,109 @@
+<template lang=''>
+<div class>
+    <div class="main-content-employee-view">
+        <div>
+            <h3 class="headline-large ml-4 mb6-4">อร่อยโภชนา</h3>
+            <div class="
+            w-64
+            absolute
+            inset-y-0
+              left-0
+              md:relative md:-translate-x-0
+              transform
+              -translate-x-full
+              transition
+              duration-200
+              ease-in-out"
+            :class="this.showMobileMenu
+            ? 'relative -translate-x-0' : 'closed-menu'">
+            <NavBarEmployee></NavBarEmployee>
+            </div>
+            <i>
+                <button @click="showMenu()">
+                    <span class="material-symbols-outlined">
+                        menu
+                    </span>
+                </button>
+            </i>
+        </div>
+
+          <div class="p-4 flex-grow">
+              <h3 class="headline-large">อาหารที่รอดำเนินการ</h3>
+              <div class="py-4 text-right flex-col">
+                  <label for="order_amount">{{totalOrders}} รายการ</label>
+              </div>
+              <div>
+                  <CookItem
+                      v-for="(order, index) in orders"
+                      :id="index"
+                      :tableNumber="order.tableNumber"
+                      :foodName="order.foodName"
+                      :foodAmount="order.foodAmount"
+                      :foodDescription="order.foodDescription"
+                      :key="index"
+                  >
+                  </CookItem>
+              </div>
+          </div>
+    </div>
+</div>
+</template>
+
+
+<script>
+
+import NavBarEmployee from '../../components/NavBarDrawer/NavBarEmployee.vue';
+import CookItem from "../../components/CookItem/CookItem.vue";
+import SectionHeader from "../../components/NavBarDrawer/SectionHeader.vue";
+
+
+export default {
+  components: {
+    NavBarEmployee,
+    CookItem,
+    SectionHeader,
+  },
+
+  computed: {
+    totalOrders() {
+      return this.orders.length;
+    },
+  },
+
+  methods: {
+    showMenu() {
+      this.showMobileMenu = !this.showMobileMenu;
+    },
+  },
+
+  data() {
+    return {
+      showMobileMenu: false,
+      orders: [
+        {
+          tableNumber: '1',
+          foodName: 'ข้าวผัดหมู',
+          foodAmount: '2',
+          foodDescription: 'ข้าวผัดหมูไม่ใส่น้ำมัน แล้วนายคนนั้นคือใครกัน',
+        },
+        {
+          tableNumber: '2',
+          foodName: 'ข้าวมันไก่',
+          foodAmount: '1',
+          foodDescription: 'ข้าวมันไก่ ดีอะ ดีอะ ดีอะ',
+        },
+        {
+          tableNumber: '3',
+          foodName: 'ข้าวไปในใจเธอ',
+          foodAmount: '5',
+          foodDescription: 'ยากจัง เข้าไม่ได้',
+        },
+      ],
+    };
+  },
+};
+
+</script>
+
+<style>
+</style>

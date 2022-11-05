@@ -1,6 +1,7 @@
 <template>
   <div class="nav-menu">
     <div class="
+          basis-1/4
           w-64
           absolute
           inset-y-0
@@ -28,8 +29,8 @@
       </NavItem>
     </div>
 
-    <div class="ml-10">
-      <div class="flex">
+    <div class="basis-3/4 ml-10">
+      <div>
       <i>
         <button @click="showMenu()">
         <span class="material-symbols-outlined">
@@ -37,12 +38,13 @@
         </span>
         </button>
       </i>
+      </div>
         <div>
           <h3 class="headline-large">รายการอาหาร</h3>
         </div>
-      </div>
 
-      <div class="main-content-menu-list mr-20" >
+
+      <div class="main-content-menu-list" >
         <div class="grid justify-items-center create-menu">
           <button
               class="rounded-full p-1 justify-center"
@@ -73,6 +75,20 @@ import {ref} from 'vue';
 import {useFoodStore} from '../../stores/food.js';
 
 export default {
+  /*To Do List
+*
+* - Data -
+* ต้องมีการดึงค่าข้อมูล Food มาแสดงในรายการอาหารที่แสดง
+*
+* - Method -
+* goToFoodDetail()
+* ต้องมีเมธอดที่พอกดที่ Food card แล้วไปยังหน้ารายละเอียดอาหาร
+*
+* goToCreateMenu()
+* เมธอดนี้เขียนให้แล้วใช้งานได้แล้ว เป็นเมธอดที่กดแล้วไปยังหน้าเพิ่มข้อมูลอาหาร
+*
+*
+* */
   setup() {
     const showSidebar = ref(false);
     const foodStore = useFoodStore();
@@ -178,7 +194,7 @@ div.main-content-menu-list {
 
   i {
     display: block;
-    text-align: right;
+    text-align: left;
     padding: 0 10px 10px 0;
   }
 

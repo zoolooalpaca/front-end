@@ -1,12 +1,13 @@
+<!-- eslint-disable max-len -->
 <template lang="">
     <div class="cook-item-container">
-        <p class="body-large secondary-text">{{ tableNumber }}</p>
+        <p class="body-large secondary-text">โต๊ะ {{ tableNumber }}</p>
         <div class="flex justify-between items-center">
           <p class="headline-large">{{ foodName }}</p>
           <p class="headline-medium">x{{ foodAmount }}</p>
         </div>
         <p class="body-medium outline-text">{{ foodDescription }}</p>
-        <button class="cook-button primary justify-center">
+        <button @click="()=>$router.push({path: '/order/order-to-do/order-cooking'})" class="cook-button primary justify-center">
           <span class="on-primary-text">
             ทำ
           </span>
@@ -16,14 +17,9 @@
 
 <script>
 export default {
-  data() {
-    return {
-      tableNumber: 'โต๊ะ 1',
-      foodName: 'ส้มตำไข่เค็ม',
-      foodDescription: 'ส้มตำไข่เค็มอร่อยยั่ว ๆ ถูกปากคนไทย',
-      foodAmount: 1,
-    };
-  },
+  props: [
+      'id', 'tableNumber', 'foodName', 'foodAmount', 'foodDescription'
+  ],
 };
 </script>
 
