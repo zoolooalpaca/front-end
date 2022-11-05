@@ -46,4 +46,29 @@ export default {
   object-fit: cover;
 }
 
+@media screen and (max-width: 768px) {
+  .food-card{
+    height: 300px;
+    width: 100%;
+    margin-bottom: 4px;
+    border-radius: 30px;
+    background: var(--md-sys-color-primary-container);
+  }
+  .food-card-image{
+    border-radius: 30px 30px 0px 0px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .food-card{
+    height: 300px;
+    width: 40%;
+    margin-bottom: 4px;
+    border-radius: 30px;
+    background: var(--md-sys-color-primary-container);
+  }
+  .food-card-image{
+    border-radius: 30px 30px 0px 0px;
+  }
+}
 </style>

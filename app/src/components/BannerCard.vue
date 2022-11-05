@@ -55,4 +55,22 @@ export default {
   rgba(0, 0, 0, 0) 20%,
   rgba(0, 0, 0, 0.8) 100%);
 }
+
+@media screen and (max-width: 375px) {
+  .banner-container {
+    position: relative;
+    height: 70px;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .banner-backdrop {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(180deg,
+    rgba(0, 0, 0, 0) 20%,
+    rgba(0, 0, 0, 0.8) 100%);
+  }
+}
 </style>
