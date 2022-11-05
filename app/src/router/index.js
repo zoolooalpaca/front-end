@@ -10,6 +10,8 @@ import CreateMenu from '@/views/CreateMenu/CreateMenu.vue';
 import PromotionList from '@/views/CreatePromotion/PromotionList.vue';
 import CreatePromotion from '@/views/CreatePromotion/CreatePromotion.vue';
 import Dashboard from '@/views/Dashboard/Dashboard.vue';
+import CreateEmployeeAccount from "@/views/CreateEmployeeAccount/CreateEmployeeAccount.vue";
+import EmployeeAccountList from "@/views/CreateEmployeeAccount/EmployeeAccountList.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -98,7 +100,17 @@ const router = createRouter({
       path: '/create/manager-account',
       name: 'create-manager-account',
       component: () => import('@/views/Register/RegisterForManagerView.vue')
-    }
+    },
+    {
+      path: '/create-employee-account',
+      name: 'create-employee-account',
+      component: CreateEmployeeAccount,
+    },
+    {
+      path: '/employee-account-list',
+      name: 'employee-account-list',
+      component: EmployeeAccountList,
+    },
   ],
 });
 
