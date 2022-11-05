@@ -7,7 +7,7 @@
           <p class="headline-medium">x{{ foodAmount }}</p>
         </div>
         <p class="body-medium outline-text">{{ foodDescription }}</p>
-        <button @click="()=>$router.push({path: '/order/order-to-do/order-cooking'})" class="cook-button primary justify-center">
+        <button @click="()=>$router.push({path: '/employee/order/order-to-do/order-cooking'})" class="cook-button primary justify-center">
           <span class="on-primary-text">
             ทำ
           </span>

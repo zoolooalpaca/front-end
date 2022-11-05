@@ -12,87 +12,114 @@
   navbar>
   -showMenu() = กดเพื่อให้โชว์navbarที่ซ่อนไว้
   อยู่ในcomponents
-  -NavBarEmployee.vue > onClickItem() = ส่งไปแต่ละหน้าตามurl
 / -->
 <template>
 <div class="relative">
-    <div class="main-content-employee-view">
-            <div class="
-              w-64
-              absolute
-              inset-y-0
-              left-0
-              md:relative md:-translate-x-0
-              transform
-              -translate-x-full
-              transition
-              duration-200
-              ease-in-out"
-            :class="this.showMobileMenu
-            ? 'relative -translate-x-0' : 'closed-menu'">
-        <NavBarEmployee></NavBarEmployee>
-        </div>
-        <i>
-            <button @click="showMenu()">
-              <span class="material-symbols-outlined">
-                menu
-              </span>
-            </button>
-        </i>
+  <div class="main-content-employee-view">
+    <div>
+      <h3 class="headline-large ml-4 mb6-4">อร่อยโภชนา</h3>
+      <div class="
+        w-64
+        absolute
+        inset-y-0
+        left-0
+        md:relative md:-translate-x-0
+        transform
+        -translate-x-full
+        transition
+        duration-200
+        ease-in-out"
+      :class="this.showMobileMenu
+      ? 'relative -translate-x-0' : 'closed-menu'">
+      <SectionHeader label="สำหรับพนักงาน" />
+      <NavItem
+      v-for="(item, index) in navItems"
+                :id="index"
+                :label="item.label"
+                :active="item.activeId"
+                :url="item.router"
+                :onClickItem="onClickItem"
+                :key="index"
+              >
+              <span class="material-symbols-outlined">{{item.icon}}</span>
+      </NavItem>
+      </div>
+      <i>
+          <button @click="showMenu()">
+            <span class="material-symbols-outlined">
+              menu
+            </span>
+          </button>
+      </i>
+    </div>
 
-        <div class="p-4 flex-grow">
-            <h1 class="headline-medium">รับลูกค้าใหม่</h1>
-            <h1 class="headline-small m-4">Qr-code ให้กับลูกค้า</h1>
-
-            <div >
-                <div style="margin-left: 15%; ">
-                    <img :src="qrCode" class="border"
-                          style="width: 80%; object-fit: contain;">
-                </div>
-                <p class="text-center headline-small mt-8">โต๊ะ {{table_id}}</p>
-                <div class="p-4 float-right">
-                    <button  class="
-                    text-center
-                    button1
-                    primary-container
-                    "
-                    @click="onclickdone"
-                    >
-                    <span class="material-symbols-outlined"> done </span>
-                    เสร็จ
-                    </button>
-                </div>
+    <div class="p-4 flex-grow">
+        <h1 class="headline-medium">รับลูกค้าใหม่</h1>
+        <h1 class="headline-small m-4">Qr-code ให้กับลูกค้า</h1>
+        <div>
+            <div style="margin-left: 15%; ">
+                <img :src="qrCode" class="border"
+                      style="width: 80%; object-fit: contain;">
+            </div>
+            <p class="text-center headline-small mt-8">โต๊ะ {{table_id}}</p>
+            <div class="p-4 float-right">
+                <button  class="
+                text-center
+                button1
+                primary-container
+                "
+                @click="onclickdone"
+                >
+                <span class="material-symbols-outlined"> done </span>
+                เสร็จ
+                </button>
             </div>
         </div>
     </div>
+  </div>
 </div>
 
 </template>
 
 <script>
-import NavBarEmployee from '../../components/NavBarDrawer/NavBarEmployee.vue';
+
+import NavItem from '../../components/NavBarDrawer/NavItem.vue';
+import SectionHeader from '../../components/NavBarDrawer/SectionHeader.vue';
 
 export default {
   components: {
-    NavBarEmployee,
-  },
+    NavItem,
+    NavItem,
+    SectionHeader
+},
 
   methods: {
     // เปลี่ยน table_available ของโต๊ะที่เลือกเป็น false
-    // แล้วกลับไปหน้า /new-customer
+    // แล้วกลับไปหน้า /employee/new-customer
     onclickdone() {
-      this.$router.push('/new-customer');
+      this.$router.push('/employee/new-customer');
     },
     showMenu() {
       this.showMobileMenu = !this.showMobileMenu;
     },
+    onClickItem(id, url) {
+      this.activeId = id;
+      if (url != '') {
+        this.$router.push(url);
+      }
+    },
   },
-
+  
   data() {
     return {
       table_number: '',
-      qrCode: 'https://chart.googleapis.com/chart?cht=qr&chl=http%3A%2F%2Flocalhost%3A3000%2Fmenu&chs=180x180&choe=UTF-8&chld=L|2',
       showMobileMenu: false,
+      navItems: [
+        {label: 'รับลูกค้าใหม่', icon: 'sentiment_satisfied', router: '/employee/new-customer',activeId:1},
+        {label: 'จ่ายเงิน', icon: 'payment', router: '/employee/payment/create-promptpay',activeId:0},
+        {label: 'อาหารที่ต้องเสิร์ฟ', icon: 'room_service', router: '/employee/order/serve',activeId:0},
+        {label: 'อาหารที่ต้องทำ', icon: 'soup_kitchen', router: '/employee/order/order-to-do',activeId:0},
+      ],
     };
   },
 };
@@ -131,6 +158,7 @@ i {
     transition: all 0.2s ease-out;
   }
   i {
+    float: right;
     display: block;
     text-align: right;
     padding: 0 10px 10px 0;
