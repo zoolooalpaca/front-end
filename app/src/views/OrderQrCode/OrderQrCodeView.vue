@@ -57,11 +57,17 @@
         <h1 class="headline-medium">รับลูกค้าใหม่</h1>
         <h1 class="headline-small m-4">Qr-code ให้กับลูกค้า</h1>
         <div>
+          <p class="text-center headline-small m-4">โต๊ะ {{table_id}}</p>
             <div style="margin-left: 15%; ">
-                <img :src="qrCode" class="border"
-                      style="width: 80%; object-fit: contain;">
+                <div>
+                  <vue-qrcode 
+                  v-bind:value="qrValue"
+                  v-bind:scale="qrScale"
+                  v-bind:errorCorrectionLevel="correctionLevel"
+                  class="border"
+                  style="width: 80%; object-fit: contain;"/>
+                </div>
             </div>
-            <p class="text-center headline-small mt-8">โต๊ะ {{table_id}}</p>
             <div class="p-4 float-right">
                 <button  class="
                 text-center
@@ -85,14 +91,14 @@
 
 import NavItem from '../../components/NavBarDrawer/NavItem.vue';
 import SectionHeader from '../../components/NavBarDrawer/SectionHeader.vue';
+import VueQrcode from 'vue-qrcode';
 
 export default {
   components: {
     NavItem,
-    NavItem,
-    SectionHeader
+    SectionHeader,
+    VueQrcode
 },
-
   methods: {
     // เปลี่ยน table_available ของโต๊ะที่เลือกเป็น false
     // แล้วกลับไปหน้า /employee/new-customer
@@ -112,7 +118,12 @@ export default {
   
   data() {
     return {
-      table_number: '',
+      //qrcode
+      qrValue: "base_url/login?u=<username>&p=<pwd>",
+      qrScale: 15,
+      correctionLevel:"H",
+
+      table_id: '3',
       showMobileMenu: false,
       navItems: [
         {label: 'รับลูกค้าใหม่', icon: 'sentiment_satisfied', router: '/employee/new-customer',activeId:1},
