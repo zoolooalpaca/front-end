@@ -67,4 +67,27 @@
   border-color: var( --md-ref-palette-neutral-variant0);
   border-radius: 8px;
 }
+
+@media screen and (max-width: 768px) {
+  .cancel-block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: var( --md-sys-color-error-container);
+    height: 200px;
+    width: 300px;
+
+    /* outline */
+    border-radius: 16px;
+  }
+
+  .textarea-cancel {
+    width: 200px;
+    height: 70px;
+    padding: 12px 20px;
+    border: 1px solid;
+    border-color: var( --md-ref-palette-neutral-variant0);
+    border-radius: 8px;
+  }
+}
 </style>
