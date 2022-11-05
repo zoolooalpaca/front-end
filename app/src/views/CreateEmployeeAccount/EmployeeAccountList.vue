@@ -20,7 +20,7 @@
           v-for="(item, index) in navItems"
           :id="index"
           :label="item.label"
-          :active="index == activeId"
+          :active="item.activeId"
           :url="item.router"
           :onClickItem="onClickItem"
           :key="index"
@@ -90,10 +90,10 @@ export default {
       showMobileMenu: false,
       loopCount: 4,
       navItems: [
-        {label: 'ข้อมูลบัญชี', icon: 'account_circle', router: '/employee-account-list',activeId: 1,},
-        {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt', router: '/Dashboard' ,activeId: 0,},
-        {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/MenuList',activeId: 0,},
-        {label: 'โปรโมชัน', icon: 'grid_view', router: '/PromotionList',activeId: 0,},
+        {label: 'ข้อมูลบัญชี', icon: 'account_circle', router: '/management/account/employee-account-list',activeId: 1,},
+        {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt', router: '/management/Dashboard' ,activeId: 0,},
+        {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/management/menu',activeId: 0,},
+        {label: 'โปรโมชัน', icon: 'grid_view', router: '/management/promotion',activeId: 0,},
       ],
       accountItems: [
         {name: 'nanazen', role:'manager'},
@@ -112,7 +112,7 @@ export default {
       this.showMobileMenu = !this.showMobileMenu;
     },
     goToCreateEmployeeAccount(){
-      this.$router.push(`/create-employee-account`);
+      this.$router.push(`/management/account/create-employee-account`);
     },
     onClickItem(id, url) {
       this.activeId = id;

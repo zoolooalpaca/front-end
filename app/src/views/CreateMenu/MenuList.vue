@@ -20,7 +20,7 @@
           v-for="(item, index) in navItems"
           :id="index"
           :label="item.label"
-          :active="index == activeId"
+          :active="item.activeId"
           :url="item.router"
           :onClickItem="onClickItem"
           :key="index"

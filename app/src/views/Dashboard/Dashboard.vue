@@ -21,7 +21,6 @@
           :id="index"
           :label="item.label"
           :active="item.activeId"
-          :active="index == activeId"
           :onClickItem="onClickItem"
           :key="index"
       >
