@@ -75,6 +75,20 @@ import FoodCard from "../../components/FoodCard/FoodCard.vue";
 import { ref } from 'vue'
 
 export default {
+  /*To Do List
+*
+* - Data -
+* ต้องมีการดึงค่าข้อมูล Food มาแสดงในรายการอาหารที่แสดง
+*
+* - Method -
+* goToFoodDetail()
+* ต้องมีเมธอดที่พอกดที่ Food card แล้วไปยังหน้ารายละเอียดอาหาร
+*
+* goToCreateMenu()
+* เมธอดนี้เขียนให้แล้วใช้งานได้แล้ว เป็นเมธอดที่กดแล้วไปยังหน้าเพิ่มข้อมูลอาหาร
+*
+*
+* */
   setup() {
     const showSidebar = ref(false);
     return {

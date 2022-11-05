@@ -90,6 +90,17 @@ import NavItem from "../../components/NavBarDrawer/NavItem.vue";
 import BannerCard from "../../components/BannerCard.vue";
 import { GChart } from "vue-google-charts";
 export default {
+  /*To Do List
+ *
+ * - Data -
+ * ต้องมีการดึงค่าข้อมูล Review มาแสดงในรายการอาหารที่แสดง
+ *
+ * - Method -
+ *ไม่แน่ใจว่าต้องใช้ไรเพิ่มเติมอีกอะ แต่ในหน้าคือจะประกอบด้วย 3 ส่วน
+ * ส่วน 1 Piechart ข้อมูล rating
+ * ส่วน 2 แสดงข้อมูล reviews ทั้งหมด นี่ทำให้เป็น scollbar ไว้ให้แล้วแค่่ดึงดึงข้อมูลมาวน
+ * ส่วน 3 ฺBar chart รายรับรายจ่ายในแต่ละวัน
+ * */
   name: "App",
   data() {
     return {

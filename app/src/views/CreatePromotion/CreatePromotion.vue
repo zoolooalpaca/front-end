@@ -108,6 +108,18 @@ import FoodCard from "../../components/FoodCard/FoodCard.vue";
 import UploadService from "../../services/UploadFilesService.js";
 
 export default {
+  /*To Do List
+*
+* - Data -
+* ต้องมีการเก็บค่าข้อมูลลง Food (เอาชื่ออาหารมาใช้ลิ้งกับข้อมูลโปรโมชันอะ) กับ Promotion
+*
+* - Method -
+* saveNewPromotion()
+* เป็นเมธอดที่ใช้กับ button ซึ่งพอกดแล้วจะต้องบันทึกข้อมูลที่กรอกมาไปเก็บไว้ที่ DB
+* ทำการเซฟรูปภาพ (นี่ก้อปโค้ดเซฟรูปภาพในเน็ตมาแปะไว้ให้แล้วน่าจะใช้ได้เลย)
+* และทำการลิ้งไปยังหน้ารายละเอียดโปรโมชันของข้อมูลที่เพิ่งกรอกเข้ามา
+*
+* */
   name: "upload-image",
   data() {
     return {
