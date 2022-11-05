@@ -30,12 +30,12 @@
             <HistoryItem
                 v-for="(order,index) in orders"
                 :id="index"
-                :order_status="order.order_status"
-                :food_image="order.food_image"
-                :food_name="order.food_name"
-                :order_price="order.order_price"
-                :order_quantity="order.order_quantity"
-                :order_request="order.order_request"
+                :status="order.status"
+                :foodImage="order.foodImage"
+                :foodName="order.foodName"
+                :orderPrice="order.orderPrice"
+                :orderQuantity="order.orderQuantity"
+                :orderRequest="order.orderRequest"
                 :key="index"
                 >
             </HistoryItem>
@@ -66,28 +66,28 @@ export default {
     return {
       orders: [
         {
-          order_status: 'รอทำ',
-          food_image: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
-          food_name: 'ข้าวมันไก่',
-          order_price: 45,
-          order_quantity: 1,
-          order_request: 'ขอหนังล้วน ๆ ไม่เอาเนื้อไก่',
+          status: 'รอทำ',
+          foodImage: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
+          foodName: 'ข้าวมันไก่',
+          orderPrice: 45,
+          orderQuantity: 1,
+          orderRequest: 'ขอหนังล้วน ๆ ไม่เอาเนื้อไก่',
         },
         {
-          order_status: 'กำลังทำ',
-          food_image: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
-          food_name: 'ข้าวมันไก่',
-          order_price: 90,
-          order_quantity: 2,
-          order_request: 'ขอหนังล้วน ๆ ไม่เอาเนื้อไก่',
+          status: 'กำลังทำ',
+          foodImage: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
+          foodName: 'ข้าวมันไก่',
+          orderPrice: 90,
+          orderQuantity: 2,
+          orderRequest: 'ขอหนังล้วน ๆ ไม่เอาเนื้อไก่',
         },
         {
-          order_status: 'ส่งถึงโต๊ะแล้ว',
-          food_image: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
-          food_name: 'ข้าวมันไก่',
-          order_price: 135,
-          order_quantity: 3,
-          order_request: 'ขอหนังล้วน ๆ ไม่เอาเนื้อไก่',
+          status: 'ส่งถึงโต๊ะแล้ว',
+          foodImage: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
+          foodName: 'ข้าวมันไก่',
+          orderPrice: 135,
+          orderQuantity: 3,
+          orderRequest: 'ขอหนังล้วน ๆ ไม่เอาเนื้อไก่',
         },
       ],
     };
@@ -97,7 +97,7 @@ export default {
       return this.orders.length;
     },
     totalPrice() {
-      return this.orders.reduce((prev, {order_price}) => prev + order_price, 0);
+      return this.orders.reduce((prev, {orderPrice}) => prev + orderPrice, 0);
     },
   },
 };

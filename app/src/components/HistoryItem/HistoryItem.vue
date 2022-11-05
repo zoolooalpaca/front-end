@@ -29,9 +29,9 @@
                 </div>
                 <div class='text-black mx-5 flex flex-col'>
                     <p class='body-large'>{{foodName}}</p>
-                    <p class='body-large'>{{foodPrice}} บาท</p>
-                    <p class='label-medium'>x{{foodAmount}}</p>
-                    <p class='body-large'>{{foodDescription}}</p>
+                    <p class='body-large'>{{orderPrice}} บาท</p>
+                    <p class='label-medium'>x{{orderQuantity}}</p>
+                    <p class='body-large'>{{orderRequest}}</p>
                 </div>
             </div>
        </div>
@@ -83,7 +83,7 @@ import {ref} from 'vue';
 export default {
   props: [
     'id', 'status', 'foodImage', 'foodName',
-    'foodPrice', 'foodAmount', 'foodDescription',
+    'orderPrice', 'orderQuantity', 'orderRequest',
   ],
 
   // (DeletePopup ใน component OrderConfirmDeletePopup

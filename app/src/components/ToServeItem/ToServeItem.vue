@@ -18,7 +18,10 @@
       <div class="flex-1 self-stretch">
         <h3 class="body-medium">รายการอาหาร</h3>
         <div class="order-detail">
-          <p v-for="(order, index) in orders" :key="index" class="body-large">
+          <p v-for="(order, index) in orders" 
+          :key="index" 
+          class="body-large"
+          >
             {{ order.food_name }} x{{ order.order_quantity }}
           </p>
         </div>

@@ -28,22 +28,17 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: '/login',
-      name: 'Login',
-      component: LoginView,
-    },
-    {
       path: '/employee/order/serve',
       name: 'serve-order',
       component: ServeView,
     },
     {
-      path: '/employee/order/order-history',
+      path: '/order/history',
       name: 'order-history-list',
       component: HistoryView,
     },
     {
-      path: '/employee/order/order-detail',
+      path: '/order/detail',
       name: 'order-detail',
       component: OrderView,
     },
@@ -121,6 +116,11 @@ const router = createRouter({
       path: '/management/account/employee-account-list',
       name: 'employee-account-list',
       component: EmployeeAccountList,
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: LoginView,
     },
     {
       path: '/logout',
