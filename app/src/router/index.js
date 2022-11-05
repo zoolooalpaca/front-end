@@ -104,6 +104,7 @@ const router = createRouter({
       name: 'create-manager-account',
       component: () => import('@/views/Register/RegisterForManagerView.vue')
     },
+    {
       path: '/order-cooking',
       name: 'order-cooking',
       component: OrderCooking,
