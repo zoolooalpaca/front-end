@@ -103,15 +103,22 @@ const router = createRouter({
     },
     {
       path: '/login',
-      name: 'login',
+      name: 'Login',
       component: LoginView,
     },
     {
       path: '/logout',
-      name: 'logout',
+      name: 'Logout',
       component: LogoutView,
     },
   ],
+});
+
+router.beforeEach((to, from) => {
+  const accessToken = localStorage.getItem('access_token');
+  if (!accessToken && to.name !== 'Login') {
+    return {name: 'Login'};
+  }
 });
 
 export default router;

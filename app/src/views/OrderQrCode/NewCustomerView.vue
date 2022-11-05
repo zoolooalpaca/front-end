@@ -16,59 +16,70 @@
   -NavBarEmployee.vue > onClickItem() = ส่งไปแต่ละหน้าตามurl
 / -->
 <template>
-<div class="relative">
+  <div class="relative">
     <div class="main-content-employee-view">
-        <div>
-            <h3 class="headline-large ml-4 mb6-4">อร่อยโภชนา</h3>
-            <div class="
+      <div>
+        <h3 class="headline-large ml-4 mb6-4">อร่อยโภชนา</h3>
+        <div
+          class="
             w-64
             absolute
             inset-y-0
-              left-0
-              md:relative md:-translate-x-0
-              transform
-              -translate-x-full
-              transition
-              duration-200
-              ease-in-out"
-            :class="this.showMobileMenu
-            ? 'relative -translate-x-0' : 'closed-menu'">
-            <NavBarEmployee></NavBarEmployee>
-            </div>
-            <i>
-                <button @click="showMenu()">
-                    <span class="material-symbols-outlined">
-                        menu
-                    </span>
-                </button>
-            </i>
+            left-0
+            md:relative md:-translate-x-0
+            transform
+            -translate-x-full
+            transition
+            duration-200
+            ease-in-out
+          "
+          :class="
+            this.showMobileMenu ? 'relative -translate-x-0' : 'closed-menu'
+          "
+        >
+          <NavBarEmployee></NavBarEmployee>
         </div>
+        <i>
+          <button @click="showMenu()">
+            <span class="material-symbols-outlined"> menu </span>
+          </button>
+        </i>
+      </div>
 
-        <div class="p-4 flex-grow">
-            <h1 class="headline-medium">รับลูกค้าใหม่</h1>
-            <h1 class="headline-small">เลือกโต๊ะ</h1>
-            <div class="flex main-content-table-list mr-20 ">
-                <div class="grid justify-items-center mt-8"
-                    v-for="(table,index) in tables">
-                    <TableItem
-                    :table_id="table.table_id"
-                    :available="table.available"
-                    :key="index"
-                    >
-                    </TableItem>
-                </div>
-            </div>
+      <div class="p-4 flex-grow">
+        <h1 class="headline-medium">รับลูกค้าใหม่</h1>
+        <h1 class="headline-small">เลือกโต๊ะ</h1>
+        <div class="flex main-content-table-list mr-20">
+          <div
+            class="grid justify-items-center mt-8"
+            v-for="(table, index) in tables"
+            :key="index"
+          >
+            <TableItem
+              :table_id="table.table_number"
+              :available="table.available"
+              :key="index"
+            >
+            </TableItem>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-
+  </div>
 </template>
 
 <script>
 import NavBarEmployee from '../../components/NavBarDrawer/NavBarEmployee.vue';
 import TableItem from '../../components/Table/TableItem.vue';
-
+import {useTableStore} from '../../stores/table';
 export default {
+  setup() {
+    const tableStore = useTableStore();
+    return {tableStore};
+  },
+  created() {
+    this.fetchTables();
+  },
   components: {
     NavBarEmployee,
     TableItem,
@@ -77,74 +88,16 @@ export default {
     showMenu() {
       this.showMobileMenu = !this.showMobileMenu;
     },
+    async fetchTables() {
+      await this.tableStore.fetch();
+      this.tables = this.tableStore.tables.data;
+    },
   },
-
 
   data() {
     return {
       showMobileMenu: false,
-      tables: [
-        {
-          table_id: 1,
-          available: true,
-        },
-        {
-          table_id: 2,
-          available: true,
-        },
-        {
-          table_id: 3,
-          available: false,
-        },
-        {
-          table_id: 4,
-          available: false,
-        },
-        {
-          table_id: 5,
-          available: true,
-        },
-        {
-          table_id: 6,
-          available: false,
-        },
-        {
-          table_id: 7,
-          available: false,
-        },
-        {
-          table_id: 8,
-          available: true,
-        },
-        {
-          table_id: 9,
-          available: false,
-        },
-        {
-          table_id: 10,
-          available: true,
-        },
-        {
-          table_id: 11,
-          available: true,
-        },
-        {
-          table_id: 12,
-          available: true,
-        },
-        {
-          table_id: 13,
-          available: true,
-        },
-        {
-          table_id: 14,
-          available: true,
-        },
-        {
-          table_id: 15,
-          available: true,
-        },
-      ],
+      tables: [],
     };
   },
 };
@@ -179,6 +132,4 @@ div.main-content-table-list {
     grid-gap: 4px;
   }
 }
-
-
 </style>
