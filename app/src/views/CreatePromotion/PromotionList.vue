@@ -94,10 +94,10 @@ export default {
       showMobileMenu: false,
       loopCount: 4,
       navItems: [
-        {label: 'ข้อมูลบัญชี', icon: 'account_circle', router: '/employee-account-list',activeId: 0,},
-        {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt', router: '/Dashboard' ,activeId: 0,},
-        {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/MenuList',activeId: 0,},
-        {label: 'โปรโมชัน', icon: 'grid_view', router: '/PromotionList',activeId: 1,},
+        {label: 'ข้อมูลบัญชี', icon: 'account_circle', router: '/management/account/employee-account-list',activeId: 0,},
+        {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt', router: '/management/Dashboard' ,activeId: 0,},
+        {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/management/menu',activeId: 1,},
+        {label: 'โปรโมชัน', icon: 'grid_view', router: '/management/promotion',activeId: 1,},
       ],
       foodCardItems: [
         {image: 'https://cpfmshop.com//uploads/283/product/949381e47baff4b832cb40683878b6ce_full.jpg',

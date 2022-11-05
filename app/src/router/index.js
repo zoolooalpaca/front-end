@@ -1,5 +1,6 @@
 import {createRouter, createWebHistory} from 'vue-router';
 import HomeView from '@/views/HomeView.vue';
+import LoginView from '@/views/LoginView.vue';
 import ServeView from '@/views/OrderToServe/OrderToServeView.vue';
 import HistoryView from '@/views/OrderHistory/OrderHistoryView.vue';
 import OrderView from '@/views/OrderDetail/OrderDetailView.vue';
@@ -12,6 +13,10 @@ import CreatePromotion from '@/views/CreatePromotion/CreatePromotion.vue';
 import Dashboard from '@/views/Dashboard/Dashboard.vue';
 import CreateEmployeeAccount from "@/views/CreateEmployeeAccount/CreateEmployeeAccount.vue";
 import EmployeeAccountList from "@/views/CreateEmployeeAccount/EmployeeAccountList.vue";
+import OrderCooking from '@/views/OrderCooking/OrderCookingView.vue';
+import OrderToDoList from '@/views/OrderToDoList/OrderToDoListView.vue';
+import AllMenu from '@/views/Menu/AllMenuView.vue';
+import DetailMenu from '@/views/Menu/DetailMenuView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,27 +27,32 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: '/serve',
+      path: '/login',
+      name: 'Login',
+      component: LoginView,
+    },
+    {
+      path: '/employee/order/serve',
       name: 'serve-order',
       component: ServeView,
     },
     {
-      path: '/history',
+      path: '/employee/order/order-history',
       name: 'order-history-list',
       component: HistoryView,
     },
     {
-      path: '/order',
+      path: '/employee/order/order-detail',
       name: 'order-detail',
       component: OrderView,
     },
     {
-      path: '/new-customer',
+      path: '/employee/new-customer',
       name: 'new-customer',
       component: NewCustomerView,
     },
     {
-      path: '/new-customer/order-qrcode',
+      path: '/employee/new-customer/order-qrcode',
       name: 'order-qrcode',
       component: OrderQrCodeView,
     },
@@ -52,64 +62,84 @@ const router = createRouter({
       component: () => import('@/views/reviews/CreateReviewView.vue'),
     },
     {
-      path: '/ThankYou',
+      path: '/reviews/thank-you',
       name: 'ThankYou',
       component: () => import('@/views/reviews/ThankYou.vue'),
     },
     {
-      path: '/AllPromotion',
+      path: '/menu/all-promotion',
       name: 'AllPromotion',
       component: () => import('@/views/AllPromotionView.vue'),
     },
     {
-      path: '/promptPay/create',
+      path: '/employee/payment/create-promptpay',
       name: 'promptPay.create',
       component: () => import('@/views/Payment/CreatePromptpayView.vue'),
     },
     {
-      path: '/bill',
+      path: '/employee/payment/bill',
       name: 'bill',
       component: () => import('@/views/Payment/BillView.vue'),
     },
     {
-      path: '/MenuList',
+      path: '/management/menu',
       name: 'MenuList',
       component: MenuList,
     },
     {
-      path: '/CreateMenu',
+      path: '/management/menu/create-menu',
       name: 'CreateMenu',
       component: CreateMenu,
     },
     {
-      path: '/PromotionList',
+      path: '/management/promotion',
       name: 'PromotionList',
       component: PromotionList,
     },
     {
-      path: '/CreatePromotion',
+      path: '/management/promotion/create-promotion',
       name: 'CreatePromotion',
       component: CreatePromotion,
     },
     {
-      path: '/Dashboard',
+      path: '/management/dashboard',
       name: 'Dashboard',
       component: Dashboard,
     },
     {
-      path: '/create/manager-account',
+      path: '/management/create/manager-account',
       name: 'create-manager-account',
       component: () => import('@/views/Register/RegisterForManagerView.vue')
     },
     {
-      path: '/create-employee-account',
+      path: '/management/account/create-employee-account',
       name: 'create-employee-account',
       component: CreateEmployeeAccount,
     },
     {
-      path: '/employee-account-list',
+      path: '/management/account/employee-account-list',
       name: 'employee-account-list',
       component: EmployeeAccountList,
+    },
+    {
+      path: '/employee/order/order-to-do/order-cooking',
+      name: 'order-cooking',
+      component: OrderCooking,
+    },
+    {
+      path: '/employee/order/order-to-do',
+      name: 'order-to-do',
+      component: OrderToDoList,
+    },
+    {
+      path: '/menu',
+      name: 'menu',
+      component: AllMenu,
+    },
+    {
+      path: '/menu/detail',
+      name: 'detail-menu',
+      component: DetailMenu,
     },
   ],
 });
