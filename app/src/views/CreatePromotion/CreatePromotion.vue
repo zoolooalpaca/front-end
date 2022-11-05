@@ -20,7 +20,7 @@
           v-for="(item, index) in navItems"
           :id="index"
           :label="item.label"
-          :active="index == activeId"
+          :active="item.activeId"
           :url="item.router"
           :onClickItem="onClickItem"
           :key="index"
@@ -133,12 +133,11 @@ export default {
       imageInfos: [],
 
       selectedFile: null,
-      activeId: 0,
       navItems: [
-        {label: 'ชื่อลูกค้า', icon: 'account_circle', router: ''},
-        {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt', router: '/Dashboard'},
-        {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/MenuList'},
-        {label: 'โปรโมชัน', icon: 'grid_view', router: '/PromotionList'},
+        {label: 'ข้อมูลบัญชี', icon: 'account_circle', router: '/management/account/employee-account-list',activeId: 0,},
+        {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt', router: '/management/Dashboard' ,activeId: 0,},
+        {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/management/menu',activeId: 0,},
+        {label: 'โปรโมชัน', icon: 'grid_view', router: '/management/promotion',activeId: 1,},
       ],
       food: {
         food_name: '',
@@ -269,7 +268,7 @@ export default {
 i {
   display: none;
 }
-.main-content {
+div.main-content {
   display: flex;
   flex-direction: row;
 }
@@ -279,7 +278,7 @@ i {
     padding-top: 10px;
     position: absolute;
     width: 100%;
-    display: flex;
+    //display: flex;
   }
   .closed-menu {
     opacity: 0;
@@ -297,9 +296,10 @@ i {
     text-align: left;
     padding: 0 10px 10px 0;
   }
-  .main-content {
-    display: flex;
-    flex-direction: column;
+  div.main-content {
+    //display: flex;
+    //flex-direction: column;
+    display: inline;
   }
   .button-create-promotion{
     background-color: var(--md-sys-color-tertiary-container);

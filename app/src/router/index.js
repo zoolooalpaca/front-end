@@ -11,6 +11,8 @@ import CreateMenu from '@/views/CreateMenu/CreateMenu.vue';
 import PromotionList from '@/views/CreatePromotion/PromotionList.vue';
 import CreatePromotion from '@/views/CreatePromotion/CreatePromotion.vue';
 import Dashboard from '@/views/Dashboard/Dashboard.vue';
+import CreateEmployeeAccount from "@/views/CreateEmployeeAccount/CreateEmployeeAccount.vue";
+import EmployeeAccountList from "@/views/CreateEmployeeAccount/EmployeeAccountList.vue";
 import OrderCooking from '@/views/OrderCooking/OrderCookingView.vue';
 import OrderToDoList from '@/views/OrderToDoList/OrderToDoListView.vue';
 import AllMenu from '@/views/Menu/AllMenuView.vue';
@@ -108,6 +110,16 @@ const router = createRouter({
       path: '/management/create/manager-account',
       name: 'create-manager-account',
       component: () => import('@/views/Register/RegisterForManagerView.vue')
+    },
+    {
+      path: '/management/account/create-employee-account',
+      name: 'create-employee-account',
+      component: CreateEmployeeAccount,
+    },
+    {
+      path: '/management/account/employee-account-list',
+      name: 'employee-account-list',
+      component: EmployeeAccountList,
     },
     {
       path: '/employee/order/order-to-do/order-cooking',
