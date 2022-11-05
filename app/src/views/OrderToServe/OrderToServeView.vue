@@ -40,12 +40,12 @@
             ease-in-out"
             :class="this.showMobileMenu
             ? 'relative -translate-x-0' : 'closed-menu'">
-            <HeaderNav label="สำหรับพนักงาน" />
+            <SectionHeader label="สำหรับพนักงาน" />
             <NavItem
               v-for="(item, index) in navItems"
                 :id="index"
                 :label="item.label"
-                :active="index == activeId"
+                :active="item.activeId"
                 :url="item.router"
                 :onClickItem="onClickItem"
                 :key="index">
@@ -84,16 +84,16 @@
 </template>
 
 <script>
-import NavItem from '@/components/NavBarDrawer/NavItem.vue';
-import HeaderNav from '@/components/NavBarDrawer/SectionHeader.vue';
+import NavItem from '../../components/NavBarDrawer/NavItem.vue';
+import SectionHeader from '../../components/NavBarDrawer/SectionHeader.vue';
 import ToServeItem from '../../components/ToServeItem/ToServeItem.vue';
 
 export default {
   components: {
-    NavItem,
-    HeaderNav,
     ToServeItem,
-  },
+    NavItem,
+    SectionHeader
+},
 
   computed: {
     totalOrders() {

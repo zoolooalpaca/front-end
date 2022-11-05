@@ -32,15 +32,16 @@
               ease-in-out"
             :class="this.showMobileMenu
             ? 'relative -translate-x-0' : 'closed-menu'">
-            <HeaderNav label="สำหรับพนักงาน" />
+            <SectionHeader label="สำหรับพนักงาน" />
             <NavItem
               v-for="(item, index) in navItems"
                 :id="index"
                 :label="item.label"
-                :active="index == activeId"
+                :active="item.activeId"
                 :url="item.router"
                 :onClickItem="onClickItem"
-                :key="index">
+                :key="index"
+              >
               <span class="material-symbols-outlined">{{item.icon}}</span>
             </NavItem>
             </div>
@@ -74,16 +75,16 @@
 </template>
 
 <script>
-import NavItem from '@/components/NavBarDrawer/NavItem.vue';
-import HeaderNav from '@/components/NavBarDrawer/SectionHeader.vue';
+import NavItem from '../../components/NavBarDrawer/NavItem.vue';
+import SectionHeader from '../../components/NavBarDrawer/SectionHeader.vue';
 import TableItem from '../../components/Table/TableItem.vue';
 
 export default {
   components: {
-    NavItem,
-    HeaderNav,
     TableItem,
-  },
+    SectionHeader,
+    NavItem
+},
   methods: {
     showMenu() {
       this.showMobileMenu = !this.showMobileMenu;
@@ -179,11 +180,18 @@ export default {
 <style lang="scss">
 div.main-content-table-list {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   grid-gap: 4px;
 }
+@media screen and (max-width: 1000px) {
+  div.main-content-table-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-gap: 4px;
+  }
+}
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 890px) {
   div.main-content-table-list {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));

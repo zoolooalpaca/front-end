@@ -31,16 +31,17 @@
         ease-in-out"
       :class="this.showMobileMenu
       ? 'relative -translate-x-0' : 'closed-menu'">
-      <HeaderNav label="สำหรับพนักงาน" />
+      <SectionHeader label="สำหรับพนักงาน" />
       <NavItem
-        v-for="(item, index) in navItems"
-          :id="index"
-          :label="item.label"
-          :active="index == activeId"
-          :url="item.router"
-          :onClickItem="onClickItem"
-          :key="index">
-        <span class="material-symbols-outlined">{{item.icon}}</span>
+      v-for="(item, index) in navItems"
+                :id="index"
+                :label="item.label"
+                :active="item.activeId"
+                :url="item.router"
+                :onClickItem="onClickItem"
+                :key="index"
+              >
+              <span class="material-symbols-outlined">{{item.icon}}</span>
       </NavItem>
       </div>
       <i>
@@ -81,14 +82,16 @@
 </template>
 
 <script>
-import NavItem from '@/components/NavBarDrawer/NavItem.vue';
-import HeaderNav from '@/components/NavBarDrawer/SectionHeader.vue';
+
+import NavItem from '../../components/NavBarDrawer/NavItem.vue';
+import SectionHeader from '../../components/NavBarDrawer/SectionHeader.vue';
 
 export default {
   components: {
     NavItem,
-    HeaderNav,
-  },
+    NavItem,
+    SectionHeader
+},
 
   methods: {
     // เปลี่ยน table_available ของโต๊ะที่เลือกเป็น false

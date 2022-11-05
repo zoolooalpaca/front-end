@@ -1,4 +1,4 @@
-<template lang=''>
+<template>
 <div class>
     <div class="main-content-employee-view">
         <div>
@@ -21,11 +21,12 @@
               v-for="(item, index) in navItems"
                 :id="index"
                 :label="item.label"
-                :active="index == activeId"
+                :active="item.activeId"
                 :url="item.router"
                 :onClickItem="onClickItem"
-                :key="index">
-              <span class="material-symbols-outlined">{{item.icon}}</span>
+                :key="index"
+              >
+              <span class="material-symbols-outlined">{{item.icon}}</span>              
             </NavItem>
             </div>
             <i>
@@ -61,17 +62,17 @@
 
 
 <script>
-import NavItem from '@/components/NavBarDrawer/NavItem.vue';
 import CookItem from "../../components/CookItem/CookItem.vue";
+import NavItem from "../../components/NavBarDrawer/NavItem.vue";
 import SectionHeader from "../../components/NavBarDrawer/SectionHeader.vue";
 
 
 export default {
   components: {
-    NavItem,
     CookItem,
     SectionHeader,
-  },
+    NavItem
+},
 
   computed: {
     totalOrders() {
@@ -101,6 +102,7 @@ export default {
         {label: 'อาหารที่ต้องเสิร์ฟ', icon: 'room_service', router: '/employee/order/serve',activeId:0},
         {label: 'อาหารที่ต้องทำ', icon: 'soup_kitchen', router: '/employee/order/order-to-do',activeId:1},
       ],
+      
       orders: [
         {
           tableNumber: '1',
