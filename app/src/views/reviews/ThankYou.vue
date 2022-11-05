@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="goBack">
+    <button @click="logout">
       <span class="material-symbols-outlined border rounded-full bg-[#FFDCC4]">
               arrow_back
       </span>
@@ -28,8 +28,7 @@ export default {
     };
   },
   methods: {
-    goBack() {
-      return this.$router.go(-1);
+    logout() {
     },
   },
 };

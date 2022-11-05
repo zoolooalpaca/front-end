@@ -1,6 +1,7 @@
 <template>
   <div class="nav-menu">
-    <div class="
+    <div>
+      <div class="
           w-64
           absolute
           inset-y-0
@@ -11,27 +12,28 @@
           transition
           duration-200
           ease-in-out"
-    :class="this.showMobileMenu ? 'relative -translate-x-0' : 'closed-menu'">
-      <SectionHeader label="อร่อยโภชนา" />
-      <NavItem
-          v-for="(item, index) in navItems"
-          :id="index"
-          :label="item.label"
-          :active="index == activeId"
-          :url="item.router"
-          :onClickItem="onClickItem"
-          :key="index">
-        <span class="material-symbols-outlined">{{item.icon}}</span>
-      </NavItem>
-    </div>
+           :class="this.showMobileMenu ? 'relative -translate-x-0' : 'closed-menu'">
+        <SectionHeader label="อร่อยโภชนา" />
+        <NavItem
+            v-for="(item, index) in navItems"
+            :id="index"
+            :label="item.label"
+            :active="index == activeId"
+            :url="item.router"
+            :onClickItem="onClickItem"
+            :key="index">
+          <span class="material-symbols-outlined">{{item.icon}}</span>
+        </NavItem>
+      </div>
 
-    <i>
-      <button @click="showMenu()">
+      <i>
+        <button @click="showMenu">
         <span class="material-symbols-outlined">
           menu
         </span>
-      </button>
-    </i>
+        </button>
+      </i>
+    </div>
 
     <div class="ml-8">
       <div class="flex flex-col">
@@ -88,6 +90,7 @@ export default {
   },
   data() {
     return {
+      showMobileMenu: false,
       title: 'จ่ายเงิน',
       section: 'เลือกลูกค้า',
       table_number: '',
@@ -95,13 +98,12 @@ export default {
       error: null,
       payment: '',
       navItems: [
-        {label: 'รับลูกค้าใหม่', icon: 'sentiment_satisfied', router: '/'},
-        {label: 'จ่ายเงิน', icon: 'payment', router: '/promptPay/create'},
-        {label: 'อาหารที่ต้องเสิร์ฟ', icon: 'room_service', router: '/'},
-        {label: 'อาหารที่ต้องทำ', icon: 'soup_kitchen', router: '/'},
+        {label: 'รับลูกค้าใหม่', icon: 'sentiment_satisfied', router: '/employee/new-customer', activeId: 0},
+        {label: 'จ่ายเงิน', icon: 'payment', router: '/employee/payment/create-promptpay', activeId: 1},
+        {label: 'อาหารที่ต้องเสิร์ฟ', icon: 'room_service', router: '/employee/order/serve', activeId: 0},
+        {label: 'อาหารที่ต้องทำ', icon: 'soup_kitchen', router: '/employee/order/order-to-do', activeId: 0},
       ],
-      showMobileMenu: false,
-      activeId: 0,
+      activeId:0,
       loopCount: 5,
       billOrderItem: [
         {amount: 2, name: 'ข้าวมันไก่', price: 60},
