@@ -20,7 +20,7 @@
           v-for="(item, index) in navItems"
           :id="index"
           :label="item.label"
-          :active="index == activeId"
+          :active="item.activeId"
           :url="item.router"
           :onClickItem="onClickItem"
           :key="index"
@@ -59,7 +59,7 @@
             :image="item.image"
             :name="item.name"
             :price="item.price"
-            :active="index == activeId"
+            :active="item.activeId"
           >
           </FoodCard>
         </div>
@@ -98,13 +98,12 @@ export default {
   data() {
     return {
       showMobileMenu: false,
-      activeId: 0,
       loopCount: 4,
       navItems: [
-        {label: 'ชื่อลูกค้า', icon: 'account_circle', router: ''},
-        {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt', router: '/Dashboard'},
-        {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/MenuList'},
-        {label: 'โปรโมชัน', icon: 'grid_view', router: '/PromotionList'},
+        {label: 'ข้อมูลบัญชี', icon: 'account_circle', router: '/management/account/employee-account-list',activeId: 0,},
+        {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt', router: '/management/Dashboard' ,activeId: 0,},
+        {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/management/menu',activeId: 1,},
+        {label: 'โปรโมชัน', icon: 'grid_view', router: '/management/promotion',activeId: 0,},
       ],
       foodCardItems: [
         {image: 'https://cpfmshop.com//uploads/283/product/949381e47baff4b832cb40683878b6ce_full.jpg',
