@@ -20,7 +20,7 @@
           v-for="(item, index) in navItems"
           :id="index"
           :label="item.label"
-          :active="item.activeId"
+          :active="index == activeId"
           :url="item.router"
           :onClickItem="onClickItem"
           :key="index"
@@ -56,10 +56,10 @@
         <div v-for="(item, index) in foodCardItems" :key="index">
           <FoodCard
             :id="index"
-            :image="item.image"
-            :name="item.name"
-            :price="item.price"
-            :active="item.activeId"
+            :image="item.images.thumb"
+            :name="item.food_name"
+            :price="item.food_price"
+            :active="index == activeId"
           >
           </FoodCard>
         </div>
@@ -69,10 +69,10 @@
 </template>
 
 <script>
-import SectionHeader from '../../components/NavBarDrawer/SectionHeader.vue';
 import NavItem from '../../components/NavBarDrawer/NavItem.vue';
 import FoodCard from '../../components/FoodCard/FoodCard.vue';
 import {ref} from 'vue';
+import {useFoodStore} from '../../stores/food.js';
 
 export default {
   /*To Do List
@@ -91,46 +91,45 @@ export default {
 * */
   setup() {
     const showSidebar = ref(false);
+    const foodStore = useFoodStore();
     return {
       showSidebar,
+      foodStore,
     };
+  },
+  beforeMount() {
+    this.getMenuList();
   },
   data() {
     return {
       showMobileMenu: false,
+      activeId: 0,
       loopCount: 4,
       navItems: [
-        {label: 'ข้อมูลบัญชี', icon: 'account_circle', router: '/management/account/employee-account-list',activeId: 0,},
-        {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt', router: '/management/dashboard' ,activeId: 0,},
-        {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/management/menu',activeId: 1,},
-        {label: 'โปรโมชัน', icon: 'grid_view', router: '/management/promotion',activeId: 0,},
+        {label: 'ชื่อลูกค้า', icon: 'account_circle', router: ''},
+        {
+          label: 'สรุปข้อมูล',
+          icon: 'signal_cellular_alt',
+          router: '/Dashboard',
+        },
+        {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/MenuList'},
+        {label: 'โปรโมชัน', icon: 'grid_view', router: '/PromotionList'},
       ],
-      foodCardItems: [
-        {image: 'https://cpfmshop.com//uploads/283/product/949381e47baff4b832cb40683878b6ce_full.jpg',
-          name: 'ข้าวมันไก่', price: 65},
-        {image: 'https://img.wongnai.com/p/1920x0/2017/06/26/16b349df2d5b471bbca679e6117f1544.jpg',
-          name: 'ข้าวขาหมู', price: 70},
-        {image: 'https://food.mthai.com/app/uploads/2017/05/Noodles-with-coconut-milk.jpg',
-          name: 'ขนมจีน', price: 40},
-        {image: 'https://images.deliveryhero.io/image/fd-th/LH/kvfy-hero.jpg',
-          name: 'ตำถาด', price: 120},
-        {image: 'https://cpfmshop.com//uploads/283/product/949381e47baff4b832cb40683878b6ce_full.jpg',
-          name: 'ข้าวมันไก่', price: 65},
-        {image: 'https://img.wongnai.com/p/1920x0/2017/06/26/16b349df2d5b471bbca679e6117f1544.jpg',
-          name: 'ข้าวขาหมู', price: 70},
-        {image: 'https://food.mthai.com/app/uploads/2017/05/Noodles-with-coconut-milk.jpg',
-          name: 'ขนมจีน', price: 40},
-        {image: 'https://images.deliveryhero.io/image/fd-th/LH/kvfy-hero.jpg',
-          name: 'ตำถาด', price: 120},
-      ],
+      foodCardItems: [],
     };
   },
   components: {
-    SectionHeader,
     NavItem,
     FoodCard,
   },
   methods: {
+    async getMenuList() {
+      if (!this.foodStore.foods?.data) {
+        await this.foodStore.fetch();
+      }
+      this.foodCardItems = this.foodStore.foods.data;
+      console.log(this.foodCardItems);
+    },
     showMenu() {
       this.showMobileMenu = !this.showMobileMenu;
     },

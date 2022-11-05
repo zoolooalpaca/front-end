@@ -13,7 +13,6 @@ export const useFoodStore = defineStore({
     async fetch() {
       this.foods = await foodAPI.getAll();
     },
-
     async save(food) {
       const response = await foodAPI.saveNew(food);
       if (response.success) {
