@@ -12,12 +12,10 @@
 
 <script>
 export default {
-  data() {
-    return {
-      image: 'https://gangtravel.com/upload/2021/12/4-4.jpg.webp',
-      section: 'กุ้งเผา แถมโค้ก 1 แก้ว',
-    };
-  },
+  props: [
+    'image',
+    'section',
+  ],
   methods: {
     onClick() {
     },
