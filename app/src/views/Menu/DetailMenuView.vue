@@ -3,7 +3,7 @@
     <div>
         <h1 class='display-large justify-start text-center'>อร่อยโภชนา</h1>
     </div>
-    <div id='menu-detail' class='flex justify-between'>
+    <div id='menu-detail' class='main-detail-menu'>
         <div id='left-menu-detail' class='left-menu-detail '>
             <img class='img size-picture' src='https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg'>
 
@@ -40,7 +40,7 @@
                 <span class='font-bold'>ต้องการอะไรเป็นพิเศษ ?</span>
                 <textarea class='textarea-want' placeholder='ตัวอย่าง ไม่เอาติดมันค่ะ'></textarea>
                     <div class='flex justify-end mr-4'>
-                        <button class='add-menu-button'>เพิ่มในถาด</button>
+                        <button onclick="addMenu()" class='add-menu-button'>เพิ่มในถาด</button>
                     </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
               <OrderItem/>
             </div>
             <div class='flex justify-end'>
-              <button class='send-button'>ส่ง</button>
+              <button class='send-button' onclick="sendMenu()">ส่ง</button>
             </div>
         </div>
     </div>
@@ -67,12 +67,10 @@ export default {
   components: {
     OrderItem,
   },
-  showOrderItem() {
-    ;
-  },
-  showHistoryItem() {
-
-  },
+  showOrderItem() {},
+  showHistoryItem() {},
+  addMenu() {},
+  sendMenu() {},
 };
 </script>
 
@@ -96,6 +94,12 @@ export default {
 
 .img {
     border-radius: 16px;
+}
+
+.main-detail-menu {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 .textarea-want {
@@ -132,5 +136,42 @@ export default {
 
     /* outline */
     border-radius: 100px;
+}
+
+@media screen and (max-width: 650px) {
+  .main-detail-menu {
+    display: flex;
+    flex-direction: column;
+  }
+  .left-menu-detail {
+    width: 400px;
+    height: 800px;
+  }
+  .buttom-lm {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .size-picture {
+    width: 300px;
+    height: 150px;
+    margin-top: 20px;
+  }
+  .img {
+    border-radius: 16px;
+  }
+  .right-menu-list {
+    padding-top: 30px;
+  }
+  .textarea-want {
+    height: 200px;
+    padding: 12px 20px;
+    border: 1px solid;
+    border-color: var( --md-ref-palette-neutral-variant0);
+    border-radius: 8px;
+  }
+
 }
 </style>
