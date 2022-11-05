@@ -21,11 +21,12 @@
           :id="index"
           :label="item.label"
           :active="item.activeId"
-          :url="item.router"
+          :active="index == activeId"
           :onClickItem="onClickItem"
           :key="index"
       >
         <span class="material-symbols-outlined">{{item.icon}}</span>
+
       </NavItem>
     </div>
 
