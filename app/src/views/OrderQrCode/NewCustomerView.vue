@@ -13,7 +13,6 @@
   navbar>
   -showMenu() = กดเพื่อให้โชว์navbarที่ซ่อนไว้
   อยู่ในcomponents
-  -NavBarEmployee.vue > onClickItem() = ส่งไปแต่ละหน้าตามurl
 / -->
 <template>
 <div class="relative">
@@ -33,7 +32,17 @@
               ease-in-out"
             :class="this.showMobileMenu
             ? 'relative -translate-x-0' : 'closed-menu'">
-            <NavBarEmployee></NavBarEmployee>
+            <HeaderNav label="สำหรับพนักงาน" />
+            <NavItem
+              v-for="(item, index) in navItems"
+                :id="index"
+                :label="item.label"
+                :active="index == activeId"
+                :url="item.router"
+                :onClickItem="onClickItem"
+                :key="index">
+              <span class="material-symbols-outlined">{{item.icon}}</span>
+            </NavItem>
             </div>
             <i>
                 <button @click="showMenu()">
@@ -65,17 +74,26 @@
 </template>
 
 <script>
-import NavBarEmployee from '../../components/NavBarDrawer/NavBarEmployee.vue';
+import NavItem from '@/components/NavBarDrawer/NavItem.vue';
+import HeaderNav from '@/components/NavBarDrawer/SectionHeader.vue';
 import TableItem from '../../components/Table/TableItem.vue';
 
 export default {
   components: {
-    NavBarEmployee,
+    NavItem,
+    HeaderNav,
     TableItem,
   },
   methods: {
     showMenu() {
       this.showMobileMenu = !this.showMobileMenu;
+    },
+
+    onClickItem(id, url) {
+      this.activeId = id;
+      if (url != '') {
+        this.$router.push(url);
+      }
     },
   },
 
@@ -83,6 +101,13 @@ export default {
   data() {
     return {
       showMobileMenu: false,
+      navItems: [
+        {label: 'รับลูกค้าใหม่', icon: 'sentiment_satisfied', router: '/employee/new-customer',activeId:1},
+        {label: 'จ่ายเงิน', icon: 'payment', router: '/employee/payment/create-promptpay',activeId:0},
+        {label: 'อาหารที่ต้องเสิร์ฟ', icon: 'room_service', router: '/employee/order/serve',activeId:0},
+        {label: 'อาหารที่ต้องทำ', icon: 'soup_kitchen', router: '/employee/order/order-to-do',activeId:0},
+      ],
+
       tables: [
         {
           table_id: 1,

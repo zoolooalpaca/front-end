@@ -35,12 +35,12 @@ const router = createRouter({
       component: ServeView,
     },
     {
-      path: '/employee/order/order-history',
+      path: '/order/order-history',
       name: 'order-history-list',
       component: HistoryView,
     },
     {
-      path: '/employee/order/order-detail',
+      path: '/order/order-detail',
       name: 'order-detail',
       component: OrderView,
     },
