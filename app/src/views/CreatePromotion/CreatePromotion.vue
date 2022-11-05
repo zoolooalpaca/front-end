@@ -1,6 +1,7 @@
 <template>
   <div class="nav-menu">
     <div class="
+          basis-1/4
           w-64
           absolute
           inset-y-0
@@ -29,7 +30,7 @@
     </div>
 
     <div class="basis-3/4 ml-10">
-      <div class="flex justify-between">
+      <div>
         <i>
           <button @click="showMenu()">
         <span class="material-symbols-outlined">
@@ -37,6 +38,8 @@
         </span>
           </button>
         </i>
+      </div>
+        <div class="flex justify-between">
         <h3 class="headline-large mb-10">เพิ่มโปรโมชัน</h3>
         <button
             class="w-8 h-8 secondary-container rounded-full p-1 justify-center"
@@ -46,7 +49,8 @@
                 arrow_back
               </span>
         </button>
-      </div>
+        </div>
+
 
       <div class="main-content">
         <div class="basis-2/5 mb-8">
@@ -104,7 +108,19 @@ import FoodCard from '../../components/FoodCard/FoodCard.vue';
 import UploadService from '../../services/UploadFilesService.js';
 
 export default {
-  name: 'upload-image',
+
+  /*To Do List
+*
+* - Data -
+* ต้องมีการเก็บค่าข้อมูลลง Food (เอาชื่ออาหารมาใช้ลิ้งกับข้อมูลโปรโมชันอะ) กับ Promotion
+*
+* - Method -
+* saveNewPromotion()
+* เป็นเมธอดที่ใช้กับ button ซึ่งพอกดแล้วจะต้องบันทึกข้อมูลที่กรอกมาไปเก็บไว้ที่ DB
+* ทำการเซฟรูปภาพ (นี่ก้อปโค้ดเซฟรูปภาพในเน็ตมาแปะไว้ให้แล้วน่าจะใช้ได้เลย)
+* และทำการลิ้งไปยังหน้ารายละเอียดโปรโมชันของข้อมูลที่เพิ่งกรอกเข้ามา
+*
+* */
   data() {
     return {
       showMobileMenu: false,
@@ -278,7 +294,7 @@ i {
   }
   i {
     display: block;
-    text-align: right;
+    text-align: left;
     padding: 0 10px 10px 0;
   }
   .main-content {

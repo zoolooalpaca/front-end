@@ -1,6 +1,8 @@
 <template>
   <div class="nav-menu">
-    <div class="w-64
+    <div class="
+          basis-1/4
+          w-64
           absolute
           inset-y-0
           left-0
@@ -27,8 +29,8 @@
       </NavItem>
     </div>
 
-    <div class="ml-10">
-      <div class="flex">
+    <div class="basis-3/4 ml-10">
+      <div>
         <i>
           <button @click="showMenu()">
         <span class="material-symbols-outlined">
@@ -36,12 +38,15 @@
         </span>
           </button>
         </i>
+      </div>
+
         <div>
           <h3 class="headline-large">รายการโปรโมชัน</h3>
         </div>
-      </div>
 
-      <div class="main-content-promotion-list mr-20" >
+
+
+      <div class="main-content-promotion-list" >
         <div class="grid justify-items-center create-promotion">
           <button
               class="rounded-full p-1 justify-center"
@@ -71,6 +76,19 @@ import NavItem from '../../components/NavBarDrawer/NavItem.vue';
 import FoodCard from '../../components/FoodCard/FoodCard.vue';
 
 export default {
+  /*To Do List
+*
+* - Data -
+* ต้องมีการดึงค่าข้อมูล Promotion มาแสดงในรายการอาหารที่แสดง
+*
+* - Method -
+* goToPromotionDetail()
+* ต้องมีเมธอดที่พอกดที่ Promotion card แล้วไปยังหน้ารายละเอียดโปรโมชัน
+*
+* goToCreatePromotion()
+* เมธอดนี้เขียนให้แล้วใช้งานได้แล้ว เป็นเมธอดที่กดแล้วไปยังหน้าเพิ่มข้อมูลโปรโมชัน
+*
+* */
   data() {
     return {
       showMobileMenu: false,
@@ -169,7 +187,7 @@ div.main-content-promotion-list {
   }
   i {
     display: block;
-    text-align: right;
+    text-align: left;
     padding: 0 10px 10px 0;
   }
   div.main-content-promotion-list {
