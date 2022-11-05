@@ -62,6 +62,7 @@
           <ToServeItem
             v-for="(table, index) in tableOrderList"
             :orders="table.order_description"
+            :tableNumber="table.table_number"
             :key="index"
           >
           </ToServeItem>

@@ -18,7 +18,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'Home',
       component: HomeView,
     },
     {
@@ -118,6 +118,10 @@ router.beforeEach((to, from) => {
   const accessToken = localStorage.getItem('access_token');
   if (!accessToken && to.name !== 'Login') {
     return {name: 'Login'};
+  }
+
+  if (accessToken && to.name === 'Login') {
+    return {name: 'Home'};
   }
 });
 
