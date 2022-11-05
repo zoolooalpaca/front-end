@@ -101,7 +101,7 @@ export default {
       activeId: 0,
       loopCount: 4,
       navItems: [
-        {label: 'ชื่อลูกค้า', icon: 'account_circle', router: ''},
+        {label: 'ข้อมูลบัญชี', icon: 'account_circle', router: '/employee-account-list'},
         {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt', router: '/Dashboard'},
         {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/MenuList'},
         {label: 'โปรโมชัน', icon: 'grid_view', router: '/PromotionList'},

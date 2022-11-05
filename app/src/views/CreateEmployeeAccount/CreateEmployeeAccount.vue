@@ -39,27 +39,35 @@
           </button>
         </i>
       </div>
-      <div>
+      <div class="flex justify-between">
         <h3 class="headline-large">สร้างบัญชี</h3>
+        <button
+        class="w-8 h-8 secondary-container rounded-full p-1 justify-center"
+        @click="backToEmployeeAccountList()"
+        >
+        <span class="material-symbols-outlined">
+                arrow_back
+              </span>
+        </button>
       </div>
 
-      <div class="ml-10">
-        <div class="set-display-column">
+      <div class="ml-10 mt-10">
+        <div class="set-display-column-account ">
           <label class="set-margin text-xl">ชื่อ-นามสกุล</label>
           <input type="text" v-model="user.name" class="input-field-create-employee-account flex justify-center" placeholder="name">
         </div>
 
-        <div class="set-display-column">
+        <div class="set-display-column-account ">
           <label class="set-margin text-xl">ชื่อผู้ใช้</label>
           <input type="text" v-model="user.username" class="input-field-create-employee-account" placeholder="username">
         </div>
 
-        <div class="set-display-column">
+        <div class="set-display-column-account ">
           <label class="set-margin text-xl">อีเมล</label>
           <input type="text" v-model="user.email" class="input-field-create-employee-account" placeholder="email">
         </div>
 
-        <div class="set-display-column">
+        <div class="set-display-column-account ">
           <label class="set-margin text-xl">ตำแหน่ง</label>
           <input type="text" v-model="user.role" class="input-field-create-employee-account" placeholder="role">
         </div>
@@ -101,7 +109,7 @@ export default {
       activeId: 0,
       loopCount: 4,
       navItems: [
-        {label: 'ชื่อลูกค้า', icon: 'account_circle', router: ''},
+        {label: 'ข้อมูลบัญชี', icon: 'account_circle', router: '/employee-account-list'},
         {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt', router: '/Dashboard'},
         {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/MenuList'},
         {label: 'โปรโมชัน', icon: 'grid_view', router: '/PromotionList'},
@@ -117,6 +125,9 @@ export default {
     },
     createAnAccount() {
 
+    },
+    backToEmployeeAccountList(){
+      this.$router.push(`/employee-account-list`);
     },
     onClickItem(id, url) {
       this.activeId = id;
@@ -134,10 +145,9 @@ export default {
   margin-top: 10px;
 }
 
-.set-display-column {
+.set-display-column-account {
   display: flex;
   flex-direction: column;
-  max-width: 512px;
   justify-content: center;
   align-content: center;
 }
