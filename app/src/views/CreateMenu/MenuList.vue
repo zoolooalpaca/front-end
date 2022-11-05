@@ -134,7 +134,7 @@ export default {
       this.showMobileMenu = !this.showMobileMenu;
     },
     goToCreateMenu() {
-      this.$router.push(`/CreateMenu`);
+      this.$router.push(`/management/menu/create-menu`);
     },
     onClickItem(id, url) {
       this.activeId = id;
