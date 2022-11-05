@@ -38,4 +38,17 @@ export default {
   flex-direction: column;
   gap: 8px;
 }
+
+@media screen and (max-width: 768px) {
+  .cooking-board {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 400px;
+    background:var(--md-sys-color-secondary-container);
+    border-radius: 16px;
+    padding: 16px;
+    gap: 16px;
+  }
+}
 </style>

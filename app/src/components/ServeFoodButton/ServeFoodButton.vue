@@ -30,4 +30,14 @@
     padding: 16px 26px;
 
 }
+
+@media screen and (max-width: 768px) {
+  .block-serve-button {
+    width: 300px;
+    height: 70px;
+    gap: 15px;
+    border-radius: 16px;;
+    background: var( --md-sys-color-secondary-container);
+  }
+}
 </style>

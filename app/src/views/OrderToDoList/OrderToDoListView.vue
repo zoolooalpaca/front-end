@@ -28,7 +28,7 @@
         </div>
 
           <div class="p-4 flex-grow">
-              <SectionHeader label="อาหารที่รอดำเนินการ"></SectionHeader>
+              <h3 class="headline-large">อาหารที่รอดำเนินการ</h3>
               <div class="py-4 text-right flex-col">
                   <label for="order_amount">{{totalOrders}} รายการ</label>
               </div>
