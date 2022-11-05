@@ -10,7 +10,8 @@ import OrderDrawer from '../components/OrderItem/OrderDrawer.vue';
 import HistoryDrawer from '../components/HistoryItem/HistoryDrawer.vue';
 import BannerCard from '../components/BannerCard.vue';
 import FoodCard from '../components/FoodCard/FoodCard.vue';
-import FoodCategoryChip from '../components/FoodCategoryChip/FoodCategoryChip.vue';
+import FoodCategoryChip from
+  '../components/FoodCategoryChip/FoodCategoryChip.vue';
 import PromotionBanner from '../components/PromotionBanner/PromotionBanner.vue';
 import ToServeDrawer from '../components/ToServeItem/ToServeDrawer.vue';
 import FoodTrayVue from '../components/FoodTray.vue';

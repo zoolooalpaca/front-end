@@ -1,7 +1,7 @@
 <template>
   <div class="food-card">
     <img :src="image" alt="image.jpg"
-      class="rounded food-card-image" height="150">
+      class="rounded food-card-image">
     <div class="flex p-5 justify-between">
       <div>
         <h3 class="label-large --md-sys-color-on-primary-container">
@@ -22,12 +22,7 @@
 <script>
 export default {
   data() {
-    return {
-      // image : "image/image_khaomankai.jpg",
-      image: 'https://img.wongnai.com/p/1920x0/2017/06/22/bbf899f7ab4341dea4aec6330c2afafd.jpg',
-      name: 'ข้าวมันไก่',
-      price: 65,
-    };
+    return {};
   },
   props: ['image', 'name', 'price'],
   methods: {

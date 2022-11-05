@@ -1,20 +1,30 @@
 import axios from 'axios';
 
+
 const axiosInstance = axios.create({
   baseURL: 'http://zlapc-oi-api.loca.lt/api',
 });
 
-const requestHeaders = {
-  Authorization: '',
-};
 
-const login = async () => {
-  axiosInstance.post('/auth/login', {
-    username: 'considine.antonette',
-    password: 'password',
-  }).then(({data}) => {
-    requestHeaders.Authorization = `Bearer ${data.access_token}`;
-  }).catch((e) => console.log(e));
+axiosInstance.interceptors.request.use((request) => {
+  const accessToken = localStorage.getItem('access_token');
+  console.log(request);
+
+  if (accessToken) {
+    request.headers.common.Authorization = `Bearer ${accessToken}`;
+  }
+
+  return request;
+});
+
+export const authAPI = {
+  async login(user) {
+    const response = await axiosInstance.post('/auth/login', user);
+
+    if (response.status == 200) {
+      return response.data;
+    }
+  },
 };
 
 export const employeeAPI = {
@@ -306,10 +316,8 @@ export const foodAllergyAPI = {
 
 export const orderApi = {
   async getAll() {
-    login();
     const response = await axiosInstance.get(
         '/orders?ofuser=1',
-        {headers: requestHeaders},
     );
     if (response.status === 200) {
       return response.data;

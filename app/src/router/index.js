@@ -10,6 +10,8 @@ import CreateMenu from '@/views/CreateMenu/CreateMenu.vue';
 import PromotionList from '@/views/CreatePromotion/PromotionList.vue';
 import CreatePromotion from '@/views/CreatePromotion/CreatePromotion.vue';
 import Dashboard from '@/views/Dashboard/Dashboard.vue';
+import LoginView from '../views/LoginView.vue';
+import LogoutView from '../views/LogoutView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -97,8 +99,18 @@ const router = createRouter({
     {
       path: '/create/manager-account',
       name: 'create-manager-account',
-      component: () => import('@/views/Register/RegisterForManagerView.vue')
-    }
+      component: () => import('@/views/Register/RegisterForManagerView.vue'),
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: LoginView,
+    },
+    {
+      path: '/logout',
+      name: 'logout',
+      component: LogoutView,
+    },
   ],
 });
 
