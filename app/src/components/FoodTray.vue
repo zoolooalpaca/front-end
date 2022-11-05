@@ -1,6 +1,5 @@
 <template>
   <div class="food-tray-container">
-    <button @click="getOrderItems()">fetch</button>
     <div class="space-x-4">
       <button
         v-for="tab, i in tabs"
@@ -14,7 +13,7 @@
       <HistoryItem
         v-for="order,i in orderHistoryList"
         :status="order.order_status"
-        :image="order.food_image.thumb"
+        :foodImage="order.food_image.thumb"
         :foodName="order.food_name"
         :foodPrice="order.order_price"
         :foodAmount="order.order_quantity"
@@ -24,7 +23,7 @@
     </div>
     <div v-if="selectedTab == 0" class="space-y-2 w-full">
       <OrderItem
-        v-for="order, i in orderHistoryList"
+        v-for="order, i in cart"
         :order="order"
         :key="i"
       />
@@ -47,7 +46,8 @@ export default {
     return {
       tabs: ['รายการในถาด', 'ประวัติ'],
       selectedTab: 0,
-      orderList: [],
+      orderedItems: [],
+      cart: []
     };
   },
   created() {
@@ -56,14 +56,15 @@ export default {
   methods: {
     async getOrderItems() {
       await this.orderStore.fetch();
-      this.orderList = this.orderStore.orders.data;
-      console.log(this.orderList);
+      this.orderedItems = this.orderStore.orders.data;
     },
   },
   computed: {
     orderHistoryList() {
-      return this.orderList.reduce(
+      const orderHistory = this.orderedItems.reduce(
           (prev, curr) => [...prev, ...curr.order_description], []);
+      console.log(orderHistory);
+      return orderHistory;
     },
   },
 };
@@ -74,6 +75,8 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  overflow: scroll;
+  height: 100%;
   padding: 16px;
   gap: 16px;
   border: 1px solid var(--md-sys-color-outline);

@@ -1,8 +1,8 @@
 <!-- eslint-disable vue/no-dupe-keys -->
 <template>
   <div class="food-card">
-    <img :src="image" alt="image.jpg"
-      class="rounded food-card-image" height="150">
+    <img :src="image" :alt="`an image of ${name}`"
+      class="food-card-image">
     <div class="flex p-5 justify-between">
       <div>
         <h3 class="label-large --md-sys-color-on-primary-container">
@@ -22,6 +22,10 @@
 
 <script>
 export default {
+  data() {
+    return {};
+  },
+  // eslint-disable-next-line vue/no-dupe-keys
   props: ['image', 'name', 'price'],
   methods: {
     onClickAdd() {},
@@ -37,6 +41,9 @@ export default {
 }
 .food-card-image{
   border-radius: 30px 30px 0px 0px;
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
 }
 
 </style>
