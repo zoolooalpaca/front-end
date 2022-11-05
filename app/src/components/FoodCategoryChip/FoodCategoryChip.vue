@@ -14,12 +14,10 @@
 
 <script>
 export default {
-  data() {
-    return {
-      image: 'https://img.wongnai.com/p/1920x0/2017/06/22/bbf899f7ab4341dea4aec6330c2afafd.jpg',
-      name: 'อาหารไทย',
-    };
-  },
+  props: [
+      'image',
+      'name'
+  ],
   methods: {
     onClick() {
     },

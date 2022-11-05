@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-menu-dashboard">
+  <div class="nav-menu-account">
     <div class="
           basis-1/4
           w-64
@@ -21,11 +21,11 @@
           :id="index"
           :label="item.label"
           :active="item.activeId"
+          :url="item.router"
           :onClickItem="onClickItem"
           :key="index"
       >
         <span class="material-symbols-outlined">{{item.icon}}</span>
-
       </NavItem>
     </div>
 
@@ -39,56 +39,50 @@
           </button>
         </i>
       </div>
-        <div>
-          <h3 class="headline-large">Dashboard</h3>
+      <div class="flex justify-between">
+        <h3 class="headline-large">สร้างบัญชี</h3>
+        <button
+        class="w-8 h-8 secondary-container rounded-full p-1 justify-center"
+        @click="backToEmployeeAccountList()"
+        >
+        <span class="material-symbols-outlined">
+                arrow_back
+              </span>
+        </button>
+      </div>
+
+      <div class="ml-10 mt-10">
+        <div class="set-display-column-account ">
+          <label class="set-margin text-xl">ชื่อ-นามสกุล</label>
+          <input type="text" v-model="user.name" class="input-field-create-employee-account flex justify-center" placeholder="name">
         </div>
 
-
-      <div class="main-content-dashboard mr-20">
-        <div class="topic">
-          <h3 class="body-large ml-3">ความพึงพอใจต่ออาหารจากการประเมินของลูกค้า</h3>
-        </div>
-        <div class="block-body">
-        <GChart
-            type="PieChart"
-            :options="options"
-            :data="data"
-        />
+        <div class="set-display-column-account ">
+          <label class="set-margin text-xl">ชื่อผู้ใช้</label>
+          <input type="text" v-model="user.username" class="input-field-create-employee-account" placeholder="username">
         </div>
 
-        <div class="topic">
-          <h3 class="body-large ml-3">รีวิวจากลูกค้า</h3>
+        <div class="set-display-column-account ">
+          <label class="set-margin text-xl">อีเมล</label>
+          <input type="text" v-model="user.email" class="input-field-create-employee-account" placeholder="email">
         </div>
 
-        <div class="scroller">
-          <div class="review-container"
-              v-for="(review, index) in reviews" :key="index"
-          >
-              <p class="body-medium"> {{ review.feedback }} </p>
-          </div>
+        <div class="set-display-column-account ">
+          <label class="set-margin text-xl">ตำแหน่ง</label>
+          <input type="text" v-model="user.role" class="input-field-create-employee-account" placeholder="role">
         </div>
 
-        <div class="topic">
-          <h3 class="body-large ml-3">รายรับภายในร้าน</h3>
-        </div>
-
-        <div class="block-body">
-        <GChart
-            type="Histogram"
-            :options="options"
-            :data="data"
-        />
-
+        <div class="flex justify-end mb-5">
+          <button @click="createAnAccount" class="button-blue button-style">สร้างบัญชี</button>
         </div>
       </div>
+
     </div>
   </div>
 </template>
 
 <script>
 import NavItem from "../../components/NavBarDrawer/NavItem.vue";
-import BannerCard from "../../components/BannerCard.vue";
-import { GChart } from "vue-google-charts";
 export default {
   /*To Do List
  *
@@ -104,45 +98,36 @@ export default {
   name: "App",
   data() {
     return {
+      user: {
+        name: '',
+        username: '',
+        role: '',
+        email: '',
+        password: '',
+      },
       showMobileMenu: false,
+
       loopCount: 4,
       navItems: [
-        {label: 'ข้อมูลบัญชี', icon: 'account_circle', router: '/management/account/employee-account-list',activeId: 0,},
-        {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt', router: '/management/Dashboard' ,activeId: 1,},
+        {label: 'ข้อมูลบัญชี', icon: 'account_circle', router: '/management/account/employee-account-list',activeId: 1,},
+        {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt', router: '/management/Dashboard' ,activeId: 0,},
         {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/management/menu',activeId: 0,},
         {label: 'โปรโมชัน', icon: 'grid_view', router: '/management/promotion',activeId: 0,},
       ],
-      reviews: [
-        {feedback: 'ดีมาก ๆ เลยค่ะ'},
-        {feedback: 'ร้านสะอาดมากค่ะ อาหารก็อร่อย'},
-        {feedback: 'ราคาเป็นมิตรวัตถุดิบคุณภาพดี'},
-        {feedback: 'ร้านใหญ่เกินต้านมากค่ะ'},
-        {feedback: 'สุดยอดไปเลยต่ะ'},
-        {feedback: 'อาหารอร่อย ราคาสมเหตุสมผล'},
-      ],
-
-      data: [
-        ['Rating', 'Score'],
-        ['5 Stars', 23],
-        ['4 Stars', 15],
-        ['3 Stars',  12],
-        ['2 Stars', 2],
-        ['1 Stars', 1]
-      ],
-      options: {
-        width: 700,
-        height: 500,
-        background: "var(--md-sys-color-surface)",
-      },
     }
   },
   components: {
     NavItem,
-    GChart,
   },
   methods: {
     showMenu() {
       this.showMobileMenu = !this.showMobileMenu;
+    },
+    createAnAccount() {
+
+    },
+    backToEmployeeAccountList(){
+      this.$router.push(`/management/account/employee-account-list`);
     },
     onClickItem(id, url) {
       this.activeId = id;
@@ -155,36 +140,66 @@ export default {
 </script>
 
 <style lang="scss">
-div.topic {
-  background-color: var(--md-sys-color-primary-container);
-  border-radius: 20px;
+.set-margin {
   margin-bottom: 10px;
-  padding: 10px;
-  width: 100%;
-}
-div.block-body {
-  background-color: var(--md-sys-color-surface);
-  padding: 10px;
-  width: 100%;
-}
-div.review-container {
-  background-color: var(--md-sys-color-surface);
-  border-radius: 10px;
-  border: 2px solid;
-  border-color: #8e9099;
-  padding: 10px;
-  margin: 5px 5px 5px 5px;
-}
-.scroller {
-  width: 100%;
-  height: 200px;
-  overflow-y: scroll;
-  scrollbar-color: rebeccapurple green;
-  scrollbar-width: thin;
-  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
-.nav-menu-dashboard {
+.set-display-column-account {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.button-blue {
+  color: var(--md-sys-color-on-primary);
+  background: var(--md-sys-color-primary);
+  border-color: var(--md-sys-color-primary);
+}
+
+.button-style {
+  margin-top: 8px;
+  padding: 10px;
+  border-radius: 9999px;
+  justify-content: center;
+}
+
+.button-blue:hover {
+  color: var(--md-sys-color-on-primary);
+  background: #2371cd;
+  border-color: #1A5EAFFF;
+}
+
+.input-field-create-employee-account[type=text] {
+  width: 90%;
+  color: var(--md-sys-color-on-primary-dark);
+  border: 1px solid var(--md-sys-color-outline-light);
+  border-radius: 15px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.borderColor {
+  border: 1px solid var(--md-sys-color-outline-light);
+  border-radius: 15px;
+  align-items: center;
+}
+
+.button {
+  border-radius: 10px;
+}
+
+.set-align {
+  align-items: center;
+}
+
+.button:hover{
+  color: var(--md-sys-color-on-primary);
+  background: var(--md-sys-color-error);
+  border-color: var(--md-sys-color-primary);
+}
+
+.nav-menu-account {
   display: flex;
   flex-direction: row;
 }
@@ -196,13 +211,13 @@ div.review-container {
 i {
   display: none;
 }
-.main-content-dashboard {
+.main-content-account {
   display: flex;
   flex-direction: column;
 }
 
 @media screen and (max-width: 768px) {
-  .nav-menu-dashboard {
+  .nav-menu-account {
     padding-top: 10px;
     position: absolute;
     width: 100%;
@@ -224,7 +239,7 @@ i {
     text-align: left;
     padding: 0 10px 10px 0;
   }
-  .main-content-dashboard {
+  .main-content-account {
     display: flex;
     flex-direction: column;
   }

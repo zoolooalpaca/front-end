@@ -3,7 +3,7 @@
     <div class="flex flex-row">
       <button
           class="w-8 h-8 secondary-container rounded-full p-1 justify-center"
-          @click="backToMenu">
+          @click="goBack">
               <span class="material-symbols-outlined">
                 arrow_back
               </span>
@@ -48,8 +48,8 @@ export default {
     BannerCard,
   },
   methods: {
-    backToMenu() {
-      this.$router.push(`/`);
+    goBack() {
+      this.$router.go(-1);
     },
   },
 };

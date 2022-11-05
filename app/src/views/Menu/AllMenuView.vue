@@ -4,12 +4,16 @@
         <h1 class='display-large justify-start text-center'>อร่อยโภชนา</h1>
       </div>
 
-      <div class='scroller-recommend-menu'>
+      <div class="scroller-recommend-menu">
         <div class='flex gap-5'>
-          <BannerCard/>
-          <BannerCard/>
-          <BannerCard/>
-          <BannerCard/>
+            <BannerCard
+              v-for="(promotion, index) in promotions"
+              :id="index"
+              :image="promotion.image"
+              :section="promotion.section"
+              :key="index"
+            >
+            </BannerCard>
         </div>
       </div>
 
@@ -17,38 +21,27 @@
         <div class='left-menu-list'>
           <div id='select-category' class='category-main-size'>
             <div class='category-size'>
-              <FoodCategoryChip/>
-            </div>
-            <div class='category-size'>
-              <FoodCategoryChip/>
-            </div>
-            <div class='category-size'>
-              <FoodCategoryChip/>
-            </div>
-            <div class='category-size'>
-              <FoodCategoryChip/>
+              <FoodCategoryChip
+                 v-for="(chip, index) in chips"
+                 :id="index"
+                 :image="chip.image"
+                 :name="chip.name"
+                 :key="index"
+              >
+              </FoodCategoryChip>
             </div>
           </div>
 
           <div id='select-food' class='scroller-food-card select-food-card grid grid-cols-2 gap-2'>
-            <div class='select-food-card'>
-              <FoodCard/>
-            </div>
-            <div class='select-food-card'>
-              <FoodCard/>
-            </div>
-            <div class='select-food-card'>
-              <FoodCard/>
-            </div>
-            <div class='select-food-card'>
-              <FoodCard/>
-            </div>
-            <div class='select-food-card'>
-              <FoodCard/>
-            </div>
-            <div class='select-food-card'>
-              <FoodCard/>
-            </div>
+               <FoodCard
+                 v-for="(food, index) in foods"
+                 :id="index"
+                 :image="food.image"
+                 :name="food.name"
+                 :price="food.price"
+                 :key="index"
+              >
+              </FoodCard>
           </div>
         </div>
 
@@ -81,11 +74,74 @@ export default {
     FoodCategoryChip,
     OrderDrawer,
   },
-  showOrderItem() {
-    ;
-  },
-  showHistoryItem() {
+  showOrderItem() {},
+  showHistoryItem() {},
+  data() {
+    return {
+      promotions: [
+        {
+          image: 'https://www.tripgether.com/wp-content/uploads/2022/03/Kruayupin_91.jpg',
+          section: 'กุ้งเผายกถาด ฟรีโค้ก 1 ขวด',
+        },
+        {
+          image: 'https://www.cpbrandsite.com/contents/recipe/h84kygu5qngpv0xdl3tqcomtbuqllzy0tsqqzuzv.jpg',
+          section: 'สั่งขนมจีน แถมฟรีน้ำยา !',
+        },
+        {
+          image: 'https://img.wongnai.com/p/1920x0/2018/06/18/2979c50de28b4137a3c0224591db4af5.jpg',
+          section: 'ขนมหวาน แถมคนรู้ใจไปเดินข้างเคียง',
+        },
+        {
+          image: 'https://www.easycookingmenu.com/media/k2/items/cache/4eadae682909e5571fe2c1a4fc6acd34_XL.jpg',
+          section: 'เกี๊ยวกันมั้ย 100 บาท 6 ชิ้น',
+        },
+      ],
 
+      chips: [
+        {
+          image: 'https://www.tripgether.com/wp-content/uploads/2022/03/Kruayupin_91.jpg',
+          name: 'อาหารทะเล',
+        },
+      ],
+
+      foods: [
+        {
+          image: 'https://img.wongnai.com/p/1920x0/2017/06/22/bbf899f7ab4341dea4aec6330c2afafd.jpg',
+          name: 'ข้าวมันไก่',
+          price: 65,
+        },
+        {
+          image: 'https://www.cpbrandsite.com/contents/recipe/h84kygu5qngpv0xdl3tqcomtbuqllzy0tsqqzuzv.jpg',
+          name: 'ขนมจีน',
+          price: 55,
+        },
+        {
+          image: 'https://img.wongnai.com/p/1920x0/2017/06/22/bbf899f7ab4341dea4aec6330c2afafd.jpg',
+          name: 'ข้าวมันไก่',
+          price: 65,
+        },
+        {
+          image: 'https://www.cpbrandsite.com/contents/recipe/h84kygu5qngpv0xdl3tqcomtbuqllzy0tsqqzuzv.jpg',
+          name: 'ขนมจีน',
+          price: 55,
+        },
+        {
+          image: 'https://www.cpbrandsite.com/contents/recipe/h84kygu5qngpv0xdl3tqcomtbuqllzy0tsqqzuzv.jpg',
+          name: 'ขนมจีน',
+          price: 55,
+        },
+        {
+          image: 'https://img.wongnai.com/p/1920x0/2017/06/22/bbf899f7ab4341dea4aec6330c2afafd.jpg',
+          name: 'ข้าวมันไก่',
+          price: 65,
+        },
+        {
+          image: 'https://www.cpbrandsite.com/contents/recipe/h84kygu5qngpv0xdl3tqcomtbuqllzy0tsqqzuzv.jpg',
+          name: 'ขนมจีน',
+          price: 55,
+        }
+      ],
+    };
   },
   number: 1,
 };
@@ -109,6 +165,8 @@ export default {
 .scroller-recommend-menu {
   width: auto;
   height: auto;
+  /*overscroll-behavior-x: none;*/
+  /*overflow-x: auto;*/
   overflow-x: scroll;
   margin-bottom: 10px;
 }
@@ -122,6 +180,8 @@ export default {
 }
 
 .category-size {
+  display: flex;
+  flex-direction: row;
   width: 150px;
   height: 10px;
   gap: 20px;
@@ -143,6 +203,8 @@ export default {
 .select-food-card {
   margin-top: 50px;
   gap: 5px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 4px;
 }
 
 .scroller-food-card {

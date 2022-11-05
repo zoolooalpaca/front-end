@@ -2,7 +2,7 @@
   <div class="m-3 flex-col">
     <button
         class="w-8 h-8 secondary-container rounded-full p-1 justify-center"
-        @click="backToMenu">
+        @click="goBack">
               <span class="material-symbols-outlined">
                 arrow_back
               </span>
@@ -101,8 +101,8 @@ export default {
         this.error = error.message;
       }
     },
-    backToMenu() {
-      this.$router.push(`/`);
+    goBack() {
+      this.$router.go(-1);
     },
     scroll() {
       const element = document.getElementById('yourID');

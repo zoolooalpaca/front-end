@@ -1,26 +1,26 @@
 <template>
-<div class="set-display-column borderColor justify-center align-center">
+<div class="flex justify-center set-display-column borderColor ">
   <h1 class="text-center text-3xl mt-3 mb-3">สร้างบัญชีผู้ใช้</h1>
 
   <div>
     <div class="set-display-column">
-      <label class="set-margin text-xl">ชื่อ-นามสกุล</label>
-      <input type="text" v-model="user.name" class="input-field-style flex justify-center" placeholder="name">
+      <label class="set-margin text-lg">ชื่อ-นามสกุล</label>
+      <input type="text" v-model="user.name" class="input-field-style flex justify-center" placeholder="Name">
     </div>
 
     <div class="set-display-column">
-      <label class="set-margin text-xl">ชื่อผู้ใช้</label>
-      <input type="text" v-model="user.username" class="input-field-style" placeholder="username">
+      <label class="set-margin text-lg">ชื่อผู้ใช้</label>
+      <input type="text" v-model="user.username" class="input-field-style" placeholder="Username">
     </div>
 
     <div class="set-display-column">
-      <label class="set-margin text-xl">อีเมล</label>
-      <input type="text" v-model="user.email" class="input-field-style" placeholder="email">
+      <label class="set-margin text-lg">อีเมล</label>
+      <input type="text" v-model="user.email" class="input-field-style" placeholder="Email">
     </div>
 
     <div class="set-display-column">
-      <label class="set-margin text-xl">รหัสผ่าน</label>
-      <input type="text" v-model="user.password" class="input-field-style" placeholder="password">
+      <label class="set-margin text-lg">รหัสผ่าน</label>
+      <input type="text" v-model="user.password" class="input-field-style" placeholder="Password">
     </div>
 
   </div>
@@ -31,7 +31,7 @@
     </div>
   </div>
 
-  <div class="flex justify-center">
+  <div class="flex justify-center set-display-row text-center">
     <div class="inline-flex">
       <label class="mt-4">หากคุณมีบัญชีอยู่แล้ว</label>
       <label class="ml-4 mr-2 mt-4">|</label>
@@ -65,18 +65,19 @@ export default {
 </script>
 
 <style>
-
 .set-margin {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   margin-top: 10px;
 }
 
 .set-display-column {
   display: flex;
   flex-direction: column;
-  max-width: 512px;
-  justify-content: center;
-  align-content: center;
+}
+
+.set-display-row {
+  display: flex;
+  flex-direction: row;
 }
 
 .button-blue {
@@ -115,10 +116,6 @@ export default {
 
 .button {
   border-radius: 10px;
-}
-
-.set-align {
-  align-items: center;
 }
 
 .button:hover{
