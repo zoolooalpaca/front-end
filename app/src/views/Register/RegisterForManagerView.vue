@@ -1,5 +1,5 @@
 <template>
-<div class="set-display-column borderColor justify-center align-center">
+<div class="flex justify-center set-display-column borderColor ">
   <h1 class="text-center text-3xl mt-3 mb-3">สร้างบัญชีผู้ใช้</h1>
 
   <div>
@@ -74,9 +74,6 @@ export default {
 .set-display-column {
   display: flex;
   flex-direction: column;
-  max-width: 512px;
-  justify-content: center;
-  align-content: center;
 }
 
 .button-blue {

@@ -20,7 +20,7 @@
           v-for="(item, index) in navItems"
           :id="index"
           :label="item.label"
-          :active="index == activeId"
+          :active="item.activeId"
           :url="item.router"
           :onClickItem="onClickItem"
           :key="index"
@@ -106,13 +106,13 @@ export default {
         password: '',
       },
       showMobileMenu: false,
-      activeId: 0,
+
       loopCount: 4,
       navItems: [
-        {label: 'ข้อมูลบัญชี', icon: 'account_circle', router: '/employee-account-list'},
-        {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt', router: '/Dashboard'},
-        {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/MenuList'},
-        {label: 'โปรโมชัน', icon: 'grid_view', router: '/PromotionList'},
+        {label: 'ข้อมูลบัญชี', icon: 'account_circle', router: '/employee-account-list',activeId: 1,},
+        {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt', router: '/Dashboard' ,activeId: 0,},
+        {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/MenuList',activeId: 0,},
+        {label: 'โปรโมชัน', icon: 'grid_view', router: '/PromotionList',activeId: 0,},
       ],
     }
   },

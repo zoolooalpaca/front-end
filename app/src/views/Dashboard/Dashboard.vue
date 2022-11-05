@@ -20,7 +20,7 @@
           v-for="(item, index) in navItems"
           :id="index"
           :label="item.label"
-          :active="index == activeId"
+          :active="item.activeId"
           :url="item.router"
           :onClickItem="onClickItem"
           :key="index"
@@ -105,13 +105,12 @@ export default {
   data() {
     return {
       showMobileMenu: false,
-      activeId: 0,
       loopCount: 4,
       navItems: [
-        {label: 'ข้อมูลบัญชี', icon: 'account_circle', router: '/employee-account-list'},
-        {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt', router: '/Dashboard'},
-        {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/MenuList'},
-        {label: 'โปรโมชัน', icon: 'grid_view', router: '/PromotionList'},
+        {label: 'ข้อมูลบัญชี', icon: 'account_circle', router: '/employee-account-list',activeId: 0,},
+        {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt', router: '/Dashboard' ,activeId: 1,},
+        {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/MenuList',activeId: 0,},
+        {label: 'โปรโมชัน', icon: 'grid_view', router: '/PromotionList',activeId: 0,},
       ],
       reviews: [
         {feedback: 'ดีมาก ๆ เลยค่ะ'},
@@ -183,17 +182,6 @@ div.review-container {
   scrollbar-color: rebeccapurple green;
   scrollbar-width: thin;
   margin-bottom: 10px;
-}
-::-webkit-scrollbar {
-  // Width of vertical scroll bar
-  width: 8px;
-  // Height of horizontal scroll bar
-  height: 10px;
-
-}
-::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-  background: #c2c9d2;
 }
 
 .nav-menu-dashboard {
