@@ -37,7 +37,18 @@
             this.showMobileMenu ? 'relative -translate-x-0' : 'closed-menu'
           "
         >
-          <NavBarEmployee></NavBarEmployee>
+          <SectionHeader label="สำหรับพนักงาน" />
+          <NavItem
+            v-for="(item, index) in navItems"
+              :id="index"
+              :label="item.label"
+              :active="item.activeId"
+              :url="item.router"
+              :onClickItem="onClickItem"
+              :key="index"
+            >
+            <span class="material-symbols-outlined">{{item.icon}}</span>
+          </NavItem>
         </div>
         <i>
           <button @click="showMenu()">
@@ -69,7 +80,8 @@
 </template>
 
 <script>
-import NavBarEmployee from '../../components/NavBarDrawer/NavBarDrawer.vue';
+import NavItem from '../../components/NavBarDrawer/NavItem.vue';
+import SectionHeader from '../../components/NavBarDrawer/SectionHeader.vue';
 import TableItem from '../../components/Table/TableItem.vue';
 import {useTableStore} from '../../stores/table';
 export default {
@@ -81,10 +93,17 @@ export default {
     this.fetchTables();
   },
   components: {
-    NavBarEmployee,
+    SectionHeader,
+    NavItem,
     TableItem,
   },
   methods: {
+    onClickItem(id, url) {
+      this.activeId = id;
+      if (url != '') {
+        this.$router.push(url);
+      }
+    },
     showMenu() {
       this.showMobileMenu = !this.showMobileMenu;
     },
@@ -98,6 +117,13 @@ export default {
     return {
       showMobileMenu: false,
       tables: [],
+
+      navItems: [
+        {label: 'รับลูกค้าใหม่', icon: 'sentiment_satisfied', router: '/employee/new-customer',activeId:1},
+        {label: 'จ่ายเงิน', icon: 'payment', router: '/employee/payment/create-promptpay',activeId:0},
+        {label: 'อาหารที่ต้องเสิร์ฟ', icon: 'room_service', router: '/employee/order/serve',activeId:0},
+        {label: 'อาหารที่ต้องทำ', icon: 'soup_kitchen', router: '/employee/order/order-to-do',activeId:0},
+      ],
     };
   },
 };
@@ -107,11 +133,19 @@ export default {
 <style lang="scss">
 div.main-content-table-list {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   grid-gap: 4px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
+  div.main-content-table-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-gap: 4px;
+  }
+}
+
+@media screen and (max-width: 890px) {
   div.main-content-table-list {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
