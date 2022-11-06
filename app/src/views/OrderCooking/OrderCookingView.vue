@@ -86,6 +86,7 @@ export default {
         {label: 'จ่ายเงิน', icon: 'payment', router: '/employee/payment/create-promptpay',activeId:0},
         {label: 'อาหารที่ต้องเสิร์ฟ', icon: 'room_service', router: '/employee/order/serve',activeId:0},
         {label: 'อาหารที่ต้องทำ', icon: 'soup_kitchen', router: '/employee/order/order-to-do',activeId:1},
+        {label: 'ออกจากระบบ', icon: 'logout', router: '/logout', activeId:0}
       ],
     };
   },
