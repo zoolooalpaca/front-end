@@ -17,39 +17,38 @@
                         <div class='select-food-allergy'>{{ food.food_allergy }}</div>
                     </div>
                 </div>
-                <span class='font-bold'>{{ foodQuality }}</span>
+                <span class='font-bold'>จำนวน</span>
                 <div class='flex flex-row gap-5'>
                     <button class="surface-variant w-10 h-10 rounded-full">
                         <div class="flex items-center justify-center">
-                            <span class="material-symbols-outlined" @click="deleteFoodAmount">remove</span>
+                            <span class="material-symbols-outlined" @click="decrement">remove</span>
                         </div>
                     </button>
-                    <span class='mt-2'>1</span>
+                    <span class='mt-2'>{{ foodQuality }}</span>
                     <button class="primary text-white w-10 h-10 rounded-full">
                         <div class="flex items-center justify-center">
-                            <span class="material-symbols-outlined" @click="addFoodAmount">add</span>
+                            <span class="material-symbols-outlined" @click="increment">add</span>
                         </div>
                     </button>
                 </div>
                 <span class='font-bold'>ต้องการอะไรเป็นพิเศษ ?</span>
-                <textarea class='textarea-want' placeholder='ตัวอย่าง ไม่เอาติดมันค่ะ'></textarea>
+                <textarea class='textarea-want' v-model="customerRequest" placeholder='ตัวอย่าง ไม่เอาติดมันค่ะ'></textarea>
                     <div class='flex justify-end mr-4'>
-                        <button onclick="addMenu()" class='add-menu-button'>เพิ่มในถาด</button>
+                        <button onclick="addMenuToTray()" class='add-menu-button'>เพิ่มในถาด</button>
                     </div>
             </div>
         </div>
 
         <div id='right-menu-list' class=''>
           <div
-              class="w-2/3 lg:w-1/3 hidden md:block
+              class="w-1/2 h-2 lg:w-1/3 hidden md:block
               h-screen overflow-hidden sticky top-0"
               >
-              <FoodTray/>
+              <FoodTray :cart="foodInTray"/>
               <div class='flex justify-end'>
                   <button class='send-button' onclick="sendMenu()">ส่ง</button>
+              </div>
           </div>
-
-            </div>
         </div>
     </div>
 </template>
@@ -58,6 +57,7 @@
 import OrderItem from '@/components/OrderItem/OrderItem.vue';
 import FoodTray from "../../components/FoodTray.vue";
 import {foodAPI} from "../../services/api";
+import {useOrderStore} from "../../stores/order";
 import {foodAllergyAPI} from "../../services/api";
 
 export default {
@@ -67,6 +67,7 @@ export default {
   },
 data() {
     return {
+      foodQuality: 0,
       food: {},
       foodId: null,
     }
@@ -83,15 +84,24 @@ data() {
       console.log(foodData)
       this.food = foodData.data;
     },
-    addFoodAmount() {
-      this.counter++;
+    decrement () {
+      if (this.foodQuality) {
+        this.foodQuality -= 1;
+      }
     },
-    deleteFoodAmount() {
-      this.counter--;
+    increment () {
+      this.foodQuality += 1;
+    },
+    async addMenuToTray() {
+      try {
+      } catch (error) {
+        console.log(error);
+        this.error = error.message;
+      }
     },
     sendMenu() {
 
-    }
+    },
   },
 };
 </script>
@@ -135,13 +145,13 @@ data() {
 }
 
 .select-food-allergy {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
     width: 60px;
     height: 25px;
     background: var( --md-sys-color-surface);
     text-align: center;
-
-    border: 1px solid;
-    border-radius: 8px;
 }
 
 .scrollbar-food-allergy {
