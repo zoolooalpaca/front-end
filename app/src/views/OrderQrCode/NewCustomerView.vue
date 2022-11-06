@@ -67,7 +67,8 @@
             :key="index"
           >
             <TableItem
-              :table_id="table.table_number"
+              :table_id="table.id"
+              :table_number="table.table_number"
               :available="table.available"
               :key="index"
             >
@@ -123,6 +124,7 @@ export default {
         {label: 'จ่ายเงิน', icon: 'payment', router: '/employee/payment/create-promptpay',activeId:0},
         {label: 'อาหารที่ต้องเสิร์ฟ', icon: 'room_service', router: '/employee/order/serve',activeId:0},
         {label: 'อาหารที่ต้องทำ', icon: 'soup_kitchen', router: '/employee/order/order-to-do',activeId:0},
+        {label: 'ออกจากระบบ', icon: 'logout', router: '/logout', activeId:0}
       ],
     };
   },
