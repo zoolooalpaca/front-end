@@ -52,7 +52,7 @@
 
 
       <div class="main-content-create-management">
-        <div class="basis-2/5 mb-8">
+        <div class="basis-1/4 mb-8">
           <div v-if="previewImage">
             <div>
               <img class="preview my-3" :src="previewImage" alt="" />
@@ -77,11 +77,11 @@
         </div>
 
 
-        <div class="basis-3/5 ml-5">
+        <div class="basis-3/4 ml-5">
           <h3 class="body-large">รหัสส่วนลด</h3>
-          <input type="text" class="input-create-menu" v-model="food.promotion_code">
+          <input type="text" class="input-create-menu" v-model="promotion.promotion_code">
           <h3 class="body-large">ชื่ออาหาร</h3>
-          <input type="text" class="input-create-menu" v-model="food.food_name">
+          <input type="text" class="input-create-menu" v-model="promotion.name">
           <h3 class="body-large">คำอธิบายโปรโมชัน</h3>
           <input type="text" class="input-create-menu" v-model="promotion.description">
           <h3 class="body-large">ราคาโปรโมชัน</h3>
@@ -134,7 +134,6 @@ export default {
 
       progress: 0,
       message: '',
-      image: null,
 
       imageInfos: [],
 
@@ -145,9 +144,6 @@ export default {
         {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/management/menu',activeId: 0,},
         {label: 'โปรโมชัน', icon: 'grid_view', router: '/management/promotion',activeId: 1,},
       ],
-      food: {
-        food_name: '',
-      },
       promotion: {
         promotion_code: null,
         name: null,
@@ -155,42 +151,24 @@ export default {
         discount_amount: null,
         begin_useable_date: null,
         end_useable_date: null,
-        restaurant_id: null,
+        image: null,
       },
     };
   },
   methods: {
     async saveNewPromotion() {
       try {
-        // upload image file
-        // this.progress = 0;
-        //
-        // UploadService.upload(this.currentImage, (event) => {
-        //   this.progress = Math.round((100 * event.loaded) / event.total);
-        // })
-        //     .then((response) => {
-        //       this.message = response.data.message;
-        //       return UploadService.getFiles();
-        //     })
-        //     .then((images) => {
-        //       this.imageInfos = images.data;
-        //     })
-        //     .catch((err) => {
-        //       this.progress = 0;
-        //       this.message = 'Could not upload the image! ' + err;
-        //       this.currentImage = undefined;
-        //     });
-        // save new promotion
+        const fd = new FormData();
+        fd.append('promotion_code', this.promotion.promotion_code)
+        fd.append('name', this.promotion.name)
+        fd.append('description', this.promotion.description)
+        fd.append('discount_amount', this.promotion.discount_amount)
+        fd.append('begin_useable_date', this.promotion.begin_useable_date)
+        fd.append('end_useable_date', this.promotion.end_useable_date)
+        fd.append('image', this.currentImage)
 
-        // 'promotion_code'      => ['required', 'string'],
-        //     'name'                => ['required', 'string'],
-        //     'description'         => ['required', 'string'],
-        //     'discount_amount'     => ['required', 'integer'],
-        //     'begin_useable_date'  => ['required', 'date_format:Y-m-d'],
-        //     'end_useable_date'    => ['required', 'date_format:Y-m-d'],
-        //     'image'               => ['required', 'image']
         this.error = null;
-        const response = await promotionAPI.saveNew(this.promotion);
+        const response = await promotionAPI.saveNew(fd);
         if (response.status_code == 201) {
           console.log(response.data);
         }
@@ -214,8 +192,6 @@ export default {
     selectImage() {
       this.currentImage = this.$refs.file.files.item(0);
       this.previewImage = URL.createObjectURL(this.currentImage);
-      this.progress = 0;
-      this.message = '';
     },
   },
   mounted() {
