@@ -24,6 +24,15 @@ export const authAPI = {
       return response.data;
     }
   },
+
+  async addCustomer(table_id){
+    const response = await axiosInstance.post('/auth/register/customer', {table_id});
+    console.log(response)
+
+    if (response.status == 201) {
+      return response.data;
+    }
+  }
 };
 
 export const employeeAPI = {
