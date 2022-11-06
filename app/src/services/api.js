@@ -24,6 +24,20 @@ export const authAPI = {
       return response.data;
     }
   },
+  async registerManager(user) {
+    const response = await axiosInstance.post('/auth/register', user)
+
+    if (response.status == 200) {
+      return response.data;
+    }
+  },
+  async createReview(review){
+    const response = await axiosInstance.post('/reviews', review)
+
+    if (response.status == 200){
+      return response.date;
+    }
+  }
 };
 
 export const employeeAPI = {

@@ -20,7 +20,12 @@
 
     <div class="set-display-column">
       <label class="set-margin text-lg">รหัสผ่าน</label>
-      <input type="text" v-model="user.password" class="input-field-style" placeholder="Password">
+      <input type="password" v-model="user.password" required class="input-field-style" placeholder="Password">
+    </div>
+
+    <div class="set-display-column">
+      <label class="set-margin text-lg">ยืนยันรหัสผ่าน</label>
+      <input type="password" v-model="user.confirm_psssword" required class="input-field-style" placeholder="Confirm password">
     </div>
 
   </div>
@@ -42,6 +47,7 @@
 </template>
 
 <script>
+import {authAPI} from '../../services/api';
 export default {
   data() {
     return {
@@ -50,15 +56,29 @@ export default {
         username: '',
         email: '',
         password: '',
+        confirm_psssword: ''
       },
+      error: null
     };
   },
   methods: {
     backToLogin() {
       this.$router.push(`/login`);
     },
-    createAnAccount() {
-
+    async createAnAccount() {
+      try {
+        this.error = null;
+        const response = await authAPI.registerManager(this.user);
+        if (response.status_code == 201) {
+          console.log(response.data);
+        }
+        if (response.status_code == 200) {
+          return 'successful'
+        }
+      } catch (error) {
+        console.log(error);
+        this.error = error.message;
+      }
     },
   },
 };

@@ -3,31 +3,40 @@
   <h1 class="text-center text-xl">{{ nameShop }}</h1>
   <span>{{ tableNumber }}</span>
 
-  <div v-for="(item, index) in billOrderItem" :key="index">
-    <BillOrderItem class="flex justify-center mb-2"
-                   :id="index"
-                   :image="item.image"
-                   :name="item.name"
-                   :active="index == activeId"/>
-  </div>
+
+  <BillOrderItem v-for="orderItem in orderItems" :key="orderItem.id"
+                   :order = "order" :url="`orders/${order.id}`"></BillOrderItem>
 </div>
 </template>
 
 <script>
+import BillOrderItem from "@/components/BillOrderItem/BillOrderItem";
+import {useOrderStore} from "../stores/order.js";
 export default {
+  setup(){
+    const orderStore = useOrderStore()
+    return { orderStore }
+  },
+  components: {
+    BillOrderItem
+  },
   data() {
     return {
-      nameShop: '',
-      tableNumber: '',
-      billOrderItem: [
-        {amount: 2, name: 'ข้าวมันไก่', price: 60},
-        {amount: 1, name: 'ข้าวอบ', price: 50},
-        {amount: 1, name: 'ข้าวผัดกระเพรา', price: 55},
-        {amount: 1, name: 'ข้าวผัดกุ้ง', price: 60},
-        {amount: 1, name: 'สเต๊กเนื้อ', price: 100},
-      ],
+      nameShop: 'อร่อยโภชนา',
+      tableNumber: '3',
+      orders: null
     };
   },
+  created() {
+    this.fetchOrder();
+  },
+  methods: {
+    async fetchOrder() {
+      await this.orderStore.fetch()
+      this.orders = this.orderStore.orders.data;
+      console.log(this.orders)
+    }
+  }
 };
 </script>
 

@@ -54,12 +54,9 @@
 import StarRating from '@/components/Review/StarRating.vue';
 import ConfirmReview from '@/components/Review/ConfirmReview.vue';
 import {ref} from 'vue';
-import {useRatingStore} from '@/stores/rating.js';
-import {useReviewStore} from '@/stores/review.js';
+import {reviewAPI} from '@/services/api';
 export default {
   setup() {
-    const review_store = useReviewStore();
-    const rating_store = useRatingStore();
     const popupTrigger = ref({
       buttonTrigger: false,
     });
@@ -68,7 +65,7 @@ export default {
       popupTrigger.value[trigger] = !popupTrigger.value[trigger];
     };
 
-    return {review_store, rating_store, popupTrigger, TogglePopup};
+    return {popupTrigger, TogglePopup};
   },
   data() {
     return {
@@ -88,13 +85,12 @@ export default {
     async saveNewReview() {
       try {
         this.error = null;
-        const review_id = await this.review_store.save(this.review);
-        const rating_id = await this.rating_store.save(this.rating);
-        if (review_id) {
-          this.$router.push(`/reviews/${review_id}`);
+        const response = await reviewAPI.createReview(this.review);
+        if (response.status_code == 201) {
+          console.log(response.data);
         }
-        if (rating_id) {
-          this.$router.push(`/ratings/${rating_id}`);
+        if (response.status_code == 200) {
+          this.$router.push(`/management/dashboard`);
         }
       } catch (error) {
         console.log(error);
