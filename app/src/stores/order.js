@@ -15,7 +15,8 @@ export const useOrderStore = defineStore({
 
   actions: {
     async fetch() {
-      this.orders = await orderApi.getAll();
+      const orderList = await orderApi.getAll();
+      this.orders = orderList.data || orderList
     },
 
     async save(order) {

@@ -183,6 +183,7 @@ export default {
 
         this.error = null;
         const response = await foodAPI.saveNew(fd);
+        this.$router.push(`/management/menu`);
         if (response.status_code == 201) {
           console.log(response.data);
         }
