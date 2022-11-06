@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class>
     <div class="main-content-employee-view">
       <div>
         <h3 class="headline-large ml-4 mb6-4">อร่อยโภชนา</h3>
@@ -200,11 +200,6 @@ export default {
   flex-direction: column;
 }
 
-.set-flew-row {
-  display: flex;
-  flex-direction: row;
-}
-
 .side-nav{
   height: 100%;
   width: 0;
@@ -259,6 +254,10 @@ i {
   grid-template-columns: repeat(2, 1fr);
 }
 
+div.main-content-employee-view {
+  display: flex;
+}
+
 @media screen and (max-width: 768px) {
   .nav-menu {
     padding-top: 10px;
@@ -287,6 +286,20 @@ i {
   .base-block {
     width: inherit;
     min-width: 100%;
+  }
+  div.main-content-employee-view {
+    display: inline;
+  }
+
+  @media screen and (max-width: 650px) {
+    div.main-content-employee-view {
+      display: inline;
+    }
+  }
+  @media screen and (max-width: 420px) {
+    div.main-content-employee-view {
+      display: inline;
+    }
   }
 }
 </style>
