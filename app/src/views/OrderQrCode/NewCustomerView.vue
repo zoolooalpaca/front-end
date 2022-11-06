@@ -67,7 +67,8 @@
             :key="index"
           >
             <TableItem
-              :table_id="table.table_number"
+              :table_id="table.id"
+              :table_number="table.table_number"
               :available="table.available"
               :key="index"
             >
