@@ -25,7 +25,7 @@
 
     <div class="set-display-column">
       <label class="set-margin text-lg">ยืนยันรหัสผ่าน</label>
-      <input type="password" v-model="user.confirm_psssword" required class="input-field-style" placeholder="Confirm password">
+      <input type="password" v-model="user.confirm_password" required class="input-field-style" placeholder="Confirm password">
     </div>
 
   </div>
@@ -56,7 +56,7 @@ export default {
         username: '',
         email: '',
         password: '',
-        confirm_psssword: ''
+        confirm_password: ''
       },
       error: null
     };
@@ -77,6 +77,7 @@ export default {
         }
       } catch (error) {
         console.log(error);
+        console.log("ERRRR:: ", error.response.data)
         this.error = error.message;
       }
     },

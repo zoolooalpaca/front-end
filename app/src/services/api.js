@@ -25,9 +25,9 @@ export const authAPI = {
     }
   },
   async registerManager(user) {
-    const response = await axiosInstance.post('/auth/register', user)
+    const response = await axiosInstance.post('/auth/register/manager', user)
 
-    if (response.status == 200) {
+    if (response.status == 201) {
       return response.data;
     }
   },

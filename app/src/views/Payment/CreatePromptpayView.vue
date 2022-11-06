@@ -8,19 +8,20 @@
         </span>
         </button>
       </i>
-        <div class="
-            w-64
-            absolute
-            inset-y-0
-            left-0
-            md:relative md:-translate-x-0
-            transform
-            -translate-x-full
-            transition
-            duration-200
-            ease-in-out"
-             :class="this.showMobileMenu 
-             ? 'relative -translate-x-0' : 'closed-menu'">
+      <div class="
+          w-64
+          absolute
+          inset-y-0
+          left-0
+          md:relative md:-translate-x-0
+          transform
+          -translate-x-full
+          transition
+          duration-200
+          ease-in-out
+          "
+           :class="this.showMobileMenu ? 'relative -translate-x-0' : 'closed-menu'"
+      >
           <h3 class="headline-large ml-4 mb6-4">อร่อยโภชนา</h3>
           <SectionHeader label="สำหรับพนักงาน" />
           <NavItem
@@ -42,19 +43,19 @@
           <span class="text-xl mb-5">{{ section }}</span>
         </div>
 
-        <div v-for="select in selects">
           <select v-model="selects"
-                  :options="options"
-                  :value="selects.table_number">
+                  :value="selects.table_number"
+                  class="text-color">
+            <option v-for="table,idx in options" :key="idx" class="text-color">{{table}}</option>
           </select>
-        </div>
-      
+
         <div class="base-block border-box mt-2">
           <div class="flex-display width-100 fix-grid-display">
             <div class="scroller borderColor mt-5">
               <span class="margin-text text-xl">ใบเสร็จ</span>
-                <BillOrderItem v-for="orderItem in orderItems" :key="orderItem.id"
-                               :orderItem="orderItem" :url="`orderItems/${orderItem.id}`"
+              <br/>
+                <BillOrderItem v-for="table in tables" :key="table.id"
+                               :table="table" :url="`tables/${table.id}`"
                                class="mt-2 mb-2">
                 </BillOrderItem>
             </div>
@@ -86,10 +87,11 @@ import { useTableStore } from '@/stores/table';
 import { usePaymentStore } from "@/stores/payment";
 export default {
   setup() {
-    const payment_store = usePaymentStore()
-    const tableStore = useTableStore();
     const orderStore = useOrderStore()
-    return { payment_store,tableStore, orderStore}
+    const tableStore = useTableStore()
+    const paymentStore = usePaymentStore()
+
+    return {orderStore, tableStore, paymentStore}
   },
   data() {
     return {
@@ -106,7 +108,8 @@ export default {
       ],
       showMobileMenu: false,
       orderItems: null,
-      selects: [ { table_number : '' }]
+      selects: [ { table_number : '' }],
+      tables: []
     }
   },
   components: {
@@ -129,29 +132,28 @@ export default {
     },
     async paid() {
       try {
-        this.error = null
-        const payment_id = await this.payment_store.save(this.payment)
-        if (payment_id) {
-          this.$router.push(`/payments/${payment_id}`)
+        this.error = null;
+        const response = await paymentStore.saveNew(this.payment);
+        if (response.status_code == 201) {
+          console.log(response.data);
         }
-      } catch (error){
-        console.log(error)
-        this.error = error.message
+        if (response.status_code == 200) {
+          this.$router.push(`/management/dashboard`);
+        }
+      } catch (error) {
+        console.log(error);
+        this.error = error.message;
       }
-    },
-    getData() {
-      // if (this.table_number === this.table_number){
-      // }
-      // console.log(this.table_number);
     },
     async fetchOrder() {
       await this.orderStore.fetch()
-      this.promotions = this.orderStore.orders.data;
+      this.orders = this.orderStore.orders.data;
       console.log(this.orders)
     },
     async fetchTables() {
       await this.tableStore.fetch();
       this.tables = this.tableStore.tables.data;
+      console.log(this.tables);
     },
   },
   created() {
@@ -159,17 +161,16 @@ export default {
     this.fetchTables();
   },
   computed: {
-    options: () => tableStore,
+    options() {
+      return this.tables
+          .filter((val) => val.current_customer)
+          .map((table) => table.table_number)
+    }
   },
 };
 </script>
 
 <style lang="scss">
-.table {
-  display: table;
-  width: 100%;
-}
-
 .scroller {
   width: 100%;
   height: 200px;

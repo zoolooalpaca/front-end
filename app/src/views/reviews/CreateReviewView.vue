@@ -85,7 +85,7 @@ export default {
     async saveNewReview() {
       try {
         this.error = null;
-        const response = await reviewAPI.createReview(this.review);
+        const response = await reviewAPI.saveNew(this.review);
         if (response.status_code == 201) {
           console.log(response.data);
         }
@@ -94,24 +94,13 @@ export default {
         }
       } catch (error) {
         console.log(error);
+        console.log("ERRRR:: ", error.response.data)
         this.error = error.message;
       }
     },
     goBack() {
       this.$router.go(-1);
     },
-    async paid() {
-      try {
-        this.error = null;
-        const payment_id = await this.payment_store.save(this.payment);
-        if (payment_id) {
-          this.$router.push(`/payments/${payment_id}`);
-        }
-      } catch (error) {
-        console.log(error);
-        this.error = error.message;
-      }
-    }
   }
 };
 </script>
