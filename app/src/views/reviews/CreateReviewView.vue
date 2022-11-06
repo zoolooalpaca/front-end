@@ -91,10 +91,10 @@ export default {
         const review_id = await this.review_store.save(this.review);
         const rating_id = await this.rating_store.save(this.rating);
         if (review_id) {
-          this.$router.push(`/allReview/${review_id}`);
+          this.$router.push(`/reviews/${review_id}`);
         }
         if (rating_id) {
-          this.$router.push(`/allReview/${rating_id}`);
+          this.$router.push(`/ratings/${rating_id}`);
         }
       } catch (error) {
         console.log(error);
@@ -103,15 +103,8 @@ export default {
     },
     goBack() {
       this.$router.go(-1);
-    },
-    scroll() {
-      const element = document.getElementById('yourID');
-      element.scrollIntoView({behavior: 'smooth', block: 'end'});
-    },
-  },
-  mounted() {
-    this.scroll();
-  },
+    }
+  }
 };
 </script>
 

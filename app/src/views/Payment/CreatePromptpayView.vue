@@ -1,38 +1,42 @@
 <template>
-  <div class="nav-menu">
-    <div>
-      <div class="
-          w-64
-          absolute
-          inset-y-0
-          left-0
-          md:relative md:-translate-x-0
-          transform
-          -translate-x-full
-          transition
-          duration-200
-          ease-in-out"
-           :class="this.showMobileMenu ? 'relative -translate-x-0' : 'closed-menu'">
-        <SectionHeader label="อร่อยโภชนา" />
-        <NavItem
-            v-for="(item, index) in navItems"
-            :id="index"
-            :label="item.label"
-            :active="index == activeId"
-            :url="item.router"
-            :onClickItem="onClickItem"
-            :key="index">
-          <span class="material-symbols-outlined">{{item.icon}}</span>
-        </NavItem>
+  <div>
+    <div class="main-content-employee-view">
+      <div>
+        <i>
+          <button @click="showMenu()">
+                    <span class="material-symbols-outlined">
+                        menu
+                    </span>
+          </button>
+        </i>
+        <h3 class="headline-large ml-4 mb6-4">อร่อยโภชนา</h3>
+        <div class="
+            w-64
+            absolute
+            inset-y-0
+              left-0
+              md:relative md:-translate-x-0
+              transform
+              -translate-x-full
+              transition
+              duration-200
+              ease-in-out"
+             :class="this.showMobileMenu
+            ? 'relative -translate-x-0' : 'closed-menu'">
+          <SectionHeader label="สำหรับพนักงาน" />
+          <NavItem
+              v-for="(item, index) in navItems"
+              :id="index"
+              :label="item.label"
+              :active="item.activeId"
+              :url="item.router"
+              :onClickItem="onClickItem"
+              :key="index"
+          >
+            <span class="material-symbols-outlined">{{item.icon}}</span>
+          </NavItem>
+        </div>
       </div>
-
-      <i>
-        <button @click="showMenu">
-        <span class="material-symbols-outlined">
-          menu
-        </span>
-        </button>
-      </i>
     </div>
 
     <div class="ml-8">
@@ -51,7 +55,7 @@
 
       <div class="base-block border-box mt-2">
         <div class="flex-display width-100 fix-grid-display">
-          <div class="scroll borderColor mt-5">
+          <div class="scroller borderColor mt-5">
             <span class="margin-text text-xl">ใบเสร็จ</span>
             <div v-for="(item, index) in billOrderItem" :key="index">
               <BillOrderItem class="flex justify-center mb-2"
@@ -75,59 +79,55 @@
       <div>
         <button @click="paid" class="button-payment button-style">จ่ายแล้ว</button>
       </div>
+
     </div>
+
   </div>
 </template>
 <script>
-import NavItem from '@/components/NavBarDrawer/NavItem.vue';
-import SectionHeader from '@/components/NavBarDrawer/SectionHeader.vue';
-import BillOrderItem from '@/components/BillOrderItem/BillOrderItem.vue';
-import {usePaymentStore} from '@/stores/payment.js';
+import NavItem from "@/components/NavBarDrawer/NavItem.vue";
+import SectionHeader from "@/components/NavBarDrawer/SectionHeader.vue";
+import BillOrderItem from "@/components/BillOrderItem/BillOrderItem.vue";
+import { usePaymentStore } from "@/stores/payment.js";
 export default {
   setup() {
-    const payment_store = usePaymentStore();
-    return {payment_store};
+    const payment_store = usePaymentStore()
+    return { payment_store }
   },
   data() {
     return {
-      showMobileMenu: false,
-      title: 'จ่ายเงิน',
-      section: 'เลือกลูกค้า',
+      title: "จ่ายเงิน",
+      section: "เลือกลูกค้า",
       table_number: '',
       qrCode: '',
       error: null,
       payment: '',
       navItems: [
-        {label: 'รับลูกค้าใหม่', icon: 'sentiment_satisfied', router: '/employee/new-customer', activeId: 0},
-        {label: 'จ่ายเงิน', icon: 'payment', router: '/employee/payment/create-promptpay', activeId: 1},
-        {label: 'อาหารที่ต้องเสิร์ฟ', icon: 'room_service', router: '/employee/order/serve', activeId: 0},
-        {label: 'อาหารที่ต้องทำ', icon: 'soup_kitchen', router: '/employee/order/order-to-do', activeId: 0},
+        {label: 'รับลูกค้าใหม่', icon: 'sentiment_satisfied', router: '/employee/new-customer',activeId:0},
+        {label: 'จ่ายเงิน', icon: 'payment', router: '/employee/payment/create-promptpay',activeId:1},
+        {label: 'อาหารที่ต้องเสิร์ฟ', icon: 'room_service', router: '/employee/order/serve',activeId:0},
+        {label: 'อาหารที่ต้องทำ', icon: 'soup_kitchen', router: '/employee/order/order-to-do',activeId:0},
       ],
-      activeId:0,
+      showMobileMenu: false,
+      activeId: 0,
       loopCount: 5,
       billOrderItem: [
-        {amount: 2, name: 'ข้าวมันไก่', price: 60},
-        {amount: 1, name: 'ข้าวอบ', price: 50},
-        {amount: 1, name: 'ข้าวผัดกระเพรา', price: 55},
-        {amount: 1, name: 'ข้าวผัดกุ้ง', price: 60},
-        {amount: 1, name: 'สเต๊กเนื้อ', price: 100},
-      ],
-    };
+        {amount: 2, name: 'ข้าวมันไก่', price:60},
+        {amount: 1, name: 'ข้าวอบ', price:50},
+        {amount: 1, name: 'ข้าวผัดกระเพรา', price:55},
+        {amount: 1, name: 'ข้าวผัดกุ้ง', price:60},
+        {amount: 1, name: 'สเต๊กเนื้อ', price:100},
+      ]
+    }
   },
   components: {
     NavItem,
     SectionHeader,
-    BillOrderItem,
+    BillOrderItem
   },
   methods: {
     showMenu() {
       this.showMobileMenu = !this.showMobileMenu;
-    },
-    deleteInput() {
-      this.$refs['tableNumber'].value = '';
-    },
-    printBill() {
-      this.$router.push(`/bill`);
     },
     onClickItem(id, url) {
       this.activeId = id;
@@ -135,32 +135,26 @@ export default {
         this.$router.push(url);
       }
     },
+    deleteInput() {
+      this.$refs["tableNumber"].value = "";
+    },
+    printBill() {
+      this.$router.push(`/bill`)
+    },
     async paid() {
       try {
-        this.error = null;
-        const payment_id = await this.payment_store.save(this.payment);
+        this.error = null
+        const payment_id = await this.payment_store.save(this.payment)
         if (payment_id) {
-          this.$router.push(`/payments/${payment_id}`);
+          this.$router.push(`/payments/${payment_id}`)
         }
-      } catch (error) {
-        console.log(error);
-        this.error = error.message;
+      } catch (error){
+        console.log(error)
+        this.error = error.message
       }
     },
-    scroll() {
-      const element = document.getElementById('yourID');
-      element.scrollIntoView({behavior: 'smooth', block: 'end'});
-    },
-  },
-  mounted() {
-    this.scroll();
-  },
-  computed: {
-    imagePath() {
-      return `uploads\products\${this.produit.image}`;
-    },
-  },
-};
+  }
+}
 </script>
 
 <style lang="scss">
@@ -191,16 +185,23 @@ export default {
   color: var(--md-sys-color-on-primary-dark);
 }
 
-.scroll {
+.scroller {
   width: 100%;
-  max-height: 300px;
+  height: 200px;
   overflow-y: scroll;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
+  margin-bottom: 10px;
 }
 
 .resize-component{
   width: 100%;
   display: flex;
   flex-direction: column;
+}
+
+.set-flew {
+  display: flex;
 }
 
 .side-nav{
@@ -257,6 +258,10 @@ i {
   grid-template-columns: repeat(2, 1fr);
 }
 
+div.main-content-employee-view {
+  display: flex;
+}
+
 @media screen and (max-width: 768px) {
   .nav-menu {
     padding-top: 10px;
@@ -275,6 +280,7 @@ i {
     transition: all 0.2s ease-out;
   }
   i {
+    float: right;
     display: block;
     text-align: right;
     padding: 0 10px 10px 0;
@@ -285,6 +291,20 @@ i {
   .base-block {
     width: inherit;
     min-width: 100%;
+  }
+  div.main-content-employee-view {
+    display: inline;
+  }
+
+  @media screen and (max-width: 650px) {
+    div.main-content-employee-view {
+      display: inline;
+    }
+  }
+  @media screen and (max-width: 420px) {
+    div.main-content-employee-view {
+      display: inline;
+    }
   }
 }
 </style>

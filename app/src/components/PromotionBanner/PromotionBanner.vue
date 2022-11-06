@@ -5,19 +5,14 @@
       @click="onClick"
   >
     <div class="mask promotion-container p-5 transbox-promotion">
-        <p class="title-large text-form-promotion">{{ name }}</p>
+        <p class="title-large text-form-promotion">{{ promotion.name }}</p>
       </div>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      image: 'https://img.wongnai.com/p/1920x0/2017/06/22/bbf899f7ab4341dea4aec6330c2afafd.jpg',
-      name: 'โปรโมชัน',
-    };
-  },
+  props: ['promotion'],
   methods: {
     onClick() {
     },
@@ -26,7 +21,7 @@ export default {
   computed: {
     containerStyle() {
       return {
-        'background-image': 'url(' + this.image + ')',
+        'background-image': 'url(' + this.promotion.image.cover + ')',
         'background-repeat': 'none',
         'background-size': 'cover',
         'background-position': 'center',
