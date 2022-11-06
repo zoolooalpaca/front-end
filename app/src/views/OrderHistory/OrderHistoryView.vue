@@ -1,26 +1,3 @@
-<!-- /TODO:
-  ใช้ข้อมูล
-  order description(ที่สั่งแล้ว):
-  -order id
-  -order_status = 'รอทำ', 'กำลังทำ', 'ส่งถึงโต๊ะแล้ว'
-  -food id > food name food image
-  -price(ราคารวมอาหารที่สั่งในorderนั้นทั้งหมด foodprice*quantity ??)
-  -quantity
-  -request
-
-  computed:
-  totalOrder = จำนวนรายการorderทั้งหมดที่customerสั่ง
-  totalprice = ราคารวมทุกorderที่สั่ง ไม่รวมที่ยกเลิกไปแล้ว
-  //ขึ้นที่แถบfloatinghistoryorder
-
-  methods:
-  อยู่ในcomponents
-  - TopAppBar.vue > goBack() = ย้อนกลับไปหน้าที่แล้ว
-  - HistoryItem.vue
-    (DeletePopupในOrderConfirmDeletePopup = popupให้confirm delete)
-      > deleteHistoryOrder() = กดปุ่ม'ยกเลิกอาหาร'
-      เพื่อยืนยันแล้วลบorderที่ได้สั่งไปแล้วแต่ยังอยู่ใน order_status 'รอทำ'
-  / -->
 <template>
     <div class="relative">
         <div>
@@ -28,22 +5,23 @@
         </div>
         <div class="py-8">
             <HistoryItem
-                v-for="(order,index) in orders"
-                :id="index"
-                :status="order.status"
-                :foodImage="order.foodImage"
-                :foodName="order.foodName"
-                :orderPrice="order.orderPrice"
-                :orderQuantity="order.orderQuantity"
-                :orderRequest="order.orderRequest"
-                :key="index"
+            v-for="order,i in orderHistoryList"
+            :id="order.id"
+            :status="order.order_status"
+            :foodImage="order.food_image.thumb"
+            :foodName="order.food_name"
+            :orderPrice="order.order_price"
+            :orderQuantity="order.order_quantity"
+            :orderRequest="order.order_request"
+            :onRemoveOrder="onRemoveOrder"
+            :key="i"
                 >
             </HistoryItem>
         </div>
         <div class="fixed left-0 bottom-0 w-full p-4">
             <FloatingHistoryOrder class="mx-10"
-                :totalOrder="totalOrder"
-                :tprice="totalPrice"
+                :totalOrder="orderItemCount"
+                :tprice="totalOrderPrice"
             />
         </div>
     </div>
@@ -53,53 +31,67 @@
 import FloatingHistoryOrder from '../../components/FloatingHistoryOrder.vue';
 import HistoryItem from '../../components/HistoryItem/HistoryItem.vue';
 import TopAppBar from '../../components/TopAppBar/TopAppBar.vue';
+import { useOrderStore } from '../../stores/order';
 
 export default {
   components:
-    {
-      TopAppBar,
-      HistoryItem,
-      FloatingHistoryOrder,
-    },
+  {
+    TopAppBar,
+    HistoryItem,
+    FloatingHistoryOrder,
+  },
+
+  setup(){
+    const orderStore = useOrderStore();
+    return {orderStore};
+  },
 
   data() {
     return {
-      orders: [
-        {
-          status: 'รอทำ',
-          foodImage: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
-          foodName: 'ข้าวมันไก่',
-          orderPrice: 45,
-          orderQuantity: 1,
-          orderRequest: 'ขอหนังล้วน ๆ ไม่เอาเนื้อไก่',
-        },
-        {
-          status: 'กำลังทำ',
-          foodImage: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
-          foodName: 'ข้าวมันไก่',
-          orderPrice: 90,
-          orderQuantity: 2,
-          orderRequest: 'ขอหนังล้วน ๆ ไม่เอาเนื้อไก่',
-        },
-        {
-          status: 'ส่งถึงโต๊ะแล้ว',
-          foodImage: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
-          foodName: 'ข้าวมันไก่',
-          orderPrice: 135,
-          orderQuantity: 3,
-          orderRequest: 'ขอหนังล้วน ๆ ไม่เอาเนื้อไก่',
-        },
-      ],
+      orderedItems: [],
     };
   },
-  computed: {
-    totalOrder() {
-      return this.orders.length;
+
+  created() {
+    this.getOrderItems();
+  },
+
+  methods:{
+    async getOrderItems() {
+      await this.orderStore.fetch();
+      this.orderedItems = this.orderStore.orders.data;
+      console.log(this.orderedItems)
     },
-    totalPrice() {
-      return this.orders.reduce((prev, {orderPrice}) => prev + orderPrice, 0);
+    onRemoveOrder() {
+      this.orderedItems = this.orderStore.orders.data;
+    }
+  },
+
+  computed: {
+    orderHistoryList() {
+      const orderHistory = this.orderedItems.reduce(
+          (prev, curr) => [...prev, ...curr.order_description], []);
+      return orderHistory;
+    },
+
+    orderItemCount() {
+      return this.orderedItems.reduce(
+        (prev, curr) =>
+          prev + (curr.order_description
+          ? curr.order_description.length
+          : 0), 0)
+    },
+
+    totalOrderPrice() {
+      return this.orderedItems.reduce((prev, curr) => {
+          return prev + (curr.order_description
+          ? curr.order_description.reduce(
+            (prev, curr) => prev + (curr.order_price * curr.order_quantity), 0)
+          : 0
+        )}, 0)
     },
   },
+    
 };
 
 </script>

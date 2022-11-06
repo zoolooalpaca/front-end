@@ -75,7 +75,6 @@ export default {
   },
 
   methods: {
-    // กดปุ่ม'เอาออก'เพื่อยืนยัน แล้วลบorderที่ได้เอามาใส่ในถาด
     deleteOrder() {
 
     },

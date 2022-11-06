@@ -44,12 +44,47 @@
 </template>
 
 <script>
+import {useOrderStore} from '../../stores/order';
+
 export default {
   props: ['tableNumber', 'orders'],
+  
+  setup(){
+    const orderStore = useOrderStore();
+    return {orderStore};
+  },
+
+
+  async mounted() {
+    await this.orderStore.fetch()
+  },
+
   methods: {
-    // serveDone() = กดยืนยันว่าorderนั้นได้เสิร์ฟแล้ว
-    // แล้วorder_status เป็น 'ส่งถึงโต๊ะแล้ว'>ไม่แสดงในหน้าtoserveอีก
-    serveDone() {},
+    serveDone() {
+    //   this.error = ""
+    //   try {
+    //     this.updateOrderStatus({
+    //       'id' : this.orders.order_id,
+    //       'status' : 'ส่งถึงโต๊ะแล้ว'
+    //     })
+    //   }catch (error){
+    //     this.error = error.message
+    //     console.log(this.error)
+    //   }
+    //   console.log(this.orders.order_id);
+    // },
+    // updateOrderStatus(status){
+    //   this.error = ""
+    //   this.isUpdatingOrder = true
+    //   try{
+    //     this.order_store.update(status)
+    //   } catch (error){
+    //     this.error = error.message
+    //     console.log(this.error)
+    //   }
+    //   this.order_store.fetch()
+    //   this.status = this.order_store.getAll
+    },
   },
 };
 </script>

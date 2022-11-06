@@ -366,6 +366,18 @@ export const orderApi = {
       success: false,
     };
   },
+
+  async delete(orderNumber) {
+    const response = await axiosInstance.delete(
+      `/orders/${orderNumber}`,
+    );
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  }
 };
 
 export const tableAPI = {
