@@ -150,11 +150,9 @@ export default {
          *             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
          */
         this.response = await authAPI.registerEmployee(this.user);
+        this.$router.push(`/management/account/employee-account-list`);
         if (response.status_code == 201) {
           console.log(response.data);
-        }
-        if (response.status_code == 200) {
-          this.$router.push(`/management/account/employee-account-list`);
         }
 
       } catch (error) {

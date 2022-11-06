@@ -169,6 +169,7 @@ export default {
 
         this.error = null;
         const response = await promotionAPI.saveNew(fd);
+        this.$router.push(`/management/promotion`);
         if (response.status_code == 201) {
           console.log(response.data);
         }
