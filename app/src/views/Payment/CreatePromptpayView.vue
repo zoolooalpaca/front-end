@@ -1,14 +1,13 @@
 <template>
-  <div class="">
-    <div class="main-centent-employee-view">
-      <div class="flex">
-        <i>
-          <button @click="showMenu()">
-            <span class="material-symbols-outlined">
-              menu
-            </span>
-          </button>
-        </i>
+  <div class="nav-menu-management">
+    <div class="flex">
+      <i class="management">
+        <button @click="showMenu()">
+        <span class="material-symbols-outlined">
+          menu
+        </span>
+        </button>
+      </i>
         <div class="
             w-64
             absolute
@@ -37,8 +36,8 @@
         </div>
       </div>
 
-    <div class="">
-      <div class="ml-8">
+    <div class="basis-3/4">
+      <div class="ml-10">
         <div class="flex flex-col">
           <h1 class="text-3xl mb-3">{{ title }}</h1>
           <span class="text-xl mb-5">{{ section }}</span>
@@ -82,7 +81,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 <script>
 import NavItem from '@/components/NavBarDrawer/NavItem.vue';
