@@ -48,22 +48,8 @@ export const useOrderStore = defineStore({
     },
 
     delete(orderId) {
-      // const response = orderApi.delete(orderId);
-      const data = this.orders.data.map((order) => {
-        const filteredOrder = {...order, order_description: order.order_description.filter((od) => od.id !== orderId)}
-        console.log(filteredOrder)
-        return filteredOrder
-        // const response = orderApi.delete(orderId);
-        // if (response.success) {
-        //   this.orders = {data};
-        //   return response;
-        // }
-        // return false;
-        // return filteredOrder;        
-      });
-
-      this.orders = {data}
-
+      orderApi.delete(orderId);
+      return true;
     },
   },
 });
