@@ -75,13 +75,14 @@ export default {
           console.log(response.data);
         }
         if (response.status_code == 200) {
-          this.$router.push(`/login`);
+          return 'successful'
         }
       } catch (error) {
         console.log(error);
         console.log("ERRRR:: ", error.response.data)
         this.error = error.message;
       }
+      this.$router.push(`/login`);
     },
   },
 };

@@ -3,7 +3,7 @@
   <h1 class="text-center text-xl">{{ nameShop }}</h1>
   <span>{{ tableNumber }}</span>
 
-  <BillOrderItem v-for="orderItem in orderItems" :key="orderItem.id"
+  <BillOrderItem v-for="order in orders" :key="order.id"
                    :order = "order" :url="`orders/${order.id}`"></BillOrderItem>
 
 </div>
@@ -11,7 +11,8 @@
 
 <script>
 import BillOrderItem from "@/components/BillOrderItem/BillOrderItem";
-import {useOrderStore} from "../stores/order.js";
+import { useOrderStore } from "../../stores/order";
+
 export default {
   setup(){
     const orderStore = useOrderStore()

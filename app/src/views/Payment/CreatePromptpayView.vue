@@ -22,26 +22,26 @@
           "
            :class="this.showMobileMenu ? 'relative -translate-x-0' : 'closed-menu'"
       >
-          <h3 class="headline-large ml-4 mb6-4">อร่อยโภชนา</h3>
-          <SectionHeader label="สำหรับพนักงาน" />
-          <NavItem
-              v-for="(item, index) in navItems"
-              :id="index"
-              :label="item.label"
-              :active="index == activeId"
-              :url="item.router"
-              :onClickItem="onClickItem"
-              :key="index">
-            <span class="material-symbols-outlined">{{item.icon}}</span>
-          </NavItem>
-        </div>
+        <h3 class="headline-large ml-4 mb6-4">อร่อยโภชนา</h3>
+        <SectionHeader label="สำหรับพนักงาน" />
+        <NavItem
+            v-for="(item, index) in navItems"
+            :id="index"
+            :label="item.label"
+            :active="index == activeId"
+            :url="item.router"
+            :onClickItem="onClickItem"
+            :key="index">
+          <span class="material-symbols-outlined">{{item.icon}}</span>
+        </NavItem>
+      </div>
 
-    <div class="basis-3/4">
-      <div class="ml-10">
-        <div class="flex flex-col">
-          <h1 class="text-3xl mb-3">{{ title }}</h1>
-          <span class="text-xl mb-5">{{ section }}</span>
-        </div>
+      <div class="basis-3/4">
+        <div class="ml-10">
+          <div class="flex flex-col">
+            <h1 class="text-3xl mb-3">{{ title }}</h1>
+            <span class="text-xl mb-5">{{ section }}</span>
+          </div>
 
           <select v-model="selects"
                   :value="selects.table_number"
@@ -49,32 +49,32 @@
             <option v-for="table,idx in options" :key="idx" class="text-color">{{table}}</option>
           </select>
 
-        <div class="base-block border-box mt-2">
-          <div class="flex-display width-100 fix-grid-display">
-            <div class="scroller borderColor mt-5">
-              <span class="margin-text text-xl">ใบเสร็จ</span>
-              <br/>
+          <div class="base-block border-box mt-2">
+            <div class="flex-display width-100 fix-grid-display">
+              <div class="scroller borderColor mt-5">
+                <span class="margin-text text-xl">ใบเสร็จ</span>
+                <br/>
                 <BillOrderItem v-for="table in tables" :key="table.id"
                                :table="table" :url="`tables/${table.id}`"
                                class="mt-2 mb-2">
                 </BillOrderItem>
-            </div>
+              </div>
 
-            <div class="borderColor mt-5">
-              <h3 class="margin-text text-xl">พร้อมเพย์</h3>
-
-              <div>
-                <button @click="printBill" class="button-payment button-style mb-4 ml-3"> พิมพ์ </button>
+              <div class="borderColor mt-5">
+                <h3 class="margin-text text-xl">พร้อมเพย์</h3>
+                <div>
+                  <vue-qrcode v-if="qrValue" v-bind:value="qrValue" v-bind:scale="qrScale" v-bind:errorCorrectionLevel="correctionLevel"
+                              class="border" style="width: 80%; object-fit: contain;" />
+                </div>
               </div>
             </div>
-          </div>
 
-          <div>
-            <button @click="paid" class="button-payment button-style">จ่ายแล้ว</button>
+            <div>
+              <button @click="paid" class="button-payment button-style">จ่ายแล้ว</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   </div>
 </template>
@@ -82,10 +82,10 @@
 import NavItem from "@/components/NavBarDrawer/NavItem.vue";
 import SectionHeader from "@/components/NavBarDrawer/SectionHeader.vue";
 import BillOrderItem from "@/components/BillOrderItem/BillOrderItem.vue";
-import VueQrcode from 'vue-qrcode';
 import { useOrderStore } from "@/stores/order";
 import { useTableStore } from '@/stores/table';
-import {paymentAPI} from '../../services/api';
+import { paymentAPI } from "../../services/api";
+import VueQrcode from 'vue-qrcode';
 export default {
   setup() {
     const orderStore = useOrderStore()
@@ -97,23 +97,23 @@ export default {
     return {
       title: "จ่ายเงิน",
       section: "เลือกลูกค้า",
-      qrCode: '',
       error: null,
       payment: '',
       navItems: [
-        {label: 'รับลูกค้าใหม่', icon: 'sentiment_satisfied', router: '/employee/new-customer',activeId:0},
-        {label: 'จ่ายเงิน', icon: 'payment', router: '/employee/payment/create-promptpay',activeId:1},
+        {label: 'รับลูกค้าใหม่', icon: 'sentiment_satisfied', router: '/employee/new-customer',activeId:1},
+        {label: 'จ่ายเงิน', icon: 'payment', router: '/employee/payment/create-promptpay',activeId:0},
         {label: 'อาหารที่ต้องเสิร์ฟ', icon: 'room_service', router: '/employee/order/serve',activeId:0},
         {label: 'อาหารที่ต้องทำ', icon: 'soup_kitchen', router: '/employee/order/order-to-do',activeId:0},
+        {label: 'ออกจากระบบ', icon: 'logout', router: '/logout', activeId:0}
       ],
       showMobileMenu: false,
       orderItems: null,
       selects: [ { table_number : '' }],
       tables: [],
-      employee: '',
       qrValue: null,
       qrScale: 10,
-      correctionLevel: "H"
+      correctionLevel: "H",
+      order: {}
     }
   },
   components: {
@@ -133,17 +133,19 @@ export default {
       }
     },
     getData() {
-      if (selects === table.id) {
-
+      if(idx === table.id){
+        let i;
+        const orderList = [];
+        for (i = 0; i < this.table.order_description.length; i++){
+          orderList[i] = {amount: i, name: i, price: i};
+        }
+        return orderList;
       }
-    },
-    printBill() {
-      this.$router.push(`/employee/payment/bill`)
     },
     async paid() {
       try {
         this.error = null;
-        const response = await paymentAPI.saveNew(this.employee);
+        const response = await paymentAPI.saveNew(this.payment);
         if (response.status_code == 201) {
           console.log(response.data);
         }
@@ -166,6 +168,11 @@ export default {
       this.tables = this.tableStore.tables.data;
       console.log(this.tables);
     },
+    async getQrcode() {
+      const toUrl = new URL(toRoute.href, window.location.origin).href;
+      this.qrValue = toUrl;
+      console.log(this.order);
+    }
   },
   created() {
     this.fetchOrder();
