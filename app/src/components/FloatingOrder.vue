@@ -23,7 +23,8 @@
         <span>฿{{totalPrice}}</span>
       </div>
     </button>
-    <button class="floating-order-bar order-history-icon">
+    <button @click="onClickToGoToAllOrders"
+      class="floating-order-bar order-history-icon">
       <span class="material-symbols-outlined">
         history
       </span>
@@ -35,24 +36,7 @@
 export default {
   data() {
     return {
-      currentOrder: [
-        {
-          image: 'https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSB1IF6ikXAJtDweXz91ROx3aJfaHu.jpg',
-          price: 40,
-        },
-        {
-          image: 'https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSB1IF6ikXAJtDweXz91ROx3aJfaHu.jpg',
-          price: 10,
-        },
-        {
-          image: 'https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSB1IF6ikXAJtDweXz91ROx3aJfaHu.jpg',
-          price: 140,
-        },
-        {
-          image: 'https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSB1IF6ikXAJtDweXz91ROx3aJfaHu.jpg',
-          price: 140,
-        },
-      ],
+      currentOrder: [],
     };
   },
   props: {},
@@ -67,11 +51,11 @@ export default {
   methods: {
     onClickToGoToAllOrders() {
       if (this.url != '') {
-        this.$router.push(this.url);
+        this.$router.push('/order/history');
       }
     },
     async orderHistory(food) {
-
+      
     },
   },
 };

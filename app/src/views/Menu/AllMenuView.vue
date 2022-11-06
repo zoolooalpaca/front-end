@@ -77,10 +77,16 @@
             </div>
           </div>
         </div>
+        <div class="fixed left-0 bottom-0 w-full p-4">
+            <FloatingOrder class="m-10"
+            
+            />
+        </div>
     </div>
 </template>
 
 <script>
+import FloatingOrder from '../../components/FloatingOrder.vue';
 import FoodCard from '../../components/FoodCard/FoodCard.vue';
 import BannerCard from '../../components/BannerCard.vue';
 import FoodTray from
@@ -100,6 +106,7 @@ export default {
   },
 
   components: {
+    FloatingOrder,
     FoodCard,
     BannerCard,
     FoodCategoryChip,
