@@ -51,7 +51,7 @@
         </div>
 
 
-      <div class="main-content">
+      <div class="main-content-create-management">
         <div class="basis-2/5 mb-8">
           <div v-if="previewImage">
             <div>
@@ -255,9 +255,16 @@ export default {
   border-radius: 10px;
   cursor: pointer;
 }
+.main-content-create-management{
+  display: flex;
+  flex-direction: row;
+}
 
 @media screen and (max-width: 768px) {
-
+  .main-content-create-management{
+    display: flex;
+    flex-direction: column;
+  }
   .button-create-promotion{
     background-color: var(--md-sys-color-tertiary-container);
     border: none;
