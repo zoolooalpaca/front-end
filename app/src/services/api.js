@@ -366,6 +366,64 @@ export const orderApi = {
   },
 };
 
+export const orderDescriptionApi = {
+  async getAll() {
+    const response = await axiosInstance.get(
+        '/orders?ofuser=1',
+    );
+    if (response.status === 200) {
+      return response.data;
+    }
+    return [];
+  },
+
+  async saveNew(order) {
+    const response = await axiosInstance.post('/orderDescriptions', order);
+    if (response.status === 201) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+
+  async update(order) {
+    const response = await axiosInstance.put(
+        `/orderDescriptions/${order.order_number}`, order,
+    );
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+
+  async updateStatus(orderDescriptionId) {
+    const response = await axiosInstance.post(
+        `/orderDescriptions/updateStatus/${orderDescriptionId}`);
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+
+  async get(orderNumber) {
+    const response = await axiosInstance.get(
+        `/orderDescriptions/${orderNumber}`,
+    );
+    if (response.status === 200) {
+      return response.data;
+    }
+    return {
+      success: false,
+    };
+  },
+};
+
+
 export const tableAPI = {
   async getAll() {
     const response = await axiosInstance.get('/tables');
