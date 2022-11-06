@@ -99,7 +99,7 @@ export default {
     return {
       title: "จ่ายเงิน",
       section: "เลือกลูกค้า",
-      table_number: '',
+      table_number: null,
       qrCode: '',
       error: null,
       payment: '',

@@ -3,9 +3,9 @@
   <h1 class="text-center text-xl">{{ nameShop }}</h1>
   <span>{{ tableNumber }}</span>
 
-
   <BillOrderItem v-for="orderItem in orderItems" :key="orderItem.id"
                    :order = "order" :url="`orders/${order.id}`"></BillOrderItem>
+
 </div>
 </template>
 
