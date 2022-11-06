@@ -17,7 +17,7 @@
                         <div class='select-food-allergy'>{{ food.food_allergy }}</div>
                     </div>
                 </div>
-                <span class='font-bold'>{{ food.quality }}</span>
+                <span class='font-bold'>{{ foodQuality }}</span>
                 <div class='flex flex-row gap-5'>
                     <button class="surface-variant w-10 h-10 rounded-full">
                         <div class="flex items-center justify-center">
@@ -84,10 +84,10 @@ data() {
       this.food = foodData.data;
     },
     addFoodAmount() {
-
+      this.counter++;
     },
     deleteFoodAmount() {
-
+      this.counter--;
     },
     sendMenu() {
 

@@ -41,16 +41,17 @@
           <div class="p-4 flex-grow">
               <h3 class="headline-large">อาหารที่รอดำเนินการ</h3>
               <div class="py-4 text-right flex-col">
-                  <label for="order_amount">{{totalOrders}} รายการ</label>
+                  <label for="order_amount">{{ totalOrders }} รายการ</label>
               </div>
               <div>
                   <CookItem
-                      v-for="(order, index) in orders"
+                      v-for="(order, index) in tableOrderList"
                       :id="index"
                       :tableNumber="order.tableNumber"
-                      :foodName="order.foodName"
-                      :foodAmount="order.foodAmount"
-                      :foodDescription="order.foodDescription"
+                      :status="order.order_status"
+                      :foodName="order.food_name"
+                      :foodAmount="order.order_quantity"
+                      :foodDescription="order.order_request"
                       :key="index"
                   >
                   </CookItem>
@@ -65,6 +66,7 @@
 import CookItem from "../../components/CookItem/CookItem.vue";
 import NavItem from "../../components/NavBarDrawer/NavItem.vue";
 import SectionHeader from "../../components/NavBarDrawer/SectionHeader.vue";
+import {useOrderStore} from "../../stores/order";
 
 
 export default {
@@ -73,10 +75,20 @@ export default {
     SectionHeader,
     NavItem
 },
+  setup() {
+    const orderStore = useOrderStore();
+    return {orderStore};
+  },
+  created() {
+    this.getOrderItems();
+  },
 
   computed: {
     totalOrders() {
-      return this.orders.length;
+      return this.orderedItems.length;
+    },
+    tableOrderList() {
+      return this.orderedItems;
     },
   },
 
@@ -87,9 +99,13 @@ export default {
         this.$router.push(url);
       }
     },
-
     showMenu() {
       this.showMobileMenu = !this.showMobileMenu;
+    },
+    async getOrderItems() {
+      await this.orderStore.fetch();
+      this.orderedItems = this.orderStore.orders.data;
+      console.log(this.orderedItems);
     },
   },
 
@@ -103,26 +119,7 @@ export default {
         {label: 'อาหารที่ต้องทำ', icon: 'soup_kitchen', router: '/employee/order/order-to-do',activeId:1},
       ],
       
-      orders: [
-        {
-          tableNumber: '1',
-          foodName: 'ข้าวผัดหมู',
-          foodAmount: '2',
-          foodDescription: 'ข้าวผัดหมูไม่ใส่น้ำมัน แล้วนายคนนั้นคือใครกัน',
-        },
-        {
-          tableNumber: '2',
-          foodName: 'ข้าวมันไก่',
-          foodAmount: '1',
-          foodDescription: 'ข้าวมันไก่ ดีอะ ดีอะ ดีอะ',
-        },
-        {
-          tableNumber: '3',
-          foodName: 'ข้าวไปในใจเธอ',
-          foodAmount: '5',
-          foodDescription: 'ยากจัง เข้าไม่ได้',
-        },
-      ],
+      orderedItems: [],
     };
   },
 };
