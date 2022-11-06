@@ -8,13 +8,14 @@
             <img class='img size-picture' src='https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg'>
 
             <div id='buttom' class='buttom-lm'>
-                <span id='ชื่ออาหาร' class='headline-large mt-10'>ข้าวมันไก่</span>
-                <span id='คำอธิบายอาหาร' class='font-medium'>เป็นอาหารคาวดั้งเดิมของชาวจีน
-                อาหารชนิดนี้ได้รับการเผยแพร่มาจากชาวจีน ไหหลำหรือไห่หนาน ที่มาอยู่ประเทศไทย
-                มีให้รับประทานกัน ทั่วทุกภาค ใน ประเทศไทย นอกจากนี้ยังนิยมรับประทานกันมาก
-                ในมาเลเซียและสิงคโปร์อีกด้วย และยังติดอันดับเป็นหนึ่งใน 15 เมนูอาหารต่างชาติ
-                ที่ชาวญี่ปุ่น ชื่นชอบอีกด้วย ร่วมกับอาหารไทยอีกหนึ่งอย่าง คือ ข้าวผัดกะเพรา</span>
-                <span class='font-bold'>ข้อมูลสำหรับการแพ้อาหาร</span>
+<!--               <OrderItem-->
+<!--                <span id='ชื่ออาหาร' class='headline-large mt-10'>ข้าวมันไก่</span>-->
+<!--                <span id='คำอธิบายอาหาร' class='font-medium'>เป็นอาหารคาวดั้งเดิมของชาวจีน-->
+<!--                อาหารชนิดนี้ได้รับการเผยแพร่มาจากชาวจีน ไหหลำหรือไห่หนาน ที่มาอยู่ประเทศไทย-->
+<!--                มีให้รับประทานกัน ทั่วทุกภาค ใน ประเทศไทย นอกจากนี้ยังนิยมรับประทานกันมาก-->
+<!--                ในมาเลเซียและสิงคโปร์อีกด้วย และยังติดอันดับเป็นหนึ่งใน 15 เมนูอาหารต่างชาติ-->
+<!--                ที่ชาวญี่ปุ่น ชื่นชอบอีกด้วย ร่วมกับอาหารไทยอีกหนึ่งอย่าง คือ ข้าวผัดกะเพรา</span>-->
+<!--                <span class='font-bold'>ข้อมูลสำหรับการแพ้อาหาร</span>-->
 
                 <div class='scrollbar-food-allergy'>
                     <div class='flex flex-row space-x-3'>
@@ -46,13 +47,12 @@
         </div>
 
         <div id='right-menu-list' class='right-menu-list'>
-          <div flex flex-row>
-            <span class='title-large order-and-history' onclick="showOrderItem()">รายการในถาด</span>
-            <span class='title-large order-and-history ml-2' onclick="showHistoryItem()">ประวัติ</span>
+          <div
+              class="w-1/2 lg:w-1/3 hidden md:block
+              h-screen overflow-hidden sticky top-0"
+          >
+            <FoodTray :cart="foodInTray"/>
           </div>
-            <div class='scroller-order-food space-y-5'>
-              <OrderItem/>
-            </div>
             <div class='flex justify-end'>
               <button class='send-button' onclick="sendMenu()">ส่ง</button>
             </div>
@@ -62,10 +62,12 @@
 
 <script>
 import OrderItem from '@/components/OrderItem/OrderItem.vue';
+import FoodTray from "../../components/FoodTray.vue";
 
 export default {
   components: {
     OrderItem,
+    FoodTray,
   },
   showOrderItem() {},
   showHistoryItem() {},

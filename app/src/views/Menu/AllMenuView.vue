@@ -4,13 +4,13 @@
         <h1 class='display-large justify-start text-center'>อร่อยโภชนา</h1>
       </div>
 
-      <div>
+      <div class='scroller-recommend-menu'>
         <div class='flex gap-5'>
             <BannerCard
               v-for="(promotion, index) in promotions"
               :id="index"
-              :image="promotion.image"
-              :section="promotion.section"
+              :image="promotion.image.cover"
+              :headerText="promotion.name"
               :key="index"
             >
             </BannerCard>
@@ -30,35 +30,7 @@
             </div>
       </div>
 
-      <div class='main-menu'>
-        <div class='left-menu-list'>
-            <div class='category-main-size'>
-              <div class='category-size'>
-                <FoodCategoryChip
-                  v-for="(chip, index) in chips"
-                  :id="index"
-                  :image="chip.image"
-                  :name="chip.name"
-                  :key="index"
-                >
-                </FoodCategoryChip>
-              </div>
-            </div>
-
-          <div id='select-food' class='scroller-food-card select-food-card'>
-               <FoodCard
-                 v-for="(food, index) in foods"
-                 :id="index"
-                 :image="food.image"
-                 :name="food.name"
-                 :price="food.price"
-                 :key="index"
-              >
-              </FoodCard>
-          </div>
-        </div>
-
-          <div class="flex justify-between w-full gap-4">
+      <div class="flex justify-between w-full gap-4">
             <div class="grid grid-cols-2 gap-2 md:w-1/2 lg:w-2/3">
               <FoodCard
                 v-for="(food, index) in foods"
@@ -66,6 +38,7 @@
                 :image="food.images.thumb"
                 :name="food.food_name"
                 :price="food.food_price"
+                :onClickAdd="onAddFoodToTray"
                 :key="index"
               />
             </div>
@@ -73,30 +46,36 @@
               class="w-1/2 lg:w-1/3 hidden md:block
               h-screen overflow-hidden sticky top-0"
               >
-              <FoodTray/>
+              <FoodTray :cart="foodInTray"/>
             </div>
-          </div>
-        </div>
+      </div>
     </div>
 </template>
 
 <script>
 import FoodCard from '../../components/FoodCard/FoodCard.vue';
 import BannerCard from '../../components/BannerCard.vue';
+import DetailMenuView from "./DetailMenuView.vue";
 import FoodTray from
   '../../components/FoodTray.vue';
 import FoodCategoryChip from
   '../../components/FoodCategoryChip/FoodCategoryChip.vue';
 import {useFoodStore} from '../../stores/food';
+import {usePromotionStore} from "../../stores/promotion";
+import VueRouter from 'vue-router'
 
 export default {
   setup() {
     const foodStore = useFoodStore();
-    return {foodStore};
+    const promotionStore = usePromotionStore();
+    return {
+      foodStore,
+      promotionStore
+    };
   },
 
   created() {
-    this.fetchOrder();
+    this.fetchData();
   },
 
   components: {
@@ -107,70 +86,21 @@ export default {
   },
   data() {
     return {
-      promotions: [
-        {
-          image: 'https://www.tripgether.com/wp-content/uploads/2022/03/Kruayupin_91.jpg',
-          section: 'กุ้งเผายกถาด ฟรีโค้ก 1 ขวด',
-        },
-        {
-          image: 'https://www.eatandsleep.blog/wp-content/uploads/2021/04/%E0%B8%82%E0%B8%99%E0%B8%A1%E0%B8%88%E0%B8%B5%E0%B8%99%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%A2%E0%B8%B2-43-1.jpg',
-          section: 'สั่งขนมจีน แถมฟรีน้ำยา !',
-        },
-        {
-          image: 'https://img.wongnai.com/p/1920x0/2018/06/18/2979c50de28b4137a3c0224591db4af5.jpg',
-          section: 'ขนมหวาน แถมคนรู้ใจไปเดินข้างเคียง',
-        },
-        {
-          image: 'https://www.easycookingmenu.com/media/k2/items/cache/4eadae682909e5571fe2c1a4fc6acd34_XL.jpg',
-          section: 'เกี๊ยวกันมั้ย 100 บาท 6 ชิ้น',
-        },
-      ],
-
-      chips: [
-        {
-          image: 'https://www.tripgether.com/wp-content/uploads/2022/03/Kruayupin_91.jpg',
-          name: 'อาหารทะเล',
-        },
-      ],
-
-      foods: [
-        {
-          image: 'https://img.wongnai.com/p/1920x0/2017/06/22/bbf899f7ab4341dea4aec6330c2afafd.jpg',
-          name: 'ข้าวมันไก่',
-          price: 65,
-        },
-        {
-          image: 'https://img.wongnai.com/p/1920x0/2017/06/22/bbf899f7ab4341dea4aec6330c2afafd.jpg',
-          name: 'ข้าวมันไก่ทอด',
-          price: 65,
-        },
-        {
-          image: 'https://img.wongnai.com/p/1920x0/2017/06/22/bbf899f7ab4341dea4aec6330c2afafd.jpg',
-          name: 'ข้าวมันไก่ ไม่มีหนัง',
-          price: 65,
-        },
-        {
-          image: 'https://img.wongnai.com/p/1920x0/2017/06/22/bbf899f7ab4341dea4aec6330c2afafd.jpg',
-          name: 'ข้าวมันไก่ ไร้ไก่',
-          price: 65,
-        },
-        {
-          image: 'https://img.wongnai.com/p/1920x0/2017/06/22/bbf899f7ab4341dea4aec6330c2afafd.jpg',
-          name: 'ข้าวมันไก่ เครื่องใน',
-          price: 65,
-        },
-        {
-          image: 'https://img.wongnai.com/p/1920x0/2017/06/22/bbf899f7ab4341dea4aec6330c2afafd.jpg',
-          name: 'ข้าวมันไก่',
-          price: 65,
-        },
-      ],
+      promotions: [],
+      chips: [],
+      foods: [],
+      foodInTray: []
     };
   },
   methods: {
-    async fetchOrder() {
+    async fetchData() {
+      await this.promotionStore.fetch();
       await this.foodStore.fetch();
+      this.promotions = this.promotionStore.promotions.data;
+      console.log(this.promotions);
       this.foods = this.foodStore.foods.data;
+    },
+    onAddFoodToTray(foodIndex) {
     },
   },
 };
@@ -194,8 +124,6 @@ export default {
 .scroller-recommend-menu {
   width: auto;
   height: auto;
-  /*overscroll-behavior-x: none;*/
-  /*overflow-x: auto;*/
   overflow-x: scroll;
   margin-bottom: 10px;
 }

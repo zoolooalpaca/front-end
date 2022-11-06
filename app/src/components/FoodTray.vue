@@ -4,12 +4,12 @@
       <button
         v-for="tab, i in tabs"
         class="title-large"
-        :class="selectedTab == i ? 'tray-tab-selected' : 'tray-tab'"
+        :class="selectedTab === i ? 'tray-tab-selected' : 'tray-tab'"
         @click="selectedTab = i"
         :key="i"
       >{{tab}}</button>
     </div>
-    <div v-if="selectedTab == 1" class="space-y-2 w-full">
+    <div v-if="selectedTab === 1" class="space-y-2 w-full">
       <HistoryItem
         v-for="order,i in orderHistoryList"
         :status="order.order_status"
@@ -23,8 +23,10 @@
     </div>
     <div v-if="selectedTab == 0" class="space-y-2 w-full">
       <OrderItem
-        v-for="order, i in cart"
-        :order="order"
+        v-for="food, i in cart"
+        :food_name="food.food_name"
+        :order_price="food.food_price"
+        :order_quantity="food.food_quantity"
         :key="i"
       />
     </div>
@@ -37,6 +39,9 @@ import HistoryItem from './HistoryItem/HistoryItem.vue';
 import {useOrderStore} from '../stores/order.js';
 
 export default {
+  props: [
+      'cart'
+  ],
   components: {OrderItem, HistoryItem},
   setup() {
     const orderStore = useOrderStore();
@@ -47,7 +52,6 @@ export default {
       tabs: ['รายการในถาด', 'ประวัติ'],
       selectedTab: 0,
       orderedItems: [],
-      cart: []
     };
   },
   created() {

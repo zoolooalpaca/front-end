@@ -25,7 +25,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'Home',
-      component: HomeView,
+      component: AllMenu,
     },
     {
       path: '/employee/order/serve',
@@ -138,12 +138,7 @@ const router = createRouter({
       component: OrderToDoList,
     },
     {
-      path: '/menu',
-      name: 'menu',
-      component: AllMenu,
-    },
-    {
-      path: '/menu/detail',
+      path: '/menu/detail/:id',
       name: 'detail-menu',
       component: DetailMenu,
     },

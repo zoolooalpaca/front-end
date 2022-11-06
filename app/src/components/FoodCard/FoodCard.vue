@@ -12,7 +12,7 @@
       </div>
       <div class="items-center">
         <button class="w-8 h-8 secondary-container
-        rounded-full p-1 justify-center">
+        rounded-full p-1 justify-center" @click="onClickAdd(id)">
           <span class="material-symbols-outlined">add</span>
         </button>
       </div>
@@ -22,14 +22,7 @@
 
 <script>
 export default {
-  data() {
-    return {};
-  },
-  // eslint-disable-next-line vue/no-dupe-keys
-  props: ['image', 'name', 'price'],
-  methods: {
-    onClickAdd() {},
-  },
+  props: ['id', 'image', 'name', 'price', 'onClickAdd'],
 };
 </script>
 
