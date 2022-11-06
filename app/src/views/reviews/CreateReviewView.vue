@@ -99,6 +99,18 @@ export default {
     },
     goBack() {
       this.$router.go(-1);
+    },
+    async paid() {
+      try {
+        this.error = null;
+        const payment_id = await this.payment_store.save(this.payment);
+        if (payment_id) {
+          this.$router.push(`/payments/${payment_id}`);
+        }
+      } catch (error) {
+        console.log(error);
+        this.error = error.message;
+      }
     }
   }
 };

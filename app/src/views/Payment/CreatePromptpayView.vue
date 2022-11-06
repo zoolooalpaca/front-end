@@ -41,63 +41,60 @@
           <h1 class="text-3xl mb-3">{{ title }}</h1>
           <span class="text-xl mb-5">{{ section }}</span>
         </div>
-        <div>
-          <label class="inline-flex">
-            <input type="text" id="table_number" ref="tableNumber" placeholder="กรอกเลขโต๊ะ"
-                   class="text-color border rounded-lg">
-            <button @click="deleteInput" class="flex items-center">
-              <span class="material-symbols-outlined">cancel</span>
-            </button>
-          </label>
+
+        <div v-for="select in selects">
+          <select v-model="selects"
+                  :options="options"
+                  :value="selects.table_number">
+          </select>
         </div>
       
         <div class="base-block border-box mt-2">
           <div class="flex-display width-100 fix-grid-display">
-            <div class="scroll borderColor mt-5">
+            <div class="scroller borderColor mt-5">
               <span class="margin-text text-xl">ใบเสร็จ</span>
-              <div v-for="(item, index) in billOrderItem" :key="index">
-                <BillOrderItem class="flex justify-center mb-2"
-                               :id="index"
-                               :image="item.image"
-                               :name="item.name"
-                               :active="index == activeId"/>
-              </div>
+                <BillOrderItem v-for="orderItem in orderItems" :key="orderItem.id"
+                               :orderItem="orderItem" :url="`orderItems/${orderItem.id}`"
+                               class="mt-2 mb-2">
+                </BillOrderItem>
             </div>
-          
-              <div class="borderColor mt-5">
-                <h3 class="margin-text text-xl">พร้อมเพย์</h3>
-                <img :src="qrCode" style="width: 100%; object-fit: contain">
-                <div>
-                  <button @click="printBill" class="button-payment button-style mb-4 ml-3"> พิมพ์ </button>
-                </div>
+
+            <div class="borderColor mt-5">
+              <h3 class="margin-text text-xl">พร้อมเพย์</h3>
+              <img :src="qrCode" style="width: 100%; object-fit: contain">
+              <div>
+                <button @click="printBill" class="button-payment button-style mb-4 ml-3"> พิมพ์ </button>
               </div>
             </div>
           </div>
-      
+
           <div>
             <button @click="paid" class="button-payment button-style">จ่ายแล้ว</button>
           </div>
         </div>
       </div>
     </div>
+    </div>
+  </div>
 </template>
 <script>
 import NavItem from "@/components/NavBarDrawer/NavItem.vue";
 import SectionHeader from "@/components/NavBarDrawer/SectionHeader.vue";
 import BillOrderItem from "@/components/BillOrderItem/BillOrderItem.vue";
-import { useOrderStore } from "../../stores/order";
-import { usePaymentStore } from "@/stores/payment.js";
+import { useOrderStore } from "@/stores/order";
+import { useTableStore } from '@/stores/table';
+import { usePaymentStore } from "@/stores/payment";
 export default {
   setup() {
     const payment_store = usePaymentStore()
+    const tableStore = useTableStore();
     const orderStore = useOrderStore()
-    return { payment_store, orderStore}
+    return { payment_store,tableStore, orderStore}
   },
   data() {
     return {
       title: "จ่ายเงิน",
       section: "เลือกลูกค้า",
-      table_number: null,
       qrCode: '',
       error: null,
       payment: '',
@@ -108,8 +105,8 @@ export default {
         {label: 'อาหารที่ต้องทำ', icon: 'soup_kitchen', router: '/employee/order/order-to-do',activeId:0},
       ],
       showMobileMenu: false,
-      activeId: 0,
-      orderItems: null
+      orderItems: null,
+      selects: [ { table_number : '' }]
     }
   },
   components: {
@@ -126,9 +123,6 @@ export default {
       if (url != '') {
         this.$router.push(url);
       }
-    },
-    deleteInput() {
-      this.$refs["tableNumber"].value = "";
     },
     printBill() {
       this.$router.push(`/employee/payment/bill`)
@@ -154,15 +148,28 @@ export default {
       await this.orderStore.fetch()
       this.promotions = this.orderStore.orders.data;
       console.log(this.orders)
-    }
+    },
+    async fetchTables() {
+      await this.tableStore.fetch();
+      this.tables = this.tableStore.tables.data;
+    },
   },
   created() {
     this.fetchOrder();
-  }
+    this.fetchTables();
+  },
+  computed: {
+    options: () => tableStore,
+  },
 };
 </script>
 
 <style lang="scss">
+.table {
+  display: table;
+  width: 100%;
+}
+
 .scroller {
   width: 100%;
   height: 200px;
