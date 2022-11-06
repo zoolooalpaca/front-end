@@ -10,6 +10,7 @@
 </template>
 <script>
 export default {
+  props: ['onSetRating'],
   data() {
     return {
       tem_value: null,
@@ -33,6 +34,7 @@ export default {
     },
     set(value) {
       if (!this.disabled) {
+        this.onSetRating(value);
         this.tem_value = value;
         return this.value = value;
       }

@@ -9,24 +9,9 @@
     </button>
     <h1 class="mt-2 mb-5 text-3xl text-center"> รีวิว </h1>
 
-    <div>
-      <label for="name">การให้บริการ</label>
-      <StarRating v-model="rating.count" class="flex justify-center"></StarRating>
-    </div>
-
-    <div>
-      <label for="name">รสชาติอาหาร</label>
-      <StarRating v-model="rating.count" class="flex justify-center"></StarRating>
-    </div>
-
-    <div>
-      <label for="name">ความสะอาด</label>
-      <StarRating v-model="rating.count" class="flex justify-center"></StarRating>
-    </div>
-
-    <div>
-      <label for="name">ความรวดเร็ว/ความสะดวก</label>
-      <StarRating v-model="rating.count" class="flex justify-center"></StarRating>
+    <div v-for="(rating,index) in review.ratings">
+      <label>{{ rating.name }}</label>
+      <StarRating :onSetRating="(v) => rating.count = v" class="flex justify-center"></StarRating>
     </div>
 
     <div class="flex flex-col">
@@ -54,7 +39,7 @@
 import StarRating from '@/components/Review/StarRating.vue';
 import ConfirmReview from '@/components/Review/ConfirmReview.vue';
 import {ref} from 'vue';
-import {reviewAPI} from '@/services/api';
+import {reviewAPI} from '../../services/api';
 export default {
   setup() {
     const popupTrigger = ref({
@@ -69,12 +54,17 @@ export default {
   },
   data() {
     return {
-      review: {feedback: ''},
+      review: {
+        feedback: '',
+        ratings: [
+          { name: 'การให้บริการ', count: 0 },
+          { name: 'รสชาติอาหาร', count: 0 },
+          { name: 'ความสะอาด', count: 0 },
+          { name: 'ความรวดเร็ว/ความสะดวก', count: 0 }
+        ]
+      },
       rating: '',
       error: null,
-      titles: [
-        'การให้บริการ', 'รสชาติอาหาร', 'ความสะอาด', 'ความรวดเร็ว/ความสะดวก',
-      ],
     };
   },
   components: {
@@ -97,6 +87,7 @@ export default {
         console.log("ERRRR:: ", error.response.data)
         this.error = error.message;
       }
+      this.$router.push(`/reviews/thank-you`);
     },
     goBack() {
       this.$router.go(-1);

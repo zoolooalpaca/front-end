@@ -20,11 +20,13 @@
 
     <div class="set-display-column">
       <label class="set-margin text-lg">รหัสผ่าน</label>
+      <span class="text-xs">รหัสผ่านต้องเป็นตัวอักษรมากกว่า 6 ตัว</span>
       <input type="password" v-model="user.password" required class="input-field-style" placeholder="Password">
     </div>
 
     <div class="set-display-column">
       <label class="set-margin text-lg">ยืนยันรหัสผ่าน</label>
+      <span class="text-xs">รหัสผ่านต้องเป็นตัวอักษรมากกว่า 6 ตัว</span>
       <input type="password" v-model="user.confirm_password" required class="input-field-style" placeholder="Confirm password">
     </div>
 
@@ -73,7 +75,7 @@ export default {
           console.log(response.data);
         }
         if (response.status_code == 200) {
-          return 'successful'
+          this.$router.push(`/login`);
         }
       } catch (error) {
         console.log(error);

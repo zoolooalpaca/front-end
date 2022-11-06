@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 const axiosInstance = axios.create({
-  baseURL: 'https://purple-rabbit-56.loca.lt/api',
+  baseURL: 'https://zlapc-oi-api.loca.lt/api',
 });
 
 
@@ -93,6 +93,7 @@ export const reviewAPI = {
   },
 
   async saveNew(review) {
+    console.log(review)
     const response = await axiosInstance.post('/reviews', review);
     if (response.status === 201) {
       return response.data;

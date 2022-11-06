@@ -62,7 +62,7 @@
 
             <div class="borderColor mt-5">
               <h3 class="margin-text text-xl">พร้อมเพย์</h3>
-              <img :src="qrCode" style="width: 100%; object-fit: contain">
+
               <div>
                 <button @click="printBill" class="button-payment button-style mb-4 ml-3"> พิมพ์ </button>
               </div>
@@ -82,16 +82,16 @@
 import NavItem from "@/components/NavBarDrawer/NavItem.vue";
 import SectionHeader from "@/components/NavBarDrawer/SectionHeader.vue";
 import BillOrderItem from "@/components/BillOrderItem/BillOrderItem.vue";
+import VueQrcode from 'vue-qrcode';
 import { useOrderStore } from "@/stores/order";
 import { useTableStore } from '@/stores/table';
-import { usePaymentStore } from "@/stores/payment";
+import {paymentAPI} from '../../services/api';
 export default {
   setup() {
     const orderStore = useOrderStore()
     const tableStore = useTableStore()
-    const paymentStore = usePaymentStore()
 
-    return {orderStore, tableStore, paymentStore}
+    return {orderStore, tableStore}
   },
   data() {
     return {
@@ -109,13 +109,18 @@ export default {
       showMobileMenu: false,
       orderItems: null,
       selects: [ { table_number : '' }],
-      tables: []
+      tables: [],
+      employee: '',
+      qrValue: null,
+      qrScale: 10,
+      correctionLevel: "H"
     }
   },
   components: {
     NavItem,
     SectionHeader,
-    BillOrderItem
+    BillOrderItem,
+    VueQrcode
   },
   methods: {
     showMenu() {
@@ -127,13 +132,18 @@ export default {
         this.$router.push(url);
       }
     },
+    getData() {
+      if (selects === table.id) {
+
+      }
+    },
     printBill() {
       this.$router.push(`/employee/payment/bill`)
     },
     async paid() {
       try {
         this.error = null;
-        const response = await paymentStore.saveNew(this.payment);
+        const response = await paymentAPI.saveNew(this.employee);
         if (response.status_code == 201) {
           console.log(response.data);
         }
@@ -142,6 +152,7 @@ export default {
         }
       } catch (error) {
         console.log(error);
+        console.log("ERRRR:: ", error.response.data)
         this.error = error.message;
       }
     },

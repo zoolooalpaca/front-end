@@ -23,9 +23,9 @@
         opacity-[8%]
       "
     ></div>
-      <p class="leading-loose">{{ food.amount }}</p>
+      <p class="leading-loose">{{ amount }}</p>
       <p class="leading-loose">x</p>
-      <p class="leading-loose">{{ food.name }}</p>
+      <p class="leading-loose">{{ name }}</p>
       <p class="flex-1 leading-loose text-right">฿{{ price * amount }}</p>
       <div class="inline-flex flex-col items-center justify-center w-10">
         <div class="inline-flex items-center justify-center flex-1">
