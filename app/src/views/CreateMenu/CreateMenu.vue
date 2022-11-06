@@ -53,13 +53,6 @@
 
       <div class="main-content-create-management">
         <div class="basis-1/4 mb-8">
-<!--          <div v-if="previewImage">-->
-<!--            <div>-->
-<!--              <img class="preview my-3" :src="previewImage" alt=""/>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <input type="file" @change="onFileSelected">-->
-<!--          <button @click="onUpload">Upload</button>-->
           <div v-if="previewImage">
             <div>
               <img class="preview my-3" :src="previewImage" alt="" />
@@ -141,6 +134,7 @@ export default {
     return {
       category_str: '',
       allery_str: '',
+
       showMobileMenu: false,
       currentImage: undefined,
       previewImage: undefined,
