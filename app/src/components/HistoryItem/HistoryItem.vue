@@ -22,9 +22,7 @@
               >
                   <img :src="foodImage"
                       :alt="foodName"
-                      height="60"
-                      width="60"
-                      style="object-fit: contain;"
+                      class="max-w-xs h-auto rounded-lg"
                   >
                 </div>
                 <div class='text-black mx-5 flex flex-col'>
@@ -94,11 +92,11 @@ export default {
       buttonTrigger: false,
     });
     const DeletePopup = (trigger) =>{
-      popupTrigger.value[trigger] =!popupTrigger.value[trigger];
+      popupTrigger.value[trigger] =! popupTrigger.value[trigger];
     };
     const orderStore = useOrderStore();
     
-    return {orderStore,popupTrigger, DeletePopup};
+    return {orderStore, popupTrigger, DeletePopup};
   },
 
   created() {
@@ -107,17 +105,22 @@ export default {
 
   methods:{
     async getOrderItems() {
-      // await this.orderStore.fetch();
-      // this.orderedItems = this.orderStore.orders.data;
-      // console.log(this.orderedItems)
+      await this.orderStore.fetch();
+      this.orderedItems = this.orderStore.orders.data;
+      console.log(this.orderedItems)
     },
 
-    async deleteOrdered(){
-      await this.orderStore.delete(this.id);
-      this.onRemoveOrder();
-      this.orderedItems = this.orderStore.orders.data;
-      this.DeletePopup();
+    deleteOrdered() {
+      this.orderStore.delete(this.id);
+      this.onRemoveOrder(this.id);
     }
+
+    // async deleteOrdered(){
+    //   await this.orderStore.delete(this.id);
+    //   this.onRemoveOrder();
+    //   this.orderedItems = this.orderStore.orders.data;
+    //   this.DeletePopup();
+    // }
 
   },
 
