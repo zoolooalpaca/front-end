@@ -65,6 +65,7 @@
                     type="file"
                     accept="image/*"
                     ref="file"
+                    name="image"
                     @change="selectImage"
                 />
               </label>
@@ -77,14 +78,18 @@
 
 
         <div class="basis-3/5 ml-5">
+          <h3 class="body-large">รหัสส่วนลด</h3>
+          <input type="text" class="input-create-menu" v-model="food.promotion_code">
           <h3 class="body-large">ชื่ออาหาร</h3>
           <input type="text" class="input-create-menu" v-model="food.food_name">
+          <h3 class="body-large">คำอธิบายโปรโมชัน</h3>
+          <input type="text" class="input-create-menu" v-model="promotion.description">
           <h3 class="body-large">ราคาโปรโมชัน</h3>
-          <input type="text" class="input-create-menu" v-model="promotion.promotion_price">
+          <input type="text" class="input-create-menu" v-model="promotion.discount_amount">
           <h3 class="body-large">วันเริ่มโปรโมชัน</h3>
-          <input type="text" class="input-create-menu" v-model="promotion.start_date">
+          <input type="text" class="input-create-menu" v-model="promotion.begin_useable_date">
           <h3 class="body-large">วันสิ้นสุดโปรโมชัน</h3>
-          <input type="text" class="input-create-menu" v-model="promotion.end_date">
+          <input type="text" class="input-create-menu" v-model="promotion.end_useable_date">
         </div>
       </div>
       <div class="grid justify-items-end mb-10">
@@ -105,6 +110,7 @@ import SectionHeader from '../../components/NavBarDrawer/SectionHeader.vue';
 import NavItem from '../../components/NavBarDrawer/NavItem.vue';
 import FoodCard from '../../components/FoodCard/FoodCard.vue';
 import UploadService from '../../services/UploadFilesService.js';
+import { promotionAPI } from "../../services/api.js";
 
 export default {
 
@@ -128,6 +134,7 @@ export default {
 
       progress: 0,
       message: '',
+      image: null,
 
       imageInfos: [],
 
@@ -142,9 +149,13 @@ export default {
         food_name: '',
       },
       promotion: {
-        promotion_price: '',
-        start_date: '',
-        end_date: '',
+        promotion_code: null,
+        name: null,
+        description: null,
+        discount_amount: null,
+        begin_useable_date: null,
+        end_useable_date: null,
+        restaurant_id: null,
       },
     };
   },
@@ -152,29 +163,36 @@ export default {
     async saveNewPromotion() {
       try {
         // upload image file
-        this.progress = 0;
-
-        UploadService.upload(this.currentImage, (event) => {
-          this.progress = Math.round((100 * event.loaded) / event.total);
-        })
-            .then((response) => {
-              this.message = response.data.message;
-              return UploadService.getFiles();
-            })
-            .then((images) => {
-              this.imageInfos = images.data;
-            })
-            .catch((err) => {
-              this.progress = 0;
-              this.message = 'Could not upload the image! ' + err;
-              this.currentImage = undefined;
-            });
+        // this.progress = 0;
+        //
+        // UploadService.upload(this.currentImage, (event) => {
+        //   this.progress = Math.round((100 * event.loaded) / event.total);
+        // })
+        //     .then((response) => {
+        //       this.message = response.data.message;
+        //       return UploadService.getFiles();
+        //     })
+        //     .then((images) => {
+        //       this.imageInfos = images.data;
+        //     })
+        //     .catch((err) => {
+        //       this.progress = 0;
+        //       this.message = 'Could not upload the image! ' + err;
+        //       this.currentImage = undefined;
+        //     });
         // save new promotion
+
+        // 'promotion_code'      => ['required', 'string'],
+        //     'name'                => ['required', 'string'],
+        //     'description'         => ['required', 'string'],
+        //     'discount_amount'     => ['required', 'integer'],
+        //     'begin_useable_date'  => ['required', 'date_format:Y-m-d'],
+        //     'end_useable_date'    => ['required', 'date_format:Y-m-d'],
+        //     'image'               => ['required', 'image']
         this.error = null;
-        const promotion_id = await this.promotion_store.add(this.promotion);
-        if (promotion_id) {
-          SocketioService.sendToServer('CreatePromotion', {success: true} );
-          this.$router.push(`/${promotion_id}`);
+        const response = await promotionAPI.saveNew(this.promotion);
+        if (response.status_code == 201) {
+          console.log(response.data);
         }
       } catch (error) {
         console.log(error);

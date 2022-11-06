@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 const axiosInstance = axios.create({
-  baseURL: 'https://zlapc-oi-api.loca.lt/api',
+  baseURL: 'https://api-production-6bdc.up.railway.app/api',
 });
 
 
@@ -24,6 +24,11 @@ export const authAPI = {
       return response.data;
     }
   },
+  async registerEmployee(user) {
+    const response = await axiosInstance.post('/auth/register/employee', user);
+
+    return reponse;
+  }
 };
 
 export const employeeAPI = {
@@ -241,13 +246,15 @@ export const foodAPI = {
     return [];
   },
   async saveNew(food) {
-    const response = await axiosInstance.post('/foods', food);
-    if (response.status === 201) {
-      return response.data;
-    }
-    return {
-      success: false,
-    };
+    const response = await axiosInstance.post(
+        '/foods',
+        food,
+        {headers: {
+        "Content-Type": `multipart/form-data; boundary=${food._boundary}`,
+        "Access-Control-Allow-Origin": "*"
+      }});
+
+    return reponse;
   },
 
   async update(food) {
