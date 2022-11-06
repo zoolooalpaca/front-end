@@ -1,5 +1,5 @@
 <template>
-  <div class>
+  <div>
     <div class="main-content-employee-view">
       <div>
         <h3 class="headline-large ml-4 mb6-4">อร่อยโภชนา</h3>
@@ -198,6 +198,10 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: column;
+}
+
+.set-flew {
+  display: flex;
 }
 
 .side-nav{
