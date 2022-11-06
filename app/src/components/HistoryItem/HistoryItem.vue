@@ -22,9 +22,7 @@
               >
                   <img :src="foodImage"
                       :alt="foodName"
-                      height="60"
-                      width="60"
-                      style="object-fit: contain;"
+                      class="max-w-xs h-auto rounded-lg"
                   >
                 </div>
                 <div class='text-black mx-5 flex flex-col'>
@@ -65,7 +63,7 @@
           </p>
         </article>
         <div>
-          <button @click="deleteHistoryOrder"
+          <button @click="deleteOrdered"
           class="dbutton-color p-3 mt-5 border rounded-lg float-right">
               ยกเลิกอาหาร
             </button>
@@ -78,35 +76,54 @@
 
 import OrderConfirmDeletePopup from '../OrderConfirmDeletePopup.vue';
 import {ref} from 'vue';
+import { useOrderStore } from '../../stores/order';
 
 
 export default {
   props: [
     'id', 'status', 'foodImage', 'foodName',
-    'orderPrice', 'orderQuantity', 'orderRequest',
+    'orderPrice', 'orderQuantity', 'orderRequest', 'onRemoveOrder'
   ],
 
-  // (DeletePopup ใน component OrderConfirmDeletePopup
-  // = กดปุ่มแล้วแสดง popup ให้ confirm deleteOrder)
+  components: {OrderConfirmDeletePopup},
+
   setup() {
     const popupTrigger = ref({
       buttonTrigger: false,
     });
     const DeletePopup = (trigger) =>{
-      popupTrigger.value[trigger] =!popupTrigger.value[trigger];
+      popupTrigger.value[trigger] =! popupTrigger.value[trigger];
     };
-    return {popupTrigger, DeletePopup};
+    const orderStore = useOrderStore();
+    
+    return {orderStore, popupTrigger, DeletePopup};
   },
 
-  methods: {
-  //  กดปุ่ม'ยกเลิกอาหาร'เพื่อยืนยัน แล้วลบorderที่ได้สั่งไปแล้ว
-  // (เฉพาะorder_status='รอทำ')
-    deleteHistoryOrder() {
+  created() {
+    this.getOrderItems();
+  },
 
+  methods:{
+    async getOrderItems() {
+      await this.orderStore.fetch();
+      this.orderedItems = this.orderStore.orders.data;
+      console.log(this.orderedItems)
     },
 
+    deleteOrdered() {
+      this.orderStore.delete(this.id);
+      this.onRemoveOrder(this.id);
+    }
+
+    // async deleteOrdered(){
+    //   await this.orderStore.delete(this.id);
+    //   this.onRemoveOrder();
+    //   this.orderedItems = this.orderStore.orders.data;
+    //   this.DeletePopup();
+    // }
+
   },
-  components: {OrderConfirmDeletePopup},
+
 
 };
 </script>

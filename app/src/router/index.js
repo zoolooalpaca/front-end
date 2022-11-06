@@ -128,13 +128,13 @@ const router = createRouter({
       component: LogoutView,
     },
     {
-      path: '/employee/order/order-to-do/order-cooking',
-      name: 'order-cooking',
+      path: '/employee/order/order-to-do/order-cooking/:orderDescriptionId',
+      name: 'Order-cooking',
       component: OrderCooking,
     },
     {
       path: '/employee/order/order-to-do',
-      name: 'order-to-do',
+      name: 'Order-to-cook',
       component: OrderToDoList,
     },
     {

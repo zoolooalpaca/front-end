@@ -45,17 +45,21 @@
         </div>
       </div>
 
-      <div class="p-4 flex-grow">
+      <div class="flex-grow">
         <h1 class="headline-medium">รับลูกค้าใหม่</h1>
-        <h1 class="headline-small m-4">Qr-code ให้กับลูกค้า</h1>
-        <div>
-          <p class="text-center headline-small m-4">โต๊ะ {{ table_number }}</p>
-          <div style="margin-left: 15%; ">
+        <h1 class="headline-small mb-5">Qr-code ให้กับลูกค้า</h1>
+        <div class="text-center">
+          <p class="mb-4 headline-small">โต๊ะ {{ table_number }}</p>
+          <div style="margin-left: 15%; object-fit: contain;">
             <div>
               <vue-qrcode v-if="qrValue" v-bind:value="qrValue" v-bind:scale="qrScale" v-bind:errorCorrectionLevel="correctionLevel"
-                class="border" style="width: 80%; object-fit: contain;" />
+              class="border" style="width: 80%; object-fit: contain;" />
             </div>
           </div>
+          <div class="m-6">
+            <a class="headline-small button" :href="qrValue">CLICK!</a>
+          </div>
+
           <div class="p-4 float-right">
             <button class="
                 text-center
@@ -65,7 +69,7 @@
               <span class="material-symbols-outlined"> done </span>
               เสร็จ
             </button>
-          </div>
+          </div>     
         </div>
       </div>
     </div>
@@ -134,6 +138,7 @@ export default {
         { label: 'จ่ายเงิน', icon: 'payment', router: '/employee/payment/create-promptpay', activeId: 0 },
         { label: 'อาหารที่ต้องเสิร์ฟ', icon: 'room_service', router: '/employee/order/serve', activeId: 0 },
         { label: 'อาหารที่ต้องทำ', icon: 'soup_kitchen', router: '/employee/order/order-to-do', activeId: 0 },
+        {label: 'ออกจากระบบ', icon: 'logout', router: '/logout', activeId:0}
       ],
     };
   },
