@@ -24,14 +24,10 @@ export const authAPI = {
       return response.data;
     }
   },
+  async registerEmployee(user) {
+    const response = await axiosInstance.post('/auth/register/employee', user);
 
-  async addCustomer(table_id){
-    const response = await axiosInstance.post('/auth/register/customer', {table_id});
-    console.log(response)
-
-    if (response.status == 201) {
-      return response.data;
-    }
+    return reponse;
   }
 };
 
@@ -250,13 +246,15 @@ export const foodAPI = {
     return [];
   },
   async saveNew(food) {
-    const response = await axiosInstance.post('/foods', food);
-    if (response.status === 201) {
-      return response.data;
-    }
-    return {
-      success: false,
-    };
+    const response = await axiosInstance.post(
+        '/foods',
+        food,
+        {headers: {
+        "Content-Type": `multipart/form-data; boundary=${food._boundary}`,
+        "Access-Control-Allow-Origin": "*"
+      }});
+
+    return reponse;
   },
 
   async update(food) {
