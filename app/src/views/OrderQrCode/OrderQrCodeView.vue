@@ -3,7 +3,7 @@
   table:
     - table_id
     - table_available
-    - table_qrcode = qrcode ไปยังหน้า /menu ของtableนั้นๆ
+    - table_qrcode = qrcode ไปยังหน้า /menu ของtable นั้นๆ
 
   methods:
   -onclickdone() = เปลี่ยน table_available ของโต๊ะที่เลือกเป็น false

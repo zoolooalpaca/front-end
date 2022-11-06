@@ -5,36 +5,29 @@
     </div>
     <div id='menu-detail' class='main-detail-menu'>
         <div id='left-menu-detail' class='left-menu-detail '>
-            <img class='img size-picture' src='https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg'>
+            <img class='img size-picture' :src="food.images?.original">
 
             <div id='buttom' class='buttom-lm'>
-<!--               <OrderItem-->
-<!--                <span id='ชื่ออาหาร' class='headline-large mt-10'>ข้าวมันไก่</span>-->
-<!--                <span id='คำอธิบายอาหาร' class='font-medium'>เป็นอาหารคาวดั้งเดิมของชาวจีน-->
-<!--                อาหารชนิดนี้ได้รับการเผยแพร่มาจากชาวจีน ไหหลำหรือไห่หนาน ที่มาอยู่ประเทศไทย-->
-<!--                มีให้รับประทานกัน ทั่วทุกภาค ใน ประเทศไทย นอกจากนี้ยังนิยมรับประทานกันมาก-->
-<!--                ในมาเลเซียและสิงคโปร์อีกด้วย และยังติดอันดับเป็นหนึ่งใน 15 เมนูอาหารต่างชาติ-->
-<!--                ที่ชาวญี่ปุ่น ชื่นชอบอีกด้วย ร่วมกับอาหารไทยอีกหนึ่งอย่าง คือ ข้าวผัดกะเพรา</span>-->
-<!--                <span class='font-bold'>ข้อมูลสำหรับการแพ้อาหาร</span>-->
+                <span id='ชื่ออาหาร' class='headline-large mt-10'>{{ food.food_name }}</span>
+                <span id='คำอธิบายอาหาร' class='font-medium'>{{ food.food_detail }}</span>
+                <span class='font-bold'>ข้อมูลสำหรับการแพ้อาหาร</span>
 
                 <div class='scrollbar-food-allergy'>
                     <div class='flex flex-row space-x-3'>
-                        <div class='select-food-allergy'>พริก</div>
-                        <div class='select-food-allergy'>ไก่</div>
-                        <div class='select-food-allergy'>แป้ง</div>
+                        <div class='select-food-allergy'>{{ food.food_allergy }}</div>
                     </div>
                 </div>
-                <span class='font-bold'>จำนวน</span>
+                <span class='font-bold'>{{ food.quality }}</span>
                 <div class='flex flex-row gap-5'>
                     <button class="surface-variant w-10 h-10 rounded-full">
                         <div class="flex items-center justify-center">
-                            <span class="material-symbols-outlined">settings</span>
+                            <span class="material-symbols-outlined" @click="deleteFoodAmount">remove</span>
                         </div>
                     </button>
                     <span class='mt-2'>1</span>
                     <button class="primary text-white w-10 h-10 rounded-full">
                         <div class="flex items-center justify-center">
-                            <span class="material-symbols-outlined">add</span>
+                            <span class="material-symbols-outlined" @click="addFoodAmount">add</span>
                         </div>
                     </button>
                 </div>
@@ -46,15 +39,16 @@
             </div>
         </div>
 
-        <div id='right-menu-list' class='right-menu-list'>
+        <div id='right-menu-list' class=''>
           <div
-              class="w-1/2 lg:w-1/3 hidden md:block
+              class="w-2/3 lg:w-1/3 hidden md:block
               h-screen overflow-hidden sticky top-0"
-          >
-            <FoodTray :cart="foodInTray"/>
+              >
+              <FoodTray/>
+              <div class='flex justify-end'>
+                  <button class='send-button' onclick="sendMenu()">ส่ง</button>
           </div>
-            <div class='flex justify-end'>
-              <button class='send-button' onclick="sendMenu()">ส่ง</button>
+
             </div>
         </div>
     </div>
@@ -63,16 +57,42 @@
 <script>
 import OrderItem from '@/components/OrderItem/OrderItem.vue';
 import FoodTray from "../../components/FoodTray.vue";
+import {foodAPI} from "../../services/api";
+import {foodAllergyAPI} from "../../services/api";
 
 export default {
   components: {
     OrderItem,
     FoodTray,
   },
-  showOrderItem() {},
-  showHistoryItem() {},
-  addMenu() {},
-  sendMenu() {},
+data() {
+    return {
+      food: {},
+      foodId: null,
+    }
+},
+  mounted() {
+    this.foodId = this.$route.params.foodId;
+    if (this.foodId) {
+      this.getFoodDetail();
+    }
+  },
+  methods: {
+    async getFoodDetail() {
+      const foodData = await foodAPI.get(this.foodId);
+      console.log(foodData)
+      this.food = foodData.data;
+    },
+    addFoodAmount() {
+
+    },
+    deleteFoodAmount() {
+
+    },
+    sendMenu() {
+
+    }
+  },
 };
 </script>
 
@@ -92,6 +112,7 @@ export default {
     width: 750px;
     height: 270px;
     margin-top: 20px;
+    object-fit: cover;
 }
 
 .img {

@@ -34,11 +34,10 @@
             <div class="grid grid-cols-2 gap-2 md:w-1/2 lg:w-2/3">
               <FoodCard
                 v-for="(food, index) in foods"
-                :id="index"
+                :id="food.id"
                 :image="food.images.thumb"
                 :name="food.food_name"
                 :price="food.food_price"
-                :onClickAdd="onAddFoodToTray"
                 :key="index"
               />
             </div>
@@ -62,7 +61,6 @@ import FoodCategoryChip from
   '../../components/FoodCategoryChip/FoodCategoryChip.vue';
 import {useFoodStore} from '../../stores/food';
 import {usePromotionStore} from "../../stores/promotion";
-import VueRouter from 'vue-router'
 
 export default {
   setup() {
@@ -89,7 +87,7 @@ export default {
       promotions: [],
       chips: [],
       foods: [],
-      foodInTray: []
+      foodInTray: [],
     };
   },
   methods: {
@@ -99,8 +97,6 @@ export default {
       this.promotions = this.promotionStore.promotions.data;
       console.log(this.promotions);
       this.foods = this.foodStore.foods.data;
-    },
-    onAddFoodToTray(foodIndex) {
     },
   },
 };

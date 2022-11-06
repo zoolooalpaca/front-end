@@ -138,7 +138,7 @@ const router = createRouter({
       component: OrderToDoList,
     },
     {
-      path: '/menu/detail/:id',
+      path: '/menu/detail/:foodId',
       name: 'detail-menu',
       component: DetailMenu,
     },

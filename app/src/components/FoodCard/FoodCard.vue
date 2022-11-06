@@ -12,7 +12,7 @@
       </div>
       <div class="items-center">
         <button class="w-8 h-8 secondary-container
-        rounded-full p-1 justify-center" @click="onClickAdd(id)">
+        rounded-full p-1 justify-center" @click="goToMenuDetail">
           <span class="material-symbols-outlined">add</span>
         </button>
       </div>
@@ -22,7 +22,17 @@
 
 <script>
 export default {
-  props: ['id', 'image', 'name', 'price', 'onClickAdd'],
+  props: [
+      'id', 'image', 'name', 'price',
+  ],
+  methods: {
+    // กดเลือกรายการอาหารแล้วส่งไปยังหน้า DetailMenuView.vue
+    goToMenuDetail() {
+      this.$router.push (
+          {name: 'detail-menu', params: {foodId: this.id}}
+      );
+    }
+  },
 };
 </script>
 
