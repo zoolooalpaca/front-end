@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 const axiosInstance = axios.create({
-  baseURL: 'https://purple-rabbit-56.loca.lt/api',
+  baseURL: 'https://zlapc-oi-api.loca.lt/api',
 });
 
 
