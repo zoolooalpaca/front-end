@@ -1,13 +1,13 @@
 <template>
   <div class="flex flex-row justify-between account-item-contain">
-    <div class="ml-5">
+    <div >
     <span class="material-symbols-outlined">
     account_circle
     </span>
     </div>
     <div class="body-large">{{ name }}</div>
     <div class="body-large">{{ role }}</div>
-    <button class="button-edit-account body-medium mr-5" @click="onClickItem(id,url)">EDIT</button>
+<!--    <button class="button-edit-account body-medium mr-5" @click="onClickItem(id,url)">EDIT</button>-->
   </div>
 </template>
 
@@ -23,7 +23,7 @@ export default {
   border-radius: 20px;
   border: 2px solid;
   border-color: #8e9099;
-  padding: 5px;
+  padding: 15px 20px 5px 20px;
   margin: 5px 5px 5px 5px;
 }
 .button-edit-account{

@@ -51,7 +51,7 @@
         </div>
 
 
-      <div class="main-content">
+      <div class="main-content-create-management">
         <div class="basis-1/4 mb-8">
           <div v-if="previewImage">
             <div>

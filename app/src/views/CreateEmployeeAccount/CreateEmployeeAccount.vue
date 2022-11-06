@@ -67,8 +67,8 @@
         </div>
 
         <div class="set-display-column-account ">
-          <label class="set-margin text-xl">ตำแหน่ง</label>
-          <input type="text" v-model="user.role" class="input-field-create-employee-account" placeholder="role">
+          <label class="set-margin text-xl">รหัสผ่าน</label>
+          <input type="password" v-model="user.password" class="input-field-create-employee-account" placeholder="password">
         </div>
 
         <div class="flex justify-end mb-5">
@@ -100,7 +100,6 @@ export default {
       user: {
         name: '',
         username: '',
-        role: '',
         email: '',
         password: '',
       },
@@ -122,8 +121,17 @@ export default {
     showMenu() {
       this.showMobileMenu = !this.showMobileMenu;
     },
-    createAnAccount() {
-
+    async createAnAccount() {
+      try {
+        this.error = null;
+        const employee_id = await this.review_store.save(this.employee);
+        if (employee_id) {
+          this.$router.push(`/management/account/employee-account-list`);
+        }
+      } catch (error) {
+        console.log(error);
+        this.error = error.message;
+      }
     },
     backToEmployeeAccountList(){
       this.$router.push(`/management/account/employee-account-list`);
@@ -170,7 +178,7 @@ export default {
   border-color: #1A5EAFFF;
 }
 
-.input-field-create-employee-account[type=text] {
+.input-field-create-employee-account[type=text], .input-field-create-employee-account[type=password]{
   width: 90%;
   color: var(--md-sys-color-on-primary-dark);
   border: 1px solid var(--md-sys-color-outline-light);

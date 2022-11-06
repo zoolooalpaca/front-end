@@ -124,4 +124,12 @@ export default {
 </script>
 
 <style lang="scss">
+.button-create-account{
+  color: var(--md-sys-color-on-tertiary);
+  background: var(--md-sys-color-tertiary);
+  border-color: var(--md-sys-color-tertiary);
+  padding: 10px;
+  border-radius: 9999px;
+  justify-content: center;
+}
 </style>
