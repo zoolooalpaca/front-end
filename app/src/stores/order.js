@@ -39,6 +39,7 @@ export const useOrderStore = defineStore({
     async fetch() {
       const orderList = await orderApi.getAll();
       this.orders = orderList.data || orderList
+      localStorage.removeItem('fit');
     },
 
     async save(order) {

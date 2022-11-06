@@ -47,12 +47,9 @@
               >
               <FoodTray :cart="foodInTray"/>
             </div>
-          </div>
         </div>
         <div class="fixed left-0 bottom-0 w-full p-4">
-            <FloatingOrder class="m-10"
-            
-            />
+            <FloatingOrder class="m-10"/>
         </div>
     </div>
 </template>
