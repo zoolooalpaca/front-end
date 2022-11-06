@@ -8,7 +8,7 @@
         </span>
         </button>
       </i>
-      <div class="
+        <div class="
             w-64
             absolute
             inset-y-0
@@ -19,22 +19,21 @@
             transition
             duration-200
             ease-in-out"
-           :class="this.showMobileMenu
+             :class="this.showMobileMenu 
              ? 'relative -translate-x-0' : 'closed-menu'">
-        <h3 class="headline-large ml-4 mb6-4">อร่อยโภชนา</h3>
-        <SectionHeader label="สำหรับพนักงาน" />
-        <NavItem
-            v-for="(item, index) in navItems"
-            :id="index"
-            :label="item.label"
-            :active="index == activeId"
-            :url="item.router"
-            :onClickItem="onClickItem"
-            :key="index">
-          <span class="material-symbols-outlined">{{item.icon}}</span>
-        </NavItem>
-      </div>
-    </div>
+          <h3 class="headline-large ml-4 mb6-4">อร่อยโภชนา</h3>
+          <SectionHeader label="สำหรับพนักงาน" />
+          <NavItem
+              v-for="(item, index) in navItems"
+              :id="index"
+              :label="item.label"
+              :active="index == activeId"
+              :url="item.router"
+              :onClickItem="onClickItem"
+              :key="index">
+            <span class="material-symbols-outlined">{{item.icon}}</span>
+          </NavItem>
+        </div>
 
     <div class="basis-3/4">
       <div class="ml-10">
@@ -45,43 +44,42 @@
         <div>
           <label class="inline-flex">
             <input type="text" id="table_number" ref="tableNumber" placeholder="กรอกเลขโต๊ะ"
-                   class="text-color border rounded-lg" v-model="table_number"
-            @input="getData">
-            <button @click="getData" class="ml-2 flex items-center">
-              <span class="material-symbols-outlined">done</span>
-            </button>
+                   class="text-color border rounded-lg">
             <button @click="deleteInput" class="flex items-center">
               <span class="material-symbols-outlined">cancel</span>
             </button>
           </label>
         </div>
-
+      
         <div class="base-block border-box mt-2">
           <div class="flex-display width-100 fix-grid-display">
-            <div class="scroller borderColor mt-5">
+            <div class="scroll borderColor mt-5">
               <span class="margin-text text-xl">ใบเสร็จ</span>
-              <BillOrderItem v-for="orderItem in orderItems" :key="orderItem.id"
-                             :orderItem="orderItem" :url="`orderItems/${orderItem.id}`"
-                             class="mt-2 mb-2">
-              </BillOrderItem>
+              <div v-for="(item, index) in billOrderItem" :key="index">
+                <BillOrderItem class="flex justify-center mb-2"
+                               :id="index"
+                               :image="item.image"
+                               :name="item.name"
+                               :active="index == activeId"/>
+              </div>
             </div>
-
-            <div class="borderColor mt-5">
-              <h3 class="margin-text text-xl">พร้อมเพย์</h3>
-              <img :src="qrCode" style="width: 100%; object-fit: contain">
-              <div>
-                <button @click="printBill" class="button-payment button-style mb-4 ml-3"> พิมพ์ </button>
+          
+              <div class="borderColor mt-5">
+                <h3 class="margin-text text-xl">พร้อมเพย์</h3>
+                <img :src="qrCode" style="width: 100%; object-fit: contain">
+                <div>
+                  <button @click="printBill" class="button-payment button-style mb-4 ml-3"> พิมพ์ </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
-        <div>
-          <button @click="paid" class="button-payment button-style">จ่ายแล้ว</button>
+      
+          <div>
+            <button @click="paid" class="button-payment button-style">จ่ายแล้ว</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 </template>
 <script>
 import NavItem from "@/components/NavBarDrawer/NavItem.vue";
@@ -161,7 +159,7 @@ export default {
   created() {
     this.fetchOrder();
   }
-}
+};
 </script>
 
 <style lang="scss">
@@ -207,6 +205,7 @@ export default {
   display: flex;
   flex-direction: column;
 }
+
 .border-box {
   box-sizing: border-box;
 }

@@ -1,7 +1,14 @@
 <template>
-  <div class="nav-menu">
+  <div class="nav-menu-management">
+    <div class="flex">
+      <i class="management">
+        <button @click="showMenu()">
+        <span class="material-symbols-outlined">
+          menu
+        </span>
+        </button>
+      </i>
     <div class="
-          basis-1/4
           w-64
           absolute
           inset-y-0
@@ -28,18 +35,9 @@
         <span class="material-symbols-outlined">{{item.icon}}</span>
       </NavItem>
     </div>
+    </div>
 
     <div class="basis-3/4 ml-10">
-      <div>
-        <i>
-          <button @click="showMenu()">
-        <span class="material-symbols-outlined">
-          menu
-        </span>
-          </button>
-        </i>
-      </div>
-
         <div>
           <h3 class="headline-large">รายการโปรโมชัน</h3>
         </div>
@@ -148,18 +146,6 @@ div.create-promotion {
   padding: 25px 20px 20px 25px;
 }
 
-
-.nav-menu {
-  display: flex;
-}
-.nav-content {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-}
-i {
-  display: none;
-}
 div.main-content-promotion-list {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -167,28 +153,6 @@ div.main-content-promotion-list {
 }
 
 @media screen and (max-width: 768px){
-  .nav-menu {
-    padding-top: 10px;
-    position: absolute;
-    width: 100%;
-    display: flex;
-  }
-  .closed-menu {
-    opacity: 0;
-    height: 0;
-    padding: 0;
-  }
-  .nav-content {
-    flex-direction: column;
-    z-index: 100;
-    position: relative;
-    transition: all 0.2s ease-out;
-  }
-  i {
-    display: block;
-    text-align: left;
-    padding: 0 10px 10px 0;
-  }
   div.main-content-promotion-list {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));

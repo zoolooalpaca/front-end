@@ -1,10 +1,16 @@
 <template>
 <div class>
     <div class="main-content-employee-view">
-        <div>
-            <h3 class="headline-large ml-4 mb6-4">อร่อยโภชนา</h3>
-            <div class="
-            w-64
+        <div class="flex">
+          <i>
+          <button @click="showMenu()">
+            <span class="material-symbols-outlined">
+              menu
+            </span>
+          </button>
+          </i>
+          <div class="
+          w-64
             absolute
             inset-y-0
               left-0
@@ -14,8 +20,9 @@
               transition
               duration-200
               ease-in-out"
-            :class="this.showMobileMenu
+              :class="this.showMobileMenu
             ? 'relative -translate-x-0' : 'closed-menu'">
+            <h3 class="headline-large ml-4 mb6-4">อร่อยโภชนา</h3>
             <SectionHeader label="สำหรับพนักงาน" />
             <NavItem
               v-for="(item, index) in navItems"
@@ -29,13 +36,6 @@
               <span class="material-symbols-outlined">{{item.icon}}</span>              
             </NavItem>
             </div>
-            <i>
-                <button @click="showMenu()">
-                    <span class="material-symbols-outlined">
-                        menu
-                    </span>
-                </button>
-            </i>
         </div>
 
           <div class="p-4 flex-grow">

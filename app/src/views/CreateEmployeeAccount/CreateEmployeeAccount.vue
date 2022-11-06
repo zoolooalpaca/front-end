@@ -1,7 +1,14 @@
 <template>
-  <div class="nav-menu-account">
+  <div class="nav-menu-management">
+    <div class="flex">
+      <i class="management">
+        <button @click="showMenu()">
+        <span class="material-symbols-outlined">
+          menu
+        </span>
+        </button>
+      </i>
     <div class="
-          basis-1/4
           w-64
           absolute
           inset-y-0
@@ -28,17 +35,9 @@
         <span class="material-symbols-outlined">{{item.icon}}</span>
       </NavItem>
     </div>
+    </div>
 
     <div class="basis-3/4 ml-10">
-      <div>
-        <i>
-          <button @click="showMenu()">
-        <span class="material-symbols-outlined">
-          menu
-        </span>
-          </button>
-        </i>
-      </div>
       <div class="flex justify-between">
         <h3 class="headline-large">สร้างบัญชี</h3>
         <button
@@ -68,8 +67,8 @@
         </div>
 
         <div class="set-display-column-account ">
-          <label class="set-margin text-xl">ตำแหน่ง</label>
-          <input type="text" v-model="user.role" class="input-field-create-employee-account" placeholder="role">
+          <label class="set-margin text-xl">รหัสผ่าน</label>
+          <input type="password" v-model="user.password" class="input-field-create-employee-account" placeholder="password">
         </div>
 
         <div class="flex justify-end mb-5">
@@ -101,7 +100,6 @@ export default {
       user: {
         name: '',
         username: '',
-        role: '',
         email: '',
         password: '',
       },
@@ -123,8 +121,17 @@ export default {
     showMenu() {
       this.showMobileMenu = !this.showMobileMenu;
     },
-    createAnAccount() {
-
+    async createAnAccount() {
+      try {
+        this.error = null;
+        const employee_id = await this.review_store.save(this.employee);
+        if (employee_id) {
+          this.$router.push(`/management/account/employee-account-list`);
+        }
+      } catch (error) {
+        console.log(error);
+        this.error = error.message;
+      }
     },
     backToEmployeeAccountList(){
       this.$router.push(`/management/account/employee-account-list`);
@@ -171,7 +178,7 @@ export default {
   border-color: #1A5EAFFF;
 }
 
-.input-field-create-employee-account[type=text] {
+.input-field-create-employee-account[type=text], .input-field-create-employee-account[type=password]{
   width: 90%;
   color: var(--md-sys-color-on-primary-dark);
   border: 1px solid var(--md-sys-color-outline-light);
@@ -199,7 +206,7 @@ export default {
   border-color: var(--md-sys-color-primary);
 }
 
-.nav-menu-account {
+.nav-menu-management {
   display: flex;
   flex-direction: row;
 }
@@ -208,20 +215,17 @@ export default {
   flex-direction: column;
   width: 300px;
 }
-i {
+i.management {
   display: none;
 }
-.main-content-account {
+.main-content-management {
   display: flex;
   flex-direction: column;
 }
 
 @media screen and (max-width: 768px) {
-  .nav-menu-account {
-    padding-top: 10px;
-    position: absolute;
-    width: 100%;
-    display: flex;
+  .nav-menu-management {
+    display: inline;
   }
   .closed-menu {
     opacity: 0;
@@ -234,12 +238,11 @@ i {
     position: relative;
     transition: all 0.2s ease-out;
   }
-  i {
+  i.management {
     display: block;
-    text-align: left;
     padding: 0 10px 10px 0;
   }
-  .main-content-account {
+  .main-content-management {
     display: flex;
     flex-direction: column;
   }

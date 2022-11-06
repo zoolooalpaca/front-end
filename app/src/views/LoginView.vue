@@ -51,6 +51,13 @@ export default {
     const authStore = useAuthStore();
     return {authStore};
   },
+  created() {
+    if (this.$route.query.u && this.$route.query.p) {
+      this.username = this.$route.query.u;
+      this.password = this.$route.query.p;
+      this.onLogin();
+    }
+  },
   data() {
     return {
       username: 'manager.sample',
@@ -59,7 +66,6 @@ export default {
   },
   methods: {
     async onLogin() {
-      console.log('called');
       await this.authStore.login(this.username, this.password);
     },
   },

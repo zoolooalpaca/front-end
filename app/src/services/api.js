@@ -37,6 +37,14 @@ export const authAPI = {
     if (response.status == 200){
       return response.date;
     }
+  },
+  async addCustomer(table_id){
+    const response = await axiosInstance.post('/auth/register/customer', {table_id});
+    console.log(response)
+
+    if (response.status == 201) {
+      return response.data;
+    }
   }
 };
 

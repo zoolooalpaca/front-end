@@ -28,5 +28,8 @@ export const useAuthStore = defineStore({
       localStorage.removeItem('access_token');
       router.push('/login');
     },
+    async addCustomer(table_id) {
+      return await authAPI.addCustomer(table_id);
+    }
   },
 });
