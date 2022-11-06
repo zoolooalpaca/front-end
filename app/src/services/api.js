@@ -26,8 +26,11 @@ export const authAPI = {
   },
   async registerEmployee(user) {
     const response = await axiosInstance.post('/auth/register/employee', user);
-
-    return reponse;
+    return response;
+  },
+  async addCustomer(table_id){
+    const response = await axiosInstance.post('/auth/register/customer', {table_id});
+    return response.data;
   }
 };
 
