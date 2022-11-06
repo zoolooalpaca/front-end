@@ -9,7 +9,7 @@
         </h3>
         <p class="label-small --md-sys-color-on-primary">{{ price }} บาท</p>
       </div>
-      <div v-if="buttonDisabled" class="items-center">
+      <div v-if="!buttonDisabled" class="items-center">
         <button
           class="w-8 h-8 secondary-container rounded-full p-1 justify-center"
         >
