@@ -4,7 +4,7 @@
     h-28 bg-blue-100 rounded-2xl
     focus:outline-none focus:ring focus:ring-blue-500"
     v-show="available==true"
-    @click="goToOrderQrCode"
+    @click="goToMenuQrCode"
   >
     <p class="text-base font-medium tracking-wide leading-normal text-gray-900">
       {{table_id}}</p>
@@ -31,7 +31,7 @@ export default {
 
   methods: {
     // กดเลือกโต๊ะที่ต้องการแล้วจะส่งไปยังหน้าOrderQrCodeView.vue
-    goToOrderQrCode() {
+    goToMenuQrCode() {
       this.$router.push(`/employee/new-customer/order-qrcode`);
     },
   },
