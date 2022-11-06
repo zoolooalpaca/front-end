@@ -1,27 +1,3 @@
-<!-- /TODO:
-  ใช้ข้อมูล
-  table:
-  -table_id (โต๊ะที่สั่งorderนั้นๆ)
-
-  order description(ที่สั่งแล้ว):
-  -order id
-  -order_status = ดึงdataมาเฉพาะ status 'ยังไม่เสิร์ฟ'
-  -food id > food name
-  -quantity
-
-  computed:
-  totalOrder = จำนวนรายการorder เฉพาะที่ order_status ='ยังไม่เสิร์ฟ'
-
-  methods:
-  อยู่ในcomponent
-  -ToServeItem.vue > serveDone() = กดยืนยันว่าorderนั้นได้เสิร์ฟแล้ว
-  แล้ว order_status เป็น 'ส่งถึงโต๊ะแล้ว' (orderนั้นจะหายไปจากlist toserve)
-
-  navbar>
-    -showMenu() = กดเพื่อให้โชว์navbarที่ซ่อนไว้
-    อยู่ในcomponents
-    -NavBarEmployee.vue > onClickItem() = ส่งไปแต่ละหน้าตามurl
-  / -->
 <template>
   <div class="relative">
     <div class="flex flex-row main-content-employee-view">
@@ -71,7 +47,7 @@
         </div>
         <div>
           <ToServeItem
-            v-for="(table, index) in tableOrderList"
+            v-for="(table, index) in orderToServeList"
             :orders="table.order_description"
             :tableNumber="table.table_number"
             :serveDone="() => onServedDone(index)"
@@ -108,6 +84,11 @@ export default {
   },
 
   computed: {
+    orderToServeList(){
+      const orderToServe = this.tableOrderList.reduce((prev,curr) =>
+        [...prev, ...curr.order_description],[]);
+    return orderToServe.order_status==='พร้อมเสิร์ฟ';
+  },
     totalOrders() {
       return this.tableOrderList.length;
     },

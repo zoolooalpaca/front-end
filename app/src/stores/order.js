@@ -49,9 +49,8 @@ export const useOrderStore = defineStore({
     },
 
     delete(orderId) {
-      this.orders = this.orders.filter(
-          (order) => order.id !== orderId,
-      );
+      orderApi.delete(orderId);
+      return true;
     },
   },
 });

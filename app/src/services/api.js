@@ -325,9 +325,10 @@ export const foodAllergyAPI = {
 
 export const orderApi = {
   async getAll() {
-    const response = await axiosInstance.get(
-        '/orders?ofuser=1',
-    );
+    const response = await axiosInstance.get('/orders');
+    // const response = await axiosInstance.get(
+    //     '/orders?ofuser=1',
+    // );
     if (response.status === 200) {
       return response.data;
     }
@@ -367,6 +368,10 @@ export const orderApi = {
       success: false,
     };
   },
+
+  delete(orderNumber) {
+    return axiosInstance.delete(`/orders/${orderNumber}`);
+  }
 };
 
 export const orderDescriptionApi = {
