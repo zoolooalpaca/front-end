@@ -209,6 +209,7 @@ export default {
 .nav-menu-management {
   display: flex;
   flex-direction: row;
+  gap: 16px;
 }
 .nav-content {
   display: flex;
