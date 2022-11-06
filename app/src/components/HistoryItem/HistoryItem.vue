@@ -116,6 +116,7 @@ export default {
       await this.orderStore.delete(this.id);
       this.onRemoveOrder();
       this.orderedItems = this.orderStore.orders.data;
+      this.DeletePopup();
     }
 
   },
