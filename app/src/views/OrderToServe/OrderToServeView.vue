@@ -47,7 +47,7 @@
         </div>
         <div>
           <ToServeItem
-            v-for="(table, index) in orderToServeList"
+            v-for="(table, index) in tableOrderList"
             :orders="table.order_description"
             :tableNumber="table.table_number"
             :serveDone="() => onServedDone(index)"
@@ -86,17 +86,19 @@ export default {
   computed: {
     orderToServeList(){
       const orderToServe = this.tableOrderList.reduce((prev,curr) =>
-        [...prev, ...curr.order_description],[]);
-    return orderToServe.order_status==='พร้อมเสิร์ฟ';
+        [...prev, ...curr.order_description],[]);return orderToServe.order_status === 'พร้อมเสิร์ฟ';
   },
     totalOrders() {
       return this.tableOrderList.length;
     },
     tableOrderList() {
+      console.log(this.orderList);
       return this.orderList.reduce(
         (prev, curr) => {
-          const newOrderDescription = curr.order_description.filter(
-              (od) => od.order_status === "พร้อมเสิร์ฟ");
+          const newOrderDescription = curr
+          .order_description
+          .filter((od) => od.order_status === "พร้อมเสิร์ฟ");
+
           if (newOrderDescription.length){
            return [...prev, {...curr,order_description: newOrderDescription,}]
           }
