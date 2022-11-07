@@ -11,6 +11,7 @@
       </div>
       <div v-if="!buttonDisabled" class="items-center">
         <button
+          @click="goToMenuDetail"
           class="w-8 h-8 secondary-container rounded-full p-1 justify-center"
         >
           <span class="material-symbols-outlined">add</span>
@@ -25,9 +26,13 @@ export default {
   data() {
     return {};
   },
-  props: ["image", "name", "price", "buttonDisabled"],
+  props: ["id", "image", "name", "price", "buttonDisabled"],
   methods: {
-    onClickAdd() {},
+    goToMenuDetail() {
+      this.$router.push (
+          {name: 'detail-menu', params: {foodId: this.id}}
+      );
+    }
   },
 };
 </script>

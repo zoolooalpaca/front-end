@@ -67,8 +67,6 @@ export default {
 
   .banner-backdrop {
     position: absolute;
-    width: 50%;
-    height: 50%;
     background: linear-gradient(180deg,
     rgba(0, 0, 0, 0) 20%,
     rgba(0, 0, 0, 0.8) 100%);

@@ -4,8 +4,7 @@
         <h1 class='display-large justify-start text-center'>อร่อยโภชนา</h1>
       </div>
 
-      <div class='scroller-recommend-menu'>
-        <div class='flex gap-5'>
+      <!-- <div class='scroller-recommend-menu'>
             <BannerCard
               v-for="(promotion, index) in promotions"
               :id="index"
@@ -14,8 +13,7 @@
               :key="index"
             >
             </BannerCard>
-        </div>
-      </div>
+      </div> -->
 
       <div class="flex relative">
             <div>
@@ -48,7 +46,7 @@
               <FoodTray :cart="foodInTray"/>
             </div>
         </div>
-        <div class="fixed left-0 bottom-0 w-full p-4">
+        <div class="fixed left-0 bottom-0 w-full p-4 md:hidden">
             <FloatingOrder class="m-10"/>
         </div>
     </div>
@@ -99,9 +97,10 @@ export default {
     async fetchData() {
       await this.promotionStore.fetch();
       await this.foodStore.fetch();
-      this.promotions = this.promotionStore.promotions.data;
+      this.promotions = this.promotionStore.promotions.data || [];
       console.log(this.promotions);
-      this.foods = this.foodStore.foods.data;
+      this.foods = this.foodStore.foods.data || this.foodStore.foods;
+      console.log(this.foods)
     },
   },
 };

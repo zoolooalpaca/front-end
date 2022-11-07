@@ -34,12 +34,12 @@ export const useOrderStore = defineStore({
       const response = orderApi.placeNew(orderData);
       if (response.data?.success || response.success) {
         this.orders = await orderApi.getAll();
+        localStorage.removeItem('fit');
       }
     },
     async fetch() {
       const orderList = await orderApi.getAll();
       this.orders = orderList.data || orderList
-      localStorage.removeItem('fit');
     },
 
     async save(order) {

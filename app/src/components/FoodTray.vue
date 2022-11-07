@@ -65,7 +65,7 @@ export default {
   methods: {
     async getOrderItems() {
       await this.orderStore.fetch();
-      this.orderedItems = this.orderStore.orders.data;
+      this.orderedItems = this.orderStore.orders.data ?? [];
     },
   },
   computed: {
