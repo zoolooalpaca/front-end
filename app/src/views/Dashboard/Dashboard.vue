@@ -27,6 +27,7 @@
             v-for="(item, index) in navItems"
             :id="index"
             :label="item.label"
+            :url="item.router"
             :active="item.activeId"
             :onClickItem="onClickItem"
             :key="index"
@@ -134,9 +135,7 @@ export default {
     },
     onClickItem(id, url) {
       this.activeId = id;
-      if (url != '') {
-        this.$router.push(url);
-      }
+      this.$router.push(url);
     },
   },
   computed: {

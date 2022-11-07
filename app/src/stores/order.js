@@ -6,7 +6,7 @@ export const useOrderStore = defineStore({
   state: () => {
     return {
       orders: [],
-      foodItemsInTray: JSON.parse(localStorage.getItem("fit")) || [],
+      foodItemsInTray: JSON.parse(localStorage.getItem("fit") || "[]"),
     };
   },
 

@@ -26,7 +26,7 @@
           v-for="(item, index) in navItems"
           :id="index"
           :label="item.label"
-          :active="index == activeId"
+          :active="item.activeId"
           :url="item.router"
           :onClickItem="onClickItem"
           :key="index"
@@ -52,9 +52,10 @@
             v-for="(item, index) in foodCardItems" :key="index"
             :id="index"
             :image="item.images.thumb"
+            :url="item.router"
             :name="item.food_name"
             :price="item.food_price"
-            :active="index == activeId"
+            :active="item.activeId==1"
             :buttonDisabled="true"
           />
       </div>
@@ -86,14 +87,10 @@ export default {
       activeId: 0,
       loopCount: 4,
       navItems: [
-        { label: "ชื่อลูกค้า", icon: "account_circle", router: "" },
-        {
-          label: "สรุปข้อมูล",
-          icon: "signal_cellular_alt",
-          router: "/Dashboard",
-        },
-        { label: "รายการอาหาร", icon: "restaurant_menu", router: "/MenuList" },
-        { label: "โปรโมชัน", icon: "grid_view", router: "/PromotionList" },
+      {label: 'ข้อมูลบัญชี', icon: 'account_circle', router: '/management/account/employee-account-list',activeId: 0,},
+        {label: 'สรุปข้อมูล', icon: 'signal_cellular_alt', router: '/management/Dashboard' ,activeId: 0,},
+        {label: 'รายการอาหาร', icon: 'restaurant_menu', router: '/management/menu',activeId: 1,},
+        {label: 'โปรโมชัน', icon: 'grid_view', router: '/management/promotion',activeId: 0,},
       ],
       foodCardItems: [],
     };

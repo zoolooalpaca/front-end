@@ -99,6 +99,12 @@ export default {
     return {orderStore, popupTrigger, DeletePopup};
   },
 
+  data() {
+    return {
+      orderedItems: [],
+    }
+  },
+
   created() {
     this.getOrderItems();
   },

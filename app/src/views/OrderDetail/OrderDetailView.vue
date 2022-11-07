@@ -55,20 +55,20 @@ export default {
 
   data() {
     return { 
-      cart: []
+      cart: [],
+      orderedItems: []
     };
   },
 
-  created() {
+  mounted() {
     this.getOrderItems();
   },
 
   methods: {
     async getOrderItems() {
-      // return this.orderStore.fetch();
+      this.orderedItems = this.orderStore.foodItemsInTray;
     },
   },
-
   computed: {
     totalPrice() {
       return this.orderedItems.reduce((prev, curr) => {
