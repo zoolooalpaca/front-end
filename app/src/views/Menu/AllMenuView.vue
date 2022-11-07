@@ -17,7 +17,7 @@
       </div>
 
       <div class="flex justify-between w-full gap-4">
-            <div class="grid grid-cols-2 gap-2 md:w-1/2 lg:w-2/3">
+            <div class="grid grid-cols-2 gap-2 sm:w-1/2 md:w-2/3">
               <FoodCard
                 v-for="(food, index) in foods"
                 :id="food.id"

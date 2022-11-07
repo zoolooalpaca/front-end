@@ -20,26 +20,30 @@ export const useOrderStore = defineStore({
     },
     removeFoodItemInTray(foodId) {
       console.log(foodId);
-      this.foodItemsInTray = this.foodItemsInTray.filter((food) => food.id !== foodId);
+      this.foodItemsInTray = this.foodItemsInTray.filter(
+        (food) => food.id !== foodId
+      );
       localStorage.setItem("fit", JSON.stringify(this.foodItemsInTray));
     },
     async placeOrderInTray() {
       const orderData = {
         order_items: this.foodItemsInTray.map(
           ({ food_id, order_quantity, order_request }) => {
-            return order_request ? {food_id, order_quantity, order_request} : {food_id, order_quantity};
+            return order_request
+              ? { food_id, order_quantity, order_request }
+              : { food_id, order_quantity };
           }
         ),
       };
-      const response = orderApi.placeNew(orderData);
-      if (response.data?.success || response.success) {
-        this.orders = await orderApi.getAll();
-        localStorage.removeItem('fit');
-      }
+      localStorage.removeItem("fit");
+      console.log(localStorage.getItem("fit"));
+      const response = await orderApi.placeNew(orderData);
+      this.orders = await orderApi.getAll();
+      this.foodItemsInTray = [];
     },
     async fetch() {
       const orderList = await orderApi.getAll();
-      this.orders = orderList.data || orderList
+      this.orders = orderList.data || orderList;
     },
 
     async save(order) {

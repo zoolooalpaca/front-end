@@ -6,18 +6,16 @@
       </div>
 
       <div class="py-8">
-          <HistoryItem
-          v-for="order in orders"
-          :key="order.id"
-          :status="order.status"
-          :foodImage="order.food_image"
-          :foodName="order.food_name"
-          :orderPrice="order.food_price"
-          :orderQuantity="order.order_quantity"
-          :orderRequest="order.order_request"
-          :onRemoveOrder="onRemoveOrder">
-          <h1>{{order.id}}</h1>
-          </HistoryItem>
+        <HistoryItem
+        v-for="(order, i) in orderHistoryList"
+        :status="order.order_status"
+        :foodImage="order.food_image.thumb"
+        :foodName="order.food_name"
+        :orderPrice="order.order_price"
+        :orderQuantity="order.order_quantity"
+        :foodDescription="order.order_request"
+        :key="i"
+      />
       </div>
 
       
@@ -52,39 +50,19 @@ export default {
     const orderStore = useOrderStore();
     return {orderStore};
   },
+  created() {
+    this.getOrders();
+  },
   data() {
     return {
-      orders: [{
-          status: 'รอทำ',
-          food_image: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
-          food_name: 'ข้าวมันไก่',
-          food_price: '45',
-          order_quantity: '1',
-          order_request: 'ขอหนังล้วน ๆ ไม่เอาเนื้อไก่',
-        },
-        {
-          status: 'กำลังทำ',
-          food_image: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
-          food_name: 'ข้าวมันไก่',
-          food_price: '45',
-          order_quantity: '2',
-          order_request: 'ขอหนังล้วน ๆ ไม่เอาเนื้อไก่',
-        },
-        {
-          status: 'ส่งถึงโต๊ะแล้ว',
-          food_image: 'https://i.ytimg.com/vi/YgmYqZWW4V8/maxresdefault.jpg',
-          food_name: 'ข้าวมันไก่',
-          food_price: '45',
-          order_quantity: '3',
-          order_request: 'ขอหนังล้วน ๆ ไม่เอาเนื้อไก่',
-        },],
+      orders: [],
     };
   },
 
   methods: {
     async getOrders() {
       await this.orderStore.fetch();
-      this.orders = this.orderStore.orders.data;
+      this.orders = this.orderStore.orders;
     }, 
     onRemoveOrder(id) {
       this.orders = this.orders.filter((order) => order.id !== id);
@@ -112,6 +90,14 @@ export default {
       });
       return price;
     },
+    orderHistoryList() {
+      const orderHistory = this.orders.reduce(
+        (prev, curr) => [...prev, ...curr.order_description],[]
+      );
+      console.log('eiei',orderHistory);
+      return orderHistory;
+    },
+
   },
 
   mounted() {

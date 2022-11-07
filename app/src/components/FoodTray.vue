@@ -17,8 +17,8 @@
         :status="order.order_status"
         :foodImage="order.food_image.thumb"
         :foodName="order.food_name"
-        :foodPrice="order.order_price"
-        :foodAmount="order.order_quantity"
+        :orderPrice="order.order_price"
+        :orderQuantity="order.order_quantity"
         :foodDescription="order.order_request"
         :key="i"
       />
@@ -30,11 +30,11 @@
         :food_image="food.images.thumb"
         :order_price="food.food_price"
         :order_quantity="food.order_quantity"
-        :onDeleteOrder="(id) => {orderStore.removeFoodItemInTray(food.id)}"
+        :onDeleteOrder="() => {orderStore.removeFoodItemInTray(food.id)}"
         :key="i"
       />
       <button
-        @click="() => orderStore.placeOrderInTray()"
+        @click="onPlaceOrder()"
         class="px-4 py-2 secondary on-secondary-text rounded-full"
       >สั่งอาหาร</button>
     </div>
@@ -65,16 +65,19 @@ export default {
   methods: {
     async getOrderItems() {
       await this.orderStore.fetch();
-      this.orderedItems = this.orderStore.orders.data ?? [];
+      this.orderedItems = this.orderStore.orders;
+      console.log(this.orderedItems);
     },
+    async onPlaceOrder() {
+      this.orderStore.placeOrderInTray();
+    }
   },
   computed: {
     orderHistoryList() {
       const orderHistory = this.orderedItems.reduce(
-        (prev, curr) => [...prev, ...curr.order_description],
-        []
+        (prev, curr) => [...prev, ...curr.order_description],[]
       );
-      console.log(orderHistory);
+      console.log('eiei',orderHistory);
       return orderHistory;
     },
   },

@@ -22,7 +22,7 @@
               >
                   <img :src="foodImage"
                       :alt="foodName"
-                      class="max-w-xs h-auto rounded-lg"
+                      class="rounded-lg w-44"
                   >
                 </div>
                 <div class='text-black mx-5 flex flex-col'>
@@ -34,7 +34,7 @@
             </div>
        </div>
 
-       <div class="flex items-center ">
+       <div class="flex items-center flex-shrink-0">
            <button v-show="status == 'รอทำ'"
            @click="() => DeletePopup('buttonTrigger')"
            class="error-container error-text w-10 h-10 rounded-full"
@@ -113,7 +113,6 @@ export default {
     async getOrderItems() {
       await this.orderStore.fetch();
       this.orderedItems = this.orderStore.orders.data;
-      console.log(this.orderedItems)
     },
 
     deleteOrdered() {
