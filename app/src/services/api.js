@@ -17,6 +17,14 @@ axiosInstance.interceptors.request.use((request) => {
 });
 
 export const authAPI = {
+  async me() {
+    const response = await axiosInstance.post('/auth/me');
+
+    if (response.status == 200) {
+      return response.data;
+    }
+
+  },
   async login(user) {
     const response = await axiosInstance.post('/auth/login', user);
 

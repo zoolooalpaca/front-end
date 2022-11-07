@@ -3,18 +3,6 @@
       <div>
         <h1 class='display-large justify-start text-center'>อร่อยโภชนา</h1>
       </div>
-
-      <!-- <div class='scroller-recommend-menu'>
-            <BannerCard
-              v-for="(promotion, index) in promotions"
-              :id="index"
-              :image="promotion.image.cover"
-              :headerText="promotion.name"
-              :key="index"
-            >
-            </BannerCard>
-      </div> -->
-
       <div class="flex relative">
             <div>
               <FoodCategoryChip
@@ -56,7 +44,6 @@
 import FloatingOrder from '../../components/FloatingOrder.vue';
 import FoodCard from '../../components/FoodCard/FoodCard.vue';
 import BannerCard from '../../components/BannerCard.vue';
-import DetailMenuView from "./DetailMenuView.vue";
 import FoodTray from
   '../../components/FoodTray.vue';
 import FoodCategoryChip from
