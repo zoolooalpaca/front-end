@@ -24,6 +24,9 @@ https://www.notion.so/napatswift/Persona-ea895607a1d04ca287863a306889e822
 ## User Journey
 https://www.notion.so/napatswift/User-journey-ca4f88400a4a4f3ab1c757d2fa212ec8
 
+## UI Flow
+https://www.figma.com/file/5Ddb7b5A0Kl5jEITwwdXls/ROrdering?node-id=51504%3A4712
+
 
 ## Order In
 
